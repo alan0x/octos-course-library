@@ -1,0 +1,16 @@
+{
+  "name": "octos-course-library",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm --filter @octos/course-pack build",
+    "course-pack": "pnpm build && node packages/course-pack/dist/src/cli.js",
+    "test": "pnpm --filter @octos/course-pack test",
+    "typecheck": "pnpm --filter @octos/course-pack typecheck"
+  }
+}

@@ -1,0 +1,5 @@
+packages:
+  - packages/*
+
+allowBuilds:
+  octos-lesson-language: true

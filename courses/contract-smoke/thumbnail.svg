@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title id="title">CoursePack contract fixture</title>
+  <rect width="640" height="360" fill="#f6f1e7"/>
+  <circle cx="116" cy="180" r="62" fill="#5bc5d8"/>
+  <text x="210" y="170" fill="#17252a" font-family="sans-serif" font-size="38" font-weight="700">CoursePack</text>
+  <text x="210" y="218" fill="#53666d" font-family="sans-serif" font-size="28">contract fixture</text>
+</svg>

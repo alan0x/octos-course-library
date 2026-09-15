@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learn.pitun.cc/schemas/course-pack-manifest-v1.schema.json",
+  "title": "Octos CoursePack Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packId",
+    "version",
+    "title",
+    "description",
+    "locale",
+    "subject",
+    "grade",
+    "durationSeconds",
+    "minimumPlayerVersion",
+    "entry",
+    "board",
+    "thumbnail",
+    "capabilities",
+    "narration",
+    "files",
+    "licenses"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "packId": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$", "maxLength": 128 },
+    "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "locale": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-[A-Z]{2}|-[0-9]{3})?$" },
+    "subject": { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,63}$" },
+    "grade": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "durationSeconds": { "type": "integer", "minimum": 1, "maximum": 86400 },
+    "minimumPlayerVersion": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" },
+    "entry": { "$ref": "#/$defs/safePath" },
+    "board": { "$ref": "#/$defs/safePath" },
+    "thumbnail": { "$ref": "#/$defs/safePath" },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offlinePlayback", "offlineNarration", "interactiveWhiteboard", "liveAi"],
+      "properties": {
+        "offlinePlayback": { "type": "boolean" },
+        "offlineNarration": { "type": "boolean" },
+        "interactiveWhiteboard": { "type": "boolean" },
+        "liveAi": { "enum": ["none", "optional", "required"] },
+        "asr": { "enum": ["none", "optional", "required"] },
+        "camera": { "enum": ["none", "optional", "required"] }
+      }
+    },
+    "narration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["voiceId", "segments"],
+      "properties": {
+        "voiceId": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["beatId", "file", "textSha256", "durationMs"],
+            "properties": {
+              "beatId": { "type": "string", "minLength": 1, "maxLength": 256 },
+              "file": { "$ref": "#/$defs/safePath" },
+              "textSha256": { "$ref": "#/$defs/sha256" },
+              "durationMs": { "type": "integer", "minimum": 1, "maximum": 3600000 }
+            }
+          }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes", "mediaType", "role"],
+        "properties": {
+          "path": { "$ref": "#/$defs/safePath" },
+          "sha256": { "$ref": "#/$defs/sha256" },
+          "bytes": { "type": "integer", "minimum": 1, "maximum": 536870912 },
+          "mediaType": { "type": "string", "minLength": 1, "maxLength": 160 },
+          "role": { "enum": ["lesson", "board", "thumbnail", "narration", "asset", "license"] }
+        }
+      }
+    },
+    "licenses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "appliesTo"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+          "url": { "type": "string", "format": "uri" },
+          "attribution": { "type": "string", "minLength": 1, "maxLength": 2000 },
+          "appliesTo": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/safePath" }
+          }
+        },
+        "anyOf": [
+          { "required": ["url"] },
+          { "required": ["attribution"] }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "safePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[^\\u0000-\\u001f]+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}
