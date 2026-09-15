@@ -21,6 +21,7 @@
   "scripts": {
     "build": "pnpm --filter @octos/course-pack build",
     "course-pack": "pnpm build && node packages/course-pack/dist/src/cli.js",
+    "course-pack:publish": "pnpm build && node packages/course-pack/dist/src/publisher-cli.js",
     "test": "pnpm --filter @octos/course-pack test",
     "typecheck": "pnpm --filter @octos/course-pack typecheck",
     "prepare": "pnpm build"

@@ -433,8 +433,11 @@ export function inspectCoursePackArchive(archivePath: string): CoursePackValidat
     const archive = readFileSync(archivePath);
     let fileCount = 0;
     let totalUncompressedBytes = 0;
+    const seenPaths = new Set<string>();
     const unpacked = unzipSync(archive, {
       filter(file) {
+        if (seenPaths.has(file.name)) throw new Error(`Archive contains a duplicate path: ${file.name}`);
+        seenPaths.add(file.name);
         fileCount += 1;
         totalUncompressedBytes += file.originalSize;
         if (fileCount > MAX_FILE_COUNT) throw new Error("Archive contains too many files");

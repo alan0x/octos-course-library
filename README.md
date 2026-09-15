@@ -12,8 +12,9 @@ The repository is intentionally separate from the Octos Learn player:
 
 ## Current scope
 
-The first workstream implements `OctosCoursePack v1` and a CLI that validates
-source directories and builds `.ocpack` ZIP archives. The fixture under
+The contract workstream implements `OctosCoursePack v1` and a CLI that validates
+source directories and builds `.ocpack` ZIP archives. The distribution
+workstream adds an operator-only static publication tool. The fixture under
 `courses/contract-smoke` is contract test data, not a published curriculum.
 
 ## Development
@@ -25,8 +26,8 @@ pnpm course-pack validate courses/contract-smoke
 pnpm course-pack build courses/contract-smoke --out artifacts/contract-smoke-0.0.1.ocpack
 ```
 
-Published course content, signing, and server upload will be added in later
-workstreams.
+The publication CLI can publish reviewed archives into a static same-origin
+distribution directory. See [server publishing](docs/SERVER_PUBLISHING.md).
 
 ## Browser player integration
 

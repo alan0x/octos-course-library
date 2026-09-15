@@ -19,7 +19,8 @@
     "./schema/board-v1": "./schema/course-pack-board-v1.schema.json"
   },
   "bin": {
-    "octos-course-pack": "./dist/src/cli.js"
+    "octos-course-pack": "./dist/src/cli.js",
+    "octos-course-publish": "./dist/src/publisher-cli.js"
   },
   "files": [
     "dist/src/",
