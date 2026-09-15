@@ -27,3 +27,19 @@ pnpm course-pack build courses/contract-smoke --out artifacts/contract-smoke-0.0
 
 Published course content, signing, and server upload will be added in later
 workstreams.
+
+## Browser player integration
+
+The repository root is installable directly from a pinned public Git commit.
+Player applications should import the browser-safe entry point only:
+
+```ts
+import { loadCoursePackArchive } from "octos-course-library/browser";
+
+const response = await fetch("/course-packs/example.ocpack");
+const pack = await loadCoursePackArchive(await response.arrayBuffer());
+```
+
+This entry point verifies archive limits, paths, schemas, declared file hashes,
+and OLL playback semantics without importing Node filesystem APIs. The Node CLI
+remains the authoritative publication gate.

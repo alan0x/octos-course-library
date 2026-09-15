@@ -41,8 +41,8 @@
     },
     {
       "path": "audio/intro.mp3",
-      "sha256": "48282711ab869dd65bff52ecd638646211a5073e1c4a5472d0b8834b2a5313f2",
-      "bytes": 41,
+      "sha256": "d9d1dcb5749012509a6b25cfcdca95ddeb803c1030f47b3a391c7de580170a90",
+      "bytes": 37033,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
@@ -55,8 +55,8 @@
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "ac7c3255c2da6c72f5d3164dc79a07b44ca96c9a464442f3f69e89aaf320c100",
-      "bytes": 1030,
+      "sha256": "5a3b7a583821e9c690d631a6785118afd6dc2de17b20514bc610d6ae60f72423",
+      "bytes": 1519,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },

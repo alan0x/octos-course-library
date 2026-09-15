@@ -11,6 +11,10 @@
       "types": "./dist/src/index.d.ts",
       "default": "./dist/src/index.js"
     },
+    "./browser": {
+      "types": "./dist/src/browser.d.ts",
+      "default": "./dist/src/browser.js"
+    },
     "./schema/manifest-v1": "./schema/course-pack-manifest-v1.schema.json",
     "./schema/board-v1": "./schema/course-pack-board-v1.schema.json"
   },
@@ -21,6 +25,7 @@
     "dist/src/",
     "dist/schema/",
     "schema/",
+    "fixtures/contract-smoke-0.0.1.ocpack",
     "README.md"
   ],
   "scripts": {

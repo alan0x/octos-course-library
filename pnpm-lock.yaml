@@ -6,7 +6,17 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    dependencies:
+      ajv:
+        specifier: ^8.17.1
+        version: 8.20.0
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.3
+      octos-lesson-language:
+        specifier: github:alan0x/octos-lesson-language#ce1d577ed8ca7698b34384ba1902d1fe2722a85a
+        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/ce1d577ed8ca7698b34384ba1902d1fe2722a85a
 
   packages/course-pack:
     dependencies:

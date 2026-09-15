@@ -18,7 +18,8 @@ import {
 import { unzipSync, zipSync } from "fflate";
 import boardSchema from "../schema/course-pack-board-v1.schema.json" with { type: "json" };
 import manifestSchema from "../schema/course-pack-manifest-v1.schema.json" with { type: "json" };
-import { isSafeCoursePackPath, sha256 } from "./integrity.js";
+import { sha256 } from "./integrity.js";
+import { isSafeCoursePackPath } from "./path.js";
 import type {
   CoursePackBoardV1,
   CoursePackIssue,
