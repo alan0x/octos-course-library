@@ -44,7 +44,7 @@ test("builds and inspects an immutable .ocpack archive", () => {
 
     const inspected = inspectCoursePackArchive(archive);
     assert.equal(inspected.valid, true, JSON.stringify(inspected.issues, null, 2));
-    assert.equal(inspected.manifest?.version, "0.0.1");
+    assert.equal(inspected.manifest?.version, "0.0.2");
     assert.equal(inspected.packSha256, built.sha256);
   } finally {
     rmSync(root, { recursive: true, force: true });

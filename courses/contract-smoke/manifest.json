@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "packId": "contract-smoke",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "title": "CoursePack Contract Smoke Lesson",
   "description": "A minimal fixture used to validate the CoursePack contract and tooling.",
   "locale": "en-US",
@@ -27,7 +27,7 @@
         "beatId": "contract-smoke:beat:intro",
         "file": "audio/intro.mp3",
         "textSha256": "9d483881d0cfa7c5b313fde9e70893ed55ee1cc62eb3c07ed546b69e3416eedd",
-        "durationMs": 3000
+        "durationMs": 2146
       }
     ]
   },
@@ -41,8 +41,8 @@
     },
     {
       "path": "audio/intro.mp3",
-      "sha256": "d9d1dcb5749012509a6b25cfcdca95ddeb803c1030f47b3a391c7de580170a90",
-      "bytes": 37033,
+      "sha256": "df0c64f0c932392d8dd3339875701ae7edba9532b197fce04cb4a0ab1062f77a",
+      "bytes": 27002,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },

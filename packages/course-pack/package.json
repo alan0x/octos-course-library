@@ -25,7 +25,7 @@
     "dist/src/",
     "dist/schema/",
     "schema/",
-    "fixtures/contract-smoke-0.0.1.ocpack",
+    "fixtures/contract-smoke-0.0.2.ocpack",
     "README.md"
   ],
   "scripts": {

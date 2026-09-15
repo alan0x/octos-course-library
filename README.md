@@ -22,7 +22,7 @@ source directories and builds `.ocpack` ZIP archives. The fixture under
 pnpm install
 pnpm test
 pnpm course-pack validate courses/contract-smoke
-pnpm course-pack build courses/contract-smoke --out artifacts/contract-smoke-0.0.1.ocpack
+pnpm course-pack build courses/contract-smoke --out artifacts/contract-smoke-0.0.2.ocpack
 ```
 
 Published course content, signing, and server upload will be added in later

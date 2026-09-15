@@ -11,7 +11,7 @@ import {
 
 const fixtureArchive = join(
   process.cwd(),
-  "fixtures/contract-smoke-0.0.1.ocpack",
+  "fixtures/contract-smoke-0.0.2.ocpack",
 );
 
 test("browser reader verifies and opens the packaged fixture", async () => {

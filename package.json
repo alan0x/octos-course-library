@@ -16,7 +16,7 @@
   "files": [
     "packages/course-pack/dist/",
     "packages/course-pack/schema/",
-    "packages/course-pack/fixtures/contract-smoke-0.0.1.ocpack"
+    "packages/course-pack/fixtures/contract-smoke-0.0.2.ocpack"
   ],
   "scripts": {
     "build": "pnpm --filter @octos/course-pack build",
