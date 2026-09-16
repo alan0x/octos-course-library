@@ -187,10 +187,13 @@ export async function loadCoursePackArchive(
 
   let fileCount = 0;
   let totalBytes = 0;
+  const seenPaths = new Set<string>();
   let unpacked: Record<string, Uint8Array>;
   try {
     unpacked = unzipSync(archive, {
       filter(file) {
+        if (seenPaths.has(file.name)) throw new Error(`Archive contains a duplicate path: ${file.name}`);
+        seenPaths.add(file.name);
         fileCount += 1;
         totalBytes += file.originalSize;
         if (fileCount > maxFileCount) throw new Error("Archive contains too many files");
