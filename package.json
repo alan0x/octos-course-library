@@ -23,7 +23,7 @@
     "course-pack": "pnpm build && node packages/course-pack/dist/src/cli.js",
     "test": "pnpm --filter @octos/course-pack test",
     "typecheck": "pnpm --filter @octos/course-pack typecheck",
-    "prepare": "pnpm build"
+    "prepare": "pnpm build && node scripts/copy-runtime-schemas.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",
