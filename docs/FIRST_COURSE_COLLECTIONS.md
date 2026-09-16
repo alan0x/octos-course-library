@@ -9,6 +9,11 @@ It separates a **collection**, which groups related lessons for discovery, from
 an immutable **CoursePack**, which contains one independently playable lesson.
 The CoursePack v1 archive format remains unchanged.
 
+The curated lessons must remain representative of the normal Octos Learn
+generation path. They are reviewed editions of lessons produced by the same
+`learning-coach + Gemini -> OLL` pipeline used for live generation, not an
+unrelated set of hand-authored showcase programs.
+
 ## Product model
 
 ```text
@@ -120,6 +125,70 @@ in one camera-safe region. Two sliders control `m` and `b`; a student task asks
 the learner to match a target line or pass through declared points. The lesson
 uses only capabilities published by the current OLL runtime.
 
+## Generation parity policy
+
+Each curated lesson begins as a candidate produced by the production lesson
+generation pipeline. Directly hand-authoring the final OLL from an empty file
+is not the default workflow.
+
+```text
+Reviewed lesson brief
+        |
+        v
+Production learning-coach + Gemini generation
+        |
+        v
+OLL validation and complete playback
+        |
+        v
+Classify defects and improve shared systems
+        |
+        v
+Regenerate the candidate
+        |
+        v
+Limited editorial review
+        |
+        v
+Immutable CoursePack release
+```
+
+Corrections that can benefit live generation must be made in the shared
+system before the curated lesson is edited locally:
+
+| Defect | Preferred correction |
+| --- | --- |
+| Weak section structure or pedagogy | learning-coach planning prompt or lesson-plan validation |
+| Unsupported or inappropriate cards | OLL capability constraints and generation guidance |
+| Collisions, excessive whitespace, or poor camera framing | deterministic player layout and camera policy |
+| Invalid references or malformed timelines | OLL compiler and validator |
+| Repeated factual or explanation errors | generation prompt, grounding, and evaluation |
+
+Editorial changes remain allowed for factual review, Chinese wording,
+narration pacing, and showcase-specific timing. Precision interactions that
+the live generator cannot yet produce reliably may be added by an editor, but
+they must be recorded as curated enhancements and must not be presented as
+one-shot live-generation capability.
+
+Every production lesson keeps a repository-only generation report that is not
+required at playback time:
+
+```text
+generation-report.json
+|-- lesson request and reviewed brief
+|-- model and generation-pipeline versions
+|-- raw candidate digest and location
+|-- validation and playback results
+|-- shared-system fixes and regeneration attempts
+|-- editorial change log
+`-- final canonical OLL digest
+```
+
+The report distinguishes the quality of the production generator from the
+additional value of editorial review. The launcher should label published
+packs as curated courses and must not imply that their final reviewed form was
+produced in one live request.
+
 ## Shared production requirements
 
 Each first-release lesson must:
@@ -149,9 +218,14 @@ content, adapted taxonomy text, narration audio, and any third-party assets.
 
 ## Production order
 
-1. Produce and validate `rectangle-area-from-tiles`.
-2. Produce and validate `slope-and-intercept`.
-3. Test both on the physical meeting display and lock approved versions for Spotlight.
-4. Add collection metadata to the server catalog and launcher without changing
+1. Write the reviewed brief and generate `rectangle-area-from-tiles` through
+   the production learning-coach and Gemini path.
+2. Classify its defects, improve shared generation or playback systems, and
+   regenerate until it passes the curated-course baseline.
+3. Apply and record the remaining editorial changes, generate narration, and
+   validate the immutable pack.
+4. Repeat the same process for `slope-and-intercept`.
+5. Test both on the physical meeting display and lock approved versions for Spotlight.
+6. Add collection metadata to the server catalog and launcher without changing
    the CoursePack v1 archive identity.
-5. Produce the remaining lessons only after the two vertical slices pass review.
+7. Produce the remaining lessons only after the two vertical slices pass review.
