@@ -1,0 +1,147 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      ajv:
+        specifier: ^8.17.1
+        version: 8.20.0
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.3
+      octos-lesson-language:
+        specifier: github:alan0x/octos-lesson-language#ce1d577ed8ca7698b34384ba1902d1fe2722a85a
+        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/ce1d577ed8ca7698b34384ba1902d1fe2722a85a
+
+  packages/course-pack:
+    dependencies:
+      ajv:
+        specifier: ^8.17.1
+        version: 8.20.0
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.3
+      octos-lesson-language:
+        specifier: github:alan0x/octos-lesson-language#ce1d577ed8ca7698b34384ba1902d1fe2722a85a
+        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/ce1d577ed8ca7698b34384ba1902d1fe2722a85a
+    devDependencies:
+      '@types/node':
+        specifier: ^24.10.1
+        version: 24.13.4
+      typescript:
+        specifier: ~5.9.3
+        version: 5.9.3
+
+packages:
+
+  '@js-draw/math@1.33.0':
+    resolution: {integrity: sha512-Q63U2h6fLp339K73XtcAUraNwP00SQ6SyJc0zzJItU8dIhG7CEENo1XL7hWBoLcgKJvV8yiwmScIOUZ+GmsrpQ==}
+
+  '@melloware/coloris@0.22.0':
+    resolution: {integrity: sha512-i06nJM0xQrgOkLFUi8d+8mrJjvFgPrU/nTM9vtRGip/T6yHUFIrNV7QgCyps3dBkKVRP/CeJzAeAIvJBSTSbFQ==}
+
+  '@types/node@24.13.4':
+    resolution: {integrity: sha512-YJ7EqCstVTzIr0fMr7qul/977en+pQHrfmuKIo6Zr9i75Be21dr3MovcfvGtyvi2HAUrRerWps5sMO9I7WaxDw==}
+
+  ajv@8.20.0:
+    resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
+
+  bezier-js@6.1.3:
+    resolution: {integrity: sha512-VPFvkyO98oCJ1Tsi+bFBrKEWLdefAj4DJVaWp3xTEsdCbunC7Pt/nTeIgu/UdskBNcmHv8TOfsgdMZb1GsICmg==}
+
+  commander@15.0.0:
+    resolution: {integrity: sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg==}
+    engines: {node: '>=22.12.0'}
+
+  fast-deep-equal@3.1.3:
+    resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  fast-uri@3.1.7:
+    resolution: {integrity: sha512-dOvZVzjdZdz7phd9v6jCbwxrBW3fK6n8Rc0CtdmM4bumzMnxywBYhuph6J819RRw/ku+rLbelwfMunktuzVVHg==}
+
+  fflate@0.8.3:
+    resolution: {integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==}
+
+  js-draw@1.33.0:
+    resolution: {integrity: sha512-wz+ZiWq3Tc577dEdeXGDWxpdHYWuFLTYY8qg5xv5WpfC/xVu8n0q0OL/yA/pqA/3ToIsPbrbkUeOEgCsjAx0Yw==}
+
+  json-schema-traverse@1.0.0:
+    resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+
+  katex@0.18.7:
+    resolution: {integrity: sha512-h+UCwkZ+4Jz8WQ7MLGfj7UVFrRCizGb912fwF4luGdYsC5paYG1vx+jy+KRcC/XkpjGva/P7nAWuxNnPzRvzHw==}
+    hasBin: true
+
+  octos-lesson-language@https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/ce1d577ed8ca7698b34384ba1902d1fe2722a85a:
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/ce1d577ed8ca7698b34384ba1902d1fe2722a85a}
+    version: 0.1.0-rc.1
+    engines: {node: '>=20'}
+
+  require-from-string@2.0.2:
+    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
+    engines: {node: '>=0.10.0'}
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+
+snapshots:
+
+  '@js-draw/math@1.33.0':
+    dependencies:
+      bezier-js: 6.1.3
+
+  '@melloware/coloris@0.22.0': {}
+
+  '@types/node@24.13.4':
+    dependencies:
+      undici-types: 7.18.2
+
+  ajv@8.20.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-uri: 3.1.7
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+
+  bezier-js@6.1.3: {}
+
+  commander@15.0.0: {}
+
+  fast-deep-equal@3.1.3: {}
+
+  fast-uri@3.1.7: {}
+
+  fflate@0.8.3: {}
+
+  js-draw@1.33.0:
+    dependencies:
+      '@js-draw/math': 1.33.0
+      '@melloware/coloris': 0.22.0
+
+  json-schema-traverse@1.0.0: {}
+
+  katex@0.18.7:
+    dependencies:
+      commander: 15.0.0
+
+  octos-lesson-language@https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/ce1d577ed8ca7698b34384ba1902d1fe2722a85a:
+    dependencies:
+      ajv: 8.20.0
+      js-draw: 1.33.0
+      katex: 0.18.7
+
+  require-from-string@2.0.2: {}
+
+  typescript@5.9.3: {}
+
+  undici-types@7.18.2: {}

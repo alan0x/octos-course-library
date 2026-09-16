@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "packId": "contract-smoke",
+  "version": "0.0.2",
+  "title": "CoursePack Contract Smoke Lesson",
+  "description": "A minimal fixture used to validate the CoursePack contract and tooling.",
+  "locale": "en-US",
+  "subject": "mathematics",
+  "grade": "contract-test",
+  "durationSeconds": 5,
+  "minimumPlayerVersion": "0.1.0",
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "contract-fixture",
+    "segments": [
+      {
+        "beatId": "contract-smoke:beat:intro",
+        "file": "audio/intro.mp3",
+        "textSha256": "9d483881d0cfa7c5b313fde9e70893ed55ee1cc62eb3c07ed546b69e3416eedd",
+        "durationMs": 2146
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "b0782cbc4c285acdbccc35fdc847c717ab4fd708e9ace4dd2168aec6a6232a46",
+      "bytes": 143,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "audio/intro.mp3",
+      "sha256": "df0c64f0c932392d8dd3339875701ae7edba9532b197fce04cb4a0ab1062f77a",
+      "bytes": 27002,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "board.json",
+      "sha256": "202ca4f5613c23b6c1ee9020685a81165b23044988cca3695dc35358f155a283",
+      "bytes": 159,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "5a3b7a583821e9c690d631a6785118afd6dc2de17b20514bc610d6ae60f72423",
+      "bytes": 1519,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "6fba1b0441fe9152965862d72f104b2529828264764e5a3376659f797ee0fd1d",
+      "bytes": 481,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Fixture-only repository content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "audio/intro.mp3",
+        "board.json",
+        "course.oll.jsonl",
+        "thumbnail.svg"
+      ]
+    }
+  ]
+}

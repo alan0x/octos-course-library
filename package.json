@@ -1,0 +1,35 @@
+{
+  "name": "octos-course-library",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    "./browser": {
+      "types": "./packages/course-pack/dist/src/browser.d.ts",
+      "default": "./packages/course-pack/dist/src/browser.js"
+    }
+  },
+  "files": [
+    "packages/course-pack/dist/",
+    "packages/course-pack/schema/",
+    "packages/course-pack/fixtures/contract-smoke-0.0.2.ocpack"
+  ],
+  "scripts": {
+    "build": "pnpm --filter @octos/course-pack build",
+    "course-pack": "pnpm build && node packages/course-pack/dist/src/cli.js",
+    "test": "pnpm --filter @octos/course-pack test",
+    "typecheck": "pnpm --filter @octos/course-pack typecheck",
+    "prepare": "pnpm build"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "fflate": "^0.8.2"
+  },
+  "peerDependencies": {
+    "octos-lesson-language": "github:alan0x/octos-lesson-language#ce1d577ed8ca7698b34384ba1902d1fe2722a85a"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+artifacts/
+*.ocpack
+!packages/course-pack/fixtures/
+!packages/course-pack/fixtures/contract-smoke-0.0.1.ocpack
+*.part
+.DS_Store

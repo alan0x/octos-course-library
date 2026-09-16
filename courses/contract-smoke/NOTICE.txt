@@ -1,0 +1,4 @@
+Copyright 2026 Octos Course Library contributors.
+
+This contract fixture is provided for repository testing and is not a
+published curriculum.

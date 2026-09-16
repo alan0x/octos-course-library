@@ -1,0 +1,45 @@
+{
+  "name": "@octos/course-pack",
+  "version": "0.1.0",
+  "description": "Octos CoursePack contract, validator, and build tools",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./browser": {
+      "types": "./dist/src/browser.d.ts",
+      "default": "./dist/src/browser.js"
+    },
+    "./schema/manifest-v1": "./schema/course-pack-manifest-v1.schema.json",
+    "./schema/board-v1": "./schema/course-pack-board-v1.schema.json"
+  },
+  "bin": {
+    "octos-course-pack": "./dist/src/cli.js"
+  },
+  "files": [
+    "dist/src/",
+    "dist/schema/",
+    "schema/",
+    "fixtures/contract-smoke-0.0.2.ocpack",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "pnpm run build && node --test dist/test/*.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "fflate": "^0.8.2",
+    "octos-lesson-language": "github:alan0x/octos-lesson-language#ce1d577ed8ca7698b34384ba1902d1fe2722a85a"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "~5.9.3"
+  }
+}
