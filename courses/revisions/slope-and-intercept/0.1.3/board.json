@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "boardId": "slope-and-intercept",
+  "initialViewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "studentInk": null,
+  "items": [
+    {
+      "id": "course-region",
+      "kind": "playback.course-region",
+      "x": 20,
+      "y": 20,
+      "reservedWidth": 1300
+    },
+    {
+      "id": "reviewed-camera-policy",
+      "kind": "playback.camera-policy",
+      "policy": "explicit"
+    }
+  ]
+}

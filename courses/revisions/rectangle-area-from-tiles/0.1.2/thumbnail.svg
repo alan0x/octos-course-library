@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f7f2e8"/>
+  <g fill="#d9f1ee" stroke="#167d78" stroke-width="4"><rect x="116" y="142" width="82" height="82" rx="8"/><rect x="202" y="142" width="82" height="82" rx="8"/><rect x="288" y="142" width="82" height="82" rx="8"/><rect x="374" y="142" width="82" height="82" rx="8"/><rect x="116" y="228" width="82" height="82" rx="8"/><rect x="202" y="228" width="82" height="82" rx="8"/><rect x="288" y="228" width="82" height="82" rx="8"/><rect x="374" y="228" width="82" height="82" rx="8"/><rect x="116" y="314" width="82" height="82" rx="8"/><rect x="202" y="314" width="82" height="82" rx="8"/><rect x="288" y="314" width="82" height="82" rx="8"/><rect x="374" y="314" width="82" height="82" rx="8"/></g>
+  <text x="570" y="214" fill="#183b3a" font-family="system-ui, sans-serif" font-size="32">4 columns</text>
+  <text x="570" y="268" fill="#183b3a" font-family="system-ui, sans-serif" font-size="32">3 rows</text>
+  <text x="570" y="338" fill="#0d6f6b" font-family="system-ui, sans-serif" font-size="52" font-weight="700">4 × 3 = 12</text>
+  <text x="80" y="570" fill="#202925" font-family="system-ui, sans-serif" font-size="58" font-weight="700">长方形的面积与周长</text>
+  <text x="84" y="620" fill="#65716b" font-family="system-ui, sans-serif" font-size="25">Octos Learn · Curated course</text>
+</svg>

@@ -1,0 +1,738 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "理解一次函数 y = mx + b 的图象特征与性质",
+    "goals": [
+      "理解一次函数 y = mx + b 中斜率 m 和纵截距 b 的几何意义与公式结构",
+      "掌握斜率 m 的正负、零以及绝对值大小对直线方向和陡缓程度的影响",
+      "理解纵截距 b 的改变对直线平移的影响，并能从坐标系中准确读取纵截距",
+      "掌握斜率公式 (y2 - y1) / (x2 - x1)，并能通过两点坐标计算斜率"
+    ],
+    "teaching_strategies": [
+      "动态直观演示：通过调节 m 和 b，实时观察直线的倾斜与上下平移",
+      "两点推导法：结合直角三角形，演示横向与纵向变化量，直观理解斜率公式"
+    ],
+    "numbers": [
+      {
+        "initial": 1,
+        "min": -5,
+        "max": 5,
+        "label": "斜率 m",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.05
+        }
+      },
+      {
+        "initial": 0,
+        "min": -5,
+        "max": 5,
+        "label": "纵截距 b",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.05
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "引入一次函数表达式 y = mx + b，明确 m 代表斜率、b 代表纵截距",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "function_plot"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "欢迎来到一次函数的探索课堂。在数学中，一次函数的标准形式通常写为 y = mx + b。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "function_plot",
+                  "parameters": {
+                    "title": "一次函数图像",
+                    "curve_label": "y = mx + b",
+                    "expression_tokens": [
+                      {
+                        "kind": "number",
+                        "number": 1
+                      },
+                      {
+                        "kind": "input"
+                      },
+                      {
+                        "kind": "operator",
+                        "operator": "multiply"
+                      },
+                      {
+                        "kind": "number",
+                        "number": 2
+                      },
+                      {
+                        "kind": "operator",
+                        "operator": "add"
+                      }
+                    ]
+                  },
+                  "numbers": [
+                    1,
+                    2
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 3
+              },
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "y = m x + b"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "after_speech",
+                "content": {
+                  "title": "一次函数参数含义",
+                  "items": [
+                    "m：斜率（决定倾斜程度与方向）",
+                    "b：纵截距（决定与 y 轴交点的位置）"
+                  ]
+                },
+                "reusable_item": 2,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "聚焦一次函数标准解析式",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "这里，m 称为直线的斜率，它决定了直线的倾斜方向和倾斜程度；而 b 称为纵截距，表示直线与 y 轴交点的纵坐标。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 1,
+                  "item": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "通过改变 m，分析斜率正负、零与绝对值大小对直线方向和陡缓的影响",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "现在我们重点探究斜率 m 对直线方向和陡缓程度的影响。当 m 为正数，比如 m 等于 1 时，直线从左到右上升。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察 m 等于 1 时直线的上升倾斜方向",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "将 m 增加到 3，直线的倾斜程度变得更加陡峭。斜率 m 的绝对值越大，直线就越陡峭。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 3,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "当 m 等于 0 时，y 等于 b，直线变成一条水平线，既不上升也不下降。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 0,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "如果 m 为负数，比如减小到 -2，直线转变为从左到右下降。正负号决定了方向，绝对值决定了陡缓。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": -2,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请将斜率 m 的值调整为 3，观察直线的陡缓变化。",
+            "hints": [
+              "拖动滑块将斜率 m 设为 3。",
+              "观察 m 取正数且绝对值变大时直线的变化。"
+            ],
+            "success_message": "很好！当 m = 3 时，直线依然从左到右上升，但比 m = 1 时更加陡峭。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 3,
+            "tolerance": 0.025
+          }
+        ]
+      },
+      {
+        "purpose": "通过改变 b，演示直线的上下平移，并从图像中寻找与 y 轴的交点",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "现在我们保持斜率 m 等于 1 不变，来观察纵截距 b 的变化对直线位置的影响。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "引导学习者观察纵截距改变对直线位置的作用",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "将纵截距 b 从 0 增加到 2，直线保持倾斜角度不变，整体向上平移了 2 个单位。此时直线与 y 轴交于点 (0, 2)。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 2,
+                "end_value": 2,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "接着我们将 b 从 2 减小到 -3，可以看到直线沿垂直方向向下平移。此时直线与 y 轴的交点坐标变为 (0, -3)。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 2,
+                "end_value": -3,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "总结来说，纵截距 b 决定了直线与 y 轴交点的纵坐标 (0, b)。当 m 不变时，改变 b 会使直线沿 y 轴上下平行移动。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "纵截距 b 的几何意义",
+                  "items": [
+                    "直线 y = mx + b 与 y 轴交于点 (0, b)",
+                    "m 不变时，b 增大 → 直线向上平移 |b| 个单位",
+                    "m 不变时，b 减小 → 直线向下平移 |b| 个单位"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请将纵截距 b 的数值调整为 3，观察直线与 y 轴交点的位置。",
+            "hints": [
+              "请将纵截距 b 设为 3"
+            ],
+            "success_message": "很好！直线向上平移后与 y 轴交于 (0, 3)。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 2,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 3,
+            "tolerance": 0.025
+          }
+        ]
+      },
+      {
+        "purpose": "利用图像上的两点展示纵向变化量与横向变化量的比值，完成斜率计算互动任务",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "现在我们来看如何从直线上任意两点计算斜率 m。斜率代表直线的倾斜程度，其定义为纵向变化量除以横向变化量。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "m = \\frac{\\Delta y}{\\Delta x} = \\frac{y_2 - y_1}{x_2 - x_1}"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "after_speech",
+                "content": {
+                  "title": "斜率计算公式",
+                  "items": [
+                    "斜率 m = (y2 - y1) / (x2 - x1)",
+                    "x2 ≠ x1 时有效"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察直线图像与两点间的横向、纵向变化量",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "当直线方程为 y = 1x + 0 时，若取点 (0,0) 和点 (2,2)，纵向变化量 y2 - y1 为 2，横向变化量 x2 - x1 为 2，比值为 1。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 3
+                }
+              }
+            ]
+          },
+          {
+            "narration": "现在请你尝试把斜率 m 调整为 3，观察纵向变化量与横向变化量的比值如何变为 3。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 3,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请将斜率 m 调整为 3",
+            "hints": [
+              "拖动斜率 m 的滑块，将数值设为 3"
+            ],
+            "success_message": "太棒了！此时直线变陡，两点间纵向变化量与横向变化量的比值提升为 3。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 3,
+            "tolerance": 0.025
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课程深入探讨了一次函数 y = mx + b 的几何特征。斜率 m 决定了直线的倾斜方向与陡缓程度，纵截距 b 决定了直线与 y 轴交点的位置。通过两点的纵向变化量除以横向变化量，我们可以精准计算出直线的斜率。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 3
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    },
+    {
+      "index": 2,
+      "variable_id": "number_02"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01",
+            "section-01-moment-01-item-02",
+            "section-01-moment-01-item-03"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-01-item-02",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-01-moment-01-item-03",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 3,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-02-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-02-moment-04",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-03-moment-04",
+          "board_item_ids": [
+            "section-03-moment-04-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    },
+    {
+      "index": 4,
+      "section_id": "section-04",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-04-moment-01",
+          "board_item_ids": [
+            "section-04-moment-01-item-01",
+            "section-04-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-04-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-04-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[2].placement.reference",
+      "target_id": "section-01-moment-01-item-02",
+      "authoring_alias": "section-01-moment-01-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[3].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[0].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[3].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[1].placement.reference",
+      "target_id": "section-04-moment-01-item-01",
+      "authoring_alias": "section-04-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[2].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[0].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    }
+  ]
+}

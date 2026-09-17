@@ -1,0 +1,128 @@
+{
+  "title": "理解一次函数 y = mx + b 的图象特征与性质",
+  "goals": [
+    "理解一次函数 y = mx + b 中斜率 m 和纵截距 b 的几何意义与公式结构",
+    "掌握斜率 m 的正负、零以及绝对值大小对直线方向和陡缓程度的影响",
+    "理解纵截距 b 的改变对直线平移的影响，并能从坐标系中准确读取纵截距",
+    "掌握斜率公式 (y2 - y1) / (x2 - x1)，并能通过两点坐标计算斜率"
+  ],
+  "teaching_strategies": [
+    "动态直观演示：通过调节 m 和 b，实时观察直线的倾斜与上下平移",
+    "两点推导法：结合直角三角形，演示横向与纵向变化量，直观理解斜率公式"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": -5,
+      "max": 5,
+      "label": "斜率 m",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.05
+      }
+    },
+    {
+      "initial": 0,
+      "min": -5,
+      "max": 5,
+      "label": "纵截距 b",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.05
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_plot",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "引入一次函数表达式 y = mx + b，明确 m 代表斜率、b 代表纵截距",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "通过改变 m，分析斜率正负、零与绝对值大小对直线方向和陡缓的影响",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "通过改变 b，演示直线的上下平移，并从图像中寻找与 y 轴的交点",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "利用图像上的两点展示纵向变化量与横向变化量的比值，完成斜率计算互动任务",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程深入探讨了一次函数 y = mx + b 的几何特征。斜率 m 决定了直线的倾斜方向与陡缓程度，纵截距 b 决定了直线与 y 轴交点的位置。通过两点的纵向变化量除以横向变化量，我们可以精准计算出直线的斜率。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

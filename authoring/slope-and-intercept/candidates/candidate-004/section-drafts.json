@@ -1,0 +1,417 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "欢迎来到一次函数的学习。首先我们来看一次函数的基本解析式：y 等于 m 乘以 x 加 b。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_plot",
+              "parameters": {
+                "title": "一次函数图像",
+                "curve_label": "y = mx + b",
+                "expression_tokens": [
+                  {
+                    "kind": "number",
+                    "number": 1
+                  },
+                  {
+                    "kind": "input"
+                  },
+                  {
+                    "kind": "operator",
+                    "operator": "multiply"
+                  },
+                  {
+                    "kind": "number",
+                    "number": 2
+                  },
+                  {
+                    "kind": "operator",
+                    "operator": "add"
+                  }
+                ]
+              },
+              "numbers": [
+                1,
+                2
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "y = mx + b"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦于一次函数解析式",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "在这条直线上，参数 m 决定了直线的倾斜程度和方向，称为斜率；参数 b 决定了直线与 y 轴交点的位置，称为纵截距。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "参数含义",
+              "items": [
+                "m：斜率（决定倾斜方向与陡缓）",
+                "b：纵截距（直线与 y 轴交点的纵坐标）"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "point_at",
+            "timing": "after_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "现在我们保持纵截距 b 不变，专门观察斜率 m 的变化对直线方向和倾斜程度的影响。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦函数图像，观察 m 的变化",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "当 m 大于 0 时，比如现在的 m 等于 1，直线从左到右上升，函数值 y 随 x 的增大而增大。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      },
+      {
+        "narration": "尝试将斜率 m 调整为 3 看看。随着 m 的绝对值变大，直线会变得更加陡峭。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "after_speech",
+            "number": 1,
+            "end_value": 3,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "当 m 等于 0 时，直线变成水平线，此时 y 不随 x 改变，恒为 b。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "after_speech",
+            "number": 1,
+            "end_value": 0,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "当 m 小于 0 时，例如 m 等于 -2，直线从左到右下降，y 随 x 的增大而减小。|m| 越大，下降得同样越陡峭。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "after_speech",
+            "number": 1,
+            "end_value": -2,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请将斜率 m 设为 -3，观察负斜率绝对值更大时的倾斜程度。",
+        "hints": [
+          "拖动斜率 m 的滑块向左移动到 -3",
+          "注意观察直线是否依然从左到右下降，且比 m=-2 时更陡峭"
+        ],
+        "success_message": "很好！你成功观察到了负斜率下绝对值越大、倾斜越陡峭的规律。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": -3,
+        "tolerance": 0.025
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "现在保持斜率 m 不变，改变纵截距 b 的值。观察直线是如何随着 b 的变化发生平移的。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 2,
+            "end_value": 3,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "当 b 增加到 3 时，直线向上平行移动，与 y 轴相交于点 (0, 3)。这里的 3 就是纵截距。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "\\text{纵截距 } b = 3 \\implies (0, 3)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调纵截距在y轴上的位置",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "接下来试着把 b 调整为负数 -2，观察直线的位置变化。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "拖动滑块将纵截距 b 设置为 -2",
+        "hints": [
+          "将纵截距 b 减小到 -2",
+          "直线会向下平移，与 y 轴交于 (0, -2)"
+        ],
+        "success_message": "很好！直线的纵截距变为 -2，图像向下平移了。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 2,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": -2,
+        "tolerance": 0.025
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "现在我们来看斜率 m 的定量定义。斜率表示直线在坐标系中的倾斜程度，它等于纵向变化量 Δy 除以横向变化量 Δx。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "m = \\frac{\\Delta y}{\\Delta x} = \\frac{y_2 - y_1}{x_2 - x_1}"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "理解斜率公式中的纵向变化与横向变化之比",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "在当前的直线上，当横向移动一定的距离 Δx 时，纵向对应的变化就是 Δy。两者的比值决定了直线的陡缓程度。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      },
+      {
+        "narration": "现在请你尝试调整斜率 m 的值，使直线的斜率精确等于 2。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请拖动滑块将斜率 m 设置为 2",
+        "hints": [
+          "斜率 m 控制直线的倾斜程度",
+          "将 m 调整为正数 2"
+        ],
+        "success_message": "太棒了！此时每向右移动 1 个单位（Δx = 1），纵向就向上增加 2 个单位（Δy = 2），斜率 m = 2 / 1 = 2。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 2,
+        "tolerance": 0.025
+      }
+    ]
+  }
+]

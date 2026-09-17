@@ -1,0 +1,756 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "理解长方形面积与周长",
+    "goals": [
+      "理解面积是指用单位正方形覆盖平面区域的多少，并掌握平方单位的意义",
+      "通过行列计数推导出长方形面积公式“面积 = 长 × 宽”",
+      "区分面积与周长的概念及单位差异"
+    ],
+    "teaching_strategies": [
+      "直观演示：用 1 平方厘米的单位正方形铺满长方形，建立面积的直观图像",
+      "计数关联：引导学习者发现“总方格数 = 每行方格数 × 行数”的对应关系",
+      "对比深化：通过比较同一长方形的面积（内部覆盖）与周长（外围边长），消除两者的概念混淆"
+    ],
+    "numbers": [
+      {
+        "initial": 4,
+        "min": 1,
+        "max": 8,
+        "label": "每行方格数（长）",
+        "unit": "cm",
+        "student_control": {
+          "kind": "slider",
+          "step": 1
+        }
+      },
+      {
+        "initial": 3,
+        "min": 1,
+        "max": 6,
+        "label": "行数（宽）",
+        "unit": "cm",
+        "student_control": {
+          "kind": "slider",
+          "step": 1
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "建立面积的概念：用单位正方形覆盖平面区域的多少",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "rectangle_unit_square_array"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "什么是面积？简而言之，面积就是测量一个平面图形内部占据了多少空间。我们通常用边长为 1 厘米的小正方形来作为量度标准，每个小正方形的面积称为 1 平方厘米。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "rectangle_unit_square_array",
+                  "numbers": [
+                    1,
+                    2
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 2
+              },
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "面积的含义",
+                  "items": [
+                    "1 平方厘米：边长为 1 厘米的正方形面积",
+                    "面积：用标准单位正方形覆盖区域的总数量"
+                  ]
+                },
+                "reusable_item": 1,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "强调单个单位正方形的大小和含义",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "看看眼前这个长方形，我们用这些 1 平方厘米的小正方形无重叠、无缝隙地把它铺满。数一数一共用了多少个小正方形，就能知道这个长方形的面积是多少。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 1,
+                  "item": 1
+                }
+              },
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 4,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "尝试调整每行的方格数（长），观察铺满长方形所需的单位正方形数量如何变化。",
+            "hints": [
+              "拖动滑动条，将长设置为 5 厘米。",
+              "注意观察铺满一行需要多少个 1 平方厘米的小正方形。"
+            ],
+            "success_message": "很好！你成功改变了长方形的长，直观看到了每行小正方形数量的变化。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 4.99,
+            "tolerance": 0.5
+          }
+        ]
+      },
+      {
+        "purpose": "探索长方形行列计数与方格总数的乘法关系",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "请看这个长方形，它的长是4厘米，宽是3厘米。我们用边长为1厘米的单位正方形把它铺满。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "before_speech",
+                "intent": "观察长方形的方格排列",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 2
+                  }
+                ]
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 2
+                }
+              }
+            ]
+          },
+          {
+            "narration": "我们可以看到，沿着长的一边，每行正好摆放了4个小方格；沿着宽的一边，一共摆了这样的3行。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "分析每行方格数与行数的对应关系",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "要求出方格总数，不用一个一个数，直接用每行的4个乘以3行，就能算出总共是由12个小方格组成的。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "4 \\times 3 = 12"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 2
+                }
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请尝试将长方形的每行方格数（长）调整为5厘米，观察方格总数的乘法关系。",
+            "hints": [
+              "拖动长（每行方格数）滑块至5。"
+            ],
+            "success_message": "很好！每行5个方格，3行一共就是 5 × 3 = 15 个方格。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 4.99,
+            "tolerance": 0.5
+          }
+        ]
+      },
+      {
+        "purpose": "推导长方形面积公式并掌握平方单位的应用",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "我们在前几节发现，长方形里铺满的 1 平方厘米正方形总数，正好等于每行方格数乘以行数。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "\\text{面积} = \\text{长} \\times \\text{宽}"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 2,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "聚焦公式推导结果",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "看现在的长方形，长是 4 厘米，宽是 3 厘米。每行有 4 个小正方形，共有 3 行，一共是 12 个小正方形。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "focus",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ],
+                "intent": "继续观察当前画面",
+                "timing": "after_speech"
+              }
+            ]
+          },
+          {
+            "narration": "因此，它的面积就是 4 乘以 3 等于 12 平方厘米。记住，测量长度用厘米，表示覆盖的面积一定要用平方厘米。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "强调面积单位平方厘米",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "请你试着调整长方形的尺寸，验证一下“面积等于长乘宽”的规则吧。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "focus",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ],
+                "intent": "继续观察当前画面",
+                "timing": "after_speech"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "将长方形的长调整为 5 厘米。",
+            "hints": [
+              "拖动每行方格数（长）的滑块，将其改为 5。"
+            ],
+            "success_message": "非常好！长是 5 厘米，宽是 3 厘米，面积就是 5 × 3 = 15 平方厘米。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 4.99,
+            "tolerance": 0.5
+          }
+        ]
+      },
+      {
+        "purpose": "区分面积与周长：概念、边界与测量单位",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "现在我们来清楚地区分面积与周长。看这个长为5厘米、宽为3厘米的长方形。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "before_speech",
+                "number": 1,
+                "end_value": 5,
+                "duration_intent": "normal",
+                "easing": "linear"
+              },
+              {
+                "action": "animate",
+                "timing": "before_speech",
+                "number": 2,
+                "end_value": 3,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "周长指的是围成图形一周的边缘总长度，就像沿着外框走一圈，单位是一维的厘米；而面积则是内部铺满单位正方形的多少，单位是二维的平方厘米。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "面积与周长的区别",
+                  "items": [
+                    "周长：封闭图形一周的长度（单位：厘米 cm）",
+                    "面积：覆盖平面区域的大小（单位：平方厘米 cm²）"
+                  ]
+                },
+                "reusable_item": 1,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "对比周长（边缘长度）与面积（内部覆盖）的区别",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课程从 1 平方厘米单位正方形的铺放出发，解释了面积的含义；通过行列计数推导出“面积 = 长 × 宽”，并结合具体实例清晰区分了面积与周长的概念与单位。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 2
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    },
+    {
+      "index": 2,
+      "variable_id": "number_02"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01",
+            "section-01-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-01-item-02",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-02-moment-03",
+          "board_item_ids": [
+            "section-02-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-02-moment-03-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [
+            "section-03-moment-01-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-03-moment-04",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-03-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "section_id": "section-04",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-04-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-04-moment-02",
+          "board_item_ids": [
+            "section-04-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-04-moment-02-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[2].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[0].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[1].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[2].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[2].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].placement.reference",
+      "target_id": "section-02-moment-03-item-01",
+      "authoring_alias": "section-02-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[1].actions[0].references[0]",
+      "target_id": "section-03-moment-01-item-01",
+      "authoring_alias": "section-03-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[2].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[3].actions[0].references[0]",
+      "target_id": "section-03-moment-01-item-01",
+      "authoring_alias": "section-03-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[0].placement.reference",
+      "target_id": "section-03-moment-01-item-01",
+      "authoring_alias": "section-03-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "rectangle_unit_square_array"
+    }
+  ]
+}

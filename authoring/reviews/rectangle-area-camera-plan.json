@@ -1,0 +1,17 @@
+{
+  "packId": "rectangle-area-from-tiles",
+  "sourceCandidate": "candidate-005",
+  "focus": {
+    "section-01/moment-01": { "targets": ["section-01-moment-01-item-01"] },
+    "section-02/moment-01": null,
+    "section-02/moment-02": null,
+    "section-02/moment-03": null,
+    "section-03/moment-01": null,
+    "section-03/moment-03": null,
+    "section-03/moment-04": null,
+    "section-04/moment-01": { "targets": ["section-01-moment-01-item-01"] },
+    "section-04/moment-02": null,
+    "section-04/moment-03": null,
+    "section-04/moment-04": null
+  }
+}

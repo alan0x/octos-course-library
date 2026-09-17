@@ -1,0 +1,43 @@
+{
+  "status": "failed",
+  "generated_at": "2026-09-16T05:24:17.083Z",
+  "elapsed_ms": 23348,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach_revision": "2b3c8ff98ec5d16189fb2449b4baa603afb73f74",
+  "error": "/steps/0/beats/1/actions/0/content/bindings: must NOT have more than 64 items",
+  "rejected_parts": [
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_OLL_SCHEMA",
+        "path": "/steps/0/beats/0/actions/0/content/bindings",
+        "message": "/steps/0/beats/0/actions/0/content/bindings: must NOT have more than 64 items"
+      }
+    },
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_OLL_SCHEMA",
+        "path": "/steps/0/beats/0/actions/0/content/bindings",
+        "message": "/steps/0/beats/0/actions/0/content/bindings: must NOT have more than 64 items"
+      }
+    },
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 2,
+      "error": {
+        "code": "LESSON_PLAN_OLL_SCHEMA",
+        "path": "/steps/0/beats/1/actions/0/content/bindings",
+        "message": "/steps/0/beats/1/actions/0/content/bindings: must NOT have more than 64 items"
+      }
+    }
+  ],
+  "program_adjustments": [],
+  "playable_prefixes": []
+}

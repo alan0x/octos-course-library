@@ -1,0 +1,995 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "zh-CN",
+    "title": "长方形的面积与单位正方形铺满法",
+    "goals": [
+      "建立面积表示用单位正方形覆盖平面区域大小的直观理解",
+      "理解长方形每行方格数与行数乘积即为单位正方形总数的规律",
+      "推导长方形面积公式“面积 = 长 × 宽”并正确应用平方单位",
+      "辨析并区分平面图形的面积与周长概念"
+    ],
+    "adaptation": {
+      "strategies": [
+        "利用铺满小方格的直观图示逐步展示从“数方格”到“行数×每行数”的思维跃迁",
+        "通过动态拼接与公式联动推导面积公式并强调单位的物理意义（cm²）",
+        "使用对比法厘清边界（周长是绕一周的长度，面积是占平面的大小）"
+      ]
+    },
+    "variables": [
+      {
+        "as": "number_01",
+        "initial": 5,
+        "min": 1,
+        "max": 10,
+        "label": "每行方格数/长",
+        "unit": "cm",
+        "control": {
+          "kind": "slider",
+          "step": 0.045
+        }
+      },
+      {
+        "as": "number_02",
+        "initial": 3,
+        "min": 1,
+        "max": 8,
+        "label": "行数/宽",
+        "unit": "cm"
+      }
+    ],
+    "tasks": [
+      {
+        "as": "section-03-task-01",
+        "prompt": "请调整长和宽滑块，将长设置为 6 cm，宽设置为 4 cm。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "拖动长滑块到 6 cm",
+          "拖动宽滑块到 4 cm"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "太棒了！此时长方形包含了 6×4=24 个 1 cm² 的正方形，面积为 24 cm²。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 5.995,
+          "tolerance": 0.0225
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "section-01",
+      "purpose": "建立面积的概念：用边长为1个单位的正方形覆盖平面区域的多少表示面积",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "今天我们来认识“面积”。到底什么是面积呢？简单来说，面积就是用边长为1个单位的正方形，把一个平面区域铺满后，所需要的正方形总数。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "面积的意义",
+                "items": [
+                  "面积表示物体表面或平面图形的大小",
+                  "测量方法：用标准单位正方形进行覆盖与计量"
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-02",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "板书：面积与单位正方形",
+                "items": [
+                  "单位正方形：测量面积的标准基准",
+                  "铺满法：用正方形覆盖平面区域",
+                  "总个数 = 图形的面积数值"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-02"
+              ],
+              "intent": "引入面积的概念定义",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "请看图示：我们先设定一个边长为1厘米的单位正方形，它的面积就是1平方厘米。接着，用这样的标准正方形去一步步铺满整个目标长方形区域。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-02-item-01",
+              "kind": "diagram",
+              "role": "main_visual",
+              "content": {
+                "title": "单位正方形铺满过程",
+                "elements": [
+                  {
+                    "as": "step-01",
+                    "label": "确定标准：1个边长1cm的单位正方形"
+                  },
+                  {
+                    "as": "step-02",
+                    "label": "行与列排布：将正方形按行按列铺设"
+                  },
+                  {
+                    "as": "step-03",
+                    "label": "完全覆盖：无缝隙、不重叠地填满区域"
+                  },
+                  {
+                    "as": "step-04",
+                    "label": "统计总数：正方形个数即为总面积"
+                  }
+                ],
+                "edges": [
+                  {
+                    "as": "edge-01",
+                    "from": "step-01",
+                    "to": "step-02",
+                    "label": "下一步"
+                  },
+                  {
+                    "as": "edge-02",
+                    "from": "step-02",
+                    "to": "step-03",
+                    "label": "下一步"
+                  },
+                  {
+                    "as": "edge-03",
+                    "from": "step-03",
+                    "to": "step-04",
+                    "label": "下一步"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-02-item-01",
+              "when": "during_speech"
+            },
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 5,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "无论图形形状如何变化，只要数一数铺满这个区域一共用了多少个单位正方形，就能准确知道这个区域的面积大小了。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-03-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "1\\text{ cm}^2 = 1\\text{ cm} \\times 1\\text{ cm}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-02-item-01"
+              },
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-02",
+      "purpose": "探究方格阵列：解释长方形中每行方格数、行数与方格总数的乘法关系",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "我们用边长为 1 厘米的单位正方形来铺满这个长方形。请注意观察它的排列方式。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-01-item-01",
+              "kind": "geometry",
+              "role": "main_visual",
+              "content": {
+                "title": "网格铺满法示意",
+                "axes": {
+                  "x": {
+                    "min": -8.6,
+                    "max": 13.6
+                  },
+                  "y": {
+                    "min": -1.85,
+                    "max": 4.8500000000000005
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "target-point-1",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "target-point-2",
+                    "x": 5,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "target-point-3",
+                    "x": 5,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "target-point-4",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-1-point-1",
+                    "x": -3.75,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-1-point-2",
+                    "x": 1.25,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-1-point-3",
+                    "x": -3.75,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-2-point-1",
+                    "x": 5.972222222222222,
+                    "y": 1.3333333333333333,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-2-point-2",
+                    "x": 6.8404631105568745,
+                    "y": 6.257372098394373,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-2-point-3",
+                    "x": 3.0177989631855984,
+                    "y": 1.8542778663341246,
+                    "visible": false
+                  }
+                ],
+                "polygons": [
+                  {
+                    "as": "target-shape",
+                    "points": [
+                      "target-point-1",
+                      "target-point-2",
+                      "target-point-3",
+                      "target-point-4"
+                    ],
+                    "tone": "neutral"
+                  },
+                  {
+                    "as": "piece-1",
+                    "points": [
+                      "piece-1-point-1",
+                      "piece-1-point-2",
+                      "piece-1-point-3"
+                    ],
+                    "label": "三角形 1",
+                    "tone": "primary"
+                  },
+                  {
+                    "as": "piece-2",
+                    "points": [
+                      "piece-2-point-1",
+                      "piece-2-point-2",
+                      "piece-2-point-3"
+                    ],
+                    "label": "三角形 2",
+                    "tone": "accent"
+                  }
+                ],
+                "segments": [
+                  {
+                    "as": "target-edge-1",
+                    "from": "target-point-1",
+                    "to": "target-point-2",
+                    "style": "dashed",
+                    "label": "S△ = ab / 2"
+                  },
+                  {
+                    "as": "target-edge-2",
+                    "from": "target-point-2",
+                    "to": "target-point-3",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "target-edge-3",
+                    "from": "target-point-3",
+                    "to": "target-point-4",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "target-edge-4",
+                    "from": "target-point-4",
+                    "to": "target-point-1",
+                    "style": "dashed"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "piece-1-point-1.x",
+                    "expression": "(-6.75+(6.75)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-1.y",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-2.x",
+                    "expression": "(-6.75+(6.75)*(((number_01)-(1))/((10)-(1))))+(5)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-2.y",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(5)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-3.x",
+                    "expression": "(-6.75+(6.75)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(3)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-3.y",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(3)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-1.x",
+                    "expression": "(6.75+(-1.75)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-1.y",
+                    "expression": "(0+(3)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-2.x",
+                    "expression": "(6.75+(-1.75)*(((number_01)-(1))/((10)-(1))))+(5)*cos(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-2.y",
+                    "expression": "(0+(3)*(((number_01)-(1))/((10)-(1))))+(5)*sin(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-3.x",
+                    "expression": "(6.75+(-1.75)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))-(3)*sin(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-3.y",
+                    "expression": "(0+(3)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))+(3)*cos(0+(3.141592653589793)*(((number_01)-(1))/((10)-(1))))"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-02"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-02-moment-01-item-01"
+              ],
+              "intent": "引导观察正方形网格在长方形内的完整排列",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "我们可以看到，沿横向看，每一行排了 5 个小方格，这正好对应长方形的长为 5 厘米。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-02-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "沿纵向看，一共有 3 行小方格，这正好对应长方形的宽为 3 厘米。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-02-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "因为每行有 5 个方格，一共有 3 行，所以小方格的总数就是每行的个数乘以行数，即 5 乘以 3 等于 15 个。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-04-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "5 \\times 3 = 15"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-02-moment-04-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\text{小方格总数} = \\text{每行个数} \\times \\text{行数}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-04-item-01"
+              },
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-05",
+          "say": "由于每个小方格的面积是 1 平方厘米，15 个小方格的总面积就是 15 平方厘米。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-02-moment-01-item-01"
+              ],
+              "intent": "建立方格总数与图形总面积的直观对应",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "推导与应用公式：得出“长方形面积 = 长 × 宽”，并掌握平方厘米（cm²）的使用",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "我们知道，每行的方格数正好等于长方形的长，而行数正好等于宽。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-02-moment-01-item-01"
+              ],
+              "intent": "引导观察长方形的长、宽与每行方格数及行数的对应关系",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "因为单位正方形的总数等于每行个数乘以行数，所以长方形的面积就等于长乘以宽。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-02-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\text{长方形面积} = \\text{长} \\times \\text{宽}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-03-moment-02-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "S = a \\times b = 5\\text{ cm} \\times 3\\text{ cm} = 15\\text{ cm}^2"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-03-moment-02-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-02-moment-01-item-01",
+              "when": "after_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "当长和宽的单位是厘米时，计算出的面积单位就是平方厘米，记作 cm²。现在请动手尝试将长调整为 6 cm，宽调整为 4 cm。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 6,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-04",
+      "purpose": "概念辨析：通过对比同一长方形的周长（边缘线长）与面积（内部覆盖）区分二者",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我们来深入区分周长与面积。请看这个长5厘米、宽3厘米的长方形。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-01-item-01",
+              "kind": "geometry",
+              "role": "comparison_visual",
+              "content": {
+                "title": "长方形周长与面积对比",
+                "axes": {
+                  "x": {
+                    "min": -0.8,
+                    "max": 8.8
+                  },
+                  "y": {
+                    "min": -0.8,
+                    "max": 8.8
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "target-point-1",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "target-point-2",
+                    "x": 8,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "target-point-3",
+                    "x": 8,
+                    "y": 8,
+                    "visible": false
+                  },
+                  {
+                    "as": "target-point-4",
+                    "x": 0,
+                    "y": 8,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-1-point-1",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-1-point-2",
+                    "x": 5,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-1-point-3",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-2-point-1",
+                    "x": 8,
+                    "y": 1.3333333333333333,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-2-point-2",
+                    "x": 8,
+                    "y": 6.333333333333333,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-2-point-3",
+                    "x": 5,
+                    "y": 1.3333333333333333,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-3-point-1",
+                    "x": 6.666666666666667,
+                    "y": 5.777777777777778,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-3-point-2",
+                    "x": 1.666666666666667,
+                    "y": 5.777777777777778,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-3-point-3",
+                    "x": 6.666666666666667,
+                    "y": 2.7777777777777777,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-4-point-1",
+                    "x": 2.2222222222222223,
+                    "y": 8,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-4-point-2",
+                    "x": 2.2222222222222223,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "piece-4-point-3",
+                    "x": 5.222222222222222,
+                    "y": 8,
+                    "visible": false
+                  }
+                ],
+                "polygons": [
+                  {
+                    "as": "target-shape",
+                    "points": [
+                      "target-point-1",
+                      "target-point-2",
+                      "target-point-3",
+                      "target-point-4"
+                    ],
+                    "tone": "neutral"
+                  },
+                  {
+                    "as": "piece-1",
+                    "points": [
+                      "piece-1-point-1",
+                      "piece-1-point-2",
+                      "piece-1-point-3"
+                    ],
+                    "label": "三角形 1",
+                    "tone": "primary"
+                  },
+                  {
+                    "as": "piece-2",
+                    "points": [
+                      "piece-2-point-1",
+                      "piece-2-point-2",
+                      "piece-2-point-3"
+                    ],
+                    "label": "三角形 2",
+                    "tone": "secondary"
+                  },
+                  {
+                    "as": "piece-3",
+                    "points": [
+                      "piece-3-point-1",
+                      "piece-3-point-2",
+                      "piece-3-point-3"
+                    ],
+                    "label": "三角形 3",
+                    "tone": "accent"
+                  },
+                  {
+                    "as": "piece-4",
+                    "points": [
+                      "piece-4-point-1",
+                      "piece-4-point-2",
+                      "piece-4-point-3"
+                    ],
+                    "label": "三角形 4",
+                    "tone": "neutral"
+                  }
+                ],
+                "segments": [
+                  {
+                    "as": "target-edge-1",
+                    "from": "target-point-1",
+                    "to": "target-point-2",
+                    "style": "dashed",
+                    "label": "c² = a² + b²"
+                  },
+                  {
+                    "as": "target-edge-2",
+                    "from": "target-point-2",
+                    "to": "target-point-3",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "target-edge-3",
+                    "from": "target-point-3",
+                    "to": "target-point-4",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "target-edge-4",
+                    "from": "target-point-4",
+                    "to": "target-point-1",
+                    "style": "dashed"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "piece-1-point-1.x",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-1.y",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-2.x",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(5)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-2.y",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(5)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-3.x",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(3)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-1-point-3.y",
+                    "expression": "(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(3)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-1.x",
+                    "expression": "(8+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-1.y",
+                    "expression": "(0+(3)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-2.x",
+                    "expression": "(8+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(5)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-2.y",
+                    "expression": "(0+(3)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(5)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-3.x",
+                    "expression": "(8+(0)*(((number_01)-(1))/((10)-(1))))+(-3)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-2-point-3.y",
+                    "expression": "(0+(3)*(((number_01)-(1))/((10)-(1))))+(-3)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-3-point-1.x",
+                    "expression": "(8+(-3)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-3-point-1.y",
+                    "expression": "(8+(-5)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-3-point-2.x",
+                    "expression": "(8+(-3)*(((number_01)-(1))/((10)-(1))))+(-5)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-3-point-2.y",
+                    "expression": "(8+(-5)*(((number_01)-(1))/((10)-(1))))+(-5)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-3-point-3.x",
+                    "expression": "(8+(-3)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(-3)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-3-point-3.y",
+                    "expression": "(8+(-5)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(-3)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-4-point-1.x",
+                    "expression": "(0+(5)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-4-point-1.y",
+                    "expression": "(8+(0)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-4-point-2.x",
+                    "expression": "(0+(5)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(-5)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-4-point-2.y",
+                    "expression": "(8+(0)*(((number_01)-(1))/((10)-(1))))+(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(-5)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-4-point-3.x",
+                    "expression": "(0+(5)*(((number_01)-(1))/((10)-(1))))+(3)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))-(0)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  },
+                  {
+                    "target": "piece-4-point-3.y",
+                    "expression": "(8+(0)*(((number_01)-(1))/((10)-(1))))+(3)*sin(0+(0)*(((number_01)-(1))/((10)-(1))))+(0)*cos(0+(0)*(((number_01)-(1))/((10)-(1))))"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "right_of",
+                "anchor": "section-03-moment-02-item-02"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-04-moment-01-item-01"
+              ],
+              "intent": "观察长方形的周长与面积展示",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "周长是指围成图形一周的边缘总长度，就像绕着边界走一圈，算式是（5加3）乘以2等于16厘米。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-02-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "周长与面积的根本区别",
+                "items": [
+                  "周长：封闭图形一周的边缘长度（单位：cm）",
+                  "面积：图形内部占据平面的大小（单位：cm²）"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-01-item-01"
+              },
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "而面积则是指内部覆盖的平面大小，也就是用单位正方形填满的区域，算式是5乘以3等于15平方厘米。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-03-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "C = (5 + 3) \\times 2 = 16\\text{ cm}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-02-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-04-moment-03-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "S = 5 \\times 3 = 15\\text{ cm}^2"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-03-item-01"
+              },
+              "when": "after_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "切记，周长测量的是一条线段的长度，单位用厘米；面积测量的是平面的大小，单位用平方厘米。二者在概念、计算方式和单位上都完全不同！",
+          "delivery": "careful",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-04-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程从单位正方形铺满平面出发，解释了面积的定义；通过阵列排列推导出长方形面积计算公式“长×宽”，规范了平方单位的使用，并明确区分了面积与周长的本质不同。",
+    "focus": [
+      "section-02-moment-01-item-01",
+      "section-04-moment-01-item-01"
+    ]
+  }
+}

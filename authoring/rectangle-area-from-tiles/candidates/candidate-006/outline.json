@@ -1,0 +1,141 @@
+{
+  "title": "长方形的面积与平方单位",
+  "goals": [
+    "理解面积是用单位正方形覆盖平面区域的测量概念",
+    "通过行列网格推导长方形面积公式：面积 = 长 × 宽",
+    "正确运用平方单位，并有效区分面积与周长的概念区别"
+  ],
+  "teaching_strategies": [
+    "直观演示单位正方形在网格中的充填过程",
+    "从数方格计数过渡到乘法模型",
+    "对比网格覆盖（面积）与周长边框（周长）的区别"
+  ],
+  "numbers": [
+    {
+      "initial": 5,
+      "min": 1,
+      "max": 10,
+      "label": "每行方格数（长）",
+      "unit": "厘米",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.045
+      }
+    },
+    {
+      "initial": 3,
+      "min": 1,
+      "max": 10,
+      "label": "行数（宽）",
+      "unit": "厘米",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.045
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "rectangle_unit_square_array",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立面积的概念：用单位正方形覆盖平面区域的大小",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "rectangle_unit_square_array"
+        }
+      ],
+      "allowed_capabilities": [
+        "rectangle_unit_square_array"
+      ]
+    },
+    {
+      "purpose": "探索长方形网格中每行方格数、行数与方格总数的关系",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "推导面积计算公式“面积 = 长 × 宽”并规范使用平方单位",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "借助图形对比区分长方形的面积（内部覆盖）与周长（外围长度）",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程从单位正方形铺满区域直观引入面积含义，通过网格行与列的排列推导出长方形面积公式“面积 = 长 × 宽”，明确了平方单位的意义，并清析地区分了面积与周长的本质差异。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}
