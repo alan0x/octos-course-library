@@ -1,0 +1,75 @@
+{
+  "status": "generated",
+  "generated_at": "2026-09-16T05:40:30.386Z",
+  "elapsed_ms": 43687,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "2b3c8ff98ec5d16189fb2449b4baa603afb73f74",
+    "dirty": true,
+    "source_diff_sha256": "dff74892241b3453a10ce1046f8f024dcfd3f273488ffa044eef1b2afe1820d4"
+  },
+  "model_calls": 6,
+  "sections": 4,
+  "beats": 16,
+  "rejected_parts": [
+    {
+      "label": "lesson-plan-bootstrap",
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_COURSE_VISUAL",
+        "path": "$lessonPlanOutline.course_visuals[1]",
+        "message": "$lessonPlanOutline.course_visuals[1]: capability 'function_plot' already has course visual 1; reuse it or declare an explicit comparison"
+      }
+    }
+  ],
+  "program_adjustments": [
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 1,
+      "moment": 1,
+      "board_kind": "math",
+      "reason": "same_moment_exact_duplicate"
+    },
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 1,
+      "moment": 2,
+      "board_kind": "note",
+      "reason": "same_moment_exact_duplicate"
+    },
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 3,
+      "moment": 1,
+      "board_kind": "math",
+      "reason": "same_moment_exact_duplicate"
+    },
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 3,
+      "moment": 2,
+      "board_kind": "note",
+      "reason": "same_moment_exact_duplicate"
+    }
+  ],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 25292
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 31554
+    },
+    {
+      "completed_sections": 3,
+      "elapsed_ms": 38166
+    },
+    {
+      "completed_sections": 4,
+      "elapsed_ms": 43682
+    }
+  ],
+  "credential_source": "local-development-profile"
+}

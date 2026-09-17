@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "generated_at": "2026-09-16T05:35:11.779Z",
+  "elapsed_ms": 1552,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "2b3c8ff98ec5d16189fb2449b4baa603afb73f74",
+    "dirty": true,
+    "source_diff_sha256": "c247e0dd2e2c322f2a78b95620846a68c8f44978278566dfd830bf32c23e60e2"
+  },
+  "error": "Gemini API lesson-plan-bootstrap transport failed (ENOTFOUND): fetch failed: cause=ENOTFOUND: getaddrinfo ENOTFOUND generativelanguage.googleapis.com",
+  "rejected_parts": [],
+  "program_adjustments": [],
+  "playable_prefixes": []
+}

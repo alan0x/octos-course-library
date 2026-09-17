@@ -1,0 +1,168 @@
+{
+  "title": "一次函数 y = mx + b 的图像特征与斜率截距解析",
+  "goals": [
+    "理解一次函数 y = mx + b 中 m 表示斜率、b 表示纵截距的几何与代数意义",
+    "掌握斜率 m 的正负、绝对值大小对直线方向与倾斜程度（陡缓）的影响",
+    "掌握纵截距 b 对直线上下平移的作用及在坐标轴上的图像识别",
+    "学会利用两点坐标计算斜率（纵向变化量与横向变化量的比值）并进行图像实践"
+  ],
+  "teaching_strategies": [
+    "数形结合：通过动态调整 m 与 b 的数值，实时观察直线的倾斜与平移变化",
+    "直觉先行到定量推导：先建立斜率陡缓与截距位置的直观感知，再通过两点变化量进行定量计算",
+    "互动任务驱动：设定目标两点，让学生手动调整参数完成匹配，巩固斜率计算方法"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": -5,
+      "max": 5,
+      "label": "斜率 m",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.05
+      }
+    },
+    {
+      "initial": 0,
+      "min": -5,
+      "max": 5,
+      "label": "纵截距 b",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.05
+      }
+    },
+    {
+      "initial": -2,
+      "min": -10,
+      "max": 10,
+      "label": "点A横坐标 x1"
+    },
+    {
+      "initial": 2,
+      "min": -10,
+      "max": 10,
+      "label": "点B横坐标 x2"
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_plot",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立一次函数表达式 y = mx + b 与直线的对应关系，明确 m 和 b 的代数含义",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "探究斜率 m 的正负（方向）、零（水平线）及绝对值大小（陡缓程度）对直线的几何控制",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "探究纵截距 b 对直线的上下平移效果，学会从直线与 y 轴的交点处直接读取纵截距",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "推导斜率公式 m = Δy / Δx，并通过两点坐标控制参数的互动任务检验掌握程度",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程系统梳理了一次函数 y = mx + b 的图象特征：斜率 m 决定直线的方向与倾斜陡缓，纵截距 b 决定直线的上下平移位置与 y 轴交点；斜率可由两点间的纵向变化量与横向变化量之比求得。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

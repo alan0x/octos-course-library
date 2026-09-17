@@ -1,0 +1,1658 @@
+[
+  {
+    "request": {
+      "label": "lesson-plan-bootstrap",
+      "turnId": "course-library-rectangle-area-from-tiles-1789536543809",
+      "systemPrompt": "设计完整课程目录，不生成 OLL、执行 ID、组件名或自由对象名。\n- visual_recipes 为 [features,numbers,purpose]。course_visuals 选其中 features，只列必要画面；后续复用，确需并排才建 comparison，supporting/comparison 指向较早画面。\n- 多边形重排选 polygon_pieces、rigid_rearrangement、area_relation；圆面积选 circle_area_rearrangement。单位方格铺长方形、按行列计数、面积与周长对比选 unit_square_array、row_column_count、area_boundary_comparison，不得用 geometric_rearrangement 代替。ordered_process_steps 仅是静态流程。\n- numbers 只写有教学作用的共享数值、范围和初值，顺序依 visual_recipes 的 numbers；控件与步长由程序生成。\n- request_coverage 依 request_parts 顺序覆盖：可实现写 teach+章节；不能完整实现写 unsupported、空章节及原因，禁止错误替代。\n- 按独立教学目标和学习进程分节，不按主题数或画面数分节。每节只承担一个完成后可验证的目标；连续推导及须同步观察的画面留在同一节的多个 moment。简单问题能围绕一个目标讲清时用 1 节；若须分别建立直觉、纠错或解释原理、推导或演示、应用、检查掌握中的多个目标，拆成 2–4 节。不要为凑节数重复开场、定义或总结，也不要把本应独立的推导、应用和检查全塞进一节。为什么须推导，怎么算须步骤与检验，是什么须直觉与边界。不猜年级；close 只总结。\n只返回符合响应 Schema 的 JSON。\n\n在同一次回答中，必须先完成 outline，再依据这个 outline 编写 first_section。first_section 只能落实 outline.sections[0]：\n- outline 是唯一课程安排；不得在 first_section 增加 outline 没有声明的主要画面，也不得遗漏第一节声明的主要画面和可复用板书。\n- first_section 只写 moments 以及可选的 number_activities、scene3d_activities；必须明确解释、推导或算出第一节所分配 request_parts 的实际结果，不能只定义相关概念或展示相关画面。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 第一节新画面写入 moment.visual_creates；course_visual、content.numbers 分别引用 outline.course_visuals、outline.numbers 的从1开始位置。content.parameters 仅写数学内容，能力由程序确定；复用画面不重建。\n- 第一节公式/笔记写入 moment.math_creates/note_creates；可复用项用 reusable_item 引用目录中从1开始的位置，临时项不填。程序生成稳定引用。\n- first_section 使用 outline 中数值和画面的先后顺序，不生成 OLL、执行 ID、变量名、对象名、对象引用、course_visual_creates 或 reusable_board_creates。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 每项只改变一个数值，只选数值位置和目标值；可见提示必须明确写出与 value 相同的目标值，不能把精确目标隐藏成“试着调整”；提示、目标、提示语和成功反馈不得声称同时改变其他数值。scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。\n- 数值状态会跨 moment 和章节持续，不会自动恢复初值。旁白以具体数值描述已有画面时，必须与该数值最近一次 animation 的目标一致；若需要回到较早数值，先在同一 moment 明确 animation 到该值。禁止添加把数值设为当前值、但没有教学变化的装饰性 animation。\n- rectangle_unit_square_array 的两个数值依次是每行方格数（长）和行数（宽），都用正整数；不得用 geometric_rearrangement 代替。geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"language\":\"zh-CN\"},\"request_parts\":[\"解释面积表示用单位正方形覆盖一个平面区域的多少。\",\"从一平方厘米的小方格铺满长方形出发，解释每行方格数、行数与方格总数的关系。\",\"推导并使用长方形面积等于长乘宽，且正确使用平方单位。\",\"用一个相近例子区分面积和周长。\"],\"visual_recipe_columns\":[\"features\",\"numbers\",\"purpose\"],\"visual_recipes\":[[[\"cartesian_function_curve\"],[\"curve_parameter_1\",\"curve_parameter_2\",\"curve_parameter_3\",\"curve_parameter_4\"],\"函数图：静态公式最多两数移动A/B点；含数值的公式改变曲线\"],[[\"unit_circle\",\"projection\",\"cartesian_function_curve\"],[\"angle\"],\"单位圆动点、投影线和正弦或余弦曲线共享同一个角度\"],[[\"circle\",\"arc\"],[\"angle\",\"radius\"],\"圆、圆心角、半径和圆弧；两个数值依次控制角度和半径\"],[[\"spring_mass\",\"cartesian_function_curve\"],[\"phase\"],\"弹簧、物体、平衡位置、回复力和余弦变化曲线共享相位\"],[[\"solid_3d\",\"section_plane\"],[\"section_height\"],\"可旋转正方体、顶点、棱、面和可变水平截面\"],[[\"function_surface_3d\",\"section_plane\"],[\"section_position\"],\"可旋转三维函数曲面、可变截面和真实交线\"],[[\"implicit_surface_3d\",\"section_plane\"],[\"section_position\"],\"三变量隐式曲面 F(x,y,z)=c，以及垂直于 x、y 或 z 轴的可变截面和真实交线\"],[[\"coordinate_circle\"],[\"radius\"],\"坐标系中的圆，可用数值改变半径\"],[[\"unit_square_array\",\"row_column_count\",\"area_boundary_comparison\"],[\"columns_or_length\",\"rows_or_width\"],\"单位正方形按行列铺满长方形；两个整数依次控制每行方格数（长）和行数（宽），用于面积、周长与平方单位教学\"],[[\"polygon_pieces\",\"rigid_rearrangement\",\"area_relation\"],[\"progress\"],\"经过验证的多边形拆分与刚体重排，用进度数值控制移动\"],[[\"circle_area_rearrangement\"],[\"progress\"],\"圆面积：扇形等积重排，底趋近πr、高趋近r\"],[[\"ordered_process_steps\"],[],\"概念或步骤流程图；没有几何移动，也不接受数值输入\"]],\"first_section_to_write\":1,\"first_section_rule\":\"first_section must implement outline.sections[0]; outline is authoritative and the program assigns all execution references\"}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "outline",
+          "first_section"
+        ],
+        "properties": {
+          "outline": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "goals",
+              "request_coverage",
+              "course_visuals",
+              "sections",
+              "close"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "goals": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "teaching_strategies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "numbers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "initial",
+                    "min",
+                    "max"
+                  ],
+                  "properties": {
+                    "initial": {
+                      "$ref": "#/$defs/modelDecimal"
+                    },
+                    "min": {
+                      "$ref": "#/$defs/modelDecimal"
+                    },
+                    "max": {
+                      "$ref": "#/$defs/modelDecimal"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "request_coverage": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "treatment",
+                    "sections"
+                  ],
+                  "properties": {
+                    "treatment": {
+                      "enum": [
+                        "teach",
+                        "unsupported"
+                      ]
+                    },
+                    "sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 24
+                      }
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "course_visuals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "required_features",
+                    "use_sections",
+                    "relation"
+                  ],
+                  "properties": {
+                    "required_features": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "cartesian_function_curve",
+                          "unit_circle",
+                          "projection",
+                          "circle",
+                          "arc",
+                          "spring_mass",
+                          "solid_3d",
+                          "section_plane",
+                          "function_surface_3d",
+                          "implicit_surface_3d",
+                          "coordinate_circle",
+                          "unit_square_array",
+                          "row_column_count",
+                          "area_boundary_comparison",
+                          "polygon_pieces",
+                          "rigid_rearrangement",
+                          "area_relation",
+                          "circle_area_rearrangement",
+                          "ordered_process_steps"
+                        ]
+                      }
+                    },
+                    "use_sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 24
+                      }
+                    },
+                    "relation": {
+                      "enum": [
+                        "primary",
+                        "supporting",
+                        "comparison"
+                      ]
+                    },
+                    "related_visual": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 32
+                    }
+                  }
+                }
+              },
+              "sections": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "purpose"
+                  ],
+                  "properties": {
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "reusable_items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "board_kind"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "enum": [
+                              "board_item"
+                            ]
+                          },
+                          "board_kind": {
+                            "enum": [
+                              "math",
+                              "note"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "close": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "summary"
+                ],
+                "properties": {
+                  "summary": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "first_section": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "moments"
+            ],
+            "properties": {
+              "moments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "narration",
+                    "delivery"
+                  ],
+                  "properties": {
+                    "narration": {
+                      "type": "string"
+                    },
+                    "delivery": {
+                      "enum": [
+                        "neutral",
+                        "patient",
+                        "encouraging",
+                        "careful",
+                        "emphatic"
+                      ]
+                    },
+                    "visual_creates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "course_visual",
+                          "content"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "reusable_item": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 24
+                          },
+                          "course_visual": {
+                            "enum": [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15,
+                              16
+                            ]
+                          },
+                          "content": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "parameters": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "projection": {
+                                    "enum": [
+                                      "sin",
+                                      "cos"
+                                    ]
+                                  },
+                                  "formulas": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "curve_label": {
+                                    "type": "string"
+                                  },
+                                  "curve_labels": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "expression": {
+                                    "type": "string"
+                                  },
+                                  "section_axis": {
+                                    "enum": [
+                                      "x",
+                                      "y",
+                                      "z"
+                                    ]
+                                  },
+                                  "level": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "radius": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "angle": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "center_x": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "center_y": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "construction": {
+                                    "enum": [
+                                      "right_triangle_square",
+                                      "square_area_identity",
+                                      "triangle_to_rectangle"
+                                    ]
+                                  },
+                                  "leg_a": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "leg_b": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "steps": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "numbers": {
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    5,
+                                    6,
+                                    7,
+                                    8,
+                                    9,
+                                    10,
+                                    11,
+                                    12,
+                                    13,
+                                    14,
+                                    15,
+                                    16
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "math_creates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "content"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "reusable_item": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 24
+                          },
+                          "content": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "latex"
+                            ],
+                            "properties": {
+                              "latex": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "note_creates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "content"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "reusable_item": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 24
+                          },
+                          "content": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "title",
+                              "items"
+                            ],
+                            "properties": {
+                              "title": {
+                                "type": "string"
+                              },
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "focuses": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "intent"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "intent": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "animations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "number",
+                          "end_value"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "number": {
+                            "enum": [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15,
+                              16
+                            ]
+                          },
+                          "end_value": {
+                            "$ref": "#/$defs/modelDecimal"
+                          },
+                          "duration_intent": {
+                            "enum": [
+                              "brief",
+                              "normal",
+                              "extended"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "number_activities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "prompt",
+                    "number",
+                    "value_mantissa",
+                    "value_scale",
+                    "hints"
+                  ],
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "hints": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "success_message": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16
+                      ]
+                    },
+                    "value_mantissa": {
+                      "type": "integer",
+                      "minimum": -1000000000000,
+                      "maximum": 1000000000000
+                    },
+                    "value_scale": {
+                      "enum": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                      ]
+                    }
+                  }
+                }
+              },
+              "scene3d_activities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "prompt",
+                    "controls",
+                    "view_preset",
+                    "hints"
+                  ],
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "hints": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "success_message": {
+                      "type": "string"
+                    },
+                    "controls": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "orbit",
+                          "zoom",
+                          "preset",
+                          "reset"
+                        ]
+                      }
+                    },
+                    "view_preset": {
+                      "enum": [
+                        "top",
+                        "front",
+                        "right",
+                        "left",
+                        "isometric"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "bootstrap",
+      "lessonPlanAttempt": 1
+    },
+    "response": "{\n  \"outline\": {\n    \"title\": \"长方形的面积与周长\",\n    \"goals\": [\n      \"理解面积是用单位正方形覆盖平面区域的测量方法\",\n      \"理解长方形每行方格数与行数乘积即为总方格数\",\n      \"掌握长方形面积公式并正确使用平方单位\",\n      \"通过对比清楚区分面积与周长\"\n    ],\n    \"teaching_strategies\": [\n      \"从单位正方形平铺直观引入面积定义\",\n      \"通过行列计数引导发现长乘以宽的乘法规律\",\n      \"结合具体数值演示公式计算与平方单位意义\",\n      \"通过对比周长（边缘长度）与面积（内部覆盖）建立清晰概念边界\"\n    ],\n    \"numbers\": [\n      {\n        \"initial\": {\n          \"mantissa\": 4,\n          \"scale\": 0\n        },\n        \"min\": {\n          \"mantissa\": 1,\n          \"scale\": 0\n        },\n        \"max\": {\n          \"mantissa\": 10,\n          \"scale\": 0\n        },\n        \"label\": \"每行方格数（长）\",\n        \"unit\": \"厘米\"\n      },\n      {\n        \"initial\": {\n          \"mantissa\": 3,\n          \"scale\": 0\n        },\n        \"min\": {\n          \"mantissa\": 1,\n          \"scale\": 0\n        },\n        \"max\": {\n          \"mantissa\": 10,\n          \"scale\": 0\n        },\n        \"label\": \"行数（宽）\",\n        \"unit\": \"厘米\"\n      }\n    ],\n    \"request_coverage\": [\n      {\n        \"treatment\": \"teach\",\n        \"sections\": [1]\n      },\n      {\n        \"treatment\": \"teach\",\n        \"sections\": [2]\n      },\n      {\n        \"treatment\": \"teach\",\n        \"sections\": [3]\n      },\n      {\n        \"treatment\": \"teach\",\n        \"sections\": [4]\n      }\n    ],\n    \"course_visuals\": [\n      {\n        \"required_features\": [\n          \"unit_square_array\",\n          \"row_column_count\",\n          \"area_boundary_comparison\"\n        ],\n        \"use_sections\": [1, 2, 3, 4],\n        \"relation\": \"primary\"\n      }\n    ],\n    \"sections\": [\n      {\n        \"purpose\": \"理解面积是用单位正方形覆盖平面区域的大小\",\n        \"reusable_items\": [\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"note\"\n          }\n        ]\n      },\n      {\n        \"purpose\": \"通过每行方格数和行数的阵列排列发现方格总数规律\",\n        \"reusable_items\": [\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"math\"\n          }\n        ]\n      },\n      {\n        \"purpose\": \"推导长方形面积公式并应用平方单位\",\n        \"reusable_items\": [\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"math\"\n          }\n        ]\n      },\n      {\n        \"purpose\": \"对比长方形的面积与周长，明确概念区别\",\n        \"reusable_items\": [\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"note\"\n          }\n        ]\n      }\n    ],\n    \"close\": {\n      \"summary\": \"本课程从边长为1厘米的单位正方形平铺出发，帮助学生建立了面积的直观概念；通过行列计数推导出长方形面积公式“长×宽”，并明确了平方厘米等面积单位与厘米等长度单位的区别。\"\n    }\n  },\n  \"first_section\": {\n    \"moments\": [\n      {\n        \"narration\": \"当我们想知道一个平面图形占了多大地方时，我们需要测量它的面积。什么是面积呢？简单来说，就是用大小相同的单位正方形去完整覆盖这个区域所需的小方格数量。\",\n        \"delivery\": \"patient\",\n        \"visual_creates\": [\n          {\n            \"timing\": \"before_speech\",\n            \"course_visual\": 1,\n            \"content\": {\n              \"numbers\": [1, 2]\n            }\n          }\n        ],\n        \"note_creates\": [\n          {\n            \"timing\": \"during_speech\",\n            \"reusable_item\": 1,\n            \"content\": {\n              \"title\": \"面积的概念\",\n              \"items\": [\n                \"面积表示平面图形所占用平面区域的大小。\",\n                \"常用边长为1厘米的正方形作为基本度量单位（1平方厘米）。\"\n              ]\n            }\n          }\n        ],\n        \"focuses\": [\n          {\n            \"timing\": \"during_speech\",\n            \"intent\": \"展示由1平方厘米的小正方形平铺覆盖长方形区域\"\n          }\n        ]\n      },\n      {\n        \"narration\": \"比如眼前这个长方形，就是由边长为1厘米的小正方形紧密排列组成的。通过统计一共用了多少个1平方厘米的小方格，我们就能准确算出它的面积。\",\n        \"delivery\": \"encouraging\",\n        \"points\": [\n          {\n            \"timing\": \"during_speech\"\n          }\n        ]\n      }\n    ],\n    \"number_activities\": [\n      {\n        \"prompt\": \"尝试将长设为5厘米，观察小方格的覆盖情况。\",\n        \"hints\": [\n          \"滑动长对应的控制杆，将其调整为5。\"\n        ],\n        \"success_message\": \"非常好！现在长方形每行包含了5个单位正方形。\",\n        \"number\": 1,\n        \"value_mantissa\": 5,\n        \"value_scale\": 0\n      }\n    ]\n  }\n}",
+    "elapsed_ms": 8311,
+    "status": "completed"
+  },
+  {
+    "request": {
+      "label": "lesson-plan-section",
+      "turnId": "course-library-rectangle-area-from-tiles-1789536543809",
+      "systemPrompt": "只编写课程目录指定的一节，不生成 OLL、执行 ID、变量名、对象名或对象引用。\n- 必须落实目录分配的 request_parts；每项都要在本节明确解释、推导或算出所要求的实际结果，不能只定义相关概念或展示相关画面。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 目录中本节 create 的画面按顺序写入 course_visual_creates 并指定 moment；reuse 的画面不得重建。目录声明的公式和笔记分别按顺序写入 reusable_math_creates、reusable_note_creates；空清单省略。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 每项只改变一个数值，只选数值位置和目标值；可见提示必须明确写出与 value 相同的目标值，不能把精确目标隐藏成“试着调整”；提示、目标、提示语和成功反馈不得声称同时改变其他数值。scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。\n- 数值状态会跨 moment 和章节持续，不会自动恢复初值。旁白以具体数值描述已有画面时，必须与该数值最近一次 animation 的目标一致；若需要回到较早数值，先在同一 moment 明确 animation 到该值。禁止添加把数值设为当前值、但没有教学变化的装饰性 animation。\n- rectangle_unit_square_array 的两个数值依次是每行方格数（长）和行数（宽），都用正整数；不得用 geometric_rearrangement 代替。geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"language\":\"zh-CN\"},\"course_and_section\":{\"title\":\"长方形的面积与周长\",\"goals\":[\"理解面积是用单位正方形覆盖平面区域的测量方法\",\"理解长方形每行方格数与行数乘积即为总方格数\",\"掌握长方形面积公式并正确使用平方单位\",\"通过对比清楚区分面积与周长\"],\"numbers\":[{\"number\":1,\"label\":\"每行方格数（长）\",\"initial\":4,\"min\":1,\"max\":10,\"unit\":\"厘米\"},{\"number\":2,\"label\":\"行数（宽）\",\"initial\":3,\"min\":1,\"max\":10,\"unit\":\"厘米\"}],\"section\":{\"section\":2,\"purpose\":\"通过每行方格数和行数的阵列排列发现方格总数规律\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]},\"previous_sections\":[{\"section\":1,\"purpose\":\"理解面积是用单位正方形覆盖平面区域的大小\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"note\"},{\"item\":2,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"rectangle_unit_square_array\"}]}]},\"visuals_for_section\":[{\"course_visual\":1,\"capability\":\"rectangle_unit_square_array\",\"mode\":\"reuse\",\"relation\":\"primary\"}],\"assigned_request_parts\":[{\"request_part\":2,\"text\":\"从一平方厘米的小方格铺满长方形出发，解释每行方格数、行数与方格总数的关系。\"}]}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "moments",
+          "reusable_board_creates"
+        ],
+        "properties": {
+          "moments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "narration",
+                "delivery"
+              ],
+              "properties": {
+                "narration": {
+                  "type": "string"
+                },
+                "delivery": {
+                  "enum": [
+                    "neutral",
+                    "patient",
+                    "encouraging",
+                    "careful",
+                    "emphatic"
+                  ]
+                },
+                "math_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "latex"
+                        ],
+                        "properties": {
+                          "latex": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "note_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "title",
+                          "items"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "focuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "intent"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "intent": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "animations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "number",
+                      "end_value"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "number": {
+                        "enum": [
+                          1,
+                          2
+                        ]
+                      },
+                      "end_value": {
+                        "$ref": "#/$defs/modelDecimal"
+                      },
+                      "duration_intent": {
+                        "enum": [
+                          "brief",
+                          "normal",
+                          "extended"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reusable_board_creates": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item_1"
+            ],
+            "properties": {
+              "item_1": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "moment",
+                  "content"
+                ],
+                "properties": {
+                  "moment": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
+                  "timing": {
+                    "enum": [
+                      "before_speech",
+                      "during_speech",
+                      "after_speech"
+                    ]
+                  },
+                  "content": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "latex"
+                    ],
+                    "properties": {
+                      "latex": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "number_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "number",
+                "value_mantissa",
+                "value_scale",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "number": {
+                  "enum": [
+                    1,
+                    2
+                  ]
+                },
+                "value_mantissa": {
+                  "type": "integer",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000
+                },
+                "value_scale": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "section",
+      "lessonPlanSection": 2,
+      "lessonPlanAttempt": 1
+    },
+    "response": "{\n  \"moments\": [\n    {\n      \"narration\": \"现在我们来看这个长方形。它被1平方厘米的小正方形格子完全铺满。观察它的横向排列，每行正好包含4个小方格。\",\n      \"delivery\": \"patient\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"引导观察长方形第一行的小方格数量\"\n        }\n      ],\n      \"points\": [\n        {\n          \"timing\": \"during_speech\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"接着看纵向排列，这样的行一共有3行。要求出方格的总数，就是把这3行、每行4个的方格加起来。\",\n      \"delivery\": \"patient\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"引导观察小方格的行数\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"根据乘法的意义，每行4个方格，乘以3行，总共就是 4 乘以 3 等于 12 个方格。因此方格总数等于每行方格数乘以行数。\",\n      \"delivery\": \"emphatic\",\n      \"math_creates\": [\n        {\n          \"timing\": \"during_speech\",\n          \"content\": {\n            \"latex\": \"\\\\text{方格总数} = \\\\text{每行方格数} \\\\times \\\\text{行数} = 4 \\\\times 3 = 12\"\n          }\n        }\n      ],\n      \"focuses\": [\n        {\n          \"timing\": \"after_speech\",\n          \"intent\": \"强调方格总数与每行方格数、行数的乘积关系\"\n        }\n      ]\n    }\n  ],\n  \"reusable_board_creates\": {\n    \"item_1\": {\n      \"moment\": 3,\n      \"timing\": \"during_speech\",\n      \"content\": {\n        \"latex\": \"\\\\text{方格总数} = \\\\text{每行方格数} \\\\times \\\\text{行数} = 4 \\\\times 3 = 12\"\n      }\n    }\n  }\n}",
+    "elapsed_ms": 4498,
+    "status": "completed"
+  },
+  {
+    "request": {
+      "label": "lesson-plan-section",
+      "turnId": "course-library-rectangle-area-from-tiles-1789536543809",
+      "systemPrompt": "只编写课程目录指定的一节，不生成 OLL、执行 ID、变量名、对象名或对象引用。\n- 必须落实目录分配的 request_parts；每项都要在本节明确解释、推导或算出所要求的实际结果，不能只定义相关概念或展示相关画面。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 目录中本节 create 的画面按顺序写入 course_visual_creates 并指定 moment；reuse 的画面不得重建。目录声明的公式和笔记分别按顺序写入 reusable_math_creates、reusable_note_creates；空清单省略。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 每项只改变一个数值，只选数值位置和目标值；可见提示必须明确写出与 value 相同的目标值，不能把精确目标隐藏成“试着调整”；提示、目标、提示语和成功反馈不得声称同时改变其他数值。scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。\n- 数值状态会跨 moment 和章节持续，不会自动恢复初值。旁白以具体数值描述已有画面时，必须与该数值最近一次 animation 的目标一致；若需要回到较早数值，先在同一 moment 明确 animation 到该值。禁止添加把数值设为当前值、但没有教学变化的装饰性 animation。\n- rectangle_unit_square_array 的两个数值依次是每行方格数（长）和行数（宽），都用正整数；不得用 geometric_rearrangement 代替。geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"language\":\"zh-CN\"},\"course_and_section\":{\"title\":\"长方形的面积与周长\",\"goals\":[\"理解面积是用单位正方形覆盖平面区域的测量方法\",\"理解长方形每行方格数与行数乘积即为总方格数\",\"掌握长方形面积公式并正确使用平方单位\",\"通过对比清楚区分面积与周长\"],\"numbers\":[{\"number\":1,\"label\":\"每行方格数（长）\",\"initial\":4,\"min\":1,\"max\":10,\"unit\":\"厘米\"},{\"number\":2,\"label\":\"行数（宽）\",\"initial\":3,\"min\":1,\"max\":10,\"unit\":\"厘米\"}],\"section\":{\"section\":3,\"purpose\":\"推导长方形面积公式并应用平方单位\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]},\"previous_sections\":[{\"section\":1,\"purpose\":\"理解面积是用单位正方形覆盖平面区域的大小\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"note\"},{\"item\":2,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"rectangle_unit_square_array\"}]},{\"section\":2,\"purpose\":\"通过每行方格数和行数的阵列排列发现方格总数规律\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]}]},\"visuals_for_section\":[{\"course_visual\":1,\"capability\":\"rectangle_unit_square_array\",\"mode\":\"reuse\",\"relation\":\"primary\"}],\"assigned_request_parts\":[{\"request_part\":3,\"text\":\"推导并使用长方形面积等于长乘宽，且正确使用平方单位。\"}]}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "moments",
+          "reusable_board_creates"
+        ],
+        "properties": {
+          "moments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "narration",
+                "delivery"
+              ],
+              "properties": {
+                "narration": {
+                  "type": "string"
+                },
+                "delivery": {
+                  "enum": [
+                    "neutral",
+                    "patient",
+                    "encouraging",
+                    "careful",
+                    "emphatic"
+                  ]
+                },
+                "math_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "latex"
+                        ],
+                        "properties": {
+                          "latex": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "note_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "title",
+                          "items"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "focuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "intent"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "intent": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "animations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "number",
+                      "end_value"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "number": {
+                        "enum": [
+                          1,
+                          2
+                        ]
+                      },
+                      "end_value": {
+                        "$ref": "#/$defs/modelDecimal"
+                      },
+                      "duration_intent": {
+                        "enum": [
+                          "brief",
+                          "normal",
+                          "extended"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reusable_board_creates": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item_1"
+            ],
+            "properties": {
+              "item_1": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "moment",
+                  "content"
+                ],
+                "properties": {
+                  "moment": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
+                  "timing": {
+                    "enum": [
+                      "before_speech",
+                      "during_speech",
+                      "after_speech"
+                    ]
+                  },
+                  "content": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "latex"
+                    ],
+                    "properties": {
+                      "latex": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "number_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "number",
+                "value_mantissa",
+                "value_scale",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "number": {
+                  "enum": [
+                    1,
+                    2
+                  ]
+                },
+                "value_mantissa": {
+                  "type": "integer",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000
+                },
+                "value_scale": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "section",
+      "lessonPlanSection": 3,
+      "lessonPlanAttempt": 1
+    },
+    "response": "{\n  \"moments\": [\n    {\n      \"narration\": \"在上一步中，我们发现把单位正方形排成阵列，总方格数就是每行的个数乘以行数。现在，我们把这种规律抽象为通用的长方形面积计算公式。\",\n      \"delivery\": \"patient\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"引导思考如何从单位正方形排列抽象出面积公式\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"对于一个长方形，如果长是4厘米，意味着每行可以铺4个1平方厘米的正方形；宽是3厘米，表示可以铺3行。因此，总面积就是每行4个乘以3行，得到12平方厘米。\",\n      \"delivery\": \"neutral\",\n      \"points\": [\n        {\n          \"timing\": \"during_speech\"\n        }\n      ],\n      \"animations\": [\n        {\n          \"timing\": \"during_speech\",\n          \"number\": 1,\n          \"end_value\": {\n            \"mantissa\": 4,\n            \"scale\": 0\n          },\n          \"duration_intent\": \"brief\"\n        },\n        {\n          \"timing\": \"during_speech\",\n          \"number\": 2,\n          \"end_value\": {\n            \"mantissa\": 3,\n            \"scale\": 0\n          },\n          \"duration_intent\": \"brief\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"把这个规律写成公式，就是：长方形的面积等于长乘以宽。用字母表示，通常写作 S 等于 a 乘以 b。\",\n      \"delivery\": \"emphatic\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"重点展示长方形面积公式\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"请注意单位的使用：长度的单位是厘米，而面积表示覆盖的单位正方形数量，必须使用平方厘米。如果长度单位是米，面积单位就是平方米。\",\n      \"delivery\": \"encouraging\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"强调面积单位与长度单位的区别与正确对应\"\n        }\n      ]\n    }\n  ],\n  \"reusable_board_creates\": {\n    \"item_1\": {\n      \"moment\": 3,\n      \"timing\": \"during_speech\",\n      \"content\": {\n        \"latex\": \"S = a \\\\times b = 4 \\\\text{ cm} \\\\times 3 \\\\text{ cm} = 12 \\\\text{ cm}^2\"\n      }\n    }\n  },\n  \"number_activities\": []\n}",
+    "elapsed_ms": 4993,
+    "status": "completed"
+  },
+  {
+    "request": {
+      "label": "lesson-plan-section",
+      "turnId": "course-library-rectangle-area-from-tiles-1789536543809",
+      "systemPrompt": "只编写课程目录指定的一节，不生成 OLL、执行 ID、变量名、对象名或对象引用。\n- 必须落实目录分配的 request_parts；每项都要在本节明确解释、推导或算出所要求的实际结果，不能只定义相关概念或展示相关画面。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 目录中本节 create 的画面按顺序写入 course_visual_creates 并指定 moment；reuse 的画面不得重建。目录声明的公式和笔记分别按顺序写入 reusable_math_creates、reusable_note_creates；空清单省略。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 每项只改变一个数值，只选数值位置和目标值；可见提示必须明确写出与 value 相同的目标值，不能把精确目标隐藏成“试着调整”；提示、目标、提示语和成功反馈不得声称同时改变其他数值。scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。\n- 数值状态会跨 moment 和章节持续，不会自动恢复初值。旁白以具体数值描述已有画面时，必须与该数值最近一次 animation 的目标一致；若需要回到较早数值，先在同一 moment 明确 animation 到该值。禁止添加把数值设为当前值、但没有教学变化的装饰性 animation。\n- rectangle_unit_square_array 的两个数值依次是每行方格数（长）和行数（宽），都用正整数；不得用 geometric_rearrangement 代替。geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"language\":\"zh-CN\"},\"course_and_section\":{\"title\":\"长方形的面积与周长\",\"goals\":[\"理解面积是用单位正方形覆盖平面区域的测量方法\",\"理解长方形每行方格数与行数乘积即为总方格数\",\"掌握长方形面积公式并正确使用平方单位\",\"通过对比清楚区分面积与周长\"],\"numbers\":[{\"number\":1,\"label\":\"每行方格数（长）\",\"initial\":4,\"min\":1,\"max\":10,\"unit\":\"厘米\"},{\"number\":2,\"label\":\"行数（宽）\",\"initial\":3,\"min\":1,\"max\":10,\"unit\":\"厘米\"}],\"section\":{\"section\":4,\"purpose\":\"对比长方形的面积与周长，明确概念区别\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"note\"}]},\"previous_sections\":[{\"section\":1,\"purpose\":\"理解面积是用单位正方形覆盖平面区域的大小\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"note\"},{\"item\":2,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"rectangle_unit_square_array\"}]},{\"section\":2,\"purpose\":\"通过每行方格数和行数的阵列排列发现方格总数规律\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]},{\"section\":3,\"purpose\":\"推导长方形面积公式并应用平方单位\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]}]},\"visuals_for_section\":[{\"course_visual\":1,\"capability\":\"rectangle_unit_square_array\",\"mode\":\"reuse\",\"relation\":\"primary\"}],\"assigned_request_parts\":[{\"request_part\":4,\"text\":\"用一个相近例子区分面积和周长。\"}]}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "moments",
+          "reusable_board_creates"
+        ],
+        "properties": {
+          "moments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "narration",
+                "delivery"
+              ],
+              "properties": {
+                "narration": {
+                  "type": "string"
+                },
+                "delivery": {
+                  "enum": [
+                    "neutral",
+                    "patient",
+                    "encouraging",
+                    "careful",
+                    "emphatic"
+                  ]
+                },
+                "math_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "latex"
+                        ],
+                        "properties": {
+                          "latex": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "note_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "title",
+                          "items"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "focuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "intent"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "intent": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "animations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "number",
+                      "end_value"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "number": {
+                        "enum": [
+                          1,
+                          2
+                        ]
+                      },
+                      "end_value": {
+                        "$ref": "#/$defs/modelDecimal"
+                      },
+                      "duration_intent": {
+                        "enum": [
+                          "brief",
+                          "normal",
+                          "extended"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reusable_board_creates": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item_1"
+            ],
+            "properties": {
+              "item_1": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "moment",
+                  "content"
+                ],
+                "properties": {
+                  "moment": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
+                  "timing": {
+                    "enum": [
+                      "before_speech",
+                      "during_speech",
+                      "after_speech"
+                    ]
+                  },
+                  "content": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "title",
+                      "items"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "number_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "number",
+                "value_mantissa",
+                "value_scale",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "number": {
+                  "enum": [
+                    1,
+                    2
+                  ]
+                },
+                "value_mantissa": {
+                  "type": "integer",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000
+                },
+                "value_scale": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "section",
+      "lessonPlanSection": 4,
+      "lessonPlanAttempt": 1
+    },
+    "response": "{\n  \"moments\": [\n    {\n      \"narration\": \"现在我们来对比长方形的面积与周长。以长4厘米、宽3厘米的长方形为例，周长是围成它的四条边的总长度。\",\n      \"delivery\": \"patient\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"指引学生注意长方形的边缘边界与内部区域\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"计算周长时，我们将四条边相加：4加3加4加3，得到14厘米。周长表示边缘的长度，单位是长度单位厘米。\",\n      \"delivery\": \"neutral\",\n      \"points\": [\n        {\n          \"timing\": \"during_speech\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"而面积表示长方形内部所占平面的大小。通过前面学习的方格阵列，长4厘米、宽3厘米包含4乘3等于12个1平方厘米的单位正方形，所以面积是12平方厘米。\",\n      \"delivery\": \"emphatic\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"聚焦内部小方格的数量与面积概念\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"总结一下：周长是围成图形一圈的长度，用长度单位厘米；面积是图形所占面的大小，用面积单位平方厘米。两者概念和单位都完全不同。\",\n      \"delivery\": \"encouraging\",\n      \"focuses\": [\n        {\n          \"timing\": \"after_speech\",\n          \"intent\": \"对比周长与面积的区别总结\"\n        }\n      ]\n    }\n  ],\n  \"reusable_board_creates\": {\n    \"item_1\": {\n      \"moment\": 4,\n      \"timing\": \"during_speech\",\n      \"content\": {\n        \"title\": \"面积与周长的区别\",\n        \"items\": [\n          \"周长：围成图形四周边界的总长度（单位：厘米）\",\n          \"周长计算：(4 + 3) × 2 = 14 厘米\",\n          \"面积：图形所占平面区域的大小（单位：平方厘米）\",\n          \"面积计算：4 × 3 = 12 平方厘米\"\n        ]\n      }\n    }\n  },\n  \"number_activities\": [\n    {\n      \"prompt\": \"将每行方格数（长）调整为 5 厘米，观察周长与面积的变化。\",\n      \"hints\": [\n        \"拖动滑块将每行方格数（长）设置为 5。\"\n      ],\n      \"success_message\": \"很好！长变为 5 厘米后，周长为 (5+3)×2=16 厘米，面积为 5×3=15 平方厘米。\",\n      \"number\": 1,\n      \"value_mantissa\": 5,\n      \"value_scale\": 0\n    }\n  ]\n}",
+    "elapsed_ms": 4454,
+    "status": "completed"
+  }
+]

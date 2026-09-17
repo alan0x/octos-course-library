@@ -1,0 +1,28 @@
+{
+  "packId": "slope-and-intercept",
+  "sourceCandidate": "candidate-004",
+  "focus": {
+    "section-01/moment-01": {
+      "targets": [
+        "section-01-moment-01-item-01"
+      ],
+      "when": "before_speech"
+    },
+    "section-02/moment-01": null,
+    "section-03/moment-02": {
+      "targets": [
+        "section-01-moment-01-item-01",
+        "section-03-moment-02-item-01"
+      ],
+      "when": "after_speech"
+    },
+    "section-03/moment-03": null,
+    "section-04/moment-01": {
+      "targets": [
+        "section-01-moment-01-item-01",
+        "section-04-moment-01-item-01"
+      ]
+    },
+    "section-04/moment-03": null
+  }
+}

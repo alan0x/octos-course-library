@@ -20,6 +20,9 @@
   ],
   "scripts": {
     "build": "pnpm --filter @octos/course-pack build",
+    "candidate:generate": "node scripts/generate-learning-coach-candidate.mjs",
+    "course-pack:materialize": "node scripts/materialize-course-pack.mjs",
+    "course-pack:verify-camera": "node scripts/verify-curated-camera.mjs",
     "course-pack": "pnpm build && node packages/course-pack/dist/src/cli.js",
     "course-pack:publish": "pnpm build && node packages/course-pack/dist/src/publisher-cli.js",
     "test": "pnpm --filter @octos/course-pack test",
@@ -30,7 +33,10 @@
     "ajv": "^8.17.1",
     "fflate": "^0.8.2"
   },
+  "devDependencies": {
+    "octos-lesson-language": "github:alan0x/octos-lesson-language#061f0bf11f52831dd9be0245c8722f73913331ad"
+  },
   "peerDependencies": {
-    "octos-lesson-language": "github:alan0x/octos-lesson-language#ce1d577ed8ca7698b34384ba1902d1fe2722a85a"
+    "octos-lesson-language": "0.1.0-rc.1"
   }
 }

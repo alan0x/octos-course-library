@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f7f2e8"/>
+  <g transform="translate(120 80)">
+    <rect width="500" height="390" rx="28" fill="#fffdf8" stroke="#d9d2c5" stroke-width="4"/>
+    <path d="M70 315 H440 M250 45 V350" stroke="#65716b" stroke-width="5"/>
+    <path d="M90 330 L420 75" fill="none" stroke="#167d78" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="250" cy="206" r="12" fill="#e18b56"/>
+    <text x="275" y="198" fill="#183b3a" font-family="system-ui, sans-serif" font-size="30">b</text>
+  </g>
+  <text x="700" y="190" fill="#183b3a" font-family="system-ui, sans-serif" font-size="68" font-weight="700">y = mx + b</text>
+  <text x="700" y="270" fill="#0d6f6b" font-family="system-ui, sans-serif" font-size="34">slope · intercept · graph</text>
+  <text x="80" y="570" fill="#202925" font-family="system-ui, sans-serif" font-size="58" font-weight="700">一次函数 y = mx + b 的图像与性质</text>
+  <text x="84" y="620" fill="#65716b" font-family="system-ui, sans-serif" font-size="25">Octos Learn · Curated course</text>
+</svg>

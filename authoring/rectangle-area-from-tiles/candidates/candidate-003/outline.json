@@ -1,0 +1,142 @@
+{
+  "title": "长方形的面积与周长",
+  "goals": [
+    "理解面积是用单位正方形覆盖区域的度量",
+    "建立每行方格数、行数与方格总数的乘法关系",
+    "掌握长方形面积公式与平方单位的使用",
+    "区分长方形的面积（内部覆盖）与周长（一周长度）"
+  ],
+  "teaching_strategies": [
+    "直观感知：利用 1cm² 单位正方形网格填充长方形",
+    "行与列的递推：从按行计数自然过渡到乘法算式",
+    "对比辨析：同步显示边界周长与内部面积，防止概念混淆"
+  ],
+  "numbers": [
+    {
+      "initial": 4,
+      "min": 1,
+      "max": 10,
+      "label": "长（每行方格数）",
+      "unit": "cm",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.045
+      }
+    },
+    {
+      "initial": 3,
+      "min": 1,
+      "max": 10,
+      "label": "宽（行数）",
+      "unit": "cm",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.045
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "rectangle_unit_square_array",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立面积的概念：用边长为1厘米的单位正方形覆盖平面区域的大小",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "rectangle_unit_square_array"
+        }
+      ],
+      "allowed_capabilities": [
+        "rectangle_unit_square_array"
+      ]
+    },
+    {
+      "purpose": "通过网格的每行数量与行数，理解方格总数的阵列计算规律",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "推导长方形面积公式，并掌握平方厘米（cm²）的使用",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "通过实际图形辨析周长与面积的区别",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程从 1cm² 单位正方形的铺排出发，明确了面积是覆盖区域的大小；通过行与列的数量关系推导出长方形面积 = 长 × 宽，并强调了平方单位；最后通过边界与内部的对比清晰地区分了面积与周长。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

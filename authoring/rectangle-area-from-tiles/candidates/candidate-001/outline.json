@@ -1,0 +1,174 @@
+{
+  "title": "长方形的面积与单位正方形铺满法",
+  "goals": [
+    "建立面积表示用单位正方形覆盖平面区域大小的直观理解",
+    "理解长方形每行方格数与行数乘积即为单位正方形总数的规律",
+    "推导长方形面积公式“面积 = 长 × 宽”并正确应用平方单位",
+    "辨析并区分平面图形的面积与周长概念"
+  ],
+  "teaching_strategies": [
+    "利用铺满小方格的直观图示逐步展示从“数方格”到“行数×每行数”的思维跃迁",
+    "通过动态拼接与公式联动推导面积公式并强调单位的物理意义（cm²）",
+    "使用对比法厘清边界（周长是绕一周的长度，面积是占平面的大小）"
+  ],
+  "numbers": [
+    {
+      "initial": 5,
+      "min": 1,
+      "max": 10,
+      "label": "每行方格数/长",
+      "unit": "cm",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.045
+      }
+    },
+    {
+      "initial": 3,
+      "min": 1,
+      "max": 8,
+      "label": "行数/宽",
+      "unit": "cm"
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "process_diagram",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 2,
+      "capability": "geometric_rearrangement",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        4
+      ],
+      "relation": "comparison",
+      "related_visual": 2,
+      "create_section": 4,
+      "capability": "geometric_rearrangement",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立面积的概念：用边长为1个单位的正方形覆盖平面区域的多少表示面积",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "process_diagram"
+        }
+      ],
+      "allowed_capabilities": [
+        "process_diagram"
+      ]
+    },
+    {
+      "purpose": "探究方格阵列：解释长方形中每行方格数、行数与方格总数的乘法关系",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "geometric_rearrangement"
+        }
+      ],
+      "allowed_capabilities": [
+        "geometric_rearrangement"
+      ]
+    },
+    {
+      "purpose": "推导与应用公式：得出“长方形面积 = 长 × 宽”，并掌握平方厘米（cm²）的使用",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "概念辨析：通过对比同一长方形的周长（边缘线长）与面积（内部覆盖）区分二者",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "geometric_rearrangement"
+        }
+      ],
+      "allowed_capabilities": [
+        "geometric_rearrangement"
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程从单位正方形铺满平面出发，解释了面积的定义；通过阵列排列推导出长方形面积计算公式“长×宽”，规范了平方单位的使用，并明确区分了面积与周长的本质不同。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      },
+      {
+        "source": "reusable",
+        "section": 4,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

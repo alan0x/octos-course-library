@@ -1,0 +1,411 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "当我们想知道一个平面图形占了多大地方时，我们需要测量它的面积。什么是面积呢？简单来说，就是用大小相同的单位正方形去完整覆盖这个区域所需的小方格数量。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "rectangle_unit_square_array",
+              "numbers": [
+                1,
+                2
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "面积的概念",
+              "items": [
+                "面积表示平面图形所占用平面区域的大小。",
+                "常用边长为1厘米的正方形作为基本度量单位（1平方厘米）。"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "展示由1平方厘米的小正方形平铺覆盖长方形区域",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "比如眼前这个长方形，就是由边长为1厘米的小正方形紧密排列组成的。通过统计一共用了多少个1平方厘米的小方格，我们就能准确算出它的面积。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "尝试将长设为5厘米，观察小方格的覆盖情况。",
+        "hints": [
+          "滑动长对应的控制杆，将其调整为5。"
+        ],
+        "success_message": "非常好！现在长方形每行包含了5个单位正方形。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 5.005,
+        "tolerance": 0.0225
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "现在我们来看这个长方形。它被1平方厘米的小正方形格子完全铺满。观察它的横向排列，每行正好包含4个小方格。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导观察长方形第一行的小方格数量",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 2
+            }
+          }
+        ]
+      },
+      {
+        "narration": "接着看纵向排列，这样的行一共有3行。要求出方格的总数，就是把这3行、每行4个的方格加起来。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导观察小方格的行数",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "根据乘法的意义，每行4个方格，乘以3行，总共就是 4 乘以 3 等于 12 个方格。因此方格总数等于每行方格数乘以行数。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\text{方格总数} = \\text{每行方格数} \\times \\text{行数} = 4 \\times 3 = 12"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "after_speech",
+            "intent": "强调方格总数与每行方格数、行数的乘积关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "在上一步中，我们发现把单位正方形排成阵列，总方格数就是每行的个数乘以行数。现在，我们把这种规律抽象为通用的长方形面积计算公式。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导思考如何从单位正方形排列抽象出面积公式",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "对于一个长方形，如果长是4厘米，意味着每行可以铺4个1平方厘米的正方形；宽是3厘米，表示可以铺3行。因此，总面积就是每行4个乘以3行，得到12平方厘米。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 4,
+            "duration_intent": "brief",
+            "easing": "linear"
+          },
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 2,
+            "end_value": 3,
+            "duration_intent": "brief",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "把这个规律写成公式，就是：长方形的面积等于长乘以宽。用字母表示，通常写作 S 等于 a 乘以 b。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "S = a \\times b = 4 \\text{ cm} \\times 3 \\text{ cm} = 12 \\text{ cm}^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "重点展示长方形面积公式",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "请注意单位的使用：长度的单位是厘米，而面积表示覆盖的单位正方形数量，必须使用平方厘米。如果长度单位是米，面积单位就是平方米。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调面积单位与长度单位的区别与正确对应",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "现在我们来对比长方形的面积与周长。以长4厘米、宽3厘米的长方形为例，周长是围成它的四条边的总长度。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "指引学生注意长方形的边缘边界与内部区域",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "计算周长时，我们将四条边相加：4加3加4加3，得到14厘米。周长表示边缘的长度，单位是长度单位厘米。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      },
+      {
+        "narration": "而面积表示长方形内部所占平面的大小。通过前面学习的方格阵列，长4厘米、宽3厘米包含4乘3等于12个1平方厘米的单位正方形，所以面积是12平方厘米。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦内部小方格的数量与面积概念",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "总结一下：周长是围成图形一圈的长度，用长度单位厘米；面积是图形所占面的大小，用面积单位平方厘米。两者概念和单位都完全不同。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "面积与周长的区别",
+              "items": [
+                "周长：围成图形四周边界的总长度（单位：厘米）",
+                "周长计算：(4 + 3) × 2 = 14 厘米",
+                "面积：图形所占平面区域的大小（单位：平方厘米）",
+                "面积计算：4 × 3 = 12 平方厘米"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "after_speech",
+            "intent": "对比周长与面积的区别总结",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "将每行方格数（长）调整为 5 厘米，观察周长与面积的变化。",
+        "hints": [
+          "拖动滑块将每行方格数（长）设置为 5。"
+        ],
+        "success_message": "很好！长变为 5 厘米后，周长为 (5+3)×2=16 厘米，面积为 5×3=15 平方厘米。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 5.005,
+        "tolerance": 0.0225
+      }
+    ]
+  }
+]

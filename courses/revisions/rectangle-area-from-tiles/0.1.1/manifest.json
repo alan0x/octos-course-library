@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "packId": "rectangle-area-from-tiles",
+  "version": "0.1.1",
+  "title": "长方形的面积与周长",
+  "description": "从单位正方形铺满长方形出发，理解长方形面积公式，并区分面积与周长。",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "primary-age-8-9",
+  "durationSeconds": 142,
+  "minimumPlayerVersion": "0.1.0",
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "588205b646a99b2fed3b18dad14aee5fb07ace5cf6b017d91d440181cf96bc66",
+        "durationMs": 12504
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-01:beat:moment-02",
+        "file": "audio/002.mp3",
+        "textSha256": "8397804e8dd872034b82f4e4ee202448e164bd5e3233e05dd73b653748a6ba59",
+        "durationMs": 11688
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-02:beat:moment-01",
+        "file": "audio/003.mp3",
+        "textSha256": "7038616f5be565dff3f000140044b72f408d173417422256c2579932eba1a341",
+        "durationMs": 9048
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-02:beat:moment-02",
+        "file": "audio/004.mp3",
+        "textSha256": "80785f4f8c71e5b3813207bfd6a979d880496c948e61d582c58c6c11993667d1",
+        "durationMs": 8448
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-02:beat:moment-03",
+        "file": "audio/005.mp3",
+        "textSha256": "078bdfc30f2ceb7fcd46957f1c71787a525d7d171576b91abb6a729864229918",
+        "durationMs": 10512
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-03:beat:moment-01",
+        "file": "audio/006.mp3",
+        "textSha256": "9338634ae76ac25e5ba69b84997bfe7299129266a0b87f770bffe7399f9320d2",
+        "durationMs": 11928
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-03:beat:moment-02",
+        "file": "audio/007.mp3",
+        "textSha256": "c68eaa534169184fc14ec54541f9668df2a01b5608629742879af7929eb85275",
+        "durationMs": 13680
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-03:beat:moment-03",
+        "file": "audio/008.mp3",
+        "textSha256": "c367baf937f33c509e33b964f3d1cec680f457311bba43b7cafffa20d4574930",
+        "durationMs": 8688
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-03:beat:moment-04",
+        "file": "audio/009.mp3",
+        "textSha256": "ed9cb99390a1bd88ce5838fd58c8845c4d3f87551c18d3088262f6e3f73de93f",
+        "durationMs": 11064
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-04:beat:moment-01",
+        "file": "audio/010.mp3",
+        "textSha256": "f65e6715a992b5e98bd9d7e136c1193320a35b8be79265c4ccd76bc04ac913d1",
+        "durationMs": 9120
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-04:beat:moment-02",
+        "file": "audio/011.mp3",
+        "textSha256": "5eb3d2b7aa093751751491e491185503c00c1bcf8d6d6293eadf55ed235fade0",
+        "durationMs": 9912
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-04:beat:moment-03",
+        "file": "audio/012.mp3",
+        "textSha256": "d5423b4f703461e0820a5a598fa5c749bef3698445f071ca11fbbc8421ef7b62",
+        "durationMs": 13128
+      },
+      {
+        "beatId": "rectangle-area-from-tiles-0.1.1:step:section-04:beat:moment-04",
+        "file": "audio/013.mp3",
+        "textSha256": "42b4ead5005ac2d2fe587b1cb93d6b6c0ecdcfb46e75be0c74534e66928d5e54",
+        "durationMs": 11880
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "3194e3c06fbb70a20773c45de7fad9d37b0511ff00e6477adfaf1531905ecb15",
+      "bytes": 493,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "ec6107afa2d24ba88df97a047955517ec1529944335adc60e7e45a64588e50fa",
+      "bytes": 170,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "40075793ef6c3de471f82766f4c24854853042a776b3587af0fd7bcd0ec19a2b",
+      "bytes": 32195,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "c801ec59a7374a0073c5e1f86790c6946f7822c6dc6669bb53ab74cc21eedb22",
+      "bytes": 1449,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "b90b238b446802f54662a5f2f3895f4f8689348dff551e15d0aa74bfb50cb523",
+      "bytes": 250080,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "70075d131a9b552b2ddb5bfcee471220f0a74377e899638440b593af6e5475a6",
+      "bytes": 233760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "4f8d1d0d0e106a14699192a6f2bfbdd39d4c2fb1655c2dc86066720429f879b5",
+      "bytes": 180960,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "727dc37e1787036a3d0eb98feba0120584a63a9ba28ac24c4de386acc1c31434",
+      "bytes": 168960,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "5109d9bea766956c7cf771965e1c09561687c13c139ab7de838c61e26e5990ce",
+      "bytes": 210240,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "3bf925a538f29f745da730b4c6ee7ec53c37e6513d08763c25a270dc30320977",
+      "bytes": 238560,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "a191757b60f047e4c1e6e767d84449e4c3c32c2e0f6d51c7ed15b8008d5613a5",
+      "bytes": 273600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "8778138d00f61f1255cc0f95146de1cb0de20b5fa83b35062c9f264d8dc76b75",
+      "bytes": 173760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/009.mp3",
+      "sha256": "a6085296418e423efc32009b84e64e8bcfe1376ee2c4dd756af8e23fe3ac6246",
+      "bytes": 221280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/010.mp3",
+      "sha256": "d24a42a6a78d48863315edd2e4823aa2c519cee6c82eab1f4b0c4952e3d80b78",
+      "bytes": 182400,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/011.mp3",
+      "sha256": "f002b0a20e4d1e57cc4c2e8d1270581be50f004a9d3c6039c76506fbcaa4ec83",
+      "bytes": 198240,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/012.mp3",
+      "sha256": "3eb5d33f1018bcef7133684ae0539c3db74b7471887c799a5c1ca6c78477d20f",
+      "bytes": 262560,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/013.mp3",
+      "sha256": "37026d0424857cc0f132e3fb291075932bd7a93d2242b095316f42646f2fcda6",
+      "bytes": 237600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3",
+        "audio/009.mp3",
+        "audio/010.mp3",
+        "audio/011.mp3",
+        "audio/012.mp3",
+        "audio/013.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}

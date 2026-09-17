@@ -1,0 +1,400 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "什么是面积？简而言之，面积就是测量一个平面图形内部占据了多少空间。我们通常用边长为 1 厘米的小正方形来作为量度标准，每个小正方形的面积称为 1 平方厘米。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "rectangle_unit_square_array",
+              "numbers": [
+                1,
+                2
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "面积的含义",
+              "items": [
+                "1 平方厘米：边长为 1 厘米的正方形面积",
+                "面积：用标准单位正方形覆盖区域的总数量"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调单个单位正方形的大小和含义",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "看看眼前这个长方形，我们用这些 1 平方厘米的小正方形无重叠、无缝隙地把它铺满。数一数一共用了多少个小正方形，就能知道这个长方形的面积是多少。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          },
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 4,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "尝试调整每行的方格数（长），观察铺满长方形所需的单位正方形数量如何变化。",
+        "hints": [
+          "拖动滑动条，将长设置为 5 厘米。",
+          "注意观察铺满一行需要多少个 1 平方厘米的小正方形。"
+        ],
+        "success_message": "很好！你成功改变了长方形的长，直观看到了每行小正方形数量的变化。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 4.99,
+        "tolerance": 0.0175
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "请看这个长方形，它的长是4厘米，宽是3厘米。我们用边长为1厘米的单位正方形把它铺满。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "before_speech",
+            "intent": "观察长方形的方格排列",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 2
+            }
+          }
+        ]
+      },
+      {
+        "narration": "我们可以看到，沿着长的一边，每行正好摆放了4个小方格；沿着宽的一边，一共摆了这样的3行。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "分析每行方格数与行数的对应关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "要求出方格总数，不用一个一个数，直接用每行的4个乘以3行，就能算出总共是由12个小方格组成的。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "4 \\times 3 = 12"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 2
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请尝试将长方形的每行方格数（长）调整为5厘米，观察方格总数的乘法关系。",
+        "hints": [
+          "拖动长（每行方格数）滑块至5。"
+        ],
+        "success_message": "很好！每行5个方格，3行一共就是 5 × 3 = 15 个方格。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 4.99,
+        "tolerance": 0.0175
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "我们在前几节发现，长方形里铺满的 1 平方厘米正方形总数，正好等于每行方格数乘以行数。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\text{面积} = \\text{长} \\times \\text{宽}"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦公式推导结果",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "看现在的长方形，长是 4 厘米，宽是 3 厘米。每行有 4 个小正方形，共有 3 行，一共是 12 个小正方形。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      },
+      {
+        "narration": "因此，它的面积就是 4 乘以 3 等于 12 平方厘米。记住，测量长度用厘米，表示覆盖的面积一定要用平方厘米。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调面积单位平方厘米",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "请你试着调整长方形的尺寸，验证一下“面积等于长乘宽”的规则吧。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "将长方形的长调整为 5 厘米。",
+        "hints": [
+          "拖动每行方格数（长）的滑块，将其改为 5。"
+        ],
+        "success_message": "非常好！长是 5 厘米，宽是 3 厘米，面积就是 5 × 3 = 15 平方厘米。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 4.99,
+        "tolerance": 0.0175
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "现在我们来清楚地区分面积与周长。看这个长为5厘米、宽为3厘米的长方形。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "before_speech",
+            "number": 1,
+            "end_value": 5,
+            "duration_intent": "normal",
+            "easing": "linear"
+          },
+          {
+            "action": "animate",
+            "timing": "before_speech",
+            "number": 2,
+            "end_value": 3,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "周长指的是围成图形一周的边缘总长度，就像沿着外框走一圈，单位是一维的厘米；而面积则是内部铺满单位正方形的多少，单位是二维的平方厘米。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "面积与周长的区别",
+              "items": [
+                "周长：封闭图形一周的长度（单位：厘米 cm）",
+                "面积：覆盖平面区域的大小（单位：平方厘米 cm²）"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "对比周长（边缘长度）与面积（内部覆盖）的区别",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

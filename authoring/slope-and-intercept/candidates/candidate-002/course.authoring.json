@@ -1,0 +1,458 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "zh-CN",
+    "title": "理解一次函数 y = mx + b 的图象特征与性质",
+    "goals": [
+      "理解一次函数 y = mx + b 中斜率 m 和纵截距 b 的几何意义与公式结构",
+      "掌握斜率 m 的正负、零以及绝对值大小对直线方向和陡缓程度的影响",
+      "理解纵截距 b 的改变对直线平移的影响，并能从坐标系中准确读取纵截距",
+      "掌握斜率公式 (y2 - y1) / (x2 - x1)，并能通过两点坐标计算斜率"
+    ],
+    "adaptation": {
+      "strategies": [
+        "动态直观演示：通过调节 m 和 b，实时观察直线的倾斜与上下平移",
+        "两点推导法：结合直角三角形，演示横向与纵向变化量，直观理解斜率公式"
+      ]
+    },
+    "variables": [
+      {
+        "as": "number_01",
+        "initial": 1,
+        "min": -5,
+        "max": 5,
+        "label": "斜率 m",
+        "control": {
+          "kind": "slider",
+          "step": 0.05
+        }
+      },
+      {
+        "as": "number_02",
+        "initial": 0,
+        "min": -5,
+        "max": 5,
+        "label": "纵截距 b",
+        "control": {
+          "kind": "slider",
+          "step": 0.05
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "as": "section-02-task-01",
+        "prompt": "请将斜率 m 的值调整为 3，观察直线的陡缓变化。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "拖动滑块将斜率 m 设为 3。",
+          "观察 m 取正数且绝对值变大时直线的变化。"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "很好！当 m = 3 时，直线依然从左到右上升，但比 m = 1 时更加陡峭。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 3,
+          "tolerance": 0.025
+        }
+      },
+      {
+        "as": "section-03-task-01",
+        "prompt": "请将纵截距 b 的数值调整为 3，观察直线与 y 轴交点的位置。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "请将纵截距 b 设为 3"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "很好！直线向上平移后与 y 轴交于 (0, 3)。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_02",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_02",
+          "value": 3,
+          "tolerance": 0.025
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "section-01",
+      "purpose": "引入一次函数表达式 y = mx + b，明确 m 代表斜率、b 代表纵截距",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "欢迎来到一次函数的探索课堂。在数学中，一次函数的标准形式通常写为 y = mx + b。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01",
+              "kind": "plot",
+              "role": "main_visual",
+              "content": {
+                "title": "一次函数图像",
+                "axes": {
+                  "x": {
+                    "min": -4,
+                    "max": 4,
+                    "label": "x"
+                  },
+                  "y": {
+                    "min": -6,
+                    "max": 6,
+                    "label": "y"
+                  }
+                },
+                "curves": [
+                  {
+                    "as": "primary-curve",
+                    "expression": "((number_01)*(x))+(number_02)",
+                    "label": "y = mx + b"
+                  }
+                ],
+                "points": [
+                  {
+                    "as": "reference-a",
+                    "x": 0,
+                    "y": 0,
+                    "label": "A"
+                  },
+                  {
+                    "as": "reference-b",
+                    "x": 1,
+                    "y": 1,
+                    "label": "B"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "reference-a.y",
+                    "expression": "((number_01)*(0))+(number_02)"
+                  },
+                  {
+                    "target": "reference-b.y",
+                    "expression": "((number_01)*(1))+(number_02)"
+                  }
+                ],
+                "measurement": "secant",
+                "sample_input": "fixed_x"
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "y = m x + b"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-03",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "一次函数参数含义",
+                "items": [
+                  "m：斜率（决定倾斜程度与方向）",
+                  "b：纵截距（决定与 y 轴交点的位置）"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-02"
+              },
+              "when": "after_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "聚焦一次函数标准解析式",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "这里，m 称为直线的斜率，它决定了直线的倾斜方向和倾斜程度；而 b 称为纵截距，表示直线与 y 轴交点的纵坐标。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-02",
+      "purpose": "通过改变 m，分析斜率正负、零与绝对值大小对直线方向和陡缓的影响",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我们重点探究斜率 m 对直线方向和陡缓程度的影响。当 m 为正数，比如 m 等于 1 时，直线从左到右上升。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察 m 等于 1 时直线的上升倾斜方向",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "将 m 增加到 3，直线的倾斜程度变得更加陡峭。斜率 m 的绝对值越大，直线就越陡峭。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 3,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "当 m 等于 0 时，y 等于 b，直线变成一条水平线，既不上升也不下降。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 0,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "如果 m 为负数，比如减小到 -2，直线转变为从左到右下降。正负号决定了方向，绝对值决定了陡缓。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": -2,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "通过改变 b，演示直线的上下平移，并从图像中寻找与 y 轴的交点",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我们保持斜率 m 等于 1 不变，来观察纵截距 b 的变化对直线位置的影响。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "引导学习者观察纵截距改变对直线位置的作用",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "将纵截距 b 从 0 增加到 2，直线保持倾斜角度不变，整体向上平移了 2 个单位。此时直线与 y 轴交于点 (0, 2)。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_02",
+              "value": 2,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "接着我们将 b 从 2 减小到 -3，可以看到直线沿垂直方向向下平移。此时直线与 y 轴的交点坐标变为 (0, -3)。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_02",
+              "value": -3,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "总结来说，纵截距 b 决定了直线与 y 轴交点的纵坐标 (0, b)。当 m 不变时，改变 b 会使直线沿 y 轴上下平行移动。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-04-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "纵截距 b 的几何意义",
+                "items": [
+                  "直线 y = mx + b 与 y 轴交于点 (0, b)",
+                  "m 不变时，b 增大 → 直线向上平移 |b| 个单位",
+                  "m 不变时，b 减小 → 直线向下平移 |b| 个单位"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-04",
+      "purpose": "利用图像上的两点展示纵向变化量与横向变化量的比值，完成斜率计算互动任务",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我们来看如何从直线上任意两点计算斜率 m。斜率代表直线的倾斜程度，其定义为纵向变化量除以横向变化量。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-01-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "m = \\frac{\\Delta y}{\\Delta x} = \\frac{y_2 - y_1}{x_2 - x_1}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-04-moment-01-item-02",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "斜率计算公式",
+                "items": [
+                  "斜率 m = (y2 - y1) / (x2 - x1)",
+                  "x2 ≠ x1 时有效"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-01-item-01"
+              },
+              "when": "after_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察直线图像与两点间的横向、纵向变化量",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "当直线方程为 y = 1x + 0 时，若取点 (0,0) 和点 (2,2)，纵向变化量 y2 - y1 为 2，横向变化量 x2 - x1 为 2，比值为 1。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "现在请你尝试把斜率 m 调整为 3，观察纵向变化量与横向变化量的比值如何变为 3。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 3,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程深入探讨了一次函数 y = mx + b 的几何特征。斜率 m 决定了直线的倾斜方向与陡缓程度，纵截距 b 决定了直线与 y 轴交点的位置。通过两点的纵向变化量除以横向变化量，我们可以精准计算出直线的斜率。",
+    "focus": [
+      "section-01-moment-01-item-01"
+    ]
+  }
+}

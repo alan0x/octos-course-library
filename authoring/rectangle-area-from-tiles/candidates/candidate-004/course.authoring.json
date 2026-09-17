@@ -1,0 +1,955 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "zh-CN",
+    "title": "理解长方形面积与周长",
+    "goals": [
+      "理解面积是指用单位正方形覆盖平面区域的多少，并掌握平方单位的意义",
+      "通过行列计数推导出长方形面积公式“面积 = 长 × 宽”",
+      "区分面积与周长的概念及单位差异"
+    ],
+    "adaptation": {
+      "strategies": [
+        "直观演示：用 1 平方厘米的单位正方形铺满长方形，建立面积的直观图像",
+        "计数关联：引导学习者发现“总方格数 = 每行方格数 × 行数”的对应关系",
+        "对比深化：通过比较同一长方形的面积（内部覆盖）与周长（外围边长），消除两者的概念混淆"
+      ]
+    },
+    "variables": [
+      {
+        "as": "number_01",
+        "initial": 4,
+        "min": 1,
+        "max": 8,
+        "label": "每行方格数（长）",
+        "unit": "cm",
+        "control": {
+          "kind": "slider",
+          "step": 1
+        }
+      },
+      {
+        "as": "number_02",
+        "initial": 3,
+        "min": 1,
+        "max": 6,
+        "label": "行数（宽）",
+        "unit": "cm",
+        "control": {
+          "kind": "slider",
+          "step": 1
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "as": "section-01-task-01",
+        "prompt": "尝试调整每行的方格数（长），观察铺满长方形所需的单位正方形数量如何变化。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "拖动滑动条，将长设置为 5 厘米。",
+          "注意观察铺满一行需要多少个 1 平方厘米的小正方形。"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "很好！你成功改变了长方形的长，直观看到了每行小正方形数量的变化。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 4.99,
+          "tolerance": 0.5
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "section-01",
+      "purpose": "建立面积的概念：用单位正方形覆盖平面区域的多少",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "什么是面积？简而言之，面积就是测量一个平面图形内部占据了多少空间。我们通常用边长为 1 厘米的小正方形来作为量度标准，每个小正方形的面积称为 1 平方厘米。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01",
+              "kind": "geometry",
+              "role": "main_visual",
+              "content": {
+                "title": "单位正方形铺成长方形",
+                "caption": "每个小方格面积为 1 平方单位；每行方格数 × 行数 = 方格总数 = 长方形面积。",
+                "axes": {
+                  "x": {
+                    "min": -0.75,
+                    "max": 8.75,
+                    "label": "每行方格数（长）"
+                  },
+                  "y": {
+                    "min": -0.75,
+                    "max": 6.75,
+                    "label": "行数（宽）"
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "boundary-bottom-left",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "boundary-bottom-right",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "boundary-top-right",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "boundary-top-left",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "unit-bottom-left",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "unit-bottom-right",
+                    "x": 1,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "unit-top-right",
+                    "x": 1,
+                    "y": 1,
+                    "visible": false
+                  },
+                  {
+                    "as": "unit-top-left",
+                    "x": 0,
+                    "y": 1,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-0-bottom",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-0-top",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-1-bottom",
+                    "x": 1,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-1-top",
+                    "x": 1,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-2-bottom",
+                    "x": 2,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-2-top",
+                    "x": 2,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-3-bottom",
+                    "x": 3,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-3-top",
+                    "x": 3,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-4-bottom",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-4-top",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-5-bottom",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-5-top",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-6-bottom",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-6-top",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-7-bottom",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-7-top",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-8-bottom",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "column-8-top",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-0-left",
+                    "x": 0,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-0-right",
+                    "x": 4,
+                    "y": 0,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-1-left",
+                    "x": 0,
+                    "y": 1,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-1-right",
+                    "x": 4,
+                    "y": 1,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-2-left",
+                    "x": 0,
+                    "y": 2,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-2-right",
+                    "x": 4,
+                    "y": 2,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-3-left",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-3-right",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-4-left",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-4-right",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-5-left",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-5-right",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-6-left",
+                    "x": 0,
+                    "y": 3,
+                    "visible": false
+                  },
+                  {
+                    "as": "row-6-right",
+                    "x": 4,
+                    "y": 3,
+                    "visible": false
+                  }
+                ],
+                "polygons": [
+                  {
+                    "as": "interior",
+                    "points": [
+                      "boundary-bottom-left",
+                      "boundary-bottom-right",
+                      "boundary-top-right",
+                      "boundary-top-left"
+                    ],
+                    "tone": "primary"
+                  },
+                  {
+                    "as": "unit-square",
+                    "points": [
+                      "unit-bottom-left",
+                      "unit-bottom-right",
+                      "unit-top-right",
+                      "unit-top-left"
+                    ],
+                    "label": "1 平方单位",
+                    "tone": "accent"
+                  }
+                ],
+                "segments": [
+                  {
+                    "as": "column-0",
+                    "from": "column-0-bottom",
+                    "to": "column-0-top",
+                    "style": "solid"
+                  },
+                  {
+                    "as": "column-1",
+                    "from": "column-1-bottom",
+                    "to": "column-1-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-2",
+                    "from": "column-2-bottom",
+                    "to": "column-2-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-3",
+                    "from": "column-3-bottom",
+                    "to": "column-3-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-4",
+                    "from": "column-4-bottom",
+                    "to": "column-4-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-5",
+                    "from": "column-5-bottom",
+                    "to": "column-5-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-6",
+                    "from": "column-6-bottom",
+                    "to": "column-6-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-7",
+                    "from": "column-7-bottom",
+                    "to": "column-7-top",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "column-8",
+                    "from": "column-8-bottom",
+                    "to": "column-8-top",
+                    "style": "solid"
+                  },
+                  {
+                    "as": "row-0",
+                    "from": "row-0-left",
+                    "to": "row-0-right",
+                    "style": "solid"
+                  },
+                  {
+                    "as": "row-1",
+                    "from": "row-1-left",
+                    "to": "row-1-right",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "row-2",
+                    "from": "row-2-left",
+                    "to": "row-2-right",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "row-3",
+                    "from": "row-3-left",
+                    "to": "row-3-right",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "row-4",
+                    "from": "row-4-left",
+                    "to": "row-4-right",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "row-5",
+                    "from": "row-5-left",
+                    "to": "row-5-right",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "row-6",
+                    "from": "row-6-left",
+                    "to": "row-6-right",
+                    "style": "solid"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "boundary-bottom-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "boundary-top-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "boundary-top-right.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "boundary-top-left.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-0-bottom.x",
+                    "expression": "((0)+(number_01)-abs((0)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-0-top.x",
+                    "expression": "((0)+(number_01)-abs((0)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-0-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-1-bottom.x",
+                    "expression": "((1)+(number_01)-abs((1)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-1-top.x",
+                    "expression": "((1)+(number_01)-abs((1)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-1-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-2-bottom.x",
+                    "expression": "((2)+(number_01)-abs((2)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-2-top.x",
+                    "expression": "((2)+(number_01)-abs((2)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-2-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-3-bottom.x",
+                    "expression": "((3)+(number_01)-abs((3)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-3-top.x",
+                    "expression": "((3)+(number_01)-abs((3)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-3-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-4-bottom.x",
+                    "expression": "((4)+(number_01)-abs((4)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-4-top.x",
+                    "expression": "((4)+(number_01)-abs((4)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-4-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-5-bottom.x",
+                    "expression": "((5)+(number_01)-abs((5)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-5-top.x",
+                    "expression": "((5)+(number_01)-abs((5)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-5-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-6-bottom.x",
+                    "expression": "((6)+(number_01)-abs((6)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-6-top.x",
+                    "expression": "((6)+(number_01)-abs((6)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-6-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-7-bottom.x",
+                    "expression": "((7)+(number_01)-abs((7)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-7-top.x",
+                    "expression": "((7)+(number_01)-abs((7)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-7-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "column-8-bottom.x",
+                    "expression": "((8)+(number_01)-abs((8)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-8-top.x",
+                    "expression": "((8)+(number_01)-abs((8)-(number_01)))/2"
+                  },
+                  {
+                    "target": "column-8-top.y",
+                    "expression": "number_02"
+                  },
+                  {
+                    "target": "row-0-left.y",
+                    "expression": "((0)+(number_02)-abs((0)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-0-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-0-right.y",
+                    "expression": "((0)+(number_02)-abs((0)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-1-left.y",
+                    "expression": "((1)+(number_02)-abs((1)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-1-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-1-right.y",
+                    "expression": "((1)+(number_02)-abs((1)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-2-left.y",
+                    "expression": "((2)+(number_02)-abs((2)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-2-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-2-right.y",
+                    "expression": "((2)+(number_02)-abs((2)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-3-left.y",
+                    "expression": "((3)+(number_02)-abs((3)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-3-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-3-right.y",
+                    "expression": "((3)+(number_02)-abs((3)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-4-left.y",
+                    "expression": "((4)+(number_02)-abs((4)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-4-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-4-right.y",
+                    "expression": "((4)+(number_02)-abs((4)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-5-left.y",
+                    "expression": "((5)+(number_02)-abs((5)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-5-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-5-right.y",
+                    "expression": "((5)+(number_02)-abs((5)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-6-left.y",
+                    "expression": "((6)+(number_02)-abs((6)-(number_02)))/2"
+                  },
+                  {
+                    "target": "row-6-right.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "row-6-right.y",
+                    "expression": "((6)+(number_02)-abs((6)-(number_02)))/2"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-02",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "面积的含义",
+                "items": [
+                  "1 平方厘米：边长为 1 厘米的正方形面积",
+                  "面积：用标准单位正方形覆盖区域的总数量"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "强调单个单位正方形的大小和含义",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "看看眼前这个长方形，我们用这些 1 平方厘米的小正方形无重叠、无缝隙地把它铺满。数一数一共用了多少个小正方形，就能知道这个长方形的面积是多少。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            },
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 4,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-02",
+      "purpose": "探索长方形行列计数与方格总数的乘法关系",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "请看这个长方形，它的长是4厘米，宽是3厘米。我们用边长为1厘米的单位正方形把它铺满。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察长方形的方格排列",
+              "when": "before_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "我们可以看到，沿着长的一边，每行正好摆放了4个小方格；沿着宽的一边，一共摆了这样的3行。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "分析每行方格数与行数的对应关系",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "要求出方格总数，不用一个一个数，直接用每行的4个乘以3行，就能算出总共是由12个小方格组成的。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-03-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "4 \\times 3 = 12"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "推导长方形面积公式并掌握平方单位的应用",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "我们在前几节发现，长方形里铺满的 1 平方厘米正方形总数，正好等于每行方格数乘以行数。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-01-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\text{面积} = \\text{长} \\times \\text{宽}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-03-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "聚焦公式推导结果",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "看现在的长方形，长是 4 厘米，宽是 3 厘米。每行有 4 个小正方形，共有 3 行，一共是 12 个小正方形。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-03-moment-01-item-01"
+              ],
+              "intent": "继续观察当前画面",
+              "when": "after_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "因此，它的面积就是 4 乘以 3 等于 12 平方厘米。记住，测量长度用厘米，表示覆盖的面积一定要用平方厘米。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "强调面积单位平方厘米",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "请你试着调整长方形的尺寸，验证一下“面积等于长乘宽”的规则吧。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-03-moment-01-item-01"
+              ],
+              "intent": "继续观察当前画面",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-04",
+      "purpose": "区分面积与周长：概念、边界与测量单位",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我们来清楚地区分面积与周长。看这个长为5厘米、宽为3厘米的长方形。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 5,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "before_speech"
+            },
+            {
+              "do": "animate",
+              "variable": "number_02",
+              "value": 3,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "before_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "周长指的是围成图形一周的边缘总长度，就像沿着外框走一圈，单位是一维的厘米；而面积则是内部铺满单位正方形的多少，单位是二维的平方厘米。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-02-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "面积与周长的区别",
+                "items": [
+                  "周长：封闭图形一周的长度（单位：厘米 cm）",
+                  "面积：覆盖平面区域的大小（单位：平方厘米 cm²）"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-03-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "对比周长（边缘长度）与面积（内部覆盖）的区别",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程从 1 平方厘米单位正方形的铺放出发，解释了面积的含义；通过行列计数推导出“面积 = 长 × 宽”，并结合具体实例清晰区分了面积与周长的概念与单位。",
+    "focus": [
+      "section-01-moment-01-item-01"
+    ]
+  }
+}

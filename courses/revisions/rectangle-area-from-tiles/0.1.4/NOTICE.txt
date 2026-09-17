@@ -1,0 +1,11 @@
+长方形的面积与周长
+
+Original Octos lesson content and packaging: Copyright 2026 Octos Course Library contributors.
+
+Adapted from Marble Skill Taxonomy (v1).
+Copyright Generative Spark, Inc. (Marble). https://withmarble.com
+Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
+
+Source candidate: candidate-005/course.authoring.json
+Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
+Camera review: candidate-005, 0.1.4; narration unchanged.

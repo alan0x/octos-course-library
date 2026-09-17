@@ -1,0 +1,69 @@
+{
+  "status": "generated",
+  "generated_at": "2026-09-16T05:15:22.815Z",
+  "elapsed_ms": 46026,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach_revision": "2b3c8ff98ec5d16189fb2449b4baa603afb73f74",
+  "model_calls": 8,
+  "sections": 4,
+  "beats": 15,
+  "rejected_parts": [
+    {
+      "label": "lesson-plan-bootstrap",
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_COURSE_VISUAL",
+        "path": "$lessonPlanOutline.course_visuals[2]",
+        "message": "$lessonPlanOutline.course_visuals[2]: capability 'geometric_rearrangement' already has course visual 2; reuse it or declare an explicit comparison"
+      }
+    },
+    {
+      "label": "lesson-plan-outline",
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_COURSE_VISUAL",
+        "path": "$lessonPlanOutline.course_visuals[2]",
+        "message": "$lessonPlanOutline.course_visuals[2]: capability 'process_diagram' already has course visual 1; reuse it or declare an explicit comparison"
+      }
+    },
+    {
+      "label": "lesson-plan-section",
+      "section": 4,
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_COURSE_VISUAL",
+        "path": "$lessonPlan.sections[3].moments[0].actions[0].content.parameters",
+        "message": "$lessonPlan.sections[3].moments[0].actions[0].content.parameters: an explicit comparison must differ in teaching content, not only in title, viewport, camera, color, sampling, or layout"
+      }
+    }
+  ],
+  "program_adjustments": [
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 4,
+      "moment": 2,
+      "board_kind": "note",
+      "reason": "same_moment_exact_duplicate"
+    }
+  ],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 26555
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 31953
+    },
+    {
+      "completed_sections": 3,
+      "elapsed_ms": 36064
+    },
+    {
+      "completed_sections": 4,
+      "elapsed_ms": 46017
+    }
+  ],
+  "credential_source": "local-development-profile"
+}

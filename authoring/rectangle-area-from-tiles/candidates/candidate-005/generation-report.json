@@ -1,0 +1,44 @@
+{
+  "status": "generated",
+  "generated_at": "2026-09-16T05:29:26.144Z",
+  "elapsed_ms": 22335,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "2b3c8ff98ec5d16189fb2449b4baa603afb73f74",
+    "dirty": true,
+    "source_diff_sha256": "c247e0dd2e2c322f2a78b95620846a68c8f44978278566dfd830bf32c23e60e2"
+  },
+  "model_calls": 4,
+  "sections": 4,
+  "beats": 13,
+  "rejected_parts": [],
+  "program_adjustments": [
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 2,
+      "moment": 3,
+      "board_kind": "math",
+      "reason": "same_moment_exact_duplicate"
+    }
+  ],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 8349
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 12855
+    },
+    {
+      "completed_sections": 3,
+      "elapsed_ms": 17860
+    },
+    {
+      "completed_sections": 4,
+      "elapsed_ms": 22329
+    }
+  ],
+  "credential_source": "local-development-profile"
+}
