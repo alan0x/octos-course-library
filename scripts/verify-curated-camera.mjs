@@ -71,5 +71,5 @@ for (const [packId, planName] of [
     ]);
     assert.equal(sha256(newAudio), sha256(oldAudio), `Audio changed at ${packId} segment ${index}`);
   }
-  process.stdout.write(`${packId}: ${originalFocus.size} -> ${actual.size} explicit focus actions; ${revised.manifest.narration.segments.length} audio segments unchanged\n`);
+  process.stdout.write(`${packId}: ${originalFocus.size} -> ${actual.size} authored focus actions; ${revised.manifest.narration.segments.length} audio segments unchanged\n`);
 }
