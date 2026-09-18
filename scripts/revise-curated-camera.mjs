@@ -153,11 +153,6 @@ if (!board.items.some((item) => item.kind === "playback.course-region")) {
     reservedWidth: 1300,
   });
 }
-board.items.push({
-  id: "reviewed-camera-policy",
-  kind: "playback.camera-policy",
-  policy: "explicit",
-});
 await writeFile(boardPath, `${JSON.stringify(board, null, 2)}\n`, "utf8");
 const notice = await readFile(join(source, "NOTICE.txt"), "utf8");
 const stableNotice = notice

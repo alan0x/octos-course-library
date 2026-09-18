@@ -219,10 +219,6 @@ await writeFile(resolve(outputDirectory, "board.json"), `${JSON.stringify({
     x: 20,
     y: 20,
     reservedWidth: 1300,
-  }, {
-    id: "generated-camera-policy",
-    kind: "playback.camera-policy",
-    policy: "automatic",
   }],
 }, null, 2)}\n`, "utf8");
 await writeFile(resolve(outputDirectory, "thumbnail.svg"), thumbnail(title, thumbnailVariant), "utf8");

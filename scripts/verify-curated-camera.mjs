@@ -33,7 +33,7 @@ function focuses(events) {
   return result;
 }
 
-const version = process.argv[2] ?? "0.1.4";
+const version = process.argv[2] ?? "0.1.5";
 
 for (const [packId, planName] of [
   ["rectangle-area-from-tiles", "rectangle-area-explicit-camera-plan.json"],
@@ -71,5 +71,5 @@ for (const [packId, planName] of [
     ]);
     assert.equal(sha256(newAudio), sha256(oldAudio), `Audio changed at ${packId} segment ${index}`);
   }
-  process.stdout.write(`${packId}: ${originalFocus.size} -> ${actual.size} explicit focus actions; ${revised.manifest.narration.segments.length} audio segments unchanged\n`);
+  process.stdout.write(`${packId}: ${originalFocus.size} -> ${actual.size} authored focus actions; ${revised.manifest.narration.segments.length} audio segments unchanged\n`);
 }

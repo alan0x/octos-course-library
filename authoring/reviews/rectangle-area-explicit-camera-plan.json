@@ -10,7 +10,13 @@
     },
     "section-02/moment-01": null,
     "section-02/moment-02": null,
-    "section-02/moment-03": null,
+    "section-02/moment-03": {
+      "targets": [
+        "section-01-moment-01-item-01",
+        "section-02-moment-03-item-01"
+      ],
+      "when": "during_speech"
+    },
     "section-03/moment-01": null,
     "section-03/moment-03": {
       "targets": [

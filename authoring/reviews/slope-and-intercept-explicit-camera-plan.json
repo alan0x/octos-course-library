@@ -23,6 +23,11 @@
         "section-04-moment-01-item-01"
       ]
     },
-    "section-04/moment-03": null
+    "section-04/moment-03": {
+      "targets": [
+        "section-01-moment-01-item-01"
+      ],
+      "when": "during_speech"
+    }
   }
 }
