@@ -33,7 +33,7 @@ function focuses(events) {
   return result;
 }
 
-const version = process.argv[2] ?? "0.1.4";
+const version = process.argv[2] ?? "0.1.5";
 
 for (const [packId, planName] of [
   ["rectangle-area-from-tiles", "rectangle-area-explicit-camera-plan.json"],
