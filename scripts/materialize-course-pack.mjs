@@ -236,20 +236,36 @@ await writeFile(resolve(outputDirectory, "NOTICE.txt"), [
   "",
 ].join("\n"), "utf8");
 
+const reuseDirectory = args["reuse-audio"] ? resolve(args["reuse-audio"]) : undefined;
+let reuseManifest = null;
+if (reuseDirectory && await exists(resolve(reuseDirectory, "manifest.json"))) {
+  reuseManifest = JSON.parse(await readFile(resolve(reuseDirectory, "manifest.json"), "utf8"));
+}
+
 const narrationSegments = [];
 let totalDurationMs = 0;
 for (let index = 0; index < narrations.length; index += 1) {
   const narration = narrations[index];
   const file = `audio/${String(index + 1).padStart(3, "0")}.mp3`;
   const absoluteFile = resolve(outputDirectory, file);
-  const bytes = await synthesize(narration.text, tts);
-  await writeFile(absoluteFile, bytes);
-  const segmentDurationMs = durationMs(absoluteFile);
+  const textHash = sha256(Buffer.from(narration.text, "utf8"));
+  const reusableSegment = reuseManifest?.narration?.segments?.find(
+    (seg) => seg.textSha256 === textHash && seg.file
+  );
+  let segmentDurationMs = 0;
+  if (reusableSegment && await exists(resolve(reuseDirectory, reusableSegment.file))) {
+    await copyFile(resolve(reuseDirectory, reusableSegment.file), absoluteFile);
+    segmentDurationMs = reusableSegment.durationMs || durationMs(absoluteFile);
+  } else {
+    const bytes = await synthesize(narration.text, tts);
+    await writeFile(absoluteFile, bytes);
+    segmentDurationMs = durationMs(absoluteFile);
+  }
   totalDurationMs += segmentDurationMs;
   narrationSegments.push({
     beatId: narration.beatId,
     file,
-    textSha256: sha256(Buffer.from(narration.text, "utf8")),
+    textSha256: textHash,
     durationMs: segmentDurationMs,
   });
   process.stdout.write(`${JSON.stringify({ stage: "narration", completed: index + 1, total: narrations.length })}\n`);
