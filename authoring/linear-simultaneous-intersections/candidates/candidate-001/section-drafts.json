@@ -1,0 +1,332 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "我们在同一平面直角坐标系中画出两条直线，第一条是 y = x + 1，第二条是 y = -x + 3。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "during_speech",
+            "content": {
+              "capability": "function_plot",
+              "parameters": {
+                "title": "两直线的交点与几何意义",
+                "curve_labels": [
+                  "y = x + 1",
+                  "y = -x + 3"
+                ],
+                "expressions": [
+                  "(x)+(1)",
+                  "(-(x))+(3)"
+                ]
+              }
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\begin{cases} y = x + 1 \\\\ y = -x + 3 \\end{cases}"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察两条直线的图像与位置关系",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "仔细观察可以发现，这两条直线在坐标系中相交于一点，交点坐标是 (1, 2)。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "直线的交点",
+              "items": [
+                "直线 y = x + 1 与 y = -x + 3 相交于点 (1, 2)",
+                "交点坐标同时满足两个函数解析式"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "观察坐标系，两条直线相交于点 (1, 2)。接下来，我们将这个点的坐标分别代入两个一次函数解析式中进行验证。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导关注两条直线的交点(1,2)",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      },
+      {
+        "narration": "首先代入第一个函数 y = x + 1。当 x 等于 1 时，y 等于 1 加 1 等于 2，左边等于右边，满足第一个方程。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "2 = 1 + 1"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "再代入第二个函数 y = -x + 3。当 x 等于 1 时，y 等于 -1 加 3 也等于 2，同样满足第二个方程。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "2 = -1 + 3"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "这说明交点 (1, 2) 的坐标同时满足这两个方程，它就是对应二元一次方程组的公共解。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\begin{cases} x = 1 \\\\ y = 2 \\end{cases}"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "现在我们来总结二元一次方程组与直线的几何对应关系：求解二元一次方程组的公共解，在几何上就等价于寻找两条直线图像的交点坐标。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "二元一次方程组与直线的几何意义",
+              "items": [
+                "方程组的公共解 ⇔ 两条直线的交点坐标",
+                "方程组无解 ⇔ 两直线平行（无交点）",
+                "方程组有无数解 ⇔ 两直线重合"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "总结二元一次方程组与直线交点的几何对应关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "现在我们来看另一组直线：y = x + 1 和 y = x - 2。它们的斜率都是1，因而在平面上是两条互相平行的直线。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\begin{cases} y = x + 1 \\\\ y = x - 2 \\end{cases}"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\text{平行线 } \\Leftrightarrow \\text{ 无交点 } \\Leftrightarrow \\text{ 方程组无解}"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察两条斜率相同的平行线",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "因为两条直线平行且永不相交，所以它们没有任何公共点。这也对应着该二元一次方程组没有任何解，也就是无解的情况。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      }
+    ]
+  }
+]

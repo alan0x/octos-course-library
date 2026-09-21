@@ -1,0 +1,111 @@
+{
+  "title": "正比例函数 y = kx 与斜率的几何意义",
+  "goals": [
+    "理解正比例函数 y = kx 表示一条过原点的直线，k 为斜率",
+    "掌握斜率 k 为正数时直线的倾斜方向与陡峭程度",
+    "理解斜率 k 为负数时的倾斜方向，以及 k=0 时的临界状态"
+  ],
+  "teaching_strategies": [
+    "采用直观函数图像联动法，通过滑动调节 k 值实时观察直线的旋转与倾斜",
+    "对比正斜率与负斜率在四个象限中的走势差异，强化直觉记忆"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": -3,
+      "max": 3,
+      "label": "斜率 k",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.03
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_plot",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "介绍正比例函数 y = kx 的定义及其过原点特征，引入斜率 k 的概念",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "探究正斜率 k > 0 时，直线随 k 增大变陡峭的动态变化",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "探究负斜率 k < 0 的几何意义及 k=0 的临界情况，并通过手动调节巩固认知",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程深入学习了正比例函数 y = kx 中斜率 k 的几何意义：k > 0 时直线左下到右上上升，|k| 越大越陡峭；k < 0 时左上到右下下降；k = 0 时退化为与 x 轴重合的水平线。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

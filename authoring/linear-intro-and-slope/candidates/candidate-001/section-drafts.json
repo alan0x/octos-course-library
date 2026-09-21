@@ -1,0 +1,268 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "大家好！今天我们来探索正比例函数 y = kx。在平面直角坐标系中，正比例函数的图像是一条必定经过坐标原点的直线。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_plot",
+              "parameters": {
+                "title": "正比例函数图像",
+                "curve_label": "y = kx",
+                "expression_tokens": [
+                  {
+                    "kind": "number",
+                    "number": 1
+                  },
+                  {
+                    "kind": "input"
+                  },
+                  {
+                    "kind": "operator",
+                    "operator": "multiply"
+                  }
+                ]
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "y = kx \\quad (k \\neq 0)"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察直线经过原点 (0,0)",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "公式中的参数 k 称为直线的斜率。斜率 k 决定了直线的倾斜方向和陡峭程度。接下来我们将逐步观察 k 值的变化对直线形态的影响。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "正比例函数特征",
+              "items": [
+                "图像是一条经过原点的直线",
+                "参数 k 称为直线的斜率"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "当斜率 k 为正数时，我们观察到直线从左下方延伸到右上方，呈现上升的状态。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察正斜率直线的走势",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      },
+      {
+        "narration": "现在我们将 k 从 1 逐渐增大到 3。注意看，随着 k 的增大，直线变得越来越陡峭。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 3,
+            "duration_intent": "extended",
+            "easing": "linear"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请将斜率 k 调整为 2，亲自体验直线陡峭程度的变化。",
+        "hints": [
+          "拖动斜率 k 的滑块至 2。",
+          "观察随着 k 增大，直线相对于 x 轴倾斜得更厉害了。"
+        ],
+        "success_message": "很好！斜率 k 越大，直线就越陡峭。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 2.01,
+        "tolerance": 0.015
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "现在我们把斜率 k 调整为负数。注意观察直线的方向，当 k 小于 0 时，直线从左上走向右下。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": -1,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "当 k 继续减小到 -2 时，直线越发陡峭。这说明不论正负，斜率 k 的绝对值越大，直线就越陡峭。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": -2,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "如果我们把 k 调回 0，此时函数变成 y 等于 0，直线完全水平重合于 x 轴。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 0,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "现在轮到你了，请试着拖动滑块，把斜率 k 调整到 -1.5。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "after_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "将斜率 k 调到 -1.5",
+        "hints": [
+          "负斜率会让直线指向右下方",
+          "向左拖动滑块直到数值达到 -1.5"
+        ],
+        "success_message": "太棒了！你已经掌握了负斜率直线的特征。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": -1.5,
+        "tolerance": 0.015
+      }
+    ]
+  }
+]

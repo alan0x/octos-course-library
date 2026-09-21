@@ -1,0 +1,490 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "正比例函数 y = kx 与斜率的几何意义",
+    "goals": [
+      "理解正比例函数 y = kx 表示一条过原点的直线，k 为斜率",
+      "掌握斜率 k 为正数时直线的倾斜方向与陡峭程度",
+      "理解斜率 k 为负数时的倾斜方向，以及 k=0 时的临界状态"
+    ],
+    "teaching_strategies": [
+      "采用直观函数图像联动法，通过滑动调节 k 值实时观察直线的旋转与倾斜",
+      "对比正斜率与负斜率在四个象限中的走势差异，强化直觉记忆"
+    ],
+    "numbers": [
+      {
+        "initial": 1,
+        "min": -3,
+        "max": 3,
+        "label": "斜率 k",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.03
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "介绍正比例函数 y = kx 的定义及其过原点特征，引入斜率 k 的概念",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "function_plot"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "大家好！今天我们来探索正比例函数 y = kx。在平面直角坐标系中，正比例函数的图像是一条必定经过坐标原点的直线。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "function_plot",
+                  "parameters": {
+                    "title": "正比例函数图像",
+                    "curve_label": "y = kx",
+                    "expression_tokens": [
+                      {
+                        "kind": "number",
+                        "number": 1
+                      },
+                      {
+                        "kind": "input"
+                      },
+                      {
+                        "kind": "operator",
+                        "operator": "multiply"
+                      }
+                    ]
+                  },
+                  "numbers": [
+                    1
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 3
+              },
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "y = kx \\quad (k \\neq 0)"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察直线经过原点 (0,0)",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "公式中的参数 k 称为直线的斜率。斜率 k 决定了直线的倾斜方向和陡峭程度。接下来我们将逐步观察 k 值的变化对直线形态的影响。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "正比例函数特征",
+                  "items": [
+                    "图像是一条经过原点的直线",
+                    "参数 k 称为直线的斜率"
+                  ]
+                },
+                "reusable_item": 2,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 1,
+                  "item": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "探究正斜率 k > 0 时，直线随 k 增大变陡峭的动态变化",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "当斜率 k 为正数时，我们观察到直线从左下方延伸到右上方，呈现上升的状态。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察正斜率直线的走势",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 3
+                }
+              }
+            ]
+          },
+          {
+            "narration": "现在我们将 k 从 1 逐渐增大到 3。注意看，随着 k 的增大，直线变得越来越陡峭。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 3,
+                "duration_intent": "extended",
+                "easing": "linear"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请将斜率 k 调整为 2，亲自体验直线陡峭程度的变化。",
+            "hints": [
+              "拖动斜率 k 的滑块至 2。",
+              "观察随着 k 增大，直线相对于 x 轴倾斜得更厉害了。"
+            ],
+            "success_message": "很好！斜率 k 越大，直线就越陡峭。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 2.01,
+            "tolerance": 0.015
+          }
+        ]
+      },
+      {
+        "purpose": "探究负斜率 k < 0 的几何意义及 k=0 的临界情况，并通过手动调节巩固认知",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "现在我们把斜率 k 调整为负数。注意观察直线的方向，当 k 小于 0 时，直线从左上走向右下。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": -1,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "当 k 继续减小到 -2 时，直线越发陡峭。这说明不论正负，斜率 k 的绝对值越大，直线就越陡峭。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": -2,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "如果我们把 k 调回 0，此时函数变成 y 等于 0，直线完全水平重合于 x 轴。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 0,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "现在轮到你了，请试着拖动滑块，把斜率 k 调整到 -1.5。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "after_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 3
+                }
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "将斜率 k 调到 -1.5",
+            "hints": [
+              "负斜率会让直线指向右下方",
+              "向左拖动滑块直到数值达到 -1.5"
+            ],
+            "success_message": "太棒了！你已经掌握了负斜率直线的特征。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": -1.5,
+            "tolerance": 0.015
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课程深入学习了正比例函数 y = kx 中斜率 k 的几何意义：k > 0 时直线左下到右上上升，|k| 越大越陡峭；k < 0 时左上到右下下降；k = 0 时退化为与 x 轴重合的水平线。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 3
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01",
+            "section-01-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [
+            "section-01-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-01-item-02",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-01-moment-02-item-01",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 3,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-03-moment-04",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[2].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-02",
+      "authoring_alias": "section-01-moment-01-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[3].actions[0].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    }
+  ]
+}

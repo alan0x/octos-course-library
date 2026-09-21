@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "packId": "linear-intro-and-slope",
+  "version": "0.1.0",
+  "title": "正比例函数 y = kx 与斜率的几何意义",
+  "description": "从正比例函数出发，通过动态滑块改变斜率 k，直观感受直线的倾斜方向、绕原点转动与陡缓。",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "secondary-age-12-14",
+  "durationSeconds": 64,
+  "minimumPlayerVersion": "0.1.0",
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "7046ab5eeda0054a64afc60a37d65de5e05f6208b63c5dde7542c7742ec16e7c",
+        "durationMs": 9912
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-01:beat:moment-02",
+        "file": "audio/002.mp3",
+        "textSha256": "84964a64c6131fd6fb8bf0b194f391f28dfbadda25a244197643d4d893dd19cf",
+        "durationMs": 11088
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-02:beat:moment-01",
+        "file": "audio/003.mp3",
+        "textSha256": "051b40ac4c244ad1fd79c238b8ef81b5a9e8b3753e75eb423d17af4789c61396",
+        "durationMs": 6864
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-02:beat:moment-02",
+        "file": "audio/004.mp3",
+        "textSha256": "140430e5a5570896237784e4abbdda964d86c48ca99de79cd4880c5eced2ef91",
+        "durationMs": 6696
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-01",
+        "file": "audio/005.mp3",
+        "textSha256": "03183cc05a307bdff19ed844f0e38e1f8b75bb72a30f18e28160c605d249eea8",
+        "durationMs": 8448
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-02",
+        "file": "audio/006.mp3",
+        "textSha256": "d3996ec2a8ac7d92c725d8bea284c0ea4ca0e555e7034a5ce89bd2d0ef33d834",
+        "durationMs": 8496
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-03",
+        "file": "audio/007.mp3",
+        "textSha256": "6eb667793a3ca4d65085a052878fb3b41849ea8469057d118ab9094812f4d8e3",
+        "durationMs": 6480
+      },
+      {
+        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-04",
+        "file": "audio/008.mp3",
+        "textSha256": "09127d4a712c23677ee464234b529190fb72673889e60721c85b0194645efb2a",
+        "durationMs": 5256
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "02f843960425c414e08e36d35b5ca7d137ad54c1fd64ea00a9af2e28ea1f76d9",
+      "bytes": 455,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "09b816414720e6a1e19a8beca677f738a9c5217e2f24caee4c6b106a9bfbf002",
+      "bytes": 309,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.authoring.json",
+      "sha256": "e64dfc40764eae6724c05fd4d91cbfad48a4422a01c668baa34981464ad057b4",
+      "bytes": 10296,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "da50c10e913afd07dda6164847bf82a28f12a566e27678d3e4b4b022256eea30",
+      "bytes": 9466,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "b539c7e7a6610a40e64515d8ffc68969853da10061023279c7744fdd3d332240",
+      "bytes": 1157,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "00f9638dafc21164e44dc52ae1001323faa588eaf5c5255e8633c6ee6027c15d",
+      "bytes": 198240,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "d186a1995bb13b81027c43e1287b7dacfbe0cfb504af57e9b736d389f330f0f0",
+      "bytes": 221760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "00bb95f1794f959fd67ee36734eecd3a13d86e0689d4f186cf2825c68df7cef9",
+      "bytes": 137280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "8d2a96ac27974600c7f9320a3ea254e22adf652dc10878df82f2e845d50336e4",
+      "bytes": 133920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "1baf0faa21bf0cd6b449e0e828648e99057ec917af44be27611763c76d9a2b8f",
+      "bytes": 168960,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "57e231114ae292c4092f554912b6c2a9e6c5e47bac10919f47ccc4818695f73c",
+      "bytes": 169920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "899a8bd0338b940ed81d1f2d34d2c18ad7cf3b46e4fecdbf62f170429fefca75",
+      "bytes": 129600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "eceb47bd7b3996d845295c34c26d1fe67f8c5a93aef6ea6aaa91c9c6342c2546",
+      "bytes": 105120,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.authoring.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}

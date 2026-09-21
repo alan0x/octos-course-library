@@ -1,0 +1,135 @@
+{
+  "title": "一次函数 y = 2x - 1 的图像本质与画法",
+  "goals": [
+    "理解一次函数图像是满足方程 y = 2x - 1 的所有点 (x, y) 的集合",
+    "通过多点采样与数值代入，建立自变量 x 与因变量 y 的对应直觉",
+    "掌握“两点确定一条直线”的性质，并能寻找坐标轴交点快速画图"
+  ],
+  "teaching_strategies": [
+    "动态点集生成法：从孤立坐标点渐进过渡到连续直线",
+    "代入验证与数值联动：拖拽自变量直观验证解析式",
+    "简化画图策略：提炼关键截距点，降低画图复杂度"
+  ],
+  "numbers": [
+    {
+      "initial": -1,
+      "min": -3,
+      "max": 3,
+      "label": "点A横坐标",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.03
+      }
+    },
+    {
+      "initial": 0,
+      "min": -3,
+      "max": 3,
+      "label": "点B横坐标",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.03
+      }
+    },
+    {
+      "initial": 1,
+      "min": -3,
+      "max": 3,
+      "label": "点C横坐标"
+    },
+    {
+      "initial": 2,
+      "min": -3,
+      "max": 3,
+      "label": "点D横坐标"
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_plot",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立图像本质直觉：从方程关系式到平面坐标点的映射",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "通过多点采样与动态互动，验证代入计算与点集分布规律",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "理解两点确定一条直线，学会利用坐标轴交点快速绘制图像",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程深入探讨了一次函数 y = 2x - 1 的图像本质。图像上的每一个点都是使等式成立的坐标对 (x, y)。在实际作图中，无需绘制无数个点，只需利用“两点确定一条直线”的几何性质，找出与坐标轴的交点即可快速准确地画出一次函数图像。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

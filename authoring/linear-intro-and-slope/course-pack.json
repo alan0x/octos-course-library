@@ -1,0 +1,6 @@
+{
+  "description": "从正比例函数出发，通过动态滑块改变斜率 k，直观感受直线的倾斜方向、绕原点转动与陡缓。",
+  "subject": "mathematics",
+  "grade": "secondary-age-12-14",
+  "thumbnailVariant": "linear-function"
+}

@@ -1,0 +1,69 @@
+{
+  "status": "generated",
+  "generated_at": "2026-09-21T14:40:45.809Z",
+  "elapsed_ms": 25854,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "227bb72a3cdf019a9252861bd99d3eba731bf658",
+    "dirty": true,
+    "source_diff_sha256": "7b973fc1224b60fa3f4630c2e995ab3ca7f6476ed7d12409c6838dc84f83c3ac"
+  },
+  "model_calls": 5,
+  "sections": 4,
+  "beats": 9,
+  "rejected_parts": [
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_EXPRESSION",
+        "path": "$lessonPlanSection.visual.parameters.formulas",
+        "message": "$lessonPlanSection.visual.parameters.formulas: a multi-curve comparison currently supports static formulas only; use one formula when lesson numbers change the whole curve"
+      }
+    }
+  ],
+  "program_adjustments": [
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 1,
+      "moment": 1,
+      "board_kind": "math",
+      "reason": "same_moment_exact_duplicate"
+    },
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 1,
+      "moment": 2,
+      "board_kind": "note",
+      "reason": "same_moment_exact_duplicate"
+    }
+  ],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 14835
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 18278
+    },
+    {
+      "completed_sections": 3,
+      "elapsed_ms": 22629
+    },
+    {
+      "completed_sections": 4,
+      "elapsed_ms": 25848
+    }
+  ],
+  "request_metrics": {
+    "model_calls": 5,
+    "model_elapsed_ms": 25799,
+    "system_prompt_bytes": 10398,
+    "prompt_bytes": 7734,
+    "response_schema_bytes": 16203
+  },
+  "credential_source": "local-development-profile"
+}

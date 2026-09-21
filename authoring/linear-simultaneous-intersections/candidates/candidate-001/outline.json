@@ -1,0 +1,147 @@
+{
+  "title": "二元一次方程组与一次函数的几何意义",
+  "goals": [
+    "理解二元一次方程与一次函数的对应关系及图像交点的几何意义",
+    "掌握通过代入验证两条直线交点坐标的方法",
+    "理解平行线无交点与方程组无解的对应关系"
+  ],
+  "teaching_strategies": [
+    "通过直角坐标系直观演示两条相交直线的交点",
+    "代入计算进行代数与几何的双向验证",
+    "对比平行直线说明无解的几何本质"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": -5,
+      "max": 5,
+      "label": "k1"
+    },
+    {
+      "initial": 1,
+      "min": -5,
+      "max": 5,
+      "label": "b1"
+    },
+    {
+      "initial": -1,
+      "min": -5,
+      "max": 5,
+      "label": "k2"
+    },
+    {
+      "initial": 3,
+      "min": -5,
+      "max": 5,
+      "label": "b2"
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_plot",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "在坐标系中展示直线y=x+1与y=-x+3并观察交点",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "通过代入验证交点(1,2)同时满足两个方程",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结二元一次方程组与直线交点的几何对应关系",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "观察平行线无交点并理解方程组无解的情况",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "我们学习了二元一次方程组的几何意义：方程组的解就是对应直线图像的交点坐标；相交对应唯一解，平行无交点对应无解。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "packId": "linear-plotting-points",
+  "version": "0.1.0",
+  "title": "一次函数 y = 2x - 1 的图像本质与画法",
+  "description": "理解一次函数图像是满足解析式的所有点构成的轨迹，通过移动采样点体会两点确定一条直线。",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "secondary-age-12-14",
+  "durationSeconds": 79,
+  "minimumPlayerVersion": "0.1.0",
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "2ec56a341c4f777cd529d0433c19c2e80b873f8e2a9adf113d4438ffcd565a09",
+        "durationMs": 11640
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-01:beat:moment-02",
+        "file": "audio/002.mp3",
+        "textSha256": "67f4c17c63878f97836c9645a5c0be6e06a9f119835ac30cd190ad4da909ed5a",
+        "durationMs": 11640
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-02:beat:moment-01",
+        "file": "audio/003.mp3",
+        "textSha256": "5cceadcc93069e2f265c4b2f14fe57371e07ce31b401225a2e44eefec72186ed",
+        "durationMs": 8688
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-02:beat:moment-02",
+        "file": "audio/004.mp3",
+        "textSha256": "16005619ca1fc78090152473fa84d1fdef5f13d36c8192cf5ff60e13671fceb3",
+        "durationMs": 8040
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-02:beat:moment-03",
+        "file": "audio/005.mp3",
+        "textSha256": "5879c4043775d58ea0bf5fb9aaceadb60d55df6c311dc5a7353c9ec614a87f09",
+        "durationMs": 7896
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-03:beat:moment-01",
+        "file": "audio/006.mp3",
+        "textSha256": "60fe4a4a821d8fc61a908152e221cd1c4d9acfeb672baa874a2122a85ac32668",
+        "durationMs": 10848
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-03:beat:moment-02",
+        "file": "audio/007.mp3",
+        "textSha256": "aac08b3e88551f46dee4184567b50cecf65804f7db8cb0bb69802d265880899e",
+        "durationMs": 13656
+      },
+      {
+        "beatId": "linear-plotting-points-0.1.0:step:section-03:beat:moment-03",
+        "file": "audio/008.mp3",
+        "textSha256": "41bd7a7a02c0e6945fce2b349f52f8502425cfd81b2cd01721b2e582ed30e0eb",
+        "durationMs": 5640
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "2efbfcdead9db52f3c679ff83ecaf08238b2bbe963fb260ff2ec0f586b889980",
+      "bytes": 456,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "eb7ac942e11b477d86addfe4d579361365b506d0ebf043b0189ce954dce848a8",
+      "bytes": 309,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.authoring.json",
+      "sha256": "cc602979201a0b2d6388e2da2b0467038e389d27805f5aa60d03f70ad705399c",
+      "bytes": 13519,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "0b55e2ba81dcd9aebe2662b3985762c09f00f6a1bfe5c18d34ec4c76995a0c17",
+      "bytes": 11997,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "c65805c8a664f32d1312269e2ac882682520be52538367bf149fa9e2920bfd1e",
+      "bytes": 1158,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "94c2d07e462c4645e72f893ae7f447ff9f005746bc04b2a1184b52831ab479ce",
+      "bytes": 232800,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "ee5d9b38d5d87af33c49a13c2fa06e2a7e9f3b2d536396e1597d8349360091ec",
+      "bytes": 232800,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "feb527edaa2abfc04784ae6da510f26ce669377b852954feb877c2f98aa5d1c6",
+      "bytes": 173760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "b03c68061e3b359a8057ea7e1a6a7f19cbdacff90ee85223e5aa4e39804f50af",
+      "bytes": 160800,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "aa5dc8de026e47e7db45f24b4c4b3d1329d60cf00e7ef420522902532dd08e7c",
+      "bytes": 157920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "fa25798bd1eaa9459cdc4fe607261d44c4ab695e9c4cb507cd1d0f97334e64a2",
+      "bytes": 216960,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "a000f49d9cc208b9503d62e23e4f2153e356a47f4a499b2dc7ba359724347f02",
+      "bytes": 273120,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "a45e31b750453ccf44e451f336ab5766e150b1ada131989f7560ed0cad4f5ae9",
+      "bytes": 112800,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.authoring.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}
