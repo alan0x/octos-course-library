@@ -1,0 +1,118 @@
+{
+  "title": "从单位圆旋转到正弦曲线",
+  "goals": [
+    "理解单位圆上动点的纵坐标与正弦值 sin θ 的几何对应关系",
+    "观察动点旋转一周时高度在 [0, 1, 0, -1, 0] 之间的周期变化",
+    "掌握将圆周旋转运动沿角度轴展开生成正弦曲线 y = sin x 的过程与性质"
+  ],
+  "teaching_strategies": [
+    "利用单位圆与正弦曲线联动画面，实现旋转运动到函数图象的平滑映射",
+    "通过关键特殊角（0, π/2, π, 3π/2, 2π）的数值追踪，建立直观几何印象",
+    "结合互动调节，引导观察波峰位置与函数最大值"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 6.28,
+      "label": "旋转角 θ",
+      "unit": "rad",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.031400000000000004
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2,
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "unit_circle_projection",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "在单位圆中引入动点 P 与纵坐标 sin θ 的几何含义",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "unit_circle_projection"
+        }
+      ],
+      "allowed_capabilities": [
+        "unit_circle_projection"
+      ]
+    },
+    {
+      "purpose": "动态演练动点 P 旋转一周的高度变化，并展开形成正弦曲线 y = sin x",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结正弦函数的周期性与值域，并进行波峰位置的互动操作",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程展示了单位圆上的旋转运动如何转化为正弦函数 y = sin x 的周期性波动，明确了周期 T = 2π 与值域 [-1, 1] 的几何来源。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

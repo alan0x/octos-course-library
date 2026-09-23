@@ -1,0 +1,138 @@
+{
+  "title": "余弦函数与单位圆投影",
+  "goals": [
+    "理解单位圆中动点的 x 轴投影代表余弦值 cos θ 及其随角度变化的周期规律",
+    "通过单位圆旋转与正弦曲线平移关系推导诱导公式 cos θ = sin(θ + π/2)",
+    "掌握余弦曲线的关键特征点（波峰、零点、波谷）及平移性质"
+  ],
+  "teaching_strategies": [
+    "基于单位圆投影动态演示余弦值的几何意涵",
+    "采用双曲线并排对比演示波形形状的一致性与平移相位差",
+    "交互式寻找波峰与零点强化对特殊角的记忆"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 6.28,
+      "label": "旋转角度 θ",
+      "unit": "rad",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.031400000000000004
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3,
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "unit_circle_projection",
+      "reusable_item": 1
+    },
+    {
+      "use_sections": [
+        3
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 3,
+      "capability": "function_plot",
+      "reusable_item": 1
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立单位圆中动点 x 轴投影表示余弦值 cos θ 的几何直觉",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "unit_circle_projection"
+        }
+      ],
+      "allowed_capabilities": [
+        "unit_circle_projection"
+      ]
+    },
+    {
+      "purpose": "从单位圆旋转推导余弦曲线 y = cos θ 的关键点变化与展开过程",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "对比正余弦波形，推导平移关系与诱导公式 cos θ = sin(θ + π/2)",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "通过寻找余弦波峰与零点的交互练习巩固认知",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程从单位圆动点在 x 轴上的投影出发，观察了余弦值随着旋转角度从 1 到 0 再到 -1 的动态变化，并展开得到余弦曲线 y = cos θ。进一步与正弦曲线对比，验证了两波形完全一致且存在 π/2 相位差的关系，从而直观推导出诱导公式 cos θ = sin(θ + π/2)。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 1
+      },
+      {
+        "source": "reusable",
+        "section": 3,
+        "item": 1
+      }
+    ]
+  },
+  "version": "0.1"
+}

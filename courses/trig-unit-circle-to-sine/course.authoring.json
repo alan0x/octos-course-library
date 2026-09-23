@@ -1,0 +1,486 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "zh-CN",
+    "title": "从单位圆旋转到正弦曲线",
+    "goals": [
+      "理解单位圆上动点的纵坐标与正弦值 sin θ 的几何对应关系",
+      "观察动点旋转一周时高度在 [0, 1, 0, -1, 0] 之间的周期变化",
+      "掌握将圆周旋转运动沿角度轴展开生成正弦曲线 y = sin x 的过程与性质"
+    ],
+    "adaptation": {
+      "strategies": [
+        "利用单位圆与正弦曲线联动画面，实现旋转运动到函数图象的平滑映射",
+        "通过关键特殊角（0, π/2, π, 3π/2, 2π）的数值追踪，建立直观几何印象",
+        "结合互动调节，引导观察波峰位置与函数最大值"
+      ]
+    },
+    "variables": [
+      {
+        "as": "number_01",
+        "initial": 0,
+        "min": 0,
+        "max": 6.28,
+        "label": "旋转角 θ",
+        "unit": "rad",
+        "control": {
+          "kind": "slider",
+          "step": 0.031400000000000004
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "as": "section-02-task-01",
+        "prompt": "拖动滑块改变旋转角 θ，观察动点 P 的高度与正弦曲线上的点如何实时对应。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "将旋转角 θ 设为 π/2（约 1.57），观察高度是否达到最大值 1。"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "很好！你已经掌握了单位圆旋转与正弦曲线的对应关系。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider",
+              "geometry_point"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 1.57,
+          "tolerance": 0.015700000000000002
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "section-01",
+      "purpose": "在单位圆中引入动点 P 与纵坐标 sin θ 的几何含义",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "欢迎来到三角函数的世界。请看左侧的平面直角坐标系，这里有一个半径为 1 的单位圆。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01-circle",
+              "kind": "geometry",
+              "role": "main_visual",
+              "content": {
+                "title": "单位圆与投影",
+                "axes": {
+                  "x": {
+                    "min": -1.25,
+                    "max": 1.25,
+                    "label": "x"
+                  },
+                  "y": {
+                    "min": -1.25,
+                    "max": 1.25,
+                    "label": "y"
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "origin",
+                    "x": 0,
+                    "y": 0,
+                    "label": "O"
+                  },
+                  {
+                    "as": "moving-point",
+                    "x": 1,
+                    "y": 0,
+                    "label": "P(cos θ, sin θ)",
+                    "interaction": {
+                      "kind": "angle_control",
+                      "variable": "number_01",
+                      "center": "origin"
+                    }
+                  },
+                  {
+                    "as": "projection-foot",
+                    "x": 1,
+                    "y": 0
+                  }
+                ],
+                "circles": [
+                  {
+                    "as": "unit-circle",
+                    "center": "origin",
+                    "radius": 1,
+                    "label": "r = 1"
+                  }
+                ],
+                "segments": [
+                  {
+                    "as": "radius",
+                    "from": "origin",
+                    "to": "moving-point",
+                    "style": "solid"
+                  },
+                  {
+                    "as": "projection",
+                    "from": "moving-point",
+                    "to": "projection-foot",
+                    "style": "projection",
+                    "label": "sin θ"
+                  }
+                ],
+                "arcs": [
+                  {
+                    "as": "angle",
+                    "center": "origin",
+                    "radius": 0.28,
+                    "start_angle": 0,
+                    "end_angle": 0,
+                    "label": "θ"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "moving-point.x",
+                    "expression": "cos(number_01)"
+                  },
+                  {
+                    "target": "moving-point.y",
+                    "expression": "sin(number_01)"
+                  },
+                  {
+                    "target": "projection-foot.x",
+                    "expression": "cos(number_01)"
+                  },
+                  {
+                    "target": "angle.end_angle",
+                    "expression": "number_01"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01-plot",
+              "kind": "plot",
+              "role": "main_visual",
+              "content": {
+                "title": "正弦函数图像",
+                "axes": {
+                  "x": {
+                    "min": 0,
+                    "max": 6.28,
+                    "label": "θ"
+                  },
+                  "y": {
+                    "min": -1.2,
+                    "max": 1.2,
+                    "label": "y"
+                  }
+                },
+                "curves": [
+                  {
+                    "as": "primary-curve",
+                    "expression": "sin(x)",
+                    "label": "y = sin(x)"
+                  }
+                ],
+                "points": [
+                  {
+                    "as": "moving-point",
+                    "x": 0,
+                    "y": 0,
+                    "label": "P(θ, sin(θ))"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "moving-point.x",
+                    "expression": "number_01"
+                  },
+                  {
+                    "target": "moving-point.y",
+                    "expression": "sin(number_01)"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "right_of",
+                "anchor": "section-01-moment-01-item-01-circle",
+                "gap": "normal"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "connect",
+              "as": "section-01-moment-01-item-01-link",
+              "from": "section-01-moment-01-item-01-circle",
+              "to": "section-01-moment-01-item-01-plot",
+              "relation": "maps_to",
+              "label": "旋转角与周期波动",
+              "when": "before_speech"
+            },
+            {
+              "do": "group",
+              "as": "section-01-moment-01-item-01",
+              "role": "main_visual",
+              "label": "单位圆与函数图像",
+              "members": [
+                "section-01-moment-01-item-01-circle",
+                "section-01-moment-01-item-01-plot"
+              ],
+              "when": "before_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察坐标系中的单位圆与动点",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "圆上有一个动点 P，它与 x 轴正半轴的夹角为 θ。点 P 的坐标可以表示为 (cos θ, sin θ)。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-02-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "P = (\\cos\\theta, \\sin\\theta)"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "注意观察连接点 P 到 x 轴的虚线段，这段垂直高度恰好就是角 θ 的正弦值 sin θ。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-03-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "正弦值的几何意义",
+                "items": [
+                  "单位圆半径 r = 1",
+                  "动点 P 的高度（纵坐标）即为 sin θ"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-02-item-01"
+              },
+              "when": "after_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "聚焦动点 P 的垂直高度投影",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-02",
+      "purpose": "动态演练动点 P 旋转一周的高度变化，并展开形成正弦曲线 y = sin x",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "我们在坐标系中建立一个半径为 1 的单位圆。当动点 P 在圆周上移动时，它的坐标为 (cos θ, sin θ)，其中点 P 的垂直高度直接对应着正弦值 sin θ。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察单位圆上动点 P 的纵坐标与正弦值的对应关系",
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "现在，让动点 P 从 0 弧度开始逆时针旋转。随着角度增加，高度逐渐升至最高点 1；继续旋转降回 0，接着下降到最低点 -1，最后再次回到 0。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 6.28,
+              "easing": "linear",
+              "duration_intent": "extended",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "如果我们将点 P 在旋转过程中的高度向右随旋转角度 θ 展开，就能追踪出一条连续平滑的正弦曲线 y = sin θ。这就直观展示了圆周旋转运动如何转化为周期性的波形运动。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "体会旋转运动展开为正弦曲线的动态过程",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "总结正弦函数的周期性与值域，并进行波峰位置的互动操作",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "我们在平面直角坐标系中引入单位圆，圆上动点 P 的坐标为 cos θ 和 sin θ。请注意看，点 P 到 x 轴的垂直高度，正对应着正弦值 sin θ。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-01-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "P = (\\cos \\theta, \\sin \\theta)"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察单位圆上动点P的纵坐标投影",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "当动点 P 从 0 开始逆时针旋转时，高度从 0 逐渐升高到最高点 1；接着降回 0；再继续下降到最低点 -1；最后重新回到 0，完成一周的旋转。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 6.28,
+              "easing": "linear",
+              "duration_intent": "extended",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "如果我们将点 P 的高度变化沿横轴的角度 θ 向右连续展开，就能得到一条平滑的波浪线——这就是正弦曲线 y = sin θ。旋转运动就这样转化为了周期性的波动。",
+          "delivery": "careful",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-03-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "y = \\sin \\theta"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-03-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "总结一下，正弦函数具有周期性，最小正周期 T 等于 2π，值域在 -1 到 1 之间。现在，请试着拖动滑块，把旋转角调节到波峰位置。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-04-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "正弦函数 y = sin x 的性质",
+                "items": [
+                  "周期性：T = 2π",
+                  "值域：[-1, 1]",
+                  "波峰位置：x = π/2 + 2kπ"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-03-moment-03-item-01"
+              },
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程展示了单位圆上的旋转运动如何转化为正弦函数 y = sin x 的周期性波动，明确了周期 T = 2π 与值域 [-1, 1] 的几何来源。",
+    "focus": [
+      "section-01-moment-01-item-01"
+    ]
+  }
+}

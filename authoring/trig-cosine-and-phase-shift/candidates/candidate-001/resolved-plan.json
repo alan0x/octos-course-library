@@ -1,0 +1,776 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "余弦函数与单位圆投影",
+    "goals": [
+      "理解单位圆中动点的 x 轴投影代表余弦值 cos θ 及其随角度变化的周期规律",
+      "通过单位圆旋转与正弦曲线平移关系推导诱导公式 cos θ = sin(θ + π/2)",
+      "掌握余弦曲线的关键特征点（波峰、零点、波谷）及平移性质"
+    ],
+    "teaching_strategies": [
+      "基于单位圆投影动态演示余弦值的几何意涵",
+      "采用双曲线并排对比演示波形形状的一致性与平移相位差",
+      "交互式寻找波峰与零点强化对特殊角的记忆"
+    ],
+    "numbers": [
+      {
+        "initial": 0,
+        "min": 0,
+        "max": 6.28,
+        "label": "旋转角度 θ",
+        "unit": "rad",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.031400000000000004
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "建立单位圆中动点 x 轴投影表示余弦值 cos θ 的几何直觉",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "unit_circle_projection"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "在单位圆中，当动点 P 沿着圆周旋转时，它在 x 轴上的横坐标投影长度，就代表了该角度的余弦值 cos θ。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "unit_circle_projection",
+                  "parameters": {
+                    "title": "单位圆与 x 轴投影",
+                    "projection": "cos"
+                  },
+                  "numbers": [
+                    1
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 1
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察动点 P 在 x 轴上的横坐标投影",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "注意看，随着角度 θ 的改变，x 轴上的投影红线长度也在实时跟着变化。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 1.57,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "从单位圆旋转推导余弦曲线 y = cos θ 的关键点变化与展开过程",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "在单位圆中，动点 P 的横坐标代表余弦值 cos θ。当我们旋转动点，注意看它在 x 轴上的投影长度变化。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察动点P在x轴上的投影与余弦值的对应关系",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 1
+                  }
+                ]
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 1
+                }
+              }
+            ]
+          },
+          {
+            "narration": "当 θ = 0 时，投影在最右侧，横坐标达到最大值 1。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "before_speech",
+                "number": 1,
+                "end_value": 0,
+                "duration_intent": "brief",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "随着逆时针旋转，在 θ = π/2 时，投影回到原点，横坐标降为 0。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 1.57,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "继续旋转至 θ = π 时，投影到达最左侧，横坐标达到最低值 -1。将这一过程在平面直角坐标系中展开，就得到了余弦曲线 y = cos θ。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 3.14,
+                "duration_intent": "extended",
+                "easing": "linear"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "对比正余弦波形，推导平移关系与诱导公式 cos θ = sin(θ + π/2)",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "function_plot"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "大家请看单位圆，动点 P 在圆周上运动，其在 x 轴上的投影坐标正好对应着 cos θ 的数值。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "引导观察动点P在x轴上的投影位置",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "现在我们将余弦曲线 y 等于 cos x 与正弦曲线 y 等于 sin x 绘制在同一个坐标系中进行对比。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "function_plot",
+                  "parameters": {
+                    "title": "正弦与余弦曲线对比",
+                    "curve_labels": [
+                      "y = cos x",
+                      "y = sin x"
+                    ],
+                    "expressions": [
+                      "cos(x)",
+                      "sin(x)"
+                    ]
+                  }
+                },
+                "role": "comparison_visual",
+                "placement": {
+                  "relation": "right_of",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 1
+                  }
+                },
+                "reusable_item": 1,
+                "distinct_visual": true
+              },
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "y = \\cos x, \\quad y = \\sin x"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "对比两条曲线可以发现，它们的波形形状完全相同。余弦曲线的波峰在 x 等于 0 时出现，比正弦曲线提前了二分之派个单位。几何上，这相当于将正弦图像整体向左平移了二分之派个单位。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 2,
+                  "item": 1
+                }
+              },
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 1.57,
+                "duration_intent": "extended",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "由此可知，余弦函数与正弦函数满足关系式 cos θ 等于 sin(θ 加二分之派)。这就是著名的诱导公式。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "after_speech",
+                "content": {
+                  "latex": "\\cos\\theta = \\sin\\left(\\theta + \\frac{\\pi}{2}\\right)"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 2
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "请你试着拖动滑块，观察旋转角度 θ 在不同区间内余弦值的波峰与零点变化情况。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "focus",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 4,
+                    "item": 1
+                  }
+                ],
+                "intent": "继续观察当前画面",
+                "timing": "after_speech"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "拖动角度滑块至约 1.57 rad (π/2)，观察此时余弦曲线对应的零点。",
+            "hints": [
+              "将角度 θ 调整到 1.57 左右",
+              "注意观察余弦曲线 y = cos θ 在该点的值为 0"
+            ],
+            "success_message": "很好！此时 cos(π/2) = 0，正好对应余弦曲线的零点。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider",
+                  "geometry_point"
+                ]
+              }
+            ],
+            "value": 1.57,
+            "tolerance": 0.015700000000000002
+          }
+        ]
+      },
+      {
+        "purpose": "通过寻找余弦波峰与零点的交互练习巩固认知",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "在单位圆中，动点 P 的横坐标代表余弦值 cos θ，其在 x 轴上的投影长度随着角度变化。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "x = \\cos \\theta"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "余弦函数的几何意义",
+                  "items": [
+                    "单位圆上动点 P 的横坐标等于 cos θ",
+                    "投影在 x 轴上的符号与长度反映 cos θ 的变化"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察动点在 x 轴上的投影长度与正负号变化",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "结合单位圆旋转，我们可以直观推导出诱导公式 cos θ 等于 sin(θ + π/2)。现在，请大家尝试找出余弦曲线上的波峰与零点位置。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "\\cos \\theta = \\sin\\left(\\theta + \\frac{\\pi}{2}\\right)"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "余弦曲线的关键特征点",
+                  "items": [
+                    "波峰位置：θ = 0, 2π（cos θ = 1）",
+                    "零点位置：θ = π/2, 3π/2（cos θ = 0）",
+                    "波谷位置：θ = π（cos θ = -1）"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "通过寻找波峰与零点理解正弦到余弦的平移关系",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 1
+                  }
+                ]
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 3,
+                  "item": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课程从单位圆动点在 x 轴上的投影出发，观察了余弦值随着旋转角度从 1 到 0 再到 -1 的动态变化，并展开得到余弦曲线 y = cos θ。进一步与正弦曲线对比，验证了两波形完全一致且存在 π/2 相位差的关系，从而直观推导出诱导公式 cos θ = sin(θ + π/2)。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 1
+        },
+        {
+          "source": "reusable",
+          "section": 3,
+          "item": 1
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-02-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-02-moment-04",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [
+            "section-03-moment-02-item-01",
+            "section-03-moment-02-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-03-moment-04",
+          "board_item_ids": [
+            "section-03-moment-04-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 5,
+          "moment_id": "section-03-moment-05",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-03-moment-02-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "section_id": "section-04",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-04-moment-01",
+          "board_item_ids": [
+            "section-04-moment-01-item-01",
+            "section-04-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-04-moment-02",
+          "board_item_ids": [
+            "section-04-moment-02-item-01",
+            "section-04-moment-02-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[1].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[1].actions[1].placement.reference",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[2].actions[0].reference",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[3].actions[0].placement.reference",
+      "target_id": "section-03-moment-02-item-02",
+      "authoring_alias": "section-03-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[4].actions[0].references[0]",
+      "target_id": "section-03-moment-04-item-01",
+      "authoring_alias": "section-03-moment-04-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[0].placement.reference",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[1].placement.reference",
+      "target_id": "section-04-moment-01-item-01",
+      "authoring_alias": "section-04-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[2].references[0]",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[0].placement.reference",
+      "target_id": "section-04-moment-01-item-02",
+      "authoring_alias": "section-04-moment-01-item-02",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[1].placement.reference",
+      "target_id": "section-04-moment-02-item-01",
+      "authoring_alias": "section-04-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[2].references[0]",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[3].reference",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.close.focus[1]",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    }
+  ]
+}

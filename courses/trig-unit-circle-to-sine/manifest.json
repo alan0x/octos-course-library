@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "packId": "trig-unit-circle-to-sine",
+  "version": "0.1.0",
+  "title": "从单位圆旋转到正弦曲线",
+  "description": "从单位圆上动点的旋转运动出发，观察垂直投影高度并向右实时展开，直观理解正弦函数 y = sin x 的诞生、2π 周期性与波峰波谷。",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "highschool-mathematics",
+  "durationSeconds": 117,
+  "minimumPlayerVersion": "0.1.0",
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "916df905ce7a93351ca62780e35a62db3d8b3eec91ef8084564f089a5552637e",
+        "durationMs": 7488
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-01:beat:moment-02",
+        "file": "audio/002.mp3",
+        "textSha256": "81757f2aae1f0494fc227c3aaa6dd2ef70910c21830c8336964dcf277e75d040",
+        "durationMs": 9048
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-01:beat:moment-03",
+        "file": "audio/003.mp3",
+        "textSha256": "57577d3ac89302f0da26e557fd5efdc17df41f20fcee84d950210b2c0bcc257b",
+        "durationMs": 7896
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-02:beat:moment-01",
+        "file": "audio/004.mp3",
+        "textSha256": "8cfac5368cf00fbac243b8c5b3714be936cb0749c8303fe53a62e153493e0ebc",
+        "durationMs": 13896
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-02:beat:moment-02",
+        "file": "audio/005.mp3",
+        "textSha256": "705dffd4695bdc9e0c770615c11496767e86e9deced6d628f53d825f8e45187c",
+        "durationMs": 13104
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-02:beat:moment-03",
+        "file": "audio/006.mp3",
+        "textSha256": "0bc662e398726d46801bf5ecdd0f2ed7847bc1123c2122c145a5fd65bbe28edf",
+        "durationMs": 14688
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-03:beat:moment-01",
+        "file": "audio/007.mp3",
+        "textSha256": "0d4dcb30919796a8e556e107faee18f40401c57f9a96332c0f48f774e32a6234",
+        "durationMs": 12864
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-03:beat:moment-02",
+        "file": "audio/008.mp3",
+        "textSha256": "b198d5ca05ad537c284e1b3208731a1cd2dfa7b841da61e39de1e62eaebf2994",
+        "durationMs": 12264
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-03:beat:moment-03",
+        "file": "audio/009.mp3",
+        "textSha256": "fc523c6cb023efde6026465208790c766acdd73b3b424500ace55c6dc1763b85",
+        "durationMs": 13704
+      },
+      {
+        "beatId": "trig-unit-circle-to-sine-0.1.0:step:section-03:beat:moment-04",
+        "file": "audio/010.mp3",
+        "textSha256": "3ef7055839b5a2c58706e4c203f2a41c2be141e47399e1d71a4899b0851275fd",
+        "durationMs": 11904
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "827ddf1f1381726c8b6287fd2830d846e2f5ebd47f5ca4432012bffa211b8e6d",
+      "bytes": 441,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "1970b958c0fe32b613666413b8a8559b564014babe4ccbac45da78cb56ffb8d6",
+      "bytes": 311,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.authoring.json",
+      "sha256": "2778b7e07471bc757a56e0f93d06bd03a31bf044a01dc70641b7eac706aedb6e",
+      "bytes": 16283,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "68e3b34134a18e761f56ad780d324a1ad4f966c52d723eff2bc7d53509a37506",
+      "bytes": 15466,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "65077aafb6c238e2dbaa7768e01118953ace138172a918e8173083e7099b1cb2",
+      "bytes": 2193,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "14a9149cc9fe752e40c3fd151a33dcd577c061917c6942a1e2a4ccfe0bf55a77",
+      "bytes": 149760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "7a3f761c46b444e4144e094b950d77603c521ab1ef13a74d3dfa846a05ea0202",
+      "bytes": 180960,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "8bc8deb229f66d8f02ec2c2ff0339f6489af24e9ee7505ebfbe753109e978ddb",
+      "bytes": 157920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "bd18f8c43e61ef4d8624642d966c7bd20d54424fbe50d35d0302c89ec0eec628",
+      "bytes": 277920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "692d28cdd9a5ef9afde72cd7e13c27fe558c713b518fa6b86a1de04e5a1bbab6",
+      "bytes": 262080,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "7c3621cf6ded1b433ceac755d56d54e40459047046a4cf860bd8458a1b9a8a3f",
+      "bytes": 293760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "cd86aaf18698154c52b121be50da21587ed249a898927ef69dca3d8e7cf0d2b9",
+      "bytes": 257280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "af682a766c17f43e98eb2a759727a2fd644341c0b1fb449731923ed264d91dca",
+      "bytes": 245280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/009.mp3",
+      "sha256": "1c262ed8f9a474eebc23c8eb12a3edef5a269ed6fe1343cfd1660cb1313901b4",
+      "bytes": 274080,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/010.mp3",
+      "sha256": "e41ab02284075f2acbc24f6798029ae08c6a8d74e777c6c731b07ef7a06211e7",
+      "bytes": 238080,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.authoring.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3",
+        "audio/009.mp3",
+        "audio/010.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}

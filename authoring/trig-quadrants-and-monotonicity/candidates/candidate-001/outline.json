@@ -1,0 +1,131 @@
+{
+  "title": "单位圆与正弦函数的单调性及象限循环",
+  "goals": [
+    "理解单位圆四个象限的角度范围与纵坐标变化",
+    "建立单位圆动点纵坐标与正弦曲线波峰波谷的对应关系",
+    "掌握正弦函数在 [0, 2π] 及全实数域上的单调区间公式"
+  ],
+  "teaching_strategies": [
+    "直观演示：通过单位圆动点与正弦曲线的动态联动直观建立单调性感知",
+    "分段推导：按象限分段观察高度变化，推导增减区间",
+    "归纳推广：从 [0, 2π] 周期扩展到全实数域的通项公式",
+    "交互巩固：通过旋转角度到指定象限加深理解"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 6.28,
+      "label": "旋转角度 θ",
+      "unit": "rad",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.031400000000000004
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "unit_circle_projection",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "在单位圆中观察四个象限的角度范围",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "unit_circle_projection"
+        }
+      ],
+      "allowed_capabilities": [
+        "unit_circle_projection"
+      ]
+    },
+    {
+      "purpose": "推导第一到第三象限正弦函数的单调性与高度变化",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "分析第四象限及周期的单调性与波峰波谷规律",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结全实数域单调区间公式并进行交互练习",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程通过单位圆动点的纵坐标投影，直观展示了正弦函数在四个象限内的单调性变化，推导了全实数域上的单调增减区间公式，并完成了象限定位的实践操作。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

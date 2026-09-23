@@ -1,0 +1,634 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "从单位圆旋转到正弦曲线",
+    "goals": [
+      "理解单位圆上动点的纵坐标与正弦值 sin θ 的几何对应关系",
+      "观察动点旋转一周时高度在 [0, 1, 0, -1, 0] 之间的周期变化",
+      "掌握将圆周旋转运动沿角度轴展开生成正弦曲线 y = sin x 的过程与性质"
+    ],
+    "teaching_strategies": [
+      "利用单位圆与正弦曲线联动画面，实现旋转运动到函数图象的平滑映射",
+      "通过关键特殊角（0, π/2, π, 3π/2, 2π）的数值追踪，建立直观几何印象",
+      "结合互动调节，引导观察波峰位置与函数最大值"
+    ],
+    "numbers": [
+      {
+        "initial": 0,
+        "min": 0,
+        "max": 6.28,
+        "label": "旋转角 θ",
+        "unit": "rad",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.031400000000000004
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "在单位圆中引入动点 P 与纵坐标 sin θ 的几何含义",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "unit_circle_projection"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "欢迎来到三角函数的世界。请看左侧的平面直角坐标系，这里有一个半径为 1 的单位圆。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "unit_circle_projection",
+                  "parameters": {
+                    "projection": "sin"
+                  },
+                  "numbers": [
+                    1
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 3
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察坐标系中的单位圆与动点",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "圆上有一个动点 P，它与 x 轴正半轴的夹角为 θ。点 P 的坐标可以表示为 (cos θ, sin θ)。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "P = (\\cos\\theta, \\sin\\theta)"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 1,
+                  "item": 1
+                }
+              }
+            ]
+          },
+          {
+            "narration": "注意观察连接点 P 到 x 轴的虚线段，这段垂直高度恰好就是角 θ 的正弦值 sin θ。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "after_speech",
+                "content": {
+                  "title": "正弦值的几何意义",
+                  "items": [
+                    "单位圆半径 r = 1",
+                    "动点 P 的高度（纵坐标）即为 sin θ"
+                  ]
+                },
+                "reusable_item": 2,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "after_speech",
+                "intent": "聚焦动点 P 的垂直高度投影",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "动态演练动点 P 旋转一周的高度变化，并展开形成正弦曲线 y = sin x",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "我们在坐标系中建立一个半径为 1 的单位圆。当动点 P 在圆周上移动时，它的坐标为 (cos θ, sin θ)，其中点 P 的垂直高度直接对应着正弦值 sin θ。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察单位圆上动点 P 的纵坐标与正弦值的对应关系",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 3
+                }
+              }
+            ]
+          },
+          {
+            "narration": "现在，让动点 P 从 0 弧度开始逆时针旋转。随着角度增加，高度逐渐升至最高点 1；继续旋转降回 0，接着下降到最低点 -1，最后再次回到 0。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 6.28,
+                "duration_intent": "extended",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "如果我们将点 P 在旋转过程中的高度向右随旋转角度 θ 展开，就能追踪出一条连续平滑的正弦曲线 y = sin θ。这就直观展示了圆周旋转运动如何转化为周期性的波形运动。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "体会旋转运动展开为正弦曲线的动态过程",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "拖动滑块改变旋转角 θ，观察动点 P 的高度与正弦曲线上的点如何实时对应。",
+            "hints": [
+              "将旋转角 θ 设为 π/2（约 1.57），观察高度是否达到最大值 1。"
+            ],
+            "success_message": "很好！你已经掌握了单位圆旋转与正弦曲线的对应关系。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider",
+                  "geometry_point"
+                ]
+              }
+            ],
+            "value": 1.57,
+            "tolerance": 0.015700000000000002
+          }
+        ]
+      },
+      {
+        "purpose": "总结正弦函数的周期性与值域，并进行波峰位置的互动操作",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "我们在平面直角坐标系中引入单位圆，圆上动点 P 的坐标为 cos θ 和 sin θ。请注意看，点 P 到 x 轴的垂直高度，正对应着正弦值 sin θ。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "P = (\\cos \\theta, \\sin \\theta)"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察单位圆上动点P的纵坐标投影",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "当动点 P 从 0 开始逆时针旋转时，高度从 0 逐渐升高到最高点 1；接着降回 0；再继续下降到最低点 -1；最后重新回到 0，完成一周的旋转。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 6.28,
+                "duration_intent": "extended",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "如果我们将点 P 的高度变化沿横轴的角度 θ 向右连续展开，就能得到一条平滑的波浪线——这就是正弦曲线 y = sin θ。旋转运动就这样转化为了周期性的波动。",
+            "delivery": "careful",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "y = \\sin \\theta"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 3
+                }
+              }
+            ]
+          },
+          {
+            "narration": "总结一下，正弦函数具有周期性，最小正周期 T 等于 2π，值域在 -1 到 1 之间。现在，请试着拖动滑块，把旋转角调节到波峰位置。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "正弦函数 y = sin x 的性质",
+                  "items": [
+                    "周期性：T = 2π",
+                    "值域：[-1, 1]",
+                    "波峰位置：x = π/2 + 2kπ"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 3,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请将旋转角 θ 调节到波峰最高点（π/2 rad ≈ 1.57 rad）",
+            "hints": [
+              "波峰对应正弦函数的最大值 1",
+              "当动点旋转到 y 轴正半轴时达到最高点，角度为 π/2"
+            ],
+            "success_message": "太棒了！此时 sin(π/2) = 1，达到曲线的波峰最高点。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider",
+                  "geometry_point"
+                ]
+              }
+            ],
+            "value": 1.57,
+            "tolerance": 0.015700000000000002
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课程展示了单位圆上的旋转运动如何转化为正弦函数 y = sin x 的周期性波动，明确了周期 T = 2π 与值域 [-1, 1] 的几何来源。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 3
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [
+            "section-01-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-01-moment-03",
+          "board_item_ids": [
+            "section-01-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-02-item-01",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-01-moment-03-item-01",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 3,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-02-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [
+            "section-03-moment-01-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [
+            "section-03-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-03-moment-04",
+          "board_item_ids": [
+            "section-03-moment-04-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[2].actions[0].placement.reference",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[2].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[2].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[2].actions[0].placement.reference",
+      "target_id": "section-03-moment-01-item-01",
+      "authoring_alias": "section-03-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[2].actions[1].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[3].actions[0].placement.reference",
+      "target_id": "section-03-moment-03-item-01",
+      "authoring_alias": "section-03-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "unit_circle_projection"
+    }
+  ]
+}

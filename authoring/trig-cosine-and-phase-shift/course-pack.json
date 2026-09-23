@@ -1,0 +1,6 @@
+{
+  "description": "通过单位圆动点的水平投影展开为余弦曲线 y = cos x，对比正弦波体会二者仅相差 π/2 相位平移，直观理解诱导公式的几何成因。",
+  "subject": "mathematics",
+  "grade": "highschool-mathematics",
+  "thumbnailVariant": "trigonometry-unit-circle"
+}

@@ -1,0 +1,6 @@
+{
+  "description": "从单位圆上动点的旋转运动出发，观察垂直投影高度并向右实时展开，直观理解正弦函数 y = sin x 的诞生、2π 周期性与波峰波谷。",
+  "subject": "mathematics",
+  "grade": "highschool-mathematics",
+  "thumbnailVariant": "trigonometry-unit-circle"
+}
