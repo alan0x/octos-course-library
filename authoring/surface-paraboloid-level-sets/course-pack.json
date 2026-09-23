@@ -1,0 +1,6 @@
+{
+  "description": "通过三维旋转观察抛物面 z = x² + y² 并调节水平截面高度，直观理解曲面截线为何是圆，领悟微积分中等高线与降维切片的几何本质。",
+  "subject": "mathematics",
+  "grade": "college-calculus",
+  "thumbnailVariant": "calculus-surface"
+}

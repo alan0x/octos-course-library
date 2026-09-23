@@ -1,0 +1,158 @@
+{
+  "title": "旋转抛物面的截面与降维分析法",
+  "goals": [
+    "直观感知三维旋转抛物面 z = x² + y² 的形状与旋转对称特征",
+    "掌握通过固定截面高度 z = h 将三维曲面转化为平面交线方程 x² + y² = h 的推导方法",
+    "理解截面高度 h 与截线圆半径 r = √h 的动态变化关系及其降维思想"
+  ],
+  "teaching_strategies": [
+    "从直观三维曲面观察入手，建立结构直觉",
+    "结合方程代入与几何切片，推导截线圆方程",
+    "利用高度滑块联动演示半径扩大过程，深化等高线变化规律",
+    "安排互动调高练习，巩固三维转平面的降维分析能力"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": 0,
+      "max": 9,
+      "label": "截面高度",
+      "unit": "h",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.045
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    },
+    {
+      "use_sections": [
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 2,
+      "capability": "coordinate_circle",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "认识三维空间中的旋转抛物面 z = x² + y² 的几何特征",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "推导水平切片平面 z = h 与抛物面相交所得的截线圆方程",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "coordinate_circle"
+        }
+      ],
+      "allowed_capabilities": [
+        "coordinate_circle"
+      ]
+    },
+    {
+      "purpose": "通过动态调节高度 h，观察截线圆半径从 1 扩大到 2 的变化规律",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结三维转平面的降维分析法，并完成切片高度控制的互动练习",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程学习了旋转抛物面 z = x² + y² 的形状，以及通过固定水平切片 z = h 得到交线圆 x² + y² = h 的降维分析法，掌握了高度 h 与半径 r = √h 的对应关系。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

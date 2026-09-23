@@ -1,0 +1,446 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "欢迎来到多元函数微分学的几何世界。今天我们要探索一个非常特殊的曲面——双曲抛物面，其方程为 z 等于 x 的平方减去 y 的平方。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "双曲抛物面 z = x² - y²",
+                "expression": "x^2 - y^2"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 - y^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "请观察这个曲面的整体形状，它看起来非常像一个马鞍。请注意看最中间的原点位置。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦于原点(0,0,0)附近的马鞍结构",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "after_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          }
+        ]
+      },
+      {
+        "narration": "在原点处，如果我们沿着前后的方向看，它是最低点；但沿着左右的方向看，它却是最高点。这种既是波谷又是波峰的点，在数学上被称为鞍点。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "马鞍面结构特征",
+              "items": [
+                "原点 (0,0,0) 处梯度为零",
+                "沿着 x 轴方向：向上弯曲（波谷）",
+                "沿着 y 轴方向：向下弯曲（波峰）"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "scene3d_view",
+        "prompt": "旋转视角，观察双曲抛物面在原点处的马鞍结构。",
+        "hints": [
+          "拖动鼠标旋转视角，从上方和侧面观察曲面弯曲方向",
+          "注意观察原点沿着两个垂直方向的升降变化"
+        ],
+        "controls": [
+          "orbit",
+          "zoom",
+          "reset"
+        ],
+        "hint_after_attempts": 2,
+        "match": "view_direction",
+        "yaw": 0.7853981633974483,
+        "pitch": 0.5235987755982988,
+        "zoom": 1,
+        "angular_tolerance": 0.03269908169872415,
+        "zoom_tolerance": 0.1,
+        "reference": {
+          "source": "local_board_item",
+          "moment": 1,
+          "item": 1
+        }
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "现在我们来到双曲抛物面 z 等于 x 平方减 y 平方的前面。观察这块像马鞍一样的曲面，中心的原点形态非常特殊。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察双曲抛物面的整体马鞍结构与中心原点",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "当我们用平面 y 等于 0 沿着 x 轴方向切开曲面时，得到的截面曲线是一条开口向上的抛物线 z 等于 x 平方。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 \\quad (y = 0)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 - y^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      },
+      {
+        "narration": "沿着这条抛物线看，原点 x 等于 0 恰好是它的最低点，也就是在 x 方向上取得了极小值 0。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦截面抛物线顶点，理解其在 x 方向上的极小值性质",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "现在我们来看另一个关键方向。请观察这个形似马鞍的三维曲面，中心的原点非常特殊，在不同方向上呈现出截然不同的弯曲状态。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导观察双曲抛物面的马鞍结构",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "当我们用平面 x = 0 切开曲面时，得到的截线是一条开口向下的抛物线 z = -y²。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "x = 0 \\implies z = -y^2"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 - y^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "沿着这条抛物线看，在原点 y = 0 处，函数值 z 取得了局部极大值 0。这与之前沿 x 方向看到的极小值正好相反。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调原点在 y 方向上取得极大值",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "scene3d_view",
+        "prompt": "调整视角观察 x = 0 截面切出的开口向下抛物线及其顶点",
+        "hints": [
+          "旋转视角到正前方，观察 yz 平面上的抛物线",
+          "注意原点是该抛物线上的最高点"
+        ],
+        "success_message": "很好！你已经清楚地观察到了原点在 y 方向上的极大值特征。",
+        "controls": [
+          "orbit",
+          "zoom",
+          "preset"
+        ],
+        "hint_after_attempts": 2,
+        "match": "view_direction",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "angular_tolerance": 0.1308996938995747,
+        "zoom_tolerance": 0.1,
+        "reference": {
+          "source": "reusable",
+          "section": 1,
+          "item": 3
+        }
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "我们在三维空间中重新观察双曲抛物面 z 等于 x 平方减 y 平方。可以看到，原点处的曲面形态就像一个马鞍。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察双曲抛物面原点的马鞍结构",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "原点虽然梯度为零，但沿 x 轴方向它是波谷，沿 y 轴方向它却是波峰。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      },
+      {
+        "narration": "现在请你拖动滑块平移截面，观察平行截线极值点的变化，体会在原点邻域内不同方向上的极值反差。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "after_speech",
+            "number": 1,
+            "end_value": 1.5,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "总结来说，梯度为零仅意味着切平面水平。当不同方向上的弯曲方向相反时，临界点既非极大值也非极小值，这就是鞍点。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "鞍点的几何特征",
+              "items": [
+                "梯度 ∇z(0,0) = 0（切平面水平）",
+                "沿 x 轴方向 (y=0)：z = x²，呈现局部极小值",
+                "沿 y 轴方向 (x=0)：z = -y²，呈现局部极大值",
+                "结论：梯度为零的临界点既非极大值也非极小值"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "将截面位置调节到 y = 1.5，观察平行截线的变化与极值情况。",
+        "hints": [
+          "拖动滑块使截面位置数值达到 1.5。",
+          "观察截线开口方向与顶点的变化。"
+        ],
+        "success_message": "很好！你成功平移了截面，清楚看到了不同方向截线的反差。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 1.5,
+        "tolerance": 0.01
+      }
+    ]
+  }
+]

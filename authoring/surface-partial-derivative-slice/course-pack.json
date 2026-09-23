@@ -1,0 +1,6 @@
+{
+  "description": "用平行于坐标平面的垂直截面切开曲面 z = x² + y²，观察截线退化为一元抛物线，深刻理解对 x 求偏导数在几何上就是固定 y 后的截线切线斜率。",
+  "subject": "mathematics",
+  "grade": "college-calculus",
+  "thumbnailVariant": "calculus-surface"
+}

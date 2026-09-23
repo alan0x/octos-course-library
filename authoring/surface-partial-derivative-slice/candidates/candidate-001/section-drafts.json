@@ -1,0 +1,323 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "欢迎来到多元微积分的几何世界！请看这个开口朝上的旋转抛物面，它的函数方程是 z = x² + y²。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "抛物面 z = x² + y²",
+                "expression": "x^2 + y^2",
+                "section_axis": "y"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 + y^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "对于一元函数，自变量只能沿着一维数轴前后移动；但在三维曲面上，从任意一点出发，我们可以朝 360 度无死角的任意方向移动，因此曲面在一点处存在无限多个方向的变化率。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "旋转曲面观察不同方向的陡峭程度",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "为了准确研究这种复杂的变化，我们需要建立降维分析的思想：如何把无限多个方向的变化，拆解为我们熟悉的方向呢？",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "多元函数的变化率特点",
+              "items": [
+                "曲面上一点存在无限多个变化方向",
+                "需要通过降维截面锁定特定方向进行分析"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "scene3d_view",
+        "prompt": "拖动旋转三维视角，观察抛物面 z = x² + y² 在各个方向上的弯曲形状。",
+        "hints": [
+          "按住鼠标左键或拖动屏幕可以旋转视角",
+          "从顶部俯视可以看到同心圆等高线"
+        ],
+        "success_message": "很好！你已经直观感受到了三维曲面的空间形态。",
+        "controls": [
+          "orbit",
+          "zoom",
+          "preset",
+          "reset"
+        ],
+        "hint_after_attempts": 2,
+        "match": "view_direction",
+        "yaw": 0.7853981633974483,
+        "pitch": 0.5235987755982988,
+        "zoom": 1,
+        "angular_tolerance": 0.03269908169872415,
+        "zoom_tolerance": 0.1,
+        "reference": {
+          "source": "local_board_item",
+          "moment": 1,
+          "item": 1
+        }
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "我们在三维空间中看到抛物面 z 等于 x 平方加 y 平方。在曲面上的任意一点，我们可以沿着无数个不同的方向移动，因此多元函数在一点处存在无限多个方向的变化率。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察抛物面曲面及曲面上不同方向的变化趋势",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "为了研究其中最基础的变化率，我们引入一个垂直于 y 轴的切片平面 y 等于 y0。当这个平面截割曲面时，就得到一条一元曲线。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "z = x^2 + y_0^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察截面与曲面相交形成的截线曲线",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 3
+            }
+          }
+        ]
+      },
+      {
+        "narration": "现在你可以拖动滑块调整截面位置 y0 的值，观察切片平面及其在曲面上截出的抛物线是如何随着 y0 变化的。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 1,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "拖动滑块改变截面位置 y₀ 的值，观察截线抛物线的变化。",
+        "hints": [
+          "将 y₀ 调整为 1.0",
+          "注意观察截面在 y 轴上的位置变化"
+        ],
+        "success_message": "很好！你成功移动了截面 y = y₀，截线随着 y₀ 的改变而平移。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 1,
+        "tolerance": 0.01
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "大家看，当我们拖动滑块改变 y₀ 的位置时，垂直于 y 轴的截面在空间中平移，曲面上的截线也随之平滑移动。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "before_speech",
+            "intent": "观察截面 y = y₀ 平移对曲面截线的影响",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          },
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 1.5,
+            "duration_intent": "extended",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "但请注意，无论截面平移到哪里，截面内部都是一条关于 x 的一元抛物线。对于任意给定的 x，其沿 x 轴方向的切线斜率始终由偏导数 ∂z/∂x = 2x 决定。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      },
+      {
+        "narration": "因此，代数计算中“把 y 视为常数”，在几何上就完全等价于“只在垂直于 y 轴的特定平行截面上考察一元函数的切线斜率”。现在，请你自己调节截面位置，动手感受一下。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "focus",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ],
+            "intent": "继续观察当前画面",
+            "timing": "after_speech"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请将截面位置 y₀ 调节至 1.0，观察此时截线与切线的几何变化。",
+        "hints": [
+          "拖动 y₀ 滑块向右移动。",
+          "将目标值设定为 1.0。"
+        ],
+        "success_message": "很好！你已经成功将截面平移至 y₀ = 1.0 的位置。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 1,
+        "tolerance": 0.01
+      }
+    ]
+  }
+]

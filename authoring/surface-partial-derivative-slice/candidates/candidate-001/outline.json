@@ -1,0 +1,119 @@
+{
+  "title": "偏导数的几何意义：三维曲面与切片截线",
+  "goals": [
+    "理解多元函数在曲面上存在无穷多个方向的变化率",
+    "理解偏导数∂z/∂x是在固定y=y₀平面截断曲面后的切线斜率",
+    "理解'把y视为常数'在几何上等价于在平行截面上观察一元曲线"
+  ],
+  "teaching_strategies": [
+    "从三维曲面整体视角引入多方向变化率直觉",
+    "通过截面切割将三维曲面问题转化为二维一元切线斜率问题",
+    "结合数值滑块互动，动态体验截面平移对切线与偏导数的影响"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": -2,
+      "max": 2,
+      "label": "截面位置 y₀",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.02
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "request_part": 1
+    },
+    {
+      "request_part": 2,
+      "treatment": "teach",
+      "sections": [
+        2
+      ]
+    },
+    {
+      "request_part": 3,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    },
+    {
+      "request_part": 4,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建构三维曲面 z = x² + y² 的直觉，理解多元函数在曲面上点沿无穷多个方向均有变化率。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "引入垂直于 y 轴的截面 y = y₀，推导截线方程 z = x² + y₀² 并理解偏导数 ∂z/∂x = 2x 的几何实质。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "通过调节截面位置 y₀ 观察空间截线与切线平移，进行互动操练并巩固“代数常数对应几何截面”的观点。",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程展示了三维曲面 z = x² + y² 上偏导数的几何意义。通过平面 y = y₀ 切割曲面，我们将多元变化率化简为固定截面上一元曲线的切线斜率 ∂z/∂x = 2x，深刻理解了“将 y 视作常数”的几何本质。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

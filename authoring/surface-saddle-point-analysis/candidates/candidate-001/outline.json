@@ -1,0 +1,135 @@
+{
+  "title": "马鞍面与鞍点：三维曲面中的临界点",
+  "goals": [
+    "理解双曲抛物面 z = x² - y² 的几何形态与马鞍结构",
+    "通过 y=0 与 x=0 截面线掌握鞍点在不同方向上的极值差异",
+    "通过动态平移截面体会梯度为零时临界点既非极大值也非极小值的几何本质"
+  ],
+  "teaching_strategies": [
+    "从直觉整体形态过渡到特定方向的定点截面分析",
+    "结合动画与互动操作，对比两组垂直平行截面的极值变化"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": -2,
+      "max": 2,
+      "label": "截面位置",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.02
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立对双曲抛物面 z = x² - y² 全局形态及原点马鞍特征的直观认识",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "分析沿 y = 0 截面切开的抛物线，说明原点在 x 方向上的极小值性质",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "分析沿 x = 0 截面切开的抛物线，说明原点在 y 方向上的极大值性质",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "通过平移截面交互与对比，总结梯度为零处鞍点的数学定义与特征",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "通过观察双曲抛物面 z = x² - y² 在不同截面方向的极值反差，我们明确了梯度为零的临界点不一定是极大值或极小值，这种点被称为鞍点。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

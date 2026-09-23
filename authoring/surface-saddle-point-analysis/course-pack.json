@@ -1,0 +1,6 @@
+{
+  "description": "探索双曲抛物面（马鞍面）z = x² - y²，通过空间剖分截线观察一个方向呈下凹极小、正交方向呈上凸极大，直观理解为什么鞍点偏导全为零却不是极值点。",
+  "subject": "mathematics",
+  "grade": "college-calculus",
+  "thumbnailVariant": "calculus-surface"
+}
