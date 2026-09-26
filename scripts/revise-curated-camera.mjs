@@ -46,7 +46,8 @@ function applyCameraPlan(sourceAuthoring, plan) {
       const reviewedTargets = [];
       const actionCount = beat.actions.length;
       beat.actions = beat.actions.flatMap((action) => {
-        if (action.do === "write") {
+        // Groups and connections are focusable board targets as well as cards.
+        if (["write", "group", "connect"].includes(action.do) && action.as) {
           assert.ok(!created.has(action.as), `Duplicate board alias ${action.as}`);
           created.add(action.as);
         }
@@ -72,6 +73,19 @@ function applyCameraPlan(sourceAuthoring, plan) {
         changes.push({ beat: key, before, after: action.targets, when: action.when });
         return [action];
       });
+      // A reviewed Beat without any focus action may receive one explicitly
+      // ("add": true); it is appended after the Beat's own actions.
+      if (!discovered.has(key) && decision?.add) {
+        assert.ok(Array.isArray(decision.targets) && decision.targets.length > 0, `${key} needs targets to add`);
+        assert.ok(typeof decision.intent === "string" && decision.intent.trim(), `${key} needs an intent to add`);
+        beat.actions.push({ do: "focus", targets: [...decision.targets], intent: decision.intent,
+          when: decision.when ?? "during_speech" });
+        reviewedTargets.push(...decision.targets);
+        discovered.add(key);
+        changes.push({ beat: key, before: [], after: [...decision.targets], when: decision.when ?? "during_speech", added: true });
+      }
+      assert.ok(!(discovered.has(key) && decision?.add && beat.actions.filter((a) => a.do === "focus").length > 1),
+        `${key} already has a focus action; do not add another`);
       for (const target of reviewedTargets) {
         assert.ok(created.has(target), `${key} focuses a card that has not been created: ${target}`);
       }
