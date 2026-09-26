@@ -1,0 +1,9 @@
+{
+  "source": "courses/surface-paraboloid-level-sets/course.authoring.json",
+  "opening_policy": {
+    "kind": "preserve"
+  },
+  "changes": [],
+  "narration_changed": false,
+  "geometry_changed": false
+}

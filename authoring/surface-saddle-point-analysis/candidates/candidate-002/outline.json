@@ -1,0 +1,154 @@
+{
+  "title": "马鞍面与鞍点的概念探索",
+  "goals": [
+    "理解梯度为零不一定是局部极值点",
+    "通过双截面分析马鞍面在原点不同方向的开口弯曲方向",
+    "用邻域定义严谨证明原点既非局部极小也非局部极大"
+  ],
+  "teaching_strategies": [
+    "反例驱动：用梯度为零但非极值的马鞍面打破思维定势",
+    "截面降维：将三维曲面沿坐标轴切开转化为一维曲线观察",
+    "定义检验：用微小邻域内点的值比较进行严格否定"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 1,
+      "label": "截面位置",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.005
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    },
+    {
+      "use_sections": [
+        1,
+        2
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 4
+    },
+    {
+      "use_sections": [
+        2
+      ],
+      "relation": "primary",
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 1
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "通过偏导计算得到原点梯度为零，并建立马鞍面双截面观察，提出极值疑问。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "分析两个沿轴截面的函数剖面，并用统一参数 t 的曲线展示沿 x 方向上升与沿 y 方向下降的区别。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "运用邻域定义严谨证明马鞍面原点不是局部极小点也不是局部极大点。",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "归纳三课分析多变量函数极值的方法，并通过自查问题总结鞍点本质。",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程从偏导数为零出发，借由马鞍面的不同截面剖面展示了梯度为零并不足以保证极值存在。通过在任意小邻域内比较函数值，严谨地否定了极值性，建立了鞍点的直观与严格定义。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 4
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 1
+      }
+    ]
+  },
+  "version": "0.1"
+}

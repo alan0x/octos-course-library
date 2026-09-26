@@ -1,0 +1,150 @@
+{
+  "title": "水平截线与等高线：从曲面切割到平面投影",
+  "goals": [
+    "理解固定输出变量 z=h 的几何意义为水平平面截切曲面",
+    "推导交线方程 x²+y²=h，掌握半径 r=√h 与高度 h 的定量关系及边界条件",
+    "区分三维空间截线与二维 xy 平面投影圆的本质区别"
+  ],
+  "teaching_strategies": [
+    "问题驱动：从方程结构引发形状猜想，避免直接灌输结论",
+    "三维-二维联动观察：同步展示空间截面与 xy 平面投影",
+    "先预测后验证：在改变截面高度前引导心算半径变化"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": 0,
+      "max": 4,
+      "label": "高度h",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.02
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "request_part": 2,
+      "treatment": "teach",
+      "sections": [
+        2
+      ]
+    },
+    {
+      "request_part": 3,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    },
+    {
+      "request_part": 4,
+      "treatment": "teach",
+      "sections": [
+        4
+      ]
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 1,
+      "capability": "coordinate_circle",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "提出问题并建立三维曲面与水平截面的直观图像",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "coordinate_circle"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section",
+        "coordinate_circle"
+      ]
+    },
+    {
+      "purpose": "推导截线方程，建立半径与高度的数学关系并分析边界",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "先预测后演示高度变化对截线与投影圆的影响，理解等高线族",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结固定输出变量的方法，完成课后针对性练习",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课通过固定多元函数的输出高度 z=h，研究了三维曲面 z=x²+y² 的水平截线与 xy 平面投影圆的关系。掌握了 r=√h 的定量关系及 h=0 的退化边界，为后续学习固定输入变量的垂直截面打下了基础。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      },
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

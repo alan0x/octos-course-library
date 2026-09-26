@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "packId": "surface-paraboloid-level-sets",
+  "version": "0.1.1",
+  "title": "旋转抛物面的截面与降维分析法",
+  "description": "通过三维旋转观察抛物面 z = x² + y² 并调节水平截面高度，直观理解曲面截线为何是圆，领悟微积分中等高线与降维切片的几何本质。",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "college-calculus",
+  "durationSeconds": 82,
+  "minimumPlayerVersion": "0.2.0",
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.focus",
+    "action:lesson.phase.start",
+    "action:lesson.variable.animate",
+    "action:teacher.point",
+    "binding-labels",
+    "bound-zero-radius",
+    "canonical:0.1",
+    "node:geometry",
+    "node:math",
+    "node:note",
+    "node:scene3d",
+    "practice-start",
+    "student-tasks:expression_target",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  },
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "8c6ac0756b064e5c3b8628e9b1ff817a618386465471a395560d12fa943e6275",
+        "durationMs": 14880
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-02:beat:moment-01",
+        "file": "audio/002.mp3",
+        "textSha256": "0325810645894aaff86193abdd96569c8acc8f9eb0056a280bf6b55fc2782f5f",
+        "durationMs": 9504
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-02:beat:moment-02",
+        "file": "audio/003.mp3",
+        "textSha256": "6689603c1631387dd476fa9b4c0b8033f5f1b0ca9a485c8a16a7487c735d9484",
+        "durationMs": 12456
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-03:beat:moment-01",
+        "file": "audio/004.mp3",
+        "textSha256": "0e00c805cc03797c5f5769b476b496f72faac5c859a6a94d38d2c1dc0f343d40",
+        "durationMs": 7656
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-03:beat:moment-02",
+        "file": "audio/005.mp3",
+        "textSha256": "09588e6d97ac7673bdd5b1cbb46d76c2a45aa7b37c424a771230f5e4bac8ff9d",
+        "durationMs": 10464
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-03:beat:moment-03",
+        "file": "audio/006.mp3",
+        "textSha256": "8b33787e25cd0a91060af71f2038f88ef92ac665249f34b0fa5286eb5760e145",
+        "durationMs": 7464
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-04:beat:moment-01",
+        "file": "audio/007.mp3",
+        "textSha256": "4c1be67dad7d1ed2c267b2994419ca37b5b36aa92af9e0e443307d9e6922ce62",
+        "durationMs": 10920
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.1.1:step:section-04:beat:moment-02",
+        "file": "audio/008.mp3",
+        "textSha256": "8436e1585e15dc6533817dd481679390272160b32efa82b79cd33a00b0ecfc59",
+        "durationMs": 7896
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "6f0be93c358bd7c20ae478efeb597603ed89d61cb7771dbd7437ac72853acf08",
+      "bytes": 456,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "e99be7c02c5fd554622a2ca103120fc191398cd7cb91ab74de7cdd58a25b40bd",
+      "bytes": 316,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.authoring.json",
+      "sha256": "a173a8018864814eed18c66b6d80adee363d611953fadada31c3d09615b5456e",
+      "bytes": 14681,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "compilation.json",
+      "sha256": "e6c446e7b0246bce3fde6d34703993aa122716d99ec3ecd72be08def0f71de22",
+      "bytes": 1897,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "3546a7bd1b0ca8e6a33167cbbc86d66f15adea3d4b3715af9d9cd38ee3c9d69c",
+      "bytes": 13810,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "b14fe5ca1c729d7b8da8020320bf1ffecaea2ec137bc50538e5987a2faf50a70",
+      "bytes": 1464,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "341ecab94a5bea0cff794c7caf0cbbd461b0fbe1b47302c75fe7480267cb545f",
+      "bytes": 297600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "8bff23a094e577d98650eb0dd0851df0d078e31db5e7f67010840d673bf28260",
+      "bytes": 190080,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "f6e434470279b85578fe3d47a317bb00360e03f73220a918fbba5a14b002e5d9",
+      "bytes": 249120,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "22b492a076c0724629d0245e2dd55c7499820a2c1f15128ec8985123efceace4",
+      "bytes": 153120,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "224d2ea7c92a0706497898760eb1ab5f92f048aaed47cec6a4219509c35e9295",
+      "bytes": 209280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "8ca84a64ff38655f4e6f6ecf5fd32fc737dbe670411a19ae1adb6cd56ab17222",
+      "bytes": 149280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "11f483e8b733dae1919c79dad71c86d3a95973f348b0566165181a7a2aeffdb1",
+      "bytes": 218400,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "a5a807bb0311a50301a7b6d054d713738fb984e5b551abb33410b746c2237550",
+      "bytes": 157920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.authoring.json",
+        "compilation.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}

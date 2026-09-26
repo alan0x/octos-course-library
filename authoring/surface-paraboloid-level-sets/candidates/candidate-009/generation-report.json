@@ -1,0 +1,58 @@
+{
+  "status": "generated",
+  "generated_at": "2026-09-24T15:17:45.258Z",
+  "elapsed_ms": 29018,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "8ccb5ba0a8e3b0d8e3cb3f134b36fdfb73b0b55b",
+    "dirty": true,
+    "source_diff_sha256": "33458ad9f130a08f82e2d18aaf3eb420c93cad35afa4a1bf045574ace3465d50"
+  },
+  "model_calls": 4,
+  "sections": 4,
+  "beats": 10,
+  "rejected_parts": [],
+  "program_adjustments": [
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 2,
+      "moment": 1,
+      "board_kind": "math",
+      "reason": "same_moment_exact_duplicate"
+    },
+    {
+      "kind": "duplicate_board_item_removed",
+      "section": 2,
+      "moment": 2,
+      "board_kind": "note",
+      "reason": "same_moment_exact_duplicate"
+    }
+  ],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 9513
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 18884
+    },
+    {
+      "completed_sections": 3,
+      "elapsed_ms": 22733
+    },
+    {
+      "completed_sections": 4,
+      "elapsed_ms": 29007
+    }
+  ],
+  "request_metrics": {
+    "model_calls": 4,
+    "model_elapsed_ms": 28949,
+    "system_prompt_bytes": 11048,
+    "prompt_bytes": 14857,
+    "response_schema_bytes": 16196
+  },
+  "credential_source": "local-development-profile"
+}

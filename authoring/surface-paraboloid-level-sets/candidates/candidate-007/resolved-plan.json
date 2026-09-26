@@ -1,0 +1,1051 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "水平截线与等高线：从空间曲面到平面投影",
+    "goals": [
+      "理解通过固定输出值 z=h 研究三维曲面的截面分析法",
+      "掌握 z=x²+y² 与水平平面 z=h 的交线推导，区分空间截线与 xy 平面投影圆",
+      "明确等高线在不同 h 值下的几何边界（h>0、h=0、h<0）"
+    ],
+    "teaching_strategies": [
+      "以问题‘如何读懂三维曲面’引入，通过固定高度降维观察",
+      "三维曲面截线与二维投影圆双图联动对照，强化空间与投影的关系",
+      "先预测半径变化再由教师动画演示验证，并剖析退化点边界"
+    ],
+    "numbers": [
+      {
+        "initial": 1,
+        "min": 0,
+        "max": 4,
+        "label": "截面高度 h",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.02
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "从三维曲面认知问题出发，建立 z=x²+y² 旋转抛物面与水平截面 z=h 的空间模型，并同步建立 xy 平面的投影圆对照",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "function_surface_with_section"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "coordinate_circle"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "当我们面对二元函数方程 z 等于 x 平方加 y 平方时，怎样才能读懂这个三维曲面的几何形状呢？直接想象三维立体往往很困难。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "z = x^2 + y^2"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "new_region"
+                }
+              },
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "after_speech",
+                "content": {
+                  "title": "截面分析法",
+                  "items": [
+                    "固定输出值 z = h（水平截面）",
+                    "观察空间截线与平面投影"
+                  ]
+                },
+                "reusable_item": 2,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "我们可以引入一个水平截面 z 等于 h。把这个水平平面切入曲面，就能得到一条空间交线。同时，我们将这条交线垂直投影到 xy 平面上。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "function_surface_with_section",
+                  "parameters": {
+                    "title": "三维曲面与水平截面 z=h",
+                    "expression": "x^2 + y^2",
+                    "section_axis": "z"
+                  },
+                  "numbers": [
+                    1
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 3
+              },
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "during_speech",
+                "content": {
+                  "capability": "coordinate_circle",
+                  "parameters": {
+                    "title": "xy 平面上的投影圆",
+                    "center_x": 0,
+                    "center_y": 0
+                  }
+                },
+                "role": "comparison_visual",
+                "placement": {
+                  "relation": "right_of",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                },
+                "reusable_item": 4,
+                "distinct_visual": true
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察空间截面与 xy 平面投影圆的同步关联",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  },
+                  {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "请看，当截面高度 h 设置为 1 时，空间中切出一个圆，而二维坐标系里也对应着一个标准投影圆。两者由同一高度 h 驱动。",
+            "delivery": "careful",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 2,
+                  "item": 2
+                }
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "想让投影圆的半径为 √3，请先算出需要的高度 h，再调节高度验证。",
+            "hints": [
+              "根据投影圆方程 x²+y²=h，半径 r 与高度的关系是 r = √h，即 h = r²。",
+              "将 r = √3 代入公式 h = (√3)² 进行计算。"
+            ],
+            "success_message": "计算正确！因为 (√3)² = 3，当高度 h 调至 3 时，投影圆半径恰好为 √3。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 3,
+            "tolerance": 0.01
+          }
+        ]
+      },
+      {
+        "purpose": "通过代数联立方程推导空间交线与投影圆方程，明确高度 h 对半径 r 的决定作用以及坐标高度保留差异",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "我们来探讨如何从方程读懂三维曲面的几何特征。对于曲面方程 z等于x平方加y平方，我们将通过固定输出高度 z等于h，联立两个代数方程来分析曲面在不同高度上的截面特征。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "\\begin{cases} z = x^2 + y^2 \\\\ z = h \\end{cases} \\implies x^2 + y^2 = h"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 4
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "\\begin{cases} z = x^2 + y^2 \\\\ z = h \\end{cases} \\implies x^2 + y^2 = h \\implies r = \\sqrt{h}"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "聚焦代数方程组的联立与求解过程",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  },
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "对比平面圆的标准方程 x平方加y平方等于r平方，可以发现，当 h 大于 0 时，联立方程在二维平面上的解集形式是一个半径 r 等于 根号h 的圆。请特别注意：h 决定的是半径的平方，而不是半径本身。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "x^2 + y^2 = r^2 \\implies r = \\sqrt{h} \\quad (h > 0)"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 1,
+                  "item": 4
+                }
+              }
+            ]
+          },
+          {
+            "narration": "我现在把截面高度 h 从 1 动态调整到 4，请注意观察空间截线与平面投影圆的变化关系。虽然截面高度升到了 4，但投影圆的半径是从 1 增加到了 2。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 4,
+                "duration_intent": "extended",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "对比空间中的截线和平面上的投影圆：空间截线上的所有点坐标为 (x, y, h)，其圆心位于空间中的 (0, 0, h)；而 xy 平面上的投影圆抛弃了高度信息 z，仅保留坐标 (x, y)，圆心位于平面原点 (0, 0)。",
+            "delivery": "careful",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "对比空间截线点坐标与平面投影点坐标的区别",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  },
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "最后，我们讨论高度 h 的代数边界：当 h 等于 0 时，方程退化为 x平方加y平方等于0，截面缩为单一原点 (0,0)；当 h 小于 0 时，由于实数平方和非负，方程无实数解，表明曲面在 z小于0 的区域没有分布。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "h = 0 \\implies (0,0); \\quad h < 0 \\implies \\varnothing"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请将截面高度 h 调整到 4，验证此时投影圆半径是否符合公式 r = √h = 2。",
+            "hints": [
+              "带入公式 r = √h，当 h = 4 时，开平方得到半径 r = 2。",
+              "将滑块 1 拖动至数值 4。"
+            ],
+            "success_message": "回答正确！高度 h=4 时，投影圆半径为 2。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 4,
+            "tolerance": 0.01
+          }
+        ]
+      },
+      {
+        "purpose": "进行半径变化的定量预测与教师动画验证，探讨 h=0 的退化边界和等高线族的概念",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "大家先来思考一个问题：在动画演示前，如果我把截面高度 h 从 1 增加到 4，平面上的投影圆半径 r 会变成原来的几倍？请在心中推算一下。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "引导学习者对高度与半径的变化关系进行定量预测",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 3
+                  },
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "根据方程 x² + y² = h，半径 r 等于 根号 h。现在我把高度 h 从 1 调节到 4，请观察三维曲面截线与投影圆的变化过程。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 4,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "可以看到，当高度 h 变为 4 时，投影圆半径 r 变为 2，符合根号 4 等于 2 的预测。这验证了高程变化与半径呈平方根关系。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "after_speech",
+                "content": {
+                  "title": "截面高度与半径定量关系",
+                  "items": [
+                    "方程：x² + y² = h (h ≥ 0)",
+                    "半径：r = √h",
+                    "当 h 从 1 升至 4，半径 r 从 1 增至 2"
+                  ]
+                },
+                "reusable_item": 1,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "接下来我们看一个关键的边界情况。当我把高度 h 降到 0 时，请注意观察。",
+            "delivery": "careful",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 0,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "当 h 等于 0 时，方程退化为 x² + y² = 0，解只有唯一点 (0, 0)。此时截面与曲面向切，截线退化为一个单点。当 h 小于 0 时，方程无实数解，说明平面与曲面没有交点。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "h = 0 \\implies x^2 + y^2 = 0 \\implies (x, y) = (0, 0)"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 3,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "改变 h 值所得到的一系列不同大小的投影圆，共同构成了这个曲面的等高线族。不过需要注意，我们当前演示的动态画面每次只展示单个 h 值下的截线，并非一次性铺开整张等高线图。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "focus",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 5,
+                    "item": 1
+                  }
+                ],
+                "intent": "继续观察当前画面",
+                "timing": "after_speech"
+              }
+            ]
+          }
+        ],
+        "student_activities": [
+          {
+            "kind": "number_target",
+            "prompt": "请把截面高度 h调到 4。",
+            "hints": [
+              "拖动左下角的滑杆，观察数值和画面同步变化。"
+            ],
+            "success_message": "完成，截面高度 h已经调到 4。",
+            "hint_after_attempts": 2,
+            "number_controls": [
+              {
+                "number": 1,
+                "controls": [
+                  "slider"
+                ]
+              }
+            ],
+            "value": 4,
+            "tolerance": 0.01
+          }
+        ]
+      },
+      {
+        "purpose": "总结固定输出 z 建立等高线的方法，并引导学员在课后完成反向计算高度的验证练习",
+        "reusable_items": [],
+        "moments": [
+          {
+            "narration": "今天我们来总结通过固定输出值 z 建立等高线的方法。在前面三节中，我们通过取不同的高度 h，把三维曲面与水平平面联立，得到了平面上的等高线族。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "固定输出值法总结",
+                  "items": [
+                    "令 z = h（水平截面）",
+                    "代入曲面方程 z = f(x, y)",
+                    "空间截线投影到 xy 平面得到等高线"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "梳理固定输出值分析曲面的核心逻辑",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "掌握了这个方法，我们可以从二维等高线分布反推出三维曲面的陡峭程度与形状。下一节课，我们将切换视角，改为固定输入变量 y，来看垂直截线与切线斜率。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "z = x^2 + y^2 \\implies x^2 + y^2 = h"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "请你在课后练习中完成这道验证题：如果我们希望在 xy 平面上得到一个半径为根号 3 的投影圆，应该把水平截面的高度 h 设为多少？请先写出推导，再通过控件调节验证。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "课后应用思考",
+                  "items": [
+                    "目标：投影圆半径 r = √3",
+                    "根据 r = √h，计算所需高度 h",
+                    "在练习系统中调节高度 h 进行验证"
+                  ]
+                },
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课学习了通过固定输出值 z=h 用水平平面截断曲面 z=x²+y²。空间交线投影到 xy 平面上得到圆方程 x²+y²=h，其半径为 r=√h。研究不同高度 h 的投影圆即得到了等高线族。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 3
+        },
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 4
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01",
+            "section-01-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [
+            "section-01-moment-02-item-01",
+            "section-01-moment-02-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-01-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-01-moment-01-item-02",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 3,
+          "target_id": "section-01-moment-02-item-01",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 4,
+          "target_id": "section-01-moment-02-item-02",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [
+            "section-02-moment-01-item-01",
+            "section-02-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [
+            "section-02-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-02-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-02-moment-04",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 5,
+          "moment_id": "section-02-moment-05",
+          "board_item_ids": [
+            "section-02-moment-05-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-02-moment-01-item-02",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [
+            "section-03-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 4,
+          "moment_id": "section-03-moment-04",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 5,
+          "moment_id": "section-03-moment-05",
+          "board_item_ids": [
+            "section-03-moment-05-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 6,
+          "moment_id": "section-03-moment-06",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-03-moment-03-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "section_id": "section-04",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-04-moment-01",
+          "board_item_ids": [
+            "section-04-moment-01-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-04-moment-02",
+          "board_item_ids": [
+            "section-04-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-04-moment-03",
+          "board_item_ids": [
+            "section-04-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": []
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[1].placement.reference",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[2].references[0]",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[2].references[1]",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[2].actions[0].reference",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[0].placement.reference",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[1].placement.reference",
+      "target_id": "section-02-moment-01-item-01",
+      "authoring_alias": "section-02-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[2].references[0]",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[0].actions[2].references[1]",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[1].actions[0].placement.reference",
+      "target_id": "section-02-moment-01-item-02",
+      "authoring_alias": "section-02-moment-01-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[1].actions[1].reference",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[3].actions[0].references[0]",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[3].actions[0].references[1]",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[4].actions[0].placement.reference",
+      "target_id": "section-02-moment-02-item-01",
+      "authoring_alias": "section-02-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].references[0]",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].references[1]",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[2].actions[0].placement.reference",
+      "target_id": "section-02-moment-01-item-02",
+      "authoring_alias": "section-02-moment-01-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[4].actions[0].placement.reference",
+      "target_id": "section-03-moment-03-item-01",
+      "authoring_alias": "section-03-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[5].actions[0].references[0]",
+      "target_id": "section-03-moment-05-item-01",
+      "authoring_alias": "section-03-moment-05-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[0].placement.reference",
+      "target_id": "section-03-moment-03-item-01",
+      "authoring_alias": "section-03-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[1].references[0]",
+      "target_id": "section-04-moment-01-item-01",
+      "authoring_alias": "section-04-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[0].placement.reference",
+      "target_id": "section-04-moment-01-item-01",
+      "authoring_alias": "section-04-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[2].actions[0].placement.reference",
+      "target_id": "section-04-moment-02-item-01",
+      "authoring_alias": "section-04-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-02-item-01",
+      "authoring_alias": "section-01-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.close.focus[1]",
+      "target_id": "section-01-moment-02-item-02",
+      "authoring_alias": "section-01-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "coordinate_circle"
+    }
+  ]
+}

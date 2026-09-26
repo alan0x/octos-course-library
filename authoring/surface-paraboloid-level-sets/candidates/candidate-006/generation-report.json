@@ -1,0 +1,32 @@
+{
+  "status": "failed",
+  "generated_at": "2026-09-24T15:12:40.165Z",
+  "elapsed_ms": 25647,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "8ccb5ba0a8e3b0d8e3cb3f134b36fdfb73b0b55b",
+    "dirty": true,
+    "source_diff_sha256": "4165cafd6181aa44cfa02361eab0dd03ab15b499933634ca52e89bce8f076f7e"
+  },
+  "error": "Gemini API lesson-plan-section failed (503): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+  "rejected_parts": [],
+  "program_adjustments": [],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 10310
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 20426
+    }
+  ],
+  "request_metrics": {
+    "model_calls": 3,
+    "model_elapsed_ms": 25588,
+    "system_prompt_bytes": 8835,
+    "prompt_bytes": 10046,
+    "response_schema_bytes": 12935
+  }
+}

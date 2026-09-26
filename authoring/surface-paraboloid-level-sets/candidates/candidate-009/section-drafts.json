@@ -1,0 +1,345 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "当我们拿到二元函数方程 z=x²+y² 时，怎样从方程读懂三维曲面的形状，而不是死记硬背它是一个碗状的旋转抛物面呢？",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 + y^2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "new_region"
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导思考二元函数方程对应的曲面几何形状",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "一个有效的策略是降维分析：固定输出高度 z 为常数 h。我们在三维曲面图里用水平截平面 z=h 来切割曲面，同时在二维坐标图里观察它在 xy 平面上的投影。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "during_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "曲面与水平截平面",
+                "expression": "x^2 + y^2",
+                "section_axis": "z"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "during_speech",
+            "content": {
+              "capability": "coordinate_circle",
+              "parameters": {
+                "title": "xy平面投影",
+                "center_x": 0,
+                "center_y": 0
+              }
+            },
+            "role": "comparison_visual",
+            "placement": {
+              "relation": "right_of",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            },
+            "reusable_item": 3,
+            "distinct_visual": true
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 2,
+              "item": 2
+            }
+          }
+        ]
+      },
+      {
+        "narration": "请看三维曲面图，当前水平截面高度 h 为 1。曲面与平面相交得到一条红色的空间截线；而在二维坐标图上，同步显示了它垂直投影到 xy 平面上的圆。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察 h=1 时三维截线与二维投影圆的对应关系",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              },
+              {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "将水平截面方程 z 等于 h 代入曲面方程 z 等于 x 平方加 y 平方，联立可得交线在水平面上的方程为 x 平方加 y 平方等于 h。对照圆的标准方程 x 平方加 y 平方等于 r 平方，得出截线对应的圆半径 r 等于根号 h。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\begin{cases} z = x^2 + y^2 \\\\ z = h \\end{cases} \\implies x^2 + y^2 = h \\implies r = \\sqrt{h}"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦截线方程的代数推导过程",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "我们需要清晰区分空间截线与平面投影。当 h 大于 0 时，空间中的截线是位于高度 h 处的圆，圆心为 (0,0,h)；而投影圆位于二维 xy 平面上，圆心为 (0,0)，它保留了 x 和 y 的几何位置，却抹去了高度信息。当 h 等于 0 时，水平平面 z 等于 0 与曲面切于原点，截线与投影圆均退化为单点 (0,0)；当 h 小于 0 时，曲面在平面下方，无实数交点。",
+        "delivery": "careful",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "截线与投影的数学特性",
+              "items": [
+                "空间截线：圆心 (0, 0, h)，半径 r = √h",
+                "平面投影：圆心 (0, 0)，保留 x, y 坐标",
+                "边界条件：h = 0 退化为原点，h < 0 无实数交点"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "对比三维截线与二维投影，并总结边界条件",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "思考一下，如果我把截面高度从 h 等于 1 升高到 4，截线与投影圆的半径会变为原来的几倍？请先在脑海中根据公式 r 等于根号 h 预测结果。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导学生根据半径与高度的关系公式预测高度升高时的半径变化",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "我把高度从 1 调到 4，请观察。截面升高，半径从 1 增加到了 2，正好验证了根号 4 等于 2 的推导。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 4,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "现在我再把高度降到 0。可以看到，当 h 等于 0 时，三维截线和二维投影圆都退化为了原点，但水平截平面 z 等于 0 本身依然存在。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 0,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "不同高度 h 对应的投影圆在二维平面上构成了等高线族。注意，当前动态画面的每次展示只对应一个特定的 h 值。",
+        "delivery": "careful",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调当前动态视图显示单条等高线与全局等高线族的联系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "总结一下：通过固定输出变量 z 等于 h，我们用水平平面切割曲面，把三维的截线投影到二维 xy 平面上，就得到了方程为 x²+y²=h 的等高线圆。这种固定一个变量观察截线的方法，是理解多元函数形状的关键。下一节课，我们将改为固定输入变量 y，探讨曲面在垂直截面上的截线特征。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "总结固定输出变量研究水平截面与等高线的方法",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "想让投影圆的半径为√3，请先算出需要的高度，再调节高度验证。",
+        "hints": [
+          "根据截线方程 x²+y²=h，半径 r 与高度 h 的关系为 h=r²。"
+        ],
+        "success_message": "回答正确！当半径为 √3 时，计算得出 h = (√3)² = 3。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 3,
+        "tolerance": 0.01
+      }
+    ]
+  }
+]

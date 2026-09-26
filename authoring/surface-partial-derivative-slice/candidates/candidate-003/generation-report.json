@@ -1,0 +1,43 @@
+{
+  "status": "generated",
+  "generated_at": "2026-09-24T15:06:00.954Z",
+  "elapsed_ms": 28706,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "8ccb5ba0a8e3b0d8e3cb3f134b36fdfb73b0b55b",
+    "dirty": true,
+    "source_diff_sha256": "1f69b36749f89003f3f21bb859ca94c591e3546bd04c344ca7b3de7e33b8a749"
+  },
+  "model_calls": 4,
+  "sections": 4,
+  "beats": 11,
+  "rejected_parts": [],
+  "program_adjustments": [],
+  "playable_prefixes": [
+    {
+      "completed_sections": 1,
+      "elapsed_ms": 9448
+    },
+    {
+      "completed_sections": 2,
+      "elapsed_ms": 16159
+    },
+    {
+      "completed_sections": 3,
+      "elapsed_ms": 24358
+    },
+    {
+      "completed_sections": 4,
+      "elapsed_ms": 28693
+    }
+  ],
+  "request_metrics": {
+    "model_calls": 4,
+    "model_elapsed_ms": 28624,
+    "system_prompt_bytes": 11048,
+    "prompt_bytes": 10336,
+    "response_schema_bytes": 14687
+  },
+  "credential_source": "local-development-profile"
+}

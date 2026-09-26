@@ -1,0 +1,22 @@
+{
+  "source": "authoring/surface-partial-derivative-slice/candidates/candidate-006/course.authoring.json",
+  "source_sha256": "56c6734c163bc94a22bc010fb3b8fef3d955e168f7474bbfa5223ae021952550",
+  "scope": "Human editorial corrections only; generated geometry, bindings, actions, variables and task semantics are unchanged.",
+  "edits": [
+    {
+      "path": "/lesson/title",
+      "before": "用截面理解偏导数：固定y方向研究对x的导数",
+      "after": "偏导数：固定输入，求截线斜率"
+    },
+    {
+      "path": "/steps/2/beats/1/actions/0/content/items/2",
+      "before": "斜率本质: 高度变化率 Δz/Δx，非视觉角度",
+      "after": "斜率本质: 瞬时变化率 lim(Δx→0) Δz/Δx，非视觉角度"
+    },
+    {
+      "path": "/steps/2/beats/2/say",
+      "before": "抽象到一般情形，对 $f(x,y) = x^2 + y^2$ 求偏导数，得到 $f_x(x_0, y_0) = 2x_0$。这里斜率只与 $x_0$ 有关，是该函数二次齐次特性的结果，并不意味着所有曲面都与 $y_0$ 无关。例如当 $f(x,y) = xy$ 时，偏导数 $f_x = y$ 就与 $y$ 强相关。",
+      "after": "抽象到一般情形，对 $f(x,y) = x^2 + y^2$ 求偏导数，得到 $f_x(x_0, y_0) = 2x_0$。这里斜率只与 $x_0$ 有关，是因为该函数的 y² 项对 x 求导为零，并不意味着所有曲面都与 $y_0$ 无关。例如当 $f(x,y) = xy$ 时，偏导数 $f_x = y$ 就与 $y$ 强相关。"
+    }
+  ]
+}

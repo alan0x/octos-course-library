@@ -1,0 +1,452 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "zh-CN",
+    "title": "旋转抛物面的截面与降维分析法",
+    "goals": [
+      "直观感知三维旋转抛物面 z = x² + y² 的形状与旋转对称特征",
+      "掌握通过固定截面高度 z = h 将三维曲面转化为平面交线方程 x² + y² = h 的推导方法",
+      "理解截面高度 h 与截线圆半径 r = √h 的动态变化关系及其降维思想"
+    ],
+    "adaptation": {
+      "strategies": [
+        "从直观三维曲面观察入手，建立结构直觉",
+        "结合方程代入与几何切片，推导截线圆方程",
+        "利用高度滑块联动演示半径扩大过程，深化等高线变化规律",
+        "安排互动调高练习，巩固三维转平面的降维分析能力"
+      ]
+    },
+    "variables": [
+      {
+        "as": "number_01",
+        "initial": 1,
+        "min": 0,
+        "max": 8,
+        "label": "截面高度",
+        "unit": "h",
+        "control": {
+          "kind": "slider",
+          "step": 0.04
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "as": "section-03-task-01",
+        "prompt": "拖动滑块将截面高度 h 调整为 4",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "向右拖动滑块以增大截面高度 h",
+          "观察截面圆半径 r 随着 √h 的变化"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "很好！截面高度 h = 4 时，截线圆半径扩展到了 2。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 4,
+          "tolerance": 0.02
+        },
+        "start": {
+          "kind": "practice",
+          "variables": [
+            "number_01"
+          ]
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "section-01",
+      "purpose": "认识三维空间中的旋转抛物面 z = x² + y² 的几何特征",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "欢迎来到三维曲面的世界！首先，我们在空间直角坐标系中引入旋转抛物面 z 等于 x 的平方加上 y 的平方。观察这个曲面，它像一个开口向上、关于 z 轴旋转对称的碗形曲面。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01",
+              "kind": "scene3d",
+              "role": "main_visual",
+              "content": {
+                "title": "旋转抛物面 z = x² + y²",
+                "fallback": "函数曲面 z=x^2 + y^2 与可变截面。",
+                "axes": true,
+                "camera": {
+                  "yaw": 0.72,
+                  "pitch": 0.55,
+                  "zoom": 1
+                },
+                "objects": [
+                  {
+                    "as": "surface",
+                    "kind": "surface",
+                    "label": "z=x^2 + y^2",
+                    "color": "teal",
+                    "expression": "x^2 + y^2",
+                    "x_range": {
+                      "min": -3,
+                      "max": 3
+                    },
+                    "y_range": {
+                      "min": -3,
+                      "max": 3
+                    },
+                    "samples": 24
+                  }
+                ],
+                "sections": [
+                  {
+                    "as": "section",
+                    "axis": "z",
+                    "value": 1,
+                    "targets": [
+                      "surface"
+                    ],
+                    "display": "plane_and_intersection",
+                    "label": "截面",
+                    "color": "orange"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "section.value",
+                    "expression": "number_01",
+                    "label": {
+                      "prefix": "h = ",
+                      "precision": 2
+                    }
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "z = x^2 + y^2"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-03",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "旋转抛物面特征",
+                "items": [
+                  "开口向上",
+                  "关于 z 轴旋转对称"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-02"
+              },
+              "when": "after_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察三维抛物面 z = x² + y² 的对称性与几何形状",
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-01-item-01",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-02",
+      "purpose": "推导水平切片平面 z = h 与抛物面相交所得的截线圆方程",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我们引入一个水平切片平面 z 等于 h。当这个水平平面与旋转抛物面相交时，我们将 z 等于 h 代入原曲面方程中。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-01-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "z = h \\implies x^2 + y^2 = h"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-02-moment-01-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "x^2 + y^2 = h \\quad (r = \\sqrt{h})"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "观察水平切片平面与抛物面的相交位置",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "在 xy 平面投影来看，方程 x 方加 y 方等于 h 表示一组以原点为圆心、半径为根号 h 的同心圆。调整高度 h 即可看到圆半径随之变化。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-02-item-01",
+              "kind": "geometry",
+              "role": "main_visual",
+              "content": {
+                "title": "截线圆投影 (xy平面)",
+                "axes": {
+                  "x": {
+                    "min": -3,
+                    "max": 3,
+                    "label": "x"
+                  },
+                  "y": {
+                    "min": -3,
+                    "max": 3,
+                    "label": "y"
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "center",
+                    "x": 0,
+                    "y": 0,
+                    "label": "(0, 0)"
+                  }
+                ],
+                "circles": [
+                  {
+                    "as": "circle",
+                    "center": "center",
+                    "radius": 1,
+                    "label": "r = 1"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "circle.radius",
+                    "expression": "sqrt(number_01)",
+                    "allow_zero": true,
+                    "label": {
+                      "prefix": "r = ",
+                      "precision": 2
+                    }
+                  }
+                ]
+              },
+              "place": {
+                "relation": "right_of",
+                "anchor": "section-01-moment-01-item-01",
+                "gap": "normal"
+              },
+              "when": "before_speech"
+            },
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 4,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "通过动态调节高度 h，观察截线圆半径从 1 扩大到 2 的变化规律",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "现在我从截面高度 h 等于 1 开始，再把它调节到 4。请观察空间截面和平面投影圆的变化。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01",
+                "section-02-moment-02-item-01"
+              ],
+              "intent": "引导学习者调节高度滑块h",
+              "when": "before_speech"
+            }
+          ],
+          "start": {
+            "kind": "replay",
+            "variables": [
+              "number_01"
+            ]
+          }
+        },
+        {
+          "key": "moment-02",
+          "say": "可以看到，随着高度 h 增加到 4，截面圆的方程变为 x² + y² = 4，对应的半径 r 从 1 扩大到了 2。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 4,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "这种通过固定切片高度降维分析的方法，正是绘制等高线与理解三维曲面特性的核心思想。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-03-moment-03-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "截面高度与半径关系",
+                "items": [
+                  "截面方程：x² + y² = h",
+                  "截线圆半径：r = √h",
+                  "当 h = 1 时，半径 r = 1",
+                  "当 h = 4 时，半径 r = 2"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-02-item-01"
+              },
+              "when": "after_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-02-moment-02-item-01",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-04",
+      "purpose": "总结三维转平面的降维分析法，并完成切片高度控制的互动练习",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "总结一下，面对复杂的曲面时，我们可以通过固定某个坐标轴的数值，比如令 z 等于 h，将三维问题降维成二维平面的曲线问题。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-01-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "降维分析法总结",
+                "items": [
+                  "固定三维变量: 令 z = h",
+                  "得到二维方程: x² + y² = h",
+                  "截线形状: 圆心在原点、半径 r = √h 的圆"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-03-moment-03-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01",
+                "section-02-moment-02-item-01"
+              ],
+              "intent": "总结降维分析法的核心步骤与特点",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "讲解结束后，你可以在课后练习中把截面高度从 1 调节到 4，检验截线圆的半径是否变为 2。",
+          "delivery": "encouraging",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01",
+                "section-02-moment-02-item-01"
+              ],
+              "intent": "compare"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程学习了旋转抛物面 z = x² + y² 的形状，以及通过固定水平切片 z = h 得到交线圆 x² + y² = h 的降维分析法，掌握了高度 h 与半径 r = √h 的对应关系。",
+    "focus": [
+      "section-01-moment-01-item-01",
+      "section-02-moment-02-item-01"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "title": "水平截线与等高线：以 z=x²+y² 为例",
+  "goals": [
+    "能够说明固定输出高度 z=h 如何在曲面上截出空间曲线及其在 xy 平面上的投影圆",
+    "掌握从截面方程 x²+y²=h 推导投影圆半径 r=√h 的方法及定义域边界条件（h≥0）",
+    "理解动态投影圆与静态等高线图的关系，并预告下一节垂直截线（固定输入变量）"
+  ],
+  "teaching_strategies": [
+    "问题驱动：从方程 z=x²+y² 出发建立三维曲面与二维截面关系",
+    "同步对照：三维曲面截线与二维投影圆双视图联动",
+    "先心算预测后动画验证：在进行高度变化演示前让学生预测半径变化"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": 0,
+      "max": 4,
+      "label": "截面高度 h",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.02
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 1,
+      "capability": "coordinate_circle",
+      "reusable_item": 3
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立三维曲面 z=x²+y² 与水平截面 z=h 的直观模型，并生成平面投影",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "coordinate_circle"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section",
+        "coordinate_circle"
+      ]
+    },
+    {
+      "purpose": "代数推导交线方程 x²+y²=h 与半径 r=√h，解释空间截线与二维投影的区别及边界条件",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "通过高度变化演示验证半径预测，理解动态投影与整体等高线图的关系",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结固定输出高度的方法，并开放课后针对半径反推高度的练习",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程讲解了如何通过固定输出高度 z=h，将三维曲面 z=x²+y² 化简为平面圆 x²+y²=h 及其投影圆。在 h≥0 时半径 r=√h。下一课我们将尝试固定输入变量 y，观察垂直截线的特征。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      },
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      }
+    ]
+  },
+  "version": "0.1"
+}

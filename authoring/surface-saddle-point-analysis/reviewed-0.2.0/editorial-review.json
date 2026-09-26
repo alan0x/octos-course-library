@@ -1,0 +1,27 @@
+{
+  "source": "authoring/surface-saddle-point-analysis/candidates/candidate-003/course.authoring.json",
+  "source_sha256": "b96b4e1eb9b7de18bdd5757768f096550baed3f518e9ae93927e1558b2e7d2b8",
+  "scope": "Human editorial corrections only; generated geometry, bindings, actions, variables and task semantics are unchanged.",
+  "edits": [
+    {
+      "path": "/steps/0/beats/1/say",
+      "before": "回想第一课的抛物面 x² + y²，它在原点同样梯度为零且是最低点。那么，梯度为零就一定是最低点吗？我们同时观察两幅马鞍面，左图切面为 y=0，右图切面为 x=0。",
+      "after": "回想第一课的抛物面 x² + y²，它在原点同样梯度为零且是最低点。那么，梯度为零就一定是最低点吗？我们同时观察两幅马鞍面，两幅图的截面分别为 y=0 和 x=0。"
+    },
+    {
+      "path": "/steps/1/beats/1/actions/1/content/latex",
+      "before": "z(t,0) = t^2 \\text{ (极小值)}, \\quad z(0,t) = -t^2 \\text{ (极大值)}",
+      "after": "z(t,0) = t^2 \\text{ (t=0处极小)}, \\quad z(0,t) = -t^2 \\text{ (t=0处极大)}"
+    },
+    {
+      "path": "/steps/2/beats/2/actions/0/content/items/2",
+      "before": "注意：仅两个方向上升尚不能证明全局极小",
+      "after": "注意：仅两个方向上升尚不能证明局部极小"
+    },
+    {
+      "path": "/steps/3/beats/2/say",
+      "before": "对于旋转抛物面，原点任意邻域内的函数值都大于等于零，因此原点是严格局部极小值点；而对于马鞍面，原点任意邻域内既存在正值也存在负值，因此原点不是极值点，而是鞍点。",
+      "after": "对于旋转抛物面，除原点外，所有点的函数值 x²+y² 都严格大于零，因此原点是严格局部极小值点；而对于马鞍面，原点任意邻域内既存在正值也存在负值，因此原点不是极值点，而是鞍点。"
+    }
+  ]
+}

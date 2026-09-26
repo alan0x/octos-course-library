@@ -1,0 +1,152 @@
+{
+  "title": "固定输入变量：从截线切线到偏导数",
+  "goals": [
+    "理解固定 y=y₀ 时曲面截线的几何含义与代数表达",
+    "掌握固定输入变量后偏导数即截线切线斜率的计算与解释",
+    "能够区分固定不同变量下的截面选择与偏导数方向"
+  ],
+  "teaching_strategies": [
+    "从三维曲面垂直截面过渡到二维截线函数图，对比空间与平面图形",
+    "结合数值变化演示与代数推导，显式说明斜率与增量关系",
+    "通过反例澄清特殊函数性质，建立对偏导数概念边界的理解"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 2,
+      "label": "y₀",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.01
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        2,
+        3
+      ],
+      "relation": "supporting",
+      "related_visual": 1,
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立固定输入y=y₀的垂直截面与曲面截线概念",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "移动截面至y₀=1并建立二维截线与切线对比图",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "推导偏导数代数表达与几何斜率意义并澄清概念边界",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结固定变量求偏导法则并完成课后反求y₀检验",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课学习了固定输入变量y=y₀的几何含义：通过垂直截面截出截线，将多元函数化为一元函数，在特定点求导得到切线斜率，即对x的偏导数。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

@@ -1,0 +1,456 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "上一课我们固定了高度 z 来研究等高线。今天我们要研究对 x 的偏导数，这时需要固定输入变量 y，使其保持常数 y₀。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "曲面 z = x² + y² 与垂直截面 y = y₀",
+                "expression": "x^2 + y^2",
+                "section_axis": "y"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "content": {
+              "title": "研究对 x 的偏导数",
+              "items": [
+                "固定输入变量 y = y₀",
+                "截面内允许 x 变化，z 随之变化",
+                "y 在全过程中保持不变"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "请看三维曲面图，当前截面位置 y₀ 等于 0。在截面切出的抛物线上，y 被固定为 0，只有 x 可以自由变化，高度 z 随 x 的变化而变化。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "intent": "观察 y₀=0 时的垂直截面与曲面相交构成的截线",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "注意，旋转视角只是为了多角度观察图形，求导的本质是分析截线上 z 随 x 的变化率，而不是旋转相机的屏幕角度。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "point_at",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "我把 y₀ 的值从 0 移动到 1。请观察，平移截面只是选择了我们要研究的具体曲线，移动 y₀ 本身并不是对 x 求导。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 1,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "当固定 y=1 时，原曲面方程转化为一元函数 g(x) 等于 x 平方加 1。若我们选择点 x₀=1，就对应空间中的点 P(1,1,2)。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "g(x) = x^2 + 1 \\quad (y=1), \\quad P(1,1,2)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "\\left.\\frac{\\partial z}{\\partial x}\\right|_{(1,1)} = g'(1) = 2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "请看新建立的二维函数图。这里横轴为 x，纵轴表示高度 z。图中标出了截线 z=x²+1 以及在 P 点处的切线 z=2x。切线斜率为 2，在 x=1 处与抛物线完美相切。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_plot",
+              "parameters": {
+                "title": "固定y=1时的截线与切线（纵轴表示高度z）",
+                "x_label": "x",
+                "y_label": "z",
+                "curve_labels": [
+                  "截线 z=x²+1",
+                  "P处切线 z=2x"
+                ],
+                "expressions": [
+                  "((x)^(2))+(1)",
+                  "(2)*(x)"
+                ]
+              }
+            },
+            "role": "supporting_visual",
+            "placement": {
+              "relation": "right_of",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 2
+              }
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "展示二维坐标系中截线与切线的几何关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "我们在固定y等于1的截面上，对截线函数g(x)等于x平方加1求导，得到g撇(x)等于2x。当x等于1时，导数值g撇(1)等于2。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "g'(x) = 2x \\implies g'(1) = 2"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "g'(x) = 2x"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦截线函数的导数计算结果",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "结合切点坐标(1, 2)，利用点斜式得到切线方程z减2等于2乘以(x减1)，化简后为z等于2x。这里的斜率2代表高度z的增量与x增量之比，并不是屏幕像素角度。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z - 2 = 2(x - 1) \\implies z = 2x \\quad (k = \\frac{\\Delta z}{\\Delta x} = 2)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "说明切线点斜式与斜率的代数比值含义",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "将这个过程推广到一般情况，对x求偏导数记作f_x(x0, y0)。在本例中f_x(x0, y0)等于2x0。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "f_x(x_0, y_0) = \\lim_{\\Delta x \\to 0} \\frac{f(x_0 + \\Delta x, y_0) - f(x_0, y_0)}{\\Delta x} = 2x_0"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "注意，本例中偏导数与y0无关是x平方加y平方的特殊性质。如果是函数f等于x乘以y，对x求偏导数就等于y，偏导数值就会依赖y0。请不要将特例当成普遍规律。",
+        "delivery": "careful",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "f(x,y)=xy \\implies f_x(x_0,y_0) = y_0 \\neq \\text{常数}"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "对比反例澄清偏导数对固定变量的依赖关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "总结一下：当我们需要求多元函数对某一变量的偏导数时，实质就是固定其他所有输入变量，将曲面切出一个二维截线，然后在该截线上求一元导数。例如在点 P(1,1,2) 处，若要计算对 y 的偏导数，我们必须改调固定 x 为 1，并让 y 在截面上变化。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "固定变量求偏导法则与检验",
+              "items": [
+                "法则：对某一变量求偏导，即固定其余输入变量，沿截线求一元导数",
+                "示例：在 P(1,1,2) 求对 y 偏导，需固定 x=1，沿 y 方向求导",
+                "理解检查：课后在非负范围内反求 y₀ 使得高度 z=2"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "总结固定输入变量求偏导的法则与理解检查",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "现在请你完成课后应用练习：仍取 x=1，若希望曲面上截线对应的点高度 z=2，请在非负范围内调整 y₀，使高度达标并验证截面选择。请注意，找到数值仅是几何直观的检验，真正掌握偏导数还需要结合代数求导与方向分析。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "布置课后反求 y₀ 练习并指出概念边界",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "仍取 x=1，希望曲面上的点高度 z=2，请在非负范围内调节 y₀ 至正确数值以验证截面选择：",
+        "hints": [
+          "曲面方程为 z = x² + y²",
+          "已知固定 x=1 且希望 z=2，代入可得 1 + y₀² = 2"
+        ],
+        "success_message": "回答正确！由 1 + y₀² = 2 解得非负 y₀ = 1。这验证了截面选择与曲面高度的对应关系，但请注意，单凭拖动滑块不能替代对偏导数代数推导的理解。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 1,
+        "tolerance": 0.005
+      }
+    ]
+  }
+]

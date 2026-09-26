@@ -1,0 +1,158 @@
+{
+  "title": "用截面理解偏导数：固定y方向研究对x的导数",
+  "goals": [
+    "理解求对x的偏导数时需保持变量y固定为常数y₀",
+    "认识三维曲面在y=y₀截面上的交线是一元函数曲线z=g(x)",
+    "明确偏导数几何意义是截线在特定点处的切线斜率"
+  ],
+  "teaching_strategies": [
+    "承接上一课固定z等高线的思路，通过固定y引入垂直截面",
+    "通过3D曲面截线与2D平面截线切线对照，建立直观到代数的联系",
+    "借反例说明偏导数是否依赖y₀与函数具体形式相关"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 2,
+      "label": "截面位置y₀",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.01
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    },
+    {
+      "use_sections": [
+        2,
+        3
+      ],
+      "relation": "supporting",
+      "related_visual": 1,
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立固定y=y₀的垂直截面几何模型与概念引入",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "平移截面至y₀=1并绘制截线与2D切线对照图表",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "推导切线方程与偏导数公式，揭示几何斜率本质与边界",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结固定变量法并完成反求y₀的理解检测与课后应用",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程讲解了在多元函数z=f(x,y)中，固定y=y₀可得到平行于xz平面的垂直截面与交线z=g(x)。偏导数∂f/∂x即该截线上对应点的切线斜率。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

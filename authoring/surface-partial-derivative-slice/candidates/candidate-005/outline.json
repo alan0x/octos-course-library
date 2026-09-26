@@ -1,0 +1,148 @@
+{
+  "title": "固定y与对x的偏导数：截线切线斜率",
+  "goals": [
+    "理解固定y=y₀的几何意义是选取固定截面",
+    "掌握在截面内对x求一元导数得到对x的偏导数",
+    "理解偏导数是截线在某点的切线斜率，而非直观旋转视角"
+  ],
+  "teaching_strategies": [
+    "通过三维曲面与y=y₀截面建立几何直觉",
+    "推导固定y₀后的截线方程，并投影到二维平面求切线",
+    "对比说明特定点偏导数计算过程及其边界条件"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 2,
+      "label": "y0",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.01
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "介绍固定y=y₀的几何意义及截面形成",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "推导截线方程并展示二维截面内的切线",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "给出偏导数公式定义与一般性边界反例",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结截线偏导概念并提出反求y₀的检验问题",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课学习了固定y=y₀截面下的截线，以及其在某点对x的偏导数即为截线切线的斜率。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}
