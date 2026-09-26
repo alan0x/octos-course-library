@@ -3,3 +3,6 @@ packages:
 
 allowBuilds:
   octos-lesson-language: true
+
+patchedDependencies:
+  octos-lesson-language@0.1.0-rc.1: patches/octos-lesson-language@0.1.0-rc.1.patch

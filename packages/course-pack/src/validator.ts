@@ -13,6 +13,7 @@ import { dirname, join, relative, resolve, sep } from "node:path";
 import { compilePlaybackOperations } from "octos-lesson-language/player";
 import {
   reduceCanonicalEvents,
+  assertExecutionDeclaration,
   type CanonicalEvent,
 } from "octos-lesson-language";
 import { unzipSync, zipSync } from "fflate";
@@ -350,6 +351,8 @@ function validatePackFiles(files: PackFiles): CoursePackValidationResult {
 
   const events = parseCanonicalJsonl(files.get(manifest.entry), manifest.entry, issues);
   if (events) {
+    try { assertExecutionDeclaration(events, manifest); }
+    catch (error) { issue(issues, "PACK_EXECUTION_CAPABILITY", "/manifest.json", error instanceof Error ? error.message : String(error)); }
     const expectedNarration = narrationByBeat(events);
     const segments = new Map<string, (typeof manifest.narration.segments)[number]>();
     for (let index = 0; index < manifest.narration.segments.length; index += 1) {

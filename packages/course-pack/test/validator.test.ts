@@ -151,3 +151,17 @@ test("accepts only normalized relative POSIX paths", () => {
   assert.equal(isSafeCoursePackPath("/absolute/path"), false);
   assert.equal(isSafeCoursePackPath("C:/absolute/path"), false);
 });
+
+
+test("manifest cannot underreport executable capabilities", () => {
+  const { root, pack } = fixtureCopy();
+  try {
+    const path = join(pack, "manifest.json");
+    const manifest = JSON.parse(readFileSync(path, "utf8"));
+    manifest.requiredCapabilities = [];
+    writeFileSync(path, JSON.stringify(manifest));
+    const result = validateCoursePackDirectory(pack);
+    assert.equal(result.valid, false);
+    assert.ok(result.issues.some(issue => issue.code === "PACK_EXECUTION_CAPABILITY"));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
