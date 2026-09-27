@@ -21,7 +21,16 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
+      - name: Install locked dependencies
+        run: |
+          if ! pnpm install --frozen-lockfile; then
+            # Expose the exact failing hunk instead of pnpm's package-level error.
+            runtime=$(find node_modules/.pnpm -type d -path '*/node_modules/octos-lesson-language' -print -quit)
+            if [ -n "$runtime" ]; then
+              patch --dry-run --batch -p1 -d "$runtime" -i "$PWD/patches/octos-lesson-language@0.1.0-rc.1.patch" || true
+            fi
+            exit 1
+          fi
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm course-pack validate courses/contract-smoke
