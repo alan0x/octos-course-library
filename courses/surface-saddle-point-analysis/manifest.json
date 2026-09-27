@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "packId": "surface-saddle-point-analysis",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "title": "马鞍面与鞍点：梯度为零不一定是极值点",
-  "description": "Octos Learn curated mathematics course.",
+  "description": "第3课：沿不同方向截取马鞍面，用任意邻域内的一升一降证明驻点不一定是极值点。",
   "locale": "zh-CN",
   "subject": "mathematics",
-  "grade": "unspecified",
+  "grade": "college-calculus",
   "durationSeconds": 194,
   "minimumPlayerVersion": "0.1.0",
   "requiredCapabilities": [
@@ -168,8 +168,8 @@
     },
     {
       "path": "thumbnail.svg",
-      "sha256": "bf124d752ecae021480ff8c75562f6b4676dea2a29b35e34b3242e861b9c6ffa",
-      "bytes": 1476,
+      "sha256": "5f043df8d6301c602ba2bb091e87d3b7b2df151a95efe30ba5fec7bbacd3d87f",
+      "bytes": 21017,
       "mediaType": "image/svg+xml",
       "role": "thumbnail"
     },

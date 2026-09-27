@@ -23,6 +23,6 @@ export function calculusThumbnail(variant) {
     for(const h of [1,2,4])mesh.push(path(Array.from({length:97},(_,i)=>{const a=i*Math.PI*2/96;return [Math.sqrt(h)*Math.cos(a),Math.sqrt(h)*Math.sin(a),h];}),'#e08528',h===2?6:3));
   }
   const title=saddle?'同一点，不同方向':partial?'固定 y，看切线斜率':'固定高度，看截线';
-  const lines=saddle?['z = x² − y²','f(t,0) > 0','f(0,t) < 0']:partial?['z = x² + y²','y = 1，z = x² + 1','P处切线：z = 2x']:['z = x² + y²','z = h → x² + y² = h','r = √h'];
+  const lines=saddle?['z = x² − y²','f(t,0) = t²','f(0,t) = −t²']:partial?['z = x² + y²','y = 1，z = x² + 1','P处切线：z = 2x']:['z = x² + y²','z = h → x² + y² = h','r = √h'];
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#f7f2e8"/><rect x="35" y="45" width="535" height="505" rx="28" fill="#fffdf8" stroke="#d9d2c5"/>${mesh.join('')}<g font-family="system-ui, sans-serif" fill="#183b3a">${lines.map((t,i)=>`<text x="605" y="${160+i*95}" font-size="${i===0?44:34}">${escapeXml(t)}</text>`).join('')}<text x="605" y="470" font-size="34" font-weight="700">${title}</text><text x="50" y="610" font-size="30">用截面理解多元函数 · ${saddle?'03 鞍点':partial?'02 偏导数':'01 等高线'}</text></g></svg>\n`;
 }
