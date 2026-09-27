@@ -1,0 +1,151 @@
+{
+  "title": "马鞍面与鞍点：梯度为零不一定是极值点",
+  "goals": [
+    "通过偏导数计算验证马鞍面在原点的梯度为零",
+    "观察y=0与x=0两个截面切线，理解沿不同路径方向的升降差异",
+    "运用任意邻域内的函数值正负比较，严谨证明鞍点既非极大也非极小"
+  ],
+  "teaching_strategies": [
+    "双截面对比：借助y=0与x=0截面的对立走向建立直觉",
+    "路径参数化：将二维截面转化为一维路径t上的函数曲线进行对比",
+    "邻域反例法：利用极小邻域内必定存在正负值的定义否定极值"
+  ],
+  "numbers": [],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1
+      ],
+      "request_part": 1
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        2
+      ],
+      "request_part": 2
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        3
+      ],
+      "request_part": 3
+    },
+    {
+      "treatment": "teach",
+      "sections": [
+        4
+      ],
+      "request_part": 4
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        1
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    },
+    {
+      "use_sections": [
+        2
+      ],
+      "relation": "primary",
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "计算马鞍面原点偏导数与梯度，引入双方向截面观察梯度为零时的矛盾现象",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "将截面降维为路径参数t的函数曲线，分析两个主方向上的极值差异",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "基于任意小邻域定义进行严格代数证明，说明鞍点非极值点的本质",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结多元函数极值判断的三课方法体系，并进行概念反思与自查",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课通过分析马鞍面 z=x²-y²，证明了梯度为零仅是极值的必要条件而非充分条件。我们利用双方向截面和邻域定义揭示了鞍点的特性，并总结了结合等高线、偏导数与路径分析判断极值的完整方法。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

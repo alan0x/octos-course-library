@@ -1,3 +1,4 @@
+import { calculusThumbnail, CALCULUS_THUMBNAIL_VARIANTS } from "./calculus-thumbnails.mjs";
 import { execFileSync } from "node:child_process";
 import { createHash, randomUUID } from "node:crypto";
 import { copyFile, mkdir, readFile, stat, writeFile } from "node:fs/promises";
@@ -56,7 +57,7 @@ function role(path) {
   if (path === "course.oll.jsonl") return "lesson";
   if (path === "board.json") return "board";
   if (path === "thumbnail.svg") return "thumbnail";
-  if (path === "course.authoring.json") return "asset";
+  if (path === "course.authoring.json" || path === "compilation.json") return "asset";
   if (path.startsWith("audio/")) return "narration";
   return "license";
 }
@@ -111,6 +112,10 @@ function durationMs(path) {
 }
 
 function thumbnail(title, variant = "generic") {
+  if (CALCULUS_THUMBNAIL_VARIANTS.includes(variant)) return calculusThumbnail(variant);
+  if (!["generic", "linear-function", "calculus-surface", "surface-3d", "trigonometry-unit-circle", "trig"].includes(variant)) {
+    throw new Error(`Unsupported thumbnailVariant '${variant}'`);
+  }
   const safeTitle = title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
   if (variant === "linear-function") {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
@@ -238,6 +243,7 @@ const materializationOutput = execFileSync("pnpm", [
   "--",
   "--authoring", authoringPath,
   "--output", canonicalPath,
+  "--report", resolve(outputDirectory, "compilation.json"),
   "--lesson-id", lessonId,
   "--board-id", packId,
   "--base-revision", "0",
@@ -245,6 +251,7 @@ const materializationOutput = execFileSync("pnpm", [
   "--region-id", regionId,
 ], { encoding: "utf8" });
 process.stdout.write(materializationOutput);
+const compilationReport = JSON.parse(await readFile(resolve(outputDirectory, "compilation.json"), "utf8"));
 const events = (await readFile(canonicalPath, "utf8"))
   .split(/\r?\n/u)
   .filter(Boolean)
@@ -335,6 +342,7 @@ const payloadPaths = [
   "NOTICE.txt",
   "board.json",
   "course.authoring.json",
+  "compilation.json",
   "course.oll.jsonl",
   "thumbnail.svg",
   ...narrationSegments.map((segment) => segment.file),
@@ -355,7 +363,9 @@ const manifest = {
   subject,
   grade,
   durationSeconds: Math.ceil(totalDurationMs / 1000),
-  minimumPlayerVersion: "0.1.0",
+  minimumPlayerVersion: compilationReport.minimumPlayerVersion,
+  requiredCapabilities: compilationReport.requiredCapabilities,
+  compilation: compilationReport.compilation,
   entry: "course.oll.jsonl",
   board: "board.json",
   thumbnail: "thumbnail.svg",

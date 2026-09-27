@@ -1,0 +1,782 @@
+{
+  "plan": {
+    "version": "0.1",
+    "title": "固定y与对x的偏导数",
+    "goals": [
+      "理解固定变量y=y₀时截面与曲面相交的几何意义",
+      "掌握将多元函数截线转化为一元函数并求切线斜率的过程",
+      "理解偏导数几何意义为截线在给定点的切线斜率"
+    ],
+    "teaching_strategies": [
+      "利用3D曲面与垂直截面演示固定y的几何过程",
+      "借助二维截线与切线对照图，澄清切线斜率与平面角度的区别",
+      "通过板书严格推导点斜式方程，并说明偏导数的一般定义与特例边界"
+    ],
+    "numbers": [
+      {
+        "initial": 0,
+        "min": 0,
+        "max": 2,
+        "label": "y₀",
+        "student_control": {
+          "kind": "slider",
+          "step": 0.01
+        }
+      }
+    ],
+    "sections": [
+      {
+        "purpose": "建立固定y=y₀截面相交的几何直觉，澄清变量固定与变化的边界",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "function_surface_with_section"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "上一课我们固定了高度z来观察等高线。这一课我们要求对x的偏导数，因此需要固定输入变量y等于一个常数y₀。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "function_surface_with_section",
+                  "parameters": {
+                    "title": "曲面 z = x² + y² 与截面 y = y₀",
+                    "expression": "x^2 + y^2",
+                    "section_axis": "y"
+                  },
+                  "numbers": [
+                    1
+                  ]
+                },
+                "role": "main_visual",
+                "placement": {
+                  "relation": "new_region"
+                },
+                "reusable_item": 1
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "观察垂直于y轴的截面切过曲面的交线",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "在这个截面内，y被锁定为常数y₀，只允许自变量x发生变化，高度z随x的变化而变化。",
+            "delivery": "neutral",
+            "actions": [
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "local_board_item",
+                  "moment": 1,
+                  "item": 1
+                }
+              }
+            ]
+          },
+          {
+            "narration": "请注意，调整观察相机的视角只是改变了看图的角度，绝不等于求导运算；求导关注的是高度z随x变化的瞬时变化率。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "after_speech",
+                "intent": "强调截面上x与z的函数关系",
+                "references": [
+                  {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "将截面平移与偏导求值区分开，推导一元函数截线及特定点切线方程",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "visual",
+            "capability": "function_plot"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "我把y₀从0平移到1。请注意，平移截面只是选择了我们要研究的具体曲线，平移本身并不是对x求导。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "animate",
+                "timing": "during_speech",
+                "number": 1,
+                "end_value": 1,
+                "duration_intent": "normal",
+                "easing": "linear"
+              }
+            ]
+          },
+          {
+            "narration": "固定y等于1后，空间曲面被截成一元函数g(x)=x²+1。我们在截线上选定x₀等于1，对应空间点P(1,1,2)。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "after_speech",
+                "content": {
+                  "latex": "y=1 \\implies g(x)=x^2+1, \\quad P(1,1,2)"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "after_speech",
+                "content": {
+                  "latex": "g(x) = f(x, 1) = x^2 + 1"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "右侧绘制了二维截面图，纵坐标表示高度z。可以看到，切线z=2x在x等于1时与抛物线相切，其斜率2就是对x的偏导数值。",
+            "delivery": "careful",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "visual",
+                "timing": "before_speech",
+                "content": {
+                  "capability": "function_plot",
+                  "parameters": {
+                    "title": "截面与切线 (纵轴为高度z)",
+                    "x_label": "x",
+                    "y_label": "z",
+                    "curve_labels": [
+                      "截线 z=x²+1",
+                      "P处切线 z=2x"
+                    ],
+                    "expressions": [
+                      "((x)^(2))+(1)",
+                      "(2)*(x)"
+                    ]
+                  }
+                },
+                "role": "supporting_visual",
+                "placement": {
+                  "relation": "right_of",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 2
+                  }
+                },
+                "reusable_item": 2
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "比较截线与切线斜率",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 1,
+                    "item": 1
+                  },
+                  {
+                    "source": "local_board_item",
+                    "moment": 3,
+                    "item": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "利用导数点斜式建立切线方程，解释斜率物理意义与函数特例边界",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "math"
+          },
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "我们在上一节求出了截线函数 g(x) = x^2 + 1，并在 x=1 处得到了高度 z=2。现在对 g(x) 求导，得到斜率函数 g'(x) = 2x。将 x=1 代入，得到该点处的切线斜率等于 2。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "g'(x) = 2x \\implies g'(1) = 2"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 2,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "g'(x) = 2x \\implies g'(1) = 2 \\quad \\text{且 } z = 2x"
+                },
+                "reusable_item": 1,
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 1
+                  }
+                }
+              },
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "强调通过一元求导计算切线斜率的过程",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 2,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "根据点斜式 z - z_0 = k(x - x_0)，代入点 (1, 2) 与斜率 k = 2，得到切线方程 z - 2 = 2(x - 1)，化简后为 z = 2x。这里的斜率 2 代表高度增量 Δz 与 x 增量 Δx 的极限比值，而不是屏幕上画出的物理角度。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "z - 2 = 2(x - 1) \\implies z = 2x"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 1,
+                    "item": 2
+                  }
+                }
+              },
+              {
+                "action": "point_at",
+                "timing": "during_speech",
+                "reference": {
+                  "source": "reusable",
+                  "section": 2,
+                  "item": 2
+                }
+              }
+            ]
+          },
+          {
+            "narration": "抽象到一般形式，偏导数记为 f_x(x_0, y_0) = 2x_0。需要注意，在本例 f(x, y) = x^2 + y^2 中，斜率仅与 x_0 有关，这是该函数的特殊性质；如果是 f(x, y) = xy，其对 x 的偏导数 f_x = y 就依赖于 y_0。",
+            "delivery": "careful",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "during_speech",
+                "content": {
+                  "title": "偏导数定义与特例边界",
+                  "items": [
+                    "一般式：f_x(x_0, y_0) = 2x_0",
+                    "几何意义：截线在指定点的切线斜率 (Δz / Δx)",
+                    "特例边界：f=x²+y² 的偏导不显含 y₀，而 f=xy 的偏导 f_x=y 依赖 y₀"
+                  ]
+                },
+                "reusable_item": 2,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "purpose": "总结固定变量求偏导的步骤，提示对称思考并完成课后反求练习",
+        "reusable_items": [
+          {
+            "kind": "board_item",
+            "board_kind": "note"
+          }
+        ],
+        "moments": [
+          {
+            "narration": "总结一下：当我们需要求多元函数对 x 的偏导数时，核心步骤是先固定 y 等于某个常数 y₀，此时三维曲面被截成一条关于 x 的一元曲线。接着，我们只需对这条一元曲线求导，得到的导数值就是截线上该点的切线斜率。",
+            "delivery": "emphatic",
+            "actions": [
+              {
+                "action": "focus",
+                "timing": "during_speech",
+                "intent": "总结固定变量求偏导数的步骤与几何意义",
+                "references": [
+                  {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "narration": "现在请你对称地思考：如果在点 P(1,1,2) 处，我们需要求对 y 的偏导数，应该如何确定截面呢？没错，此时我们需要固定 x = 1，将曲面截成关于 y 的一元函数，再求其对 y 的切线斜率。",
+            "delivery": "patient",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "math",
+                "timing": "during_speech",
+                "content": {
+                  "latex": "\\text{求 } \\frac{\\partial z}{\\partial y}(1,1) \\implies \\text{固定 } x = 1"
+                },
+                "role": "derivation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "reusable",
+                    "section": 3,
+                    "item": 2
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "narration": "请看右侧便签上的课后应用题：仍取固定 x = 1，若希望曲面上对应点的高度 z = 2，在非负范围内如何选择 y₀？请在课后尝试反推。注意，通过求解 1 + y₀² = 2 得到 y₀ = 1，能够检验我们对截面方程的理解，但要真正掌握偏导数，还需要结合代数求导与极限定义的推导。下一课我们将进一步比较不同方向的高低，来判断驻点的特征。",
+            "delivery": "encouraging",
+            "actions": [
+              {
+                "action": "create",
+                "kind": "note",
+                "timing": "before_speech",
+                "content": {
+                  "title": "课后思考与练习",
+                  "items": [
+                    "1. 核心步骤：固定一个变量，转化为一元函数求导",
+                    "2. 思考：在 (1,1,2) 处求 ∂z/∂y，应固定 x = 1",
+                    "3. 练习：若固定 x = 1，欲使 z = 2 (z = x² + y²)，求非负 y₀"
+                  ]
+                },
+                "reusable_item": 1,
+                "role": "explanation",
+                "placement": {
+                  "relation": "below",
+                  "reference": {
+                    "source": "local_board_item",
+                    "moment": 2,
+                    "item": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "close": {
+      "summary": "本课学习了固定输入变量y=y₀时，通过垂直截面将曲面截出截线，并利用一元导数求出切线斜率的过程。掌握了偏导数∂f/∂x即为截线切线斜率的几何意义。",
+      "focus": [
+        {
+          "source": "reusable",
+          "section": 1,
+          "item": 1
+        },
+        {
+          "source": "reusable",
+          "section": 2,
+          "item": 2
+        }
+      ]
+    }
+  },
+  "numbers": [
+    {
+      "index": 1,
+      "variable_id": "number_01"
+    }
+  ],
+  "sections": [
+    {
+      "index": 1,
+      "section_id": "section-01",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-01-moment-01",
+          "board_item_ids": [
+            "section-01-moment-01-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-01-moment-02",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-01-moment-03",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-01-moment-01-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "section_id": "section-02",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-02-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-02-moment-02",
+          "board_item_ids": [
+            "section-02-moment-02-item-01",
+            "section-02-moment-02-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-02-moment-03",
+          "board_item_ids": [
+            "section-02-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-02-moment-02-item-02",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-02-moment-03-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "section_id": "section-03",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-03-moment-01",
+          "board_item_ids": [
+            "section-03-moment-01-item-01",
+            "section-03-moment-01-item-02"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-03-moment-02",
+          "board_item_ids": [
+            "section-03-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-03-moment-03",
+          "board_item_ids": [
+            "section-03-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-03-moment-01-item-02",
+          "target_kind": "board_item"
+        },
+        {
+          "index": 2,
+          "target_id": "section-03-moment-03-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "section_id": "section-04",
+      "moments": [
+        {
+          "index": 1,
+          "moment_id": "section-04-moment-01",
+          "board_item_ids": [],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 2,
+          "moment_id": "section-04-moment-02",
+          "board_item_ids": [
+            "section-04-moment-02-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        },
+        {
+          "index": 3,
+          "moment_id": "section-04-moment-03",
+          "board_item_ids": [
+            "section-04-moment-03-item-01"
+          ],
+          "connection_ids": [],
+          "group_ids": []
+        }
+      ],
+      "reusable_items": [
+        {
+          "index": 1,
+          "target_id": "section-04-moment-03-item-01",
+          "target_kind": "board_item"
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "path": "$lessonPlan.sections[0].moments[0].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[1].actions[0].reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[0].moments[2].actions[0].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[1].actions[0].placement.reference",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[1].actions[1].placement.reference",
+      "target_id": "section-02-moment-02-item-01",
+      "authoring_alias": "section-02-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[2].actions[0].placement.reference",
+      "target_id": "section-02-moment-02-item-02",
+      "authoring_alias": "section-02-moment-02-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[2].actions[1].references[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.sections[1].moments[2].actions[1].references[1]",
+      "target_id": "section-02-moment-03-item-01",
+      "authoring_alias": "section-02-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[0].placement.reference",
+      "target_id": "section-02-moment-03-item-01",
+      "authoring_alias": "section-02-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[1].placement.reference",
+      "target_id": "section-03-moment-01-item-01",
+      "authoring_alias": "section-03-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[0].actions[2].references[0]",
+      "target_id": "section-02-moment-03-item-01",
+      "authoring_alias": "section-02-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[1].actions[0].placement.reference",
+      "target_id": "section-03-moment-01-item-02",
+      "authoring_alias": "section-03-moment-01-item-02",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[1].actions[1].reference",
+      "target_id": "section-02-moment-03-item-01",
+      "authoring_alias": "section-02-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    },
+    {
+      "path": "$lessonPlan.sections[2].moments[2].actions[0].placement.reference",
+      "target_id": "section-03-moment-02-item-01",
+      "authoring_alias": "section-03-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[0].actions[0].references[0]",
+      "target_id": "section-03-moment-03-item-01",
+      "authoring_alias": "section-03-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[1].actions[0].placement.reference",
+      "target_id": "section-03-moment-03-item-01",
+      "authoring_alias": "section-03-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "note"
+    },
+    {
+      "path": "$lessonPlan.sections[3].moments[2].actions[0].placement.reference",
+      "target_id": "section-04-moment-02-item-01",
+      "authoring_alias": "section-04-moment-02-item-01",
+      "target_kind": "board_item",
+      "board_kind": "math"
+    },
+    {
+      "path": "$lessonPlan.close.focus[0]",
+      "target_id": "section-01-moment-01-item-01",
+      "authoring_alias": "section-01-moment-01-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_surface_with_section"
+    },
+    {
+      "path": "$lessonPlan.close.focus[1]",
+      "target_id": "section-02-moment-03-item-01",
+      "authoring_alias": "section-02-moment-03-item-01",
+      "target_kind": "board_item",
+      "board_kind": "visual",
+      "capability": "function_plot"
+    }
+  ]
+}

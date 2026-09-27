@@ -1,0 +1,153 @@
+{
+  "title": "水平截线与等高线：从空间曲面到平面投影",
+  "goals": [
+    "理解通过固定输出值 z=h 研究三维曲面的截面分析法",
+    "掌握 z=x²+y² 与水平平面 z=h 的交线推导，区分空间截线与 xy 平面投影圆",
+    "明确等高线在不同 h 值下的几何边界（h>0、h=0、h<0）"
+  ],
+  "teaching_strategies": [
+    "以问题‘如何读懂三维曲面’引入，通过固定高度降维观察",
+    "三维曲面截线与二维投影圆双图联动对照，强化空间与投影的关系",
+    "先预测半径变化再由教师动画演示验证，并剖析退化点边界"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": 0,
+      "max": 4,
+      "label": "截面高度 h",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.02
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "request_part": 2,
+      "treatment": "teach",
+      "sections": [
+        2
+      ]
+    },
+    {
+      "request_part": 3,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    },
+    {
+      "request_part": 4,
+      "treatment": "teach",
+      "sections": [
+        4
+      ]
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    },
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 1,
+      "capability": "coordinate_circle",
+      "reusable_item": 4
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "从三维曲面认知问题出发，建立 z=x²+y² 旋转抛物面与水平截面 z=h 的空间模型，并同步建立 xy 平面的投影圆对照",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "coordinate_circle"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section",
+        "coordinate_circle"
+      ]
+    },
+    {
+      "purpose": "通过代数联立方程推导空间交线与投影圆方程，明确高度 h 对半径 r 的决定作用以及坐标高度保留差异",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "进行半径变化的定量预测与教师动画验证，探讨 h=0 的退化边界和等高线族的概念",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结固定输出 z 建立等高线的方法，并引导学员在课后完成反向计算高度的验证练习",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课学习了通过固定输出值 z=h 用水平平面截断曲面 z=x²+y²。空间交线投影到 xy 平面上得到圆方程 x²+y²=h，其半径为 r=√h。研究不同高度 h 的投影圆即得到了等高线族。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      },
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 4
+      }
+    ]
+  },
+  "version": "0.1"
+}

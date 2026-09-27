@@ -1,0 +1,149 @@
+{
+  "title": "偏导数的几何意义与沿轴截线求导",
+  "goals": [
+    "理解固定 y=y₀ 截取三维曲面 z=f(x,y) 得到一元函数截线的几何过程",
+    "掌握对 x 求偏导数即为在固定 y 截线上求一元切线斜率的过程与计算",
+    "辨析平移截面与在截线上求导的区别，建立偏导数的条件直觉"
+  ],
+  "teaching_strategies": [
+    "利用三维曲面与垂直截面联动展示截线形成过程",
+    "将空间截线投影降维至二维平面并画出切线，对比观察斜率几何含义",
+    "结合具体数论推导与便签反思，辨析不同变量固定的教学边界"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 2,
+      "label": "截面位置 y₀",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.01
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "request_part": 2,
+      "treatment": "teach",
+      "sections": [
+        2
+      ]
+    },
+    {
+      "request_part": 3,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    },
+    {
+      "request_part": 4,
+      "treatment": "teach",
+      "sections": [
+        4
+      ]
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 1
+    },
+    {
+      "use_sections": [
+        2,
+        3
+      ],
+      "relation": "supporting",
+      "related_visual": 1,
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "引入固定 y=y₀ 的截面，在曲面 z=x²+y² 上截出允许 x 变化的空间曲线。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "演示平移截面至 y₀=1，降维至二维平面图形并展示切线 z=2x。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "推导偏导数 f_x(1,1)=2 的计算过程与几何斜率含义，说明对不同曲面的依赖性。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结固定变量求导方法，并通过便签检查在不同固定条件下的理解与应用。",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程讲解了固定 y=y₀ 截取曲面 z=f(x,y) 得到一元截线的过程。偏导数 f_x(x₀,y₀) 就是该截线在 x₀ 处切线的斜率。平移截面是选择研究曲线，而求导是沿截线计算高度变化率。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 1
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}

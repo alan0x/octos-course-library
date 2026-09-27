@@ -1,0 +1,506 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "当我们看到方程 z 等于 x 平方加 y 平方时，怎样不靠死记硬背来读懂它的曲面形状呢？一个核心思路是：固定高度 z 等于 h，用水平截面去截这个曲面。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "during_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "三维曲面 z=x²+y² 与截面 z=h",
+                "expression": "x^2 + y^2",
+                "section_axis": "z",
+                "section_value": 1
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "during_speech",
+            "content": {
+              "capability": "coordinate_circle",
+              "parameters": {
+                "title": "xy 平面上的投影圆",
+                "radius_expression": "sqrt(n1)",
+                "center_x": 0,
+                "center_y": 0
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "comparison_visual",
+            "placement": {
+              "relation": "right_of",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            },
+            "reusable_item": 4,
+            "distinct_visual": true
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "z = x^2 + y^2 \\quad (z = h)"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "截面分析法",
+              "items": [
+                "用水平平面 z=h 截曲面得到交线",
+                "将交线垂直投影到 xy 平面上观察形状"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察三维空间中截面与曲面的交线以及二维平面上的投影",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              },
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "大家请看，左侧是三维曲面在 z 等于 1 处的截面和真实交线；右侧则是将这条交线垂直投影到 xy 平面后得到的几何图形。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 1,
+              "item": 2
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "想让投影圆的半径为 √3，请先算出需要的高度，再调节高度验证。",
+        "hints": [
+          "根据推导，投影圆半径满足 r = √h，即 h = r²。",
+          "将 r = √3 代入公式 h = r²，计算出所需高度 h。"
+        ],
+        "success_message": "验证成功！因为 (√3)² = 3，当高度 h 调节为 3 时，投影圆的半径刚好为 √3。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 3,
+        "tolerance": 0.01
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "当我们拿到方程 z等于x平方加y平方 时，如何从方程准确读出它的曲面形状呢？我们可以用固定高度 z等于h 的水平截面去截这个曲面。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\begin{cases} z = x^2 + y^2 \\\\ z = h \\end{cases} \\implies x^2 + y^2 = h"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 4
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "x^2 + y^2 = r^2 \\implies r = \\sqrt{h} \\quad (h \\ge 0)"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导学生通过联立方程求解截线",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "将 z等于h 代入曲面方程，得到平面上的曲线方程 x平方加y平方等于h。对比圆的标准方程 x平方加y平方等于r平方，可以清晰得出半径 r等于根号h。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 4
+            }
+          }
+        ]
+      },
+      {
+        "narration": "当 h大于0 时，截线是空间中以 (0,0,h) 为圆心的圆，投影到 xy 平面上则是以原点为圆心、半径为根号h 的圆；当 h等于0 时，截线退化为一个点；而当 h小于0 时，方程无实数解。",
+        "delivery": "careful",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 4,
+            "duration_intent": "extended",
+            "easing": "linear"
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请将高度 h 调节到 2.25，观察对应投影圆的半径是否变为 1.5。",
+        "hints": [
+          "因为 r = √h，当 h = 2.25 时，√2.25 = 1.5。",
+          "在拖动条上选取 2.25。"
+        ],
+        "success_message": "很好！你成功验证了半径 r 与截面高度 h 之间的根号关系。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 2.26,
+        "tolerance": 0.01
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "大家看，当高度 h 增加时，截面与曲面的交线变大，投影圆的半径也随之改变。现在我们把高度 h 从 1 逐步增加到 4，请观察投影圆半径的动态变化。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 4,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "可以清晰看到，当 h 从 1 增加到 4 时，因为半径公式是 r 等于根号 h，所以投影圆半径从 1 扩大到了 2，扩大为原来的 2 倍。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察截面高度与投影圆半径的变化关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "接下来我们看一个特殊的边界情况。当我们将高度 h 调小至 0 时，水平截面恰好与曲面切于原点。",
+        "delivery": "careful",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 0,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "在 h 等于 0 时，方程退化为 x 平方加 y 平方等于 0，唯一解是原点。此时投影圆退化为一个点，这就是旋转抛物面的顶点。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "等高线与退化点",
+              "items": [
+                "不同 h 的截面投影圆构成等高线族",
+                "当 h = 0 时，投影圆退化为原点 (0,0)",
+                "当 h > 0 时，半径 r = √h"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请拖动高度 h 滑块至 4，验证投影圆半径变为 2。",
+        "hints": [
+          "将 h 调整到最大值 4",
+          "根据 r = √h，此时 r = √4 = 2"
+        ],
+        "success_message": "非常好！你成功验证了当 h=4 时投影圆半径为 2。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 4,
+        "tolerance": 0.01
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "今天我们来思考一个核心问题：拿到一个三维方程，怎样去读懂它所代表的曲面形状？",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "三维曲面的研究方法",
+              "items": [
+                "研究目标：通过截面分析理解方程 z = x² + y² 的三维几何形状",
+                "核心思想：降维观察（固定截面与平面投影）"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引入通过截面与投影分析三维曲面的方法",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "我们先构建旋转抛物面 z = x² + y²，并用平行于 xy 平面的水平截面去切它。当固定高度为 h 时，截面方程即为 x² + y² = h。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 + y^2 \\quad (z = h \\ge 0)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "总结一下，固定输出值 z 所得到的平面的投影曲线就是等高线。下一节课，我们将固定输入变量 y，观察纵向截面的抛物线形状。请看课后思考题：若想让投影圆的半径为 √3，请先算出需要的高度，再调节高度验证。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "before_speech",
+            "content": {
+              "latex": "r = \\sqrt{h} \\implies h = r^2"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "课程总结与预告",
+              "items": [
+                "固定 z（输出）：得到不同高度的等高线（圆）",
+                "固定 y 或 x（输入）：下节预告——垂直截面与抛物线",
+                "思考题：若 r = √3，则需要的高度 h 为多少？"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "归纳等高线思想，预告纵向截面分析并布置课后练习",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

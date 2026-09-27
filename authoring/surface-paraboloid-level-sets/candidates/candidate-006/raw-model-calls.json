@@ -1,0 +1,1450 @@
+[
+  {
+    "request": {
+      "label": "lesson-plan-bootstrap",
+      "turnId": "course-library-surface-paraboloid-level-sets-1790262734518",
+      "systemPrompt": "设计完整课程目录，不生成 OLL、执行 ID、组件名或自由对象名。\n- 需要同步对照的图复用同一共享数值，并通过 supporting/comparison 声明关联；不要用两个独立 main 图表示同一联动关系。\n- visual_recipes 为 [features,numbers,purpose]。course_visuals 选其中 features，只列必要画面；后续复用，确需并排才建 comparison，supporting/comparison 指向较早画面。\n- 多边形重排选 polygon_pieces、rigid_rearrangement、area_relation；圆面积选 circle_area_rearrangement。ordered_process_steps 仅是静态流程。\n- numbers 只写有教学作用的共享数值、范围和初值，顺序依 visual_recipes 的 numbers；控件与步长由程序生成。\n- request_coverage 依 request_parts 顺序覆盖：可实现写 teach+章节；不能完整实现写 unsupported、空章节及原因，禁止错误替代。\n- 按独立教学目标和学习进程分节，不按主题数或画面数分节。每节只承担一个完成后可验证的目标；连续推导及须同步观察的画面留在同一节的多个 moment。简单问题能围绕一个目标讲清时用 1 节；若须分别建立直觉、纠错或解释原理、推导或演示、应用、检查掌握中的多个目标，拆成 2–4 节。不要为凑节数重复开场、定义或总结，也不要把本应独立的推导、应用和检查全塞进一节。为什么须推导，怎么算须步骤与检验，是什么须直觉与边界。不猜年级；close 只总结。\n只返回符合响应 Schema 的 JSON。\n\n在同一次回答中，必须先完成 outline，再依据这个 outline 编写 first_section。first_section 只能落实 outline.sections[0]：\n- outline 是唯一课程安排；不得在 first_section 增加 outline 没有声明的主要画面，也不得遗漏第一节声明的主要画面和可复用板书。\n- first_section 只写 moments 以及可选的 number_activities、scene3d_activities。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 第一节新画面写入 moment.visual_creates；course_visual、content.numbers 分别引用 outline.course_visuals、outline.numbers 的从1开始位置。content.parameters 仅写数学内容，能力由程序确定；复用画面不重建。\n- 第一节公式/笔记写入 moment.math_creates/note_creates；可复用项用 reusable_item 引用目录中从1开始的位置，临时项不填。程序生成稳定引用。\n- first_section 使用 outline 中数值和画面的先后顺序，不生成 OLL、执行 ID、变量名、对象名、对象引用、course_visual_creates 或 reusable_board_creates。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 只选数值位置和目标值；scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。连续演示承接当前状态；独立重演才在 moment 写 restart_numbers（数值位置列表，起点由程序取初值），不要每段都重置。\n- 课中由教师演示：写“我把高度从 1 调到 4，请观察”，不写“请你调到 4”却同时播放教师动画；学生操作留给课后 number_activities。\n- 联动图引用同一 numbers；半径与共享量有函数关系时，coordinate_circle 写 radius_expression（如 sqrt(n1)），不写固定 radius=2 代替联动，也不要把高度直接当半径。\n- geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"learner_request\":\"这是预制课程集《用截面理解多元函数：从等高线到鞍点》中的一课。学生已学一元导数和切线斜率。共同目标：能说明固定哪个量、沿哪个方向变化、截线支持什么结论。课中由老师演示并邀请观察或先心算预测；真正操作练习只在课后开放，不能把自动动画说成学生正在操作。每节承担不同问题，不重复开场。给出推导和结论边界，不宣称仅凭拖滑块已掌握概念。使用已有图形能力，旁白说看某图时必须真的创建该数学对象。不要安排匹配隐蔽相机角度的练习。第一课：水平截线与等高线。请以 z=x²+y² 为例教会我从固定输出高度研究曲面。我想先预测再验证，知道空间截线与xy投影不同。\",\"language\":\"zh-CN\"},\"request_parts\":[\"从问题“怎样从方程读懂曲面形状”引入，而非先背碗形结论。构造 z=x²+y² 的三维曲面和水平截面，显式 section_axis=z。共享高度 h 初值1，范围0到4；投影圆必须与同一高度联动，radius_expression=sqrt(n1)，不可静态半径，也不能把h当半径。三维与二维声明 comparison 关系，后续复用。\",\"固定z=h，交线同时满足z=h和x²+y²=h。对照圆标准式x²+y²=r²推导r²=h、r=√h。解释h>0时空间圆心(0,0,h)，投影圆心(0,0)，投影保留x,y而不保留高度。h=0退化为原点，h<0无实交点；滑块不取负数。\",\"先问高度从1变4半径会变几倍，再由老师演示一次h从1到4，核对r从1到2。若为展示边界再把h变0，必须解释退化点。说明不同h的投影圆组成等高线族，当前动态画面每次只显示一个h，不能声称同时看到了整张等高线图。不重复相同1到4动画。\",\"总结固定输出值z得到等高线，下课将改为固定输入变量y看垂直截线。课后只设一个应用题：“想让投影圆的半径为√3，请先算出需要的高度，再调节高度验证。”目标h=3，初始h=1。题干不要泄露h=3；提示先给h=r²，成功反馈解释(√3)²=3。不用学生操作结果声称已证明掌握。\"],\"visual_recipe_columns\":[\"features\",\"numbers\",\"purpose\"],\"visual_recipes\":[[[\"cartesian_function_curve\"],[\"curve_parameter_1\",\"curve_parameter_2\",\"curve_parameter_3\",\"curve_parameter_4\"],\"函数图：静态公式最多两数移动A/B点；含数值的公式改变曲线\"],[[\"unit_circle\",\"projection\",\"cartesian_function_curve\"],[\"angle\"],\"单位圆动点、投影线和正弦或余弦曲线共享同一个角度\"],[[\"circle\",\"arc\"],[\"angle\",\"radius\"],\"圆、圆心角、半径和圆弧；两个数值依次控制角度和半径\"],[[\"spring_mass\",\"cartesian_function_curve\"],[\"phase\"],\"弹簧、物体、平衡位置、回复力和余弦变化曲线共享相位\"],[[\"solid_3d\",\"section_plane\"],[\"section_height\"],\"可旋转正方体、顶点、棱、面和可变水平截面\"],[[\"function_surface_3d\",\"section_plane\"],[\"section_position\"],\"可旋转三维函数曲面、可变截面和真实交线\"],[[\"implicit_surface_3d\",\"section_plane\"],[\"section_position\"],\"三变量隐式曲面 F(x,y,z)=c，以及垂直于 x、y 或 z 轴的可变截面和真实交线\"],[[\"coordinate_circle\"],[\"radius\"],\"坐标系中的圆；共享数值可通过 radius_expression（例如 sqrt(n1)）驱动半径\"],[[\"unit_square_array\",\"row_column_count\",\"area_boundary_comparison\"],[\"columns_or_length\",\"rows_or_width\"],\"单位正方形按行列铺满长方形；两个整数依次控制每行方格数（长）和行数（宽），用于面积、周长与平方单位教学\"],[[\"polygon_pieces\",\"rigid_rearrangement\",\"area_relation\"],[\"progress\"],\"经过验证的多边形拆分与刚体重排，用进度数值控制移动\"],[[\"circle_area_rearrangement\"],[\"progress\"],\"圆面积：扇形等积重排，底趋近πr、高趋近r\"],[[\"ordered_process_steps\"],[],\"概念或步骤流程图；没有几何移动，也不接受数值输入\"]],\"first_section_to_write\":1,\"first_section_rule\":\"first_section must implement outline.sections[0]; outline is authoritative and the program assigns all execution references\"}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "outline",
+          "first_section"
+        ],
+        "properties": {
+          "outline": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "goals",
+              "request_coverage",
+              "course_visuals",
+              "sections",
+              "close"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "goals": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "teaching_strategies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "numbers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "initial",
+                    "min",
+                    "max"
+                  ],
+                  "properties": {
+                    "initial": {
+                      "$ref": "#/$defs/modelDecimal"
+                    },
+                    "min": {
+                      "$ref": "#/$defs/modelDecimal"
+                    },
+                    "max": {
+                      "$ref": "#/$defs/modelDecimal"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "request_coverage": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "treatment",
+                    "sections"
+                  ],
+                  "properties": {
+                    "treatment": {
+                      "enum": [
+                        "teach",
+                        "unsupported"
+                      ]
+                    },
+                    "sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 24
+                      }
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "course_visuals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "required_features",
+                    "use_sections",
+                    "relation"
+                  ],
+                  "properties": {
+                    "required_features": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "cartesian_function_curve",
+                          "unit_circle",
+                          "projection",
+                          "circle",
+                          "arc",
+                          "spring_mass",
+                          "solid_3d",
+                          "section_plane",
+                          "function_surface_3d",
+                          "implicit_surface_3d",
+                          "coordinate_circle",
+                          "unit_square_array",
+                          "row_column_count",
+                          "area_boundary_comparison",
+                          "polygon_pieces",
+                          "rigid_rearrangement",
+                          "area_relation",
+                          "circle_area_rearrangement",
+                          "ordered_process_steps"
+                        ]
+                      }
+                    },
+                    "use_sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 24
+                      }
+                    },
+                    "relation": {
+                      "enum": [
+                        "primary",
+                        "supporting",
+                        "comparison"
+                      ]
+                    },
+                    "related_visual": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 32
+                    }
+                  }
+                }
+              },
+              "sections": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "purpose"
+                  ],
+                  "properties": {
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "reusable_items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "board_kind"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "enum": [
+                              "board_item"
+                            ]
+                          },
+                          "board_kind": {
+                            "enum": [
+                              "math",
+                              "note"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "close": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "summary"
+                ],
+                "properties": {
+                  "summary": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "first_section": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "moments"
+            ],
+            "properties": {
+              "moments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "narration",
+                    "delivery"
+                  ],
+                  "properties": {
+                    "narration": {
+                      "type": "string"
+                    },
+                    "delivery": {
+                      "enum": [
+                        "neutral",
+                        "patient",
+                        "encouraging",
+                        "careful",
+                        "emphatic"
+                      ]
+                    },
+                    "restart_numbers": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          1,
+                          2,
+                          3,
+                          4,
+                          5,
+                          6,
+                          7,
+                          8,
+                          9,
+                          10,
+                          11,
+                          12,
+                          13,
+                          14,
+                          15,
+                          16
+                        ]
+                      }
+                    },
+                    "visual_creates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "course_visual",
+                          "content"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "reusable_item": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 24
+                          },
+                          "course_visual": {
+                            "enum": [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15,
+                              16
+                            ]
+                          },
+                          "content": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "parameters": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "projection": {
+                                    "enum": [
+                                      "sin",
+                                      "cos"
+                                    ]
+                                  },
+                                  "x_label": {
+                                    "type": "string"
+                                  },
+                                  "y_label": {
+                                    "type": "string"
+                                  },
+                                  "formulas": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "curve_label": {
+                                    "type": "string"
+                                  },
+                                  "curve_labels": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "expression": {
+                                    "type": "string"
+                                  },
+                                  "section_axis": {
+                                    "enum": [
+                                      "x",
+                                      "y",
+                                      "z"
+                                    ]
+                                  },
+                                  "section_value": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "level": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "radius": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "angle": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "radius_expression": {
+                                    "type": "string"
+                                  },
+                                  "center_x": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "center_y": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "construction": {
+                                    "enum": [
+                                      "right_triangle_square",
+                                      "square_area_identity",
+                                      "triangle_to_rectangle"
+                                    ]
+                                  },
+                                  "leg_a": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "leg_b": {
+                                    "$ref": "#/$defs/modelDecimal"
+                                  },
+                                  "steps": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "numbers": {
+                                "type": "array",
+                                "items": {
+                                  "enum": [
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    5,
+                                    6,
+                                    7,
+                                    8,
+                                    9,
+                                    10,
+                                    11,
+                                    12,
+                                    13,
+                                    14,
+                                    15,
+                                    16
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "math_creates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "content"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "reusable_item": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 24
+                          },
+                          "content": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "latex"
+                            ],
+                            "properties": {
+                              "latex": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "note_creates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "content"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "reusable_item": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 24
+                          },
+                          "content": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "title",
+                              "items"
+                            ],
+                            "properties": {
+                              "title": {
+                                "type": "string"
+                              },
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "focuses": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "intent"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "intent": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "animations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "number",
+                          "end_value"
+                        ],
+                        "properties": {
+                          "timing": {
+                            "enum": [
+                              "before_speech",
+                              "during_speech",
+                              "after_speech"
+                            ]
+                          },
+                          "number": {
+                            "enum": [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15,
+                              16
+                            ]
+                          },
+                          "end_value": {
+                            "$ref": "#/$defs/modelDecimal"
+                          },
+                          "duration_intent": {
+                            "enum": [
+                              "brief",
+                              "normal",
+                              "extended"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "number_activities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "prompt",
+                    "number",
+                    "value_mantissa",
+                    "value_scale",
+                    "hints"
+                  ],
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "hints": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "success_message": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16
+                      ]
+                    },
+                    "value_mantissa": {
+                      "type": "integer",
+                      "minimum": -1000000000000,
+                      "maximum": 1000000000000
+                    },
+                    "value_scale": {
+                      "enum": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                      ]
+                    }
+                  }
+                }
+              },
+              "scene3d_activities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "prompt",
+                    "controls",
+                    "view_preset",
+                    "hints"
+                  ],
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "hints": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "success_message": {
+                      "type": "string"
+                    },
+                    "controls": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "orbit",
+                          "zoom",
+                          "preset",
+                          "reset"
+                        ]
+                      }
+                    },
+                    "view_preset": {
+                      "enum": [
+                        "top",
+                        "front",
+                        "right",
+                        "left",
+                        "isometric"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "bootstrap",
+      "lessonPlanAttempt": 1
+    },
+    "response": "{\n  \"outline\": {\n    \"title\": \"水平截线与等高线：从 z=x²+y² 观察曲面结构\",\n    \"goals\": [\n      \"理解固定输出变量 z=h 截取多元函数曲面的几何意义\",\n      \"推导空间交线与 xy 平面上投影圆半径的关系 r=√h\",\n      \"能够根据要求的投影半径反推截面高度 h 并进行验证\"\n    ],\n    \"teaching_strategies\": [\n      \"问题引入：从二元方程切入，说明直接想象曲面的困难\",\n      \"对照推导：通过 3D 曲面截面与 2D 投影图并排对比，明确投影消去 z 坐标的几何特征\",\n      \"预测验证：引导心算半径变化，老师演示动画后核对边界情况（h=0 退化为点）\"\n    ],\n    \"numbers\": [\n      {\n        \"initial\": {\n          \"mantissa\": 10,\n          \"scale\": 1\n        },\n        \"min\": {\n          \"mantissa\": 0,\n          \"scale\": 1\n        },\n        \"max\": {\n          \"mantissa\": 40,\n          \"scale\": 1\n        },\n        \"label\": \"截面高度 h\",\n        \"unit\": \"\"\n      }\n    ],\n    \"request_coverage\": [\n      {\n        \"treatment\": \"teach\",\n        \"sections\": [1, 2, 3, 4],\n        \"reason\": \"完美覆盖从方程引入、几何构造、推导边界、预测验证到课后练习的完整教学流程。\"\n      }\n    ],\n    \"course_visuals\": [\n      {\n        \"required_features\": [\n          \"function_surface_3d\",\n          \"section_plane\"\n        ],\n        \"use_sections\": [1, 2, 3],\n        \"relation\": \"primary\"\n      },\n      {\n        \"required_features\": [\n          \"coordinate_circle\"\n        ],\n        \"use_sections\": [1, 2, 3],\n        \"relation\": \"comparison\",\n        \"related_visual\": 1\n      }\n    ],\n    \"sections\": [\n      {\n        \"purpose\": \"建立水平截面模型，解决从二元方程 z=x²+y² 直观想象曲面形状的问题\",\n        \"reusable_items\": [\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"math\"\n          },\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"note\"\n          }\n        ]\n      },\n      {\n        \"purpose\": \"推导交线方程与 xy 投影圆的关系，分析 h>0、h=0 及 h<0 的几何边界\",\n        \"reusable_items\": [\n          {\n            \"kind\": \"board_item\",\n            \"board_kind\": \"math\"\n          }\n        ]\n      },\n      {\n        \"purpose\": \"预测高度变化对半径的影响，由教师演示 h 从 1 变到 4 与 0 的过程并总结等高线概念\",\n        \"reusable_items\": []\n      },\n      {\n        \"purpose\": \"总结水平截线方法并完成定量练习（已知半径求高度）\",\n        \"reusable_items\": []\n      }\n    ],\n    \"close\": {\n      \"summary\": \"本节课我们通过固定输出值 z=h，将 3D 曲面截取为空间圆环并投影到 xy 平面形成半径为 √h 的等高线。下一节我们将固定输入变量 y，观察垂直截线与切线斜率的关系。\"\n    }\n  },\n  \"first_section\": {\n    \"moments\": [\n      {\n        \"narration\": \"当我们看到方程 z 等于 x 平方加 y 平方时，很难直接在脑海中构想出整张曲面的三维形状。一个有效的方法是：固定高度 z，看看曲面在不同高度被水平切开后的截面是什么形状。\",\n        \"delivery\": \"patient\",\n        \"math_creates\": [\n          {\n            \"timing\": \"during_speech\",\n            \"reusable_item\": 1,\n            \"content\": {\n              \"latex\": \"z = x^2 + y^2\"\n            }\n          }\n        ],\n        \"note_creates\": [\n          {\n            \"timing\": \"after_speech\",\n            \"reusable_item\": 2,\n            \"content\": {\n              \"title\": \"研究多元曲面的策略\",\n              \"items\": [\n                \"固定输出高度 z = h\",\n                \"观察水平截面与曲面的交线\",\n                \"将空间交线投影到 xy 平面\"\n              ]\n            }\n          }\n        ]\n      },\n      {\n        \"narration\": \"请看左侧的三维空间，我们绘制了 z 等于 x 平方加 y 平方 的曲面，并插入了一张平行于 xy 平面的水平截面，截面高度设为 h 等于 1。右侧则是对应在 xy 平面上的二维投影。\",\n        \"delivery\": \"neutral\",\n        \"visual_creates\": [\n          {\n            \"timing\": \"during_speech\",\n            \"course_visual\": 1,\n            \"content\": {\n              \"parameters\": {\n                \"title\": \"z=x²+y² 旋转抛物面与水平截面\",\n                \"expression\": \"x^2 + y^2\",\n                \"section_axis\": \"z\",\n                \"section_value\": {\n                  \"mantissa\": 10,\n                  \"scale\": 1\n                }\n              },\n              \"numbers\": [1]\n            }\n          },\n          {\n            \"timing\": \"during_speech\",\n            \"course_visual\": 2,\n            \"content\": {\n              \"parameters\": {\n                \"title\": \"xy 平面上的投影圆\",\n                \"center_x\": {\n                  \"mantissa\": 0,\n                  \"scale\": 0\n                },\n                \"center_y\": {\n                  \"mantissa\": 0,\n                  \"scale\": 0\n                },\n                \"construction\": \"square_area_identity\",\n                \"leg_a\": {\n                  \"mantissa\": 10,\n                  \"scale\": 1\n                },\n                \"leg_b\": {\n                  \"mantissa\": 10,\n                  \"scale\": 1\n                },\n                \"steps\": [\"投影线垂直降至 xy 平面\", \"保留 (x, y) 坐标，去除 z 坐标值\"]\n              },\n              \"numbers\": [1]\n            }\n          }\n        ],\n        \"focuses\": [\n          {\n            \"timing\": \"after_speech\",\n            \"intent\": \"引导学习者观察左侧空间交线圆与右侧投影圆的对应关系\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+    "elapsed_ms": 10266,
+    "request_metrics": {
+      "system_prompt_bytes": 4409,
+      "prompt_bytes": 4175,
+      "response_schema_bytes": 6757
+    },
+    "status": "completed"
+  },
+  {
+    "request": {
+      "label": "lesson-plan-section",
+      "turnId": "course-library-surface-paraboloid-level-sets-1790262734518",
+      "systemPrompt": "只编写课程目录指定的一节，不生成 OLL、执行 ID、变量名、对象名或对象引用。\n- 必须落实目录分配的 request_parts。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 目录中本节 create 的画面按顺序写入 course_visual_creates 并指定 moment；reuse 的画面不得重建。目录声明的公式和笔记分别按顺序写入 reusable_math_creates、reusable_note_creates；空清单省略。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 只选数值位置和目标值；scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。连续演示承接当前状态；独立重演才在 moment 写 restart_numbers（数值位置列表，起点由程序取初值），不要每段都重置。\n- 课中由教师演示：写“我把高度从 1 调到 4，请观察”，不写“请你调到 4”却同时播放教师动画；学生操作留给课后 number_activities。\n- 联动图引用同一 numbers；半径与共享量有函数关系时，coordinate_circle 写 radius_expression（如 sqrt(n1)），不写固定 radius=2 代替联动，也不要把高度直接当半径。\n- geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"learner_request\":\"这是预制课程集《用截面理解多元函数：从等高线到鞍点》中的一课。学生已学一元导数和切线斜率。共同目标：能说明固定哪个量、沿哪个方向变化、截线支持什么结论。课中由老师演示并邀请观察或先心算预测；真正操作练习只在课后开放，不能把自动动画说成学生正在操作。每节承担不同问题，不重复开场。给出推导和结论边界，不宣称仅凭拖滑块已掌握概念。使用已有图形能力，旁白说看某图时必须真的创建该数学对象。不要安排匹配隐蔽相机角度的练习。第一课：水平截线与等高线。请以 z=x²+y² 为例教会我从固定输出高度研究曲面。我想先预测再验证，知道空间截线与xy投影不同。\",\"language\":\"zh-CN\"},\"course_and_section\":{\"title\":\"水平截线与等高线：从 z=x²+y² 观察曲面结构\",\"goals\":[\"理解固定输出变量 z=h 截取多元函数曲面的几何意义\",\"推导空间交线与 xy 平面上投影圆半径的关系 r=√h\",\"能够根据要求的投影半径反推截面高度 h 并进行验证\"],\"numbers\":[{\"number\":1,\"label\":\"截面高度 h\",\"initial\":1,\"min\":0,\"max\":4}],\"section\":{\"section\":2,\"purpose\":\"推导交线方程与 xy 投影圆的关系，分析 h>0、h=0 及 h<0 的几何边界\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]},\"previous_sections\":[{\"section\":1,\"purpose\":\"建立水平截面模型，解决从二元方程 z=x²+y² 直观想象曲面形状的问题\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"},{\"item\":2,\"kind\":\"board_item\",\"board_kind\":\"note\"},{\"item\":3,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"function_surface_with_section\"},{\"item\":4,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"coordinate_circle\"}]}]},\"visuals_for_section\":[{\"course_visual\":1,\"capability\":\"function_surface_with_section\",\"mode\":\"reuse\",\"relation\":\"primary\"},{\"course_visual\":2,\"capability\":\"coordinate_circle\",\"mode\":\"reuse\",\"relation\":\"comparison\",\"related_visual\":1}],\"assigned_request_parts\":[{\"request_part\":1,\"text\":\"从问题“怎样从方程读懂曲面形状”引入，而非先背碗形结论。构造 z=x²+y² 的三维曲面和水平截面，显式 section_axis=z。共享高度 h 初值1，范围0到4；投影圆必须与同一高度联动，radius_expression=sqrt(n1)，不可静态半径，也不能把h当半径。三维与二维声明 comparison 关系，后续复用。\"},{\"request_part\":2,\"text\":\"固定z=h，交线同时满足z=h和x²+y²=h。对照圆标准式x²+y²=r²推导r²=h、r=√h。解释h>0时空间圆心(0,0,h)，投影圆心(0,0)，投影保留x,y而不保留高度。h=0退化为原点，h<0无实交点；滑块不取负数。\"}]}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "moments",
+          "reusable_board_creates"
+        ],
+        "properties": {
+          "moments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "narration",
+                "delivery"
+              ],
+              "properties": {
+                "narration": {
+                  "type": "string"
+                },
+                "delivery": {
+                  "enum": [
+                    "neutral",
+                    "patient",
+                    "encouraging",
+                    "careful",
+                    "emphatic"
+                  ]
+                },
+                "restart_numbers": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      1
+                    ]
+                  }
+                },
+                "math_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "latex"
+                        ],
+                        "properties": {
+                          "latex": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "note_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "title",
+                          "items"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "focuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "intent"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "intent": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "animations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "number",
+                      "end_value"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "number": {
+                        "enum": [
+                          1
+                        ]
+                      },
+                      "end_value": {
+                        "$ref": "#/$defs/modelDecimal"
+                      },
+                      "duration_intent": {
+                        "enum": [
+                          "brief",
+                          "normal",
+                          "extended"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reusable_board_creates": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item_1"
+            ],
+            "properties": {
+              "item_1": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "moment",
+                  "content"
+                ],
+                "properties": {
+                  "moment": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
+                  "timing": {
+                    "enum": [
+                      "before_speech",
+                      "during_speech",
+                      "after_speech"
+                    ]
+                  },
+                  "content": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "latex"
+                    ],
+                    "properties": {
+                      "latex": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "number_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "number",
+                "value_mantissa",
+                "value_scale",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "number": {
+                  "enum": [
+                    1
+                  ]
+                },
+                "value_mantissa": {
+                  "type": "integer",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000
+                },
+                "value_scale": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                }
+              }
+            }
+          },
+          "scene3d_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "controls",
+                "view_preset",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "controls": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "orbit",
+                      "zoom",
+                      "preset",
+                      "reset"
+                    ]
+                  }
+                },
+                "view_preset": {
+                  "enum": [
+                    "top",
+                    "front",
+                    "right",
+                    "left",
+                    "isometric"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "section",
+      "lessonPlanSection": 2,
+      "lessonPlanAttempt": 1
+    },
+    "response": "{\n  \"moments\": [\n    {\n      \"narration\": \"当面对二元函数方程 z 等于 x 平方加 y 平方时，我们不必全凭凭空想象它的空间全貌。我们可以令输出变量 z 等于常数 h，用水平平面去截这个曲面。\",\n      \"delivery\": \"patient\",\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"引出用水平截面截取曲面的分析方法\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"将 z 等于 h 代入方程，得到空间交线同时满足 z 等于 h 和 x 平方加 y 平方等于 h。对比一维平面圆的标准方程 x 平方加 y 平方等于 r 平方，我们立即得到 r 平方等于 h，即半径 r 等于根号 h。\",\n      \"delivery\": \"emphatic\",\n      \"math_creates\": [\n        {\n          \"timing\": \"during_speech\",\n          \"content\": {\n            \"latex\": \"z = h \\\\implies x^2 + y^2 = h \\\\implies r = \\\\sqrt{h}\"\n          }\n        }\n      ],\n      \"focuses\": [\n        {\n          \"timing\": \"during_speech\",\n          \"intent\": \"对比圆的标准方程推导半径公式\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"我把截面高度 h 从 1 动态调整到 4，请大家观察：空间交线与二维投影圆的半径同步增大，其半径刚好等于根号下 h。\",\n      \"delivery\": \"neutral\",\n      \"animations\": [\n        {\n          \"timing\": \"during_speech\",\n          \"number\": 1,\n          \"end_value\": {\n            \"mantissa\": 4,\n            \"scale\": 0\n          },\n          \"duration_intent\": \"extended\"\n        }\n      ]\n    },\n    {\n      \"narration\": \"请注意几何边界：当 h 大于 0 时，空间交线是高度为 h 的圆，投影则是原点在 (0,0) 的圆；当 h 等于 0 时，切线退化为单点原点；而当 h 小于 0 时，方程在实数范围内无解，表示截面与曲面完全没有交点。\",\n      \"delivery\": \"careful\",\n      \"note_creates\": [\n        {\n          \"timing\": \"during_speech\",\n          \"content\": {\n            \"title\": \"截面高度 h 的几何边界\",\n            \"items\": [\n              \"h > 0：空间圆心 (0, 0, h)，xy 投影圆半径 r = √h\",\n              \"h = 0：退化为原点 (0, 0, 0)\",\n              \"h < 0：无实数解，平面与曲面不相交\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"reusable_board_creates\": {\n    \"item_1\": {\n      \"moment\": 2,\n      \"timing\": \"during_speech\",\n      \"content\": {\n        \"latex\": \"z = h \\\\implies x^2 + y^2 = h \\\\implies r = \\\\sqrt{h}\"\n      }\n    }\n  },\n  \"number_activities\": [\n    {\n      \"prompt\": \"若需要获取一个在 xy 平面上半径为 r = 1.5 的投影等高线圆，请计算并调控截面高度 h 的数值。\",\n      \"hints\": [\n        \"根据推导公式 r = √h，可得 h = r²\",\n        \"将 r = 1.5 代入可得 h = 1.5 × 1.5 = 2.25\"\n      ],\n      \"success_message\": \"正确！截面高度 h = 2.25 时，投影圆半径正好为 1.5。\",\n      \"number\": 1,\n      \"value_mantissa\": 225,\n      \"value_scale\": 2\n    }\n  ]\n}",
+    "elapsed_ms": 10102,
+    "request_metrics": {
+      "system_prompt_bytes": 2213,
+      "prompt_bytes": 2823,
+      "response_schema_bytes": 3327
+    },
+    "status": "completed"
+  },
+  {
+    "request": {
+      "label": "lesson-plan-section",
+      "turnId": "course-library-surface-paraboloid-level-sets-1790262734518",
+      "systemPrompt": "只编写课程目录指定的一节，不生成 OLL、执行 ID、变量名、对象名或对象引用。\n- 必须落实目录分配的 request_parts。旁白与对应板书和动作放在同一 moment；可见文字直接对学习者说话，不能写“让学生……”。\n- 目录中本节 create 的画面按顺序写入 course_visual_creates 并指定 moment；reuse 的画面不得重建。目录声明的公式和笔记分别按顺序写入 reusable_math_creates、reusable_note_creates；空清单省略。\n- focuses 只写聚焦意图，points 只表示需要指示；程序选择真实对象，补齐卡片用途、位置、默认时机和动作顺序。\n- 小数用 mantissa/scale，如 -1.5→-15/1。\n- number_activities 只选数值位置和目标值；scene3d_activities 只选预设视角。控件、容差、提示出现次数、相机和运行时引用由程序生成。\n- function_plot 的 parameters.formulas 写中缀右侧公式，横轴为 x，支持常见运算/函数。改变曲线可写 n1、n2 引用数值；独立移动两点则公式不含 n1/n2，content.numbers=[1,2]，两数为 A/B 横坐标滑块。斜率入门优先调直线系数；两点按需用。多式仅静态比较。固定直线两点移动斜率不变；重合是0/0，非竖线。陡峭看斜率绝对值。视窗和绑定由程序生成。\n- animations 只写数值、目标和节奏；程序生成缓动。连续演示承接当前状态；独立重演才在 moment 写 restart_numbers（数值位置列表，起点由程序取初值），不要每段都重置。\n- 课中由教师演示：写“我把高度从 1 调到 4，请观察”，不写“请你调到 4”却同时播放教师动画；学生操作留给课后 number_activities。\n- 联动图引用同一 numbers；半径与共享量有函数关系时，coordinate_circle 写 radius_expression（如 sqrt(n1)），不写固定 radius=2 代替联动，也不要把高度直接当半径。\n- geometric_rearrangement 仅用于指定多边形证明；圆面积用 circle_area_rearrangement。数值为重排进度；有限扇形非矩形，等分趋细时底→πr、高→r。process_diagram 无数值/动画。\n只返回符合响应 Schema 的 JSON。",
+      "prompt": "{\"course_context\":{\"learner_request\":\"这是预制课程集《用截面理解多元函数：从等高线到鞍点》中的一课。学生已学一元导数和切线斜率。共同目标：能说明固定哪个量、沿哪个方向变化、截线支持什么结论。课中由老师演示并邀请观察或先心算预测；真正操作练习只在课后开放，不能把自动动画说成学生正在操作。每节承担不同问题，不重复开场。给出推导和结论边界，不宣称仅凭拖滑块已掌握概念。使用已有图形能力，旁白说看某图时必须真的创建该数学对象。不要安排匹配隐蔽相机角度的练习。第一课：水平截线与等高线。请以 z=x²+y² 为例教会我从固定输出高度研究曲面。我想先预测再验证，知道空间截线与xy投影不同。\",\"language\":\"zh-CN\"},\"course_and_section\":{\"title\":\"水平截线与等高线：从 z=x²+y² 观察曲面结构\",\"goals\":[\"理解固定输出变量 z=h 截取多元函数曲面的几何意义\",\"推导空间交线与 xy 平面上投影圆半径的关系 r=√h\",\"能够根据要求的投影半径反推截面高度 h 并进行验证\"],\"numbers\":[{\"number\":1,\"label\":\"截面高度 h\",\"initial\":1,\"min\":0,\"max\":4}],\"section\":{\"section\":3,\"purpose\":\"预测高度变化对半径的影响，由教师演示 h 从 1 变到 4 与 0 的过程并总结等高线概念\",\"reusable_items\":[]},\"previous_sections\":[{\"section\":1,\"purpose\":\"建立水平截面模型，解决从二元方程 z=x²+y² 直观想象曲面形状的问题\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"},{\"item\":2,\"kind\":\"board_item\",\"board_kind\":\"note\"},{\"item\":3,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"function_surface_with_section\"},{\"item\":4,\"kind\":\"board_item\",\"board_kind\":\"visual\",\"capability\":\"coordinate_circle\"}]},{\"section\":2,\"purpose\":\"推导交线方程与 xy 投影圆的关系，分析 h>0、h=0 及 h<0 的几何边界\",\"reusable_items\":[{\"item\":1,\"kind\":\"board_item\",\"board_kind\":\"math\"}]}]},\"visuals_for_section\":[{\"course_visual\":1,\"capability\":\"function_surface_with_section\",\"mode\":\"reuse\",\"relation\":\"primary\"},{\"course_visual\":2,\"capability\":\"coordinate_circle\",\"mode\":\"reuse\",\"relation\":\"comparison\",\"related_visual\":1}],\"assigned_request_parts\":[{\"request_part\":1,\"text\":\"从问题“怎样从方程读懂曲面形状”引入，而非先背碗形结论。构造 z=x²+y² 的三维曲面和水平截面，显式 section_axis=z。共享高度 h 初值1，范围0到4；投影圆必须与同一高度联动，radius_expression=sqrt(n1)，不可静态半径，也不能把h当半径。三维与二维声明 comparison 关系，后续复用。\"},{\"request_part\":3,\"text\":\"先问高度从1变4半径会变几倍，再由老师演示一次h从1到4，核对r从1到2。若为展示边界再把h变0，必须解释退化点。说明不同h的投影圆组成等高线族，当前动态画面每次只显示一个h，不能声称同时看到了整张等高线图。不重复相同1到4动画。\"}]}",
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "moments"
+        ],
+        "properties": {
+          "moments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "narration",
+                "delivery"
+              ],
+              "properties": {
+                "narration": {
+                  "type": "string"
+                },
+                "delivery": {
+                  "enum": [
+                    "neutral",
+                    "patient",
+                    "encouraging",
+                    "careful",
+                    "emphatic"
+                  ]
+                },
+                "restart_numbers": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      1
+                    ]
+                  }
+                },
+                "math_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "latex"
+                        ],
+                        "properties": {
+                          "latex": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "note_creates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "content"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "content": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "title",
+                          "items"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "focuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "intent"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "intent": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "animations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "number",
+                      "end_value"
+                    ],
+                    "properties": {
+                      "timing": {
+                        "enum": [
+                          "before_speech",
+                          "during_speech",
+                          "after_speech"
+                        ]
+                      },
+                      "number": {
+                        "enum": [
+                          1
+                        ]
+                      },
+                      "end_value": {
+                        "$ref": "#/$defs/modelDecimal"
+                      },
+                      "duration_intent": {
+                        "enum": [
+                          "brief",
+                          "normal",
+                          "extended"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "number_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "number",
+                "value_mantissa",
+                "value_scale",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "number": {
+                  "enum": [
+                    1
+                  ]
+                },
+                "value_mantissa": {
+                  "type": "integer",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000
+                },
+                "value_scale": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                }
+              }
+            }
+          },
+          "scene3d_activities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "prompt",
+                "controls",
+                "view_preset",
+                "hints"
+              ],
+              "properties": {
+                "prompt": {
+                  "type": "string"
+                },
+                "hints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_message": {
+                  "type": "string"
+                },
+                "controls": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "orbit",
+                      "zoom",
+                      "preset",
+                      "reset"
+                    ]
+                  }
+                },
+                "view_preset": {
+                  "enum": [
+                    "top",
+                    "front",
+                    "right",
+                    "left",
+                    "isometric"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "$defs": {
+          "modelDecimal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mantissa",
+              "scale"
+            ],
+            "properties": {
+              "mantissa": {
+                "type": "integer",
+                "minimum": -1000000000000,
+                "maximum": 1000000000000
+              },
+              "scale": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "lessonPlanPart": "section",
+      "lessonPlanSection": 3,
+      "lessonPlanAttempt": 1
+    },
+    "elapsed_ms": 5220,
+    "request_metrics": {
+      "system_prompt_bytes": 2213,
+      "prompt_bytes": 3048,
+      "response_schema_bytes": 2851
+    },
+    "status": "failed",
+    "error": "Gemini API lesson-plan-section failed (503): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+  }
+]

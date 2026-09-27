@@ -1,0 +1,54 @@
+{
+  "status": "failed",
+  "generated_at": "2026-09-24T15:03:23.344Z",
+  "elapsed_ms": 31223,
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "learning_coach": {
+    "revision": "8ccb5ba0a8e3b0d8e3cb3f134b36fdfb73b0b55b",
+    "dirty": true,
+    "source_diff_sha256": "39dc1dd4265caeff790866bef7a1711e1b80b6be2391f91a3f744950d443253f"
+  },
+  "error": "$lessonPlan.sections[0].moments[2].actions[0].content.parameters.radius_expression: radius_expression requires a shared number",
+  "rejected_parts": [
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_CAPABILITY_PARAMETER",
+        "path": "$lessonPlan.sections[0].moments[1].actions[1].content.parameters.radius_expression",
+        "message": "$lessonPlan.sections[0].moments[1].actions[1].content.parameters.radius_expression: radius_expression requires a shared number"
+      }
+    },
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 1,
+      "error": {
+        "code": "LESSON_PLAN_CAPABILITY_PARAMETER",
+        "path": "$lessonPlan.sections[0].moments[1].actions[1].content.parameters.radius_expression",
+        "message": "$lessonPlan.sections[0].moments[1].actions[1].content.parameters.radius_expression: radius_expression requires a shared number"
+      }
+    },
+    {
+      "label": "lesson-plan-section",
+      "section": 1,
+      "attempt": 2,
+      "error": {
+        "code": "LESSON_PLAN_CAPABILITY_PARAMETER",
+        "path": "$lessonPlan.sections[0].moments[1].actions[0].content.parameters.radius_expression",
+        "message": "$lessonPlan.sections[0].moments[1].actions[0].content.parameters.radius_expression: radius_expression requires a shared number"
+      }
+    }
+  ],
+  "program_adjustments": [],
+  "playable_prefixes": [],
+  "request_metrics": {
+    "model_calls": 4,
+    "model_elapsed_ms": 31199,
+    "system_prompt_bytes": 11048,
+    "prompt_bytes": 8998,
+    "response_schema_bytes": 21956
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "title": "从截面与投影读懂旋转抛物面 z=x²+y²",
+  "goals": [
+    "理解利用截面法（固定 z=h）分析三维曲面形状的基本原理",
+    "掌握水平截线在 xy 平面上投影圆半径 r=√h 的代数推导与几何意义",
+    "认识高度 h 变化时投影圆（等高线）的动态演变及其边界退化现象"
+  ],
+  "teaching_strategies": [
+    "以问题引入：从方程 z=x²+y² 探究几何曲面形状，避免直接背诵碗形结论",
+    "数形结合推导：联立方程组导出 x²+y²=h，对照圆的标准方程确定半径与高度的关系",
+    "动态演示与交互验证：通过调节高度 h 观察三维截线与二维投影圆的同步变化及边界退化"
+  ],
+  "numbers": [
+    {
+      "initial": 1,
+      "min": 0,
+      "max": 4,
+      "label": "截面高度 h",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.02
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "request_part": 2,
+      "treatment": "teach",
+      "sections": [
+        2
+      ]
+    },
+    {
+      "request_part": 3,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    },
+    {
+      "request_part": 4,
+      "treatment": "teach",
+      "sections": [
+        4
+      ]
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 3
+    },
+    {
+      "use_sections": [
+        1,
+        2,
+        3
+      ],
+      "relation": "comparison",
+      "related_visual": 1,
+      "create_section": 1,
+      "capability": "coordinate_circle",
+      "reusable_item": 4
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立直觉：通过水平截面与投影圆引入三维曲面的研究方法",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "coordinate_circle"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section",
+        "coordinate_circle"
+      ]
+    },
+    {
+      "purpose": "代数推导：求解截线方程并分析投影圆半径与高度的关系",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "动态演变与边界分析：观察 h 从 1 变到 4 及退化点 h=0",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结延伸：归纳等高线思想并预告纵向截面分析",
+      "reusable_items": [],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程从方程 z=x²+y² 出发，利用水平截面 z=h 将三维曲面截出截线，并投影到 xy 平面上得到方程 x²+y²=h 的圆。通过代数推导与动态演示，明确了投影圆半径 r=√h 的对应关系以及 h=0 时的退化点，展现了用等高面/截面分析三维曲面形状的核心方法。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 3
+      },
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 4
+      }
+    ]
+  },
+  "version": "0.1"
+}

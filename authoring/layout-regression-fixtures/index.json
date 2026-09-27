@@ -1,0 +1,47 @@
+[
+  {
+    "packId": "fraction-comparing-unit-shares",
+    "version": "0.1.0",
+    "title": "直观理解分数的大小比较",
+    "archiveSha256": "e082a38df2977b844f9bbdc261b13695edcbd35d99b6372f91b1e9519e09d49e",
+    "archiveBytes": 1562409,
+    "withdrawnAt": "2026-09-21T15:11:40.859Z",
+    "file": "fraction-comparing-unit-shares-0.1.0.ocpack"
+  },
+  {
+    "packId": "fraction-equivalent-visuals",
+    "version": "0.1.0",
+    "title": "等价分数的图形直观与原理",
+    "archiveSha256": "6352f49ba2724cfec90b9880d3aac8682e8aa15b5c85923f09946eef01f77853",
+    "archiveBytes": 1799202,
+    "withdrawnAt": "2026-09-21T15:11:42.471Z",
+    "file": "fraction-equivalent-visuals-0.1.0.ocpack"
+  },
+  {
+    "packId": "fraction-notation-and-parts",
+    "version": "0.1.0",
+    "title": "直观理解分数的意义与结构",
+    "archiveSha256": "66f2b7ca21dad4930db661e51a4c2a96d3c780615ace08c5a2eeeec5e02b70ce",
+    "archiveBytes": 1111572,
+    "withdrawnAt": "2026-09-21T15:11:43.997Z",
+    "file": "fraction-notation-and-parts-0.1.0.ocpack"
+  },
+  {
+    "packId": "fraction-what-is-a-half",
+    "version": "0.1.0",
+    "title": "认识分数的初步概念：从方格到二分之一",
+    "archiveSha256": "e11e980e3db6f2f686a0cdec5466d5da615c4ae404f3cfe8a8df9fffc9b60941",
+    "archiveBytes": 1415514,
+    "withdrawnAt": "2026-09-21T15:11:45.569Z",
+    "file": "fraction-what-is-a-half-0.1.0.ocpack"
+  },
+  {
+    "packId": "linear-plotting-points",
+    "version": "0.1.0",
+    "title": "一次函数 y = 2x - 1 的图像本质与画法",
+    "archiveSha256": "7dc559a1ca8ff2bc5ad4dcb71bbb816d9d178397f23b12c9879b0fb1f6f9cd82",
+    "archiveBytes": 1371609,
+    "withdrawnAt": "2026-09-22T02:20:39.887Z",
+    "file": "linear-plotting-points-0.1.0.ocpack"
+  }
+]

@@ -5,146 +5,64 @@
   "lesson": {
     "mode": "explain",
     "language": "zh-CN",
-    "title": "马鞍面与鞍点：三维曲面中的临界点",
+    "title": "马鞍面与鞍点：梯度为零不一定是极值点",
     "goals": [
-      "理解双曲抛物面 z = x² - y² 的几何形态与马鞍结构",
-      "通过 y=0 与 x=0 截面线掌握鞍点在不同方向上的极值差异",
-      "通过动态平移截面体会梯度为零时临界点既非极大值也非极小值的几何本质"
+      "通过偏导数计算验证马鞍面在原点的梯度为零",
+      "观察y=0与x=0两个截面切线，理解沿不同路径方向的升降差异",
+      "运用任意邻域内的函数值正负比较，严谨证明鞍点既非极大也非极小"
     ],
     "adaptation": {
       "strategies": [
-        "从直觉整体形态过渡到特定方向的定点截面分析",
-        "结合动画与互动操作，对比两组垂直平行截面的极值变化"
+        "双截面对比：借助y=0与x=0截面的对立走向建立直觉",
+        "路径参数化：将二维截面转化为一维路径t上的函数曲线进行对比",
+        "邻域反例法：利用极小邻域内必定存在正负值的定义否定极值"
       ]
-    },
-    "variables": [
-      {
-        "as": "number_01",
-        "initial": 0,
-        "min": -2,
-        "max": 2,
-        "label": "截面位置",
-        "control": {
-          "kind": "slider",
-          "step": 0.02
-        }
-      }
-    ],
-    "tasks": [
-      {
-        "as": "section-01-task-01",
-        "prompt": "旋转视角，观察双曲抛物面在原点处的马鞍结构。",
-        "availability": {
-          "kind": "after_lesson"
-        },
-        "hints": [
-          "拖动鼠标旋转视角，从上方和侧面观察曲面弯曲方向",
-          "注意观察原点沿着两个垂直方向的升降变化"
-        ],
-        "hint_after_attempts": 2,
-        "allowed_operations": [
-          {
-            "kind": "scene3d_view",
-            "node": "section-01-moment-01-item-01",
-            "controls": [
-              "orbit",
-              "zoom",
-              "reset"
-            ]
-          }
-        ],
-        "completion": {
-          "kind": "scene3d_view_target",
-          "node": "section-01-moment-01-item-01",
-          "match": "view_direction",
-          "yaw": 0.7853981633974483,
-          "pitch": 0.5235987755982988,
-          "zoom": 1,
-          "angular_tolerance": 0.03269908169872415,
-          "zoom_tolerance": 0.1
-        }
-      },
-      {
-        "as": "section-03-task-01",
-        "prompt": "调整视角观察 x = 0 截面切出的开口向下抛物线及其顶点",
-        "availability": {
-          "kind": "after_lesson"
-        },
-        "hints": [
-          "旋转视角到正前方，观察 yz 平面上的抛物线",
-          "注意原点是该抛物线上的最高点"
-        ],
-        "hint_after_attempts": 2,
-        "success_message": "很好！你已经清楚地观察到了原点在 y 方向上的极大值特征。",
-        "allowed_operations": [
-          {
-            "kind": "scene3d_view",
-            "node": "section-01-moment-01-item-01",
-            "controls": [
-              "orbit",
-              "zoom",
-              "preset"
-            ]
-          }
-        ],
-        "completion": {
-          "kind": "scene3d_view_target",
-          "node": "section-01-moment-01-item-01",
-          "match": "view_direction",
-          "yaw": 0,
-          "pitch": 0,
-          "zoom": 1,
-          "angular_tolerance": 0.1308996938995747,
-          "zoom_tolerance": 0.1
-        }
-      },
-      {
-        "as": "section-04-task-01",
-        "prompt": "将截面位置调节到 y = 1.5，观察平行截线的变化与极值情况。",
-        "availability": {
-          "kind": "after_lesson"
-        },
-        "hints": [
-          "拖动滑块使截面位置数值达到 1.5。",
-          "观察截线开口方向与顶点的变化。"
-        ],
-        "hint_after_attempts": 2,
-        "success_message": "很好！你成功平移了截面，清楚看到了不同方向截线的反差。",
-        "allowed_operations": [
-          {
-            "kind": "variable_change",
-            "variable": "number_01",
-            "controls": [
-              "slider"
-            ]
-          }
-        ],
-        "completion": {
-          "kind": "expression_target",
-          "expression": "number_01",
-          "value": 1.5,
-          "tolerance": 0.01
-        }
-      }
-    ]
+    }
   },
   "steps": [
     {
       "key": "section-01",
-      "purpose": "建立对双曲抛物面 z = x² - y² 全局形态及原点马鞍特征的直观认识",
+      "purpose": "计算马鞍面原点偏导数与梯度，引入双方向截面观察梯度为零时的矛盾现象",
       "beats": [
         {
           "key": "moment-01",
-          "say": "欢迎来到多元函数微分学的几何世界。今天我们要探索一个非常特殊的曲面——双曲抛物面，其方程为 z 等于 x 的平方减去 y 的平方。",
-          "delivery": "patient",
+          "say": "承接上一课，我们来看马鞍面函数 f(x,y) = x² - y²。首先求偏导数：f_x = 2x，f_y = -2y。在原点(0,0)处，两个偏导数都为0，因此原点梯度为零。",
+          "delivery": "neutral",
           "actions": [
             {
               "do": "write",
               "as": "section-01-moment-01-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "f(x,y) = x^2 - y^2 \\implies f_x(0,0)=0, \\ f_y(0,0)=0 \\implies \\nabla f(0,0) = (0,0)"
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              }
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-01-item-01"
+              ],
+              "intent": "强调原点偏导数计算结果与梯度为零"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "回想第一课的抛物面 x² + y²，它在原点同样梯度为零且是最低点。那么，梯度为零就一定是最低点吗？我们同时观察两幅马鞍面，两幅图的截面分别为 y=0 和 x=0。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-02-item-01",
               "kind": "scene3d",
               "role": "main_visual",
               "content": {
-                "title": "双曲抛物面 z = x² - y²",
+                "title": "截面 y=0",
                 "fallback": "函数曲面 z=x^2 - y^2 与可变截面。",
                 "axes": true,
                 "camera": {
@@ -173,7 +91,7 @@
                 "sections": [
                   {
                     "as": "section",
-                    "axis": "z",
+                    "axis": "y",
                     "value": 0,
                     "targets": [
                       "surface"
@@ -182,78 +100,67 @@
                     "label": "截面",
                     "color": "orange"
                   }
-                ],
-                "bindings": [
-                  {
-                    "target": "section.value",
-                    "expression": "number_01"
-                  }
                 ]
               },
               "place": {
                 "relation": "new_region",
                 "region_role": "section-01"
-              },
-              "when": "before_speech"
+              }
             },
             {
               "do": "write",
-              "as": "section-01-moment-01-item-02",
-              "kind": "math",
-              "role": "derivation",
+              "as": "section-01-moment-02-item-02",
+              "kind": "scene3d",
+              "role": "comparison_visual",
               "content": {
-                "latex": "z = x^2 - y^2"
-              },
-              "place": {
-                "relation": "below",
-                "anchor": "section-01-moment-01-item-01"
-              },
-              "when": "during_speech"
-            }
-          ]
-        },
-        {
-          "key": "moment-02",
-          "say": "请观察这个曲面的整体形状，它看起来非常像一个马鞍。请注意看最中间的原点位置。",
-          "delivery": "neutral",
-          "actions": [
-            {
-              "do": "focus",
-              "targets": [
-                "section-01-moment-01-item-01"
-              ],
-              "intent": "聚焦于原点(0,0,0)附近的马鞍结构",
-              "when": "during_speech"
-            },
-            {
-              "do": "point",
-              "target": "section-01-moment-01-item-01",
-              "when": "after_speech"
-            }
-          ]
-        },
-        {
-          "key": "moment-03",
-          "say": "在原点处，如果我们沿着前后的方向看，它是最低点；但沿着左右的方向看，它却是最高点。这种既是波谷又是波峰的点，在数学上被称为鞍点。",
-          "delivery": "emphatic",
-          "actions": [
-            {
-              "do": "write",
-              "as": "section-01-moment-03-item-01",
-              "kind": "note",
-              "role": "explanation",
-              "content": {
-                "title": "马鞍面结构特征",
-                "items": [
-                  "原点 (0,0,0) 处梯度为零",
-                  "沿着 x 轴方向：向上弯曲（波谷）",
-                  "沿着 y 轴方向：向下弯曲（波峰）"
+                "title": "截面 x=0",
+                "fallback": "函数曲面 z=x^2 - y^2 与可变截面。",
+                "axes": true,
+                "camera": {
+                  "yaw": 0.72,
+                  "pitch": 0.55,
+                  "zoom": 1
+                },
+                "objects": [
+                  {
+                    "as": "surface",
+                    "kind": "surface",
+                    "label": "z=x^2 - y^2",
+                    "color": "teal",
+                    "expression": "x^2 - y^2",
+                    "x_range": {
+                      "min": -2,
+                      "max": 2
+                    },
+                    "y_range": {
+                      "min": -2,
+                      "max": 2
+                    },
+                    "samples": 12
+                  }
+                ],
+                "sections": [
+                  {
+                    "as": "section",
+                    "axis": "x",
+                    "value": 0,
+                    "targets": [
+                      "surface"
+                    ],
+                    "display": "plane_and_intersection",
+                    "label": "截面",
+                    "color": "orange"
+                  }
                 ]
               },
               "place": {
-                "relation": "below",
-                "anchor": "section-01-moment-01-item-02"
-              },
+                "relation": "right_of",
+                "anchor": "section-01-moment-02-item-01"
+              }
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-02-item-02",
               "when": "during_speech"
             }
           ]
@@ -262,27 +169,27 @@
     },
     {
       "key": "section-02",
-      "purpose": "分析沿 y = 0 截面切开的抛物线，说明原点在 x 方向上的极小值性质",
+      "purpose": "将截面降维为路径参数t的函数曲线，分析两个主方向上的极值差异",
       "beats": [
         {
           "key": "moment-01",
-          "say": "现在我们来到双曲抛物面 z 等于 x 平方减 y 平方的前面。观察这块像马鞍一样的曲面，中心的原点形态非常特殊。",
+          "say": "我们在马鞍面 $z = x^2 - y^2$ 上分别沿着 $x$ 轴与 $y$ 轴方向切开，观察降维后的路径函数。",
           "delivery": "neutral",
           "actions": [
             {
               "do": "focus",
               "targets": [
-                "section-01-moment-01-item-01"
+                "section-01-moment-02-item-02"
               ],
-              "intent": "观察双曲抛物面的整体马鞍结构与中心原点",
-              "when": "during_speech"
+              "intent": "继续观察当前画面",
+              "when": "after_speech"
             }
           ]
         },
         {
           "key": "moment-02",
-          "say": "当我们用平面 y 等于 0 沿着 x 轴方向切开曲面时，得到的截面曲线是一条开口向上的抛物线 z 等于 x 平方。",
-          "delivery": "emphatic",
+          "say": "在 $y=0$ 的截面上，函数化简为 $z = x^2$。以参数 $t$ 表示该路径，就是 $z = t^2$。此时原点在 $x$ 方向上是最低点。",
+          "delivery": "patient",
           "actions": [
             {
               "do": "write",
@@ -290,11 +197,11 @@
               "kind": "math",
               "role": "derivation",
               "content": {
-                "latex": "z = x^2 \\quad (y = 0)"
+                "latex": "y=0 \\implies z = x^2 \\implies z(t) = t^2 \\quad (t=x)"
               },
               "place": {
                 "relation": "below",
-                "anchor": "section-01-moment-01-item-01"
+                "anchor": "section-01-moment-02-item-01"
               },
               "when": "during_speech"
             },
@@ -304,7 +211,7 @@
               "kind": "math",
               "role": "derivation",
               "content": {
-                "latex": "z = x^2 - y^2"
+                "latex": "z(t,0) = t^2 \\text{ (t=0处极小)}, \\quad z(0,t) = -t^2 \\text{ (t=0处极大)}"
               },
               "place": {
                 "relation": "below",
@@ -313,23 +220,90 @@
               "when": "during_speech"
             },
             {
-              "do": "point",
-              "target": "section-01-moment-01-item-01",
+              "do": "focus",
+              "targets": [
+                "section-01-moment-02-item-02"
+              ],
+              "intent": "观察沿x方向开口向上的抛物线截面",
               "when": "during_speech"
             }
           ]
         },
         {
           "key": "moment-03",
-          "say": "沿着这条抛物线看，原点 x 等于 0 恰好是它的最低点，也就是在 x 方向上取得了极小值 0。",
+          "say": "而在 $x=0$ 的截面上，函数化简为 $z = -y^2$。用参数 $t$ 表示该路径，就是 $z = -t^2$。原点在 $y$ 方向上反而是最高点。",
           "delivery": "patient",
           "actions": [
             {
+              "do": "write",
+              "as": "section-02-moment-03-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "x=0 \\implies z = -y^2 \\implies z(t) = -t^2 \\quad (t=y)"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-02-item-02"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-02-item-02",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "我们把这两条截面曲线画在同一坐标系中对比。横轴为路径参数 $t$，纵轴为高度 $z$。上方曲线对应路径 $(t,0)$，下方曲线对应路径 $(0,t)$。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-04-item-01",
+              "kind": "plot",
+              "role": "main_visual",
+              "content": {
+                "title": "截面路径参数曲线对照图",
+                "axes": {
+                  "x": {
+                    "min": -4,
+                    "max": 4,
+                    "label": "t"
+                  },
+                  "y": {
+                    "min": -15,
+                    "max": 15,
+                    "label": "z"
+                  }
+                },
+                "curves": [
+                  {
+                    "as": "primary-curve",
+                    "expression": "(x)^(2)",
+                    "label": "(x,y)=(t,0)"
+                  },
+                  {
+                    "as": "curve-02",
+                    "expression": "-((x)^(2))",
+                    "label": "(x,y)=(0,t)"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-02"
+              },
+              "when": "during_speech"
+            },
+            {
               "do": "focus",
               "targets": [
-                "section-01-moment-01-item-01"
+                "section-02-moment-04-item-01"
               ],
-              "intent": "聚焦截面抛物线顶点，理解其在 x 方向上的极小值性质",
+              "intent": "比较两条方向相反极值特性的路径曲线",
               "when": "during_speech"
             }
           ]
@@ -338,27 +312,27 @@
     },
     {
       "key": "section-03",
-      "purpose": "分析沿 x = 0 截面切开的抛物线，说明原点在 y 方向上的极大值性质",
+      "purpose": "基于任意小邻域定义进行严格代数证明，说明鞍点非极值点的本质",
       "beats": [
         {
           "key": "moment-01",
-          "say": "现在我们来看另一个关键方向。请观察这个形似马鞍的三维曲面，中心的原点非常特殊，在不同方向上呈现出截然不同的弯曲状态。",
+          "say": "我们来严格证明原点不是极值点。在原点任意小的邻域内，我们取两类特殊点：沿x轴的点(t,0)和沿y轴的点(0,t)，其中t不等于0。",
           "delivery": "patient",
           "actions": [
             {
               "do": "focus",
               "targets": [
-                "section-01-moment-01-item-01"
+                "section-02-moment-04-item-01"
               ],
-              "intent": "引导观察双曲抛物面的马鞍结构",
+              "intent": "引出邻域内两类特殊点的代数式",
               "when": "during_speech"
             }
           ]
         },
         {
           "key": "moment-02",
-          "say": "当我们用平面 x = 0 切开曲面时，得到的截线是一条开口向下的抛物线 z = -y²。",
-          "delivery": "neutral",
+          "say": "代入函数，f(t,0)等于t的平方，大于0；f(0,t)等于负t的平方，小于0；而原点函数值f(0,0)等于0。",
+          "delivery": "emphatic",
           "actions": [
             {
               "do": "write",
@@ -366,21 +340,33 @@
               "kind": "math",
               "role": "derivation",
               "content": {
-                "latex": "x = 0 \\implies z = -y^2"
+                "latex": "f(t,0)=t^2>0, \\quad f(0,t)=-t^2<0, \\quad f(0,0)=0 \\quad (t \\neq 0)"
               },
               "place": {
                 "relation": "below",
-                "anchor": "section-02-moment-02-item-02"
+                "anchor": "section-02-moment-04-item-01"
               },
               "when": "during_speech"
-            },
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "因为这两类点可以任意靠近原点，所以在原点的任何邻域内，都同时存在比原点函数值更高和更低的点。这直接违背了局部极大值和局部极小值的定义。",
+          "delivery": "careful",
+          "actions": [
             {
               "do": "write",
-              "as": "section-03-moment-02-item-02",
-              "kind": "math",
-              "role": "derivation",
+              "as": "section-03-moment-03-item-01",
+              "kind": "note",
+              "role": "explanation",
               "content": {
-                "latex": "z = x^2 - y^2"
+                "title": "鞍点的代数本质",
+                "items": [
+                  "任意邻域内同时存在 f(x,y) > f(0,0) 与 f(x,y) < f(0,0)",
+                  "一升一降即可否定极值点",
+                  "注意：仅两个方向上升尚不能证明局部极小"
+                ]
               },
               "place": {
                 "relation": "below",
@@ -391,17 +377,17 @@
           ]
         },
         {
-          "key": "moment-03",
-          "say": "沿着这条抛物线看，在原点 y = 0 处，函数值 z 取得了局部极大值 0。这与之前沿 x 方向看到的极小值正好相反。",
-          "delivery": "emphatic",
+          "key": "moment-04",
+          "say": "因此，即便梯度为零，原点也既不是局部极大点，也不是局部极小点，这就是鞍点的本质。",
+          "delivery": "encouraging",
           "actions": [
             {
               "do": "focus",
               "targets": [
-                "section-01-moment-01-item-01"
+                "section-02-moment-04-item-01"
               ],
-              "intent": "强调原点在 y 方向上取得极大值",
-              "when": "during_speech"
+              "intent": "总结鞍点与梯度为零的关系",
+              "when": "after_speech"
             }
           ]
         }
@@ -409,57 +395,88 @@
     },
     {
       "key": "section-04",
-      "purpose": "通过平移截面交互与对比，总结梯度为零处鞍点的数学定义与特征",
+      "purpose": "总结多元函数极值判断的三课方法体系，并进行概念反思与自查",
       "beats": [
         {
           "key": "moment-01",
-          "say": "我们在三维空间中重新观察双曲抛物面 z 等于 x 平方减 y 平方。可以看到，原点处的曲面形态就像一个马鞍。",
-          "delivery": "neutral",
+          "say": "今天我们总结多元函数极值分析的三种核心视角。第一，固定输出看等高线；第二，固定输入看偏导数；第三，通过比较经过同一点的不同路径，来判断该点是否为极值点。",
+          "delivery": "emphatic",
           "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-01-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "多元函数极值分析方法体系",
+                "items": [
+                  "固定输出：观察等高线形态与分布",
+                  "固定输入：计算一阶偏导数与梯度",
+                  "路径分析：比较过同一点的不同方向曲线"
+                ]
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-03-moment-03-item-01"
+              },
+              "when": "during_speech"
+            },
             {
               "do": "focus",
               "targets": [
-                "section-01-moment-01-item-01"
+                "section-04-moment-01-item-01"
               ],
-              "intent": "观察双曲抛物面原点的马鞍结构",
-              "when": "during_speech"
+              "intent": "梳理多元函数极值分析的三大核心方法",
+              "when": "after_speech"
             }
           ]
         },
         {
           "key": "moment-02",
-          "say": "原点虽然梯度为零，但沿 x 轴方向它是波谷，沿 y 轴方向它却是波峰。",
-          "delivery": "emphatic",
+          "say": "我们将旋转抛物面 z 等于 x 平方加 y 平方，与马鞍面 z 等于 x 平方减 y 平方在原点处进行对比。两者的梯度在原点均为零向量，但极值性质截然不同。",
+          "delivery": "patient",
           "actions": [
             {
-              "do": "focus",
-              "targets": [
-                "section-03-moment-02-item-02"
-              ],
-              "intent": "继续观察当前画面",
-              "when": "after_speech"
+              "do": "write",
+              "as": "section-04-moment-02-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\nabla z(0,0) = (0, 0)"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-01-item-01"
+              },
+              "when": "during_speech"
             }
           ]
         },
         {
           "key": "moment-03",
-          "say": "现在请你拖动滑块平移截面，观察平行截线极值点的变化，体会在原点邻域内不同方向上的极值反差。",
-          "delivery": "encouraging",
+          "say": "对于旋转抛物面，除原点外，所有点的函数值 x²+y² 都严格大于零，因此原点是严格局部极小值点；而对于马鞍面，原点任意邻域内既存在正值也存在负值，因此原点不是极值点，而是鞍点。",
+          "delivery": "careful",
           "actions": [
             {
-              "do": "animate",
-              "variable": "number_01",
-              "value": 1.5,
-              "easing": "linear",
-              "duration_intent": "normal",
-              "when": "after_speech"
+              "do": "write",
+              "as": "section-04-moment-03-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\text{抛物面: } f(x,y) \\ge f(0,0) \\quad | \\quad \\text{马鞍面: } \\Delta f \\text{ 符号不固定}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-02-item-01"
+              },
+              "when": "during_speech"
             }
           ]
         },
         {
           "key": "moment-04",
-          "say": "总结来说，梯度为零仅意味着切平面水平。当不同方向上的弯曲方向相反时，临界点既非极大值也非极小值，这就是鞍点。",
-          "delivery": "patient",
+          "say": "最后留下一个概念自查思考题：如果一个曲面在某点沿 x 轴和 y 轴两个方向都达到局部极小，我们能否断言该点就是多元函数的局部极小值点？为什么？",
+          "delivery": "encouraging",
           "actions": [
             {
               "do": "write",
@@ -467,18 +484,45 @@
               "kind": "note",
               "role": "explanation",
               "content": {
-                "title": "鞍点的几何特征",
+                "title": "概念反思自查",
                 "items": [
-                  "梯度 ∇z(0,0) = 0（切平面水平）",
-                  "沿 x 轴方向 (y=0)：z = x²，呈现局部极小值",
-                  "沿 y 轴方向 (x=0)：z = -y²，呈现局部极大值",
-                  "结论：梯度为零的临界点既非极大值也非极小值"
+                  "问题：沿 x 轴和 y 轴方向均上升，能否断言局部极小？",
+                  "思考：坐标轴方向能否代表全方位邻域的变化？"
                 ]
               },
               "place": {
                 "relation": "below",
-                "anchor": "section-03-moment-02-item-02"
+                "anchor": "section-04-moment-03-item-01"
               },
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-05",
+          "say": "答案是不能。因为坐标轴方向仅代表两个特定切平面方向。即便沿着 x 轴和 y 轴方向函数值都增加，在其他斜向路径上函数值仍可能减小。判断极小值必须保证在全方位完整邻域内函数值均不小于该点。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-04-moment-05-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\text{结论: 不能。必须满足 } \\forall (x,y) \\in U(p_0), f(x,y) \\ge f(p_0)"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-04-moment-04-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-04-moment-05-item-01"
+              ],
+              "intent": "明确极值定义的邻域全方位性要求",
               "when": "after_speech"
             }
           ]
@@ -487,9 +531,10 @@
     }
   ],
   "close": {
-    "summary": "通过观察双曲抛物面 z = x² - y² 在不同截面方向的极值反差，我们明确了梯度为零的临界点不一定是极大值或极小值，这种点被称为鞍点。",
+    "summary": "本课通过分析马鞍面 z=x²-y²，证明了梯度为零仅是极值的必要条件而非充分条件。我们利用双方向截面和邻域定义揭示了鞍点的特性，并总结了结合等高线、偏导数与路径分析判断极值的完整方法。",
     "focus": [
-      "section-01-moment-01-item-01"
+      "section-01-moment-02-item-02",
+      "section-02-moment-04-item-01"
     ]
   }
 }

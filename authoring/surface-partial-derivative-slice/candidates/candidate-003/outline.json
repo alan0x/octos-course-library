@@ -1,0 +1,154 @@
+{
+  "title": "偏导数的几何意义与截面切线",
+  "goals": [
+    "理解固定y=y₀截面在三维曲面上截出的二维曲线",
+    "理解对x的偏导数等于固定截线上一元函数的导数",
+    "明确截面位置y₀与切线斜率的区别与计算步骤",
+    "掌握在给定点求对x偏导数并建立截线与切线几何图景的方法"
+  ],
+  "teaching_strategies": [
+    "通过三维曲面截面动画建立固定变量的直观几何图景",
+    "辨析截面平移与截线上求导的区别，消除常见误区",
+    "结合二维切线与三维截面建立代数推导与几何斜率的对应"
+  ],
+  "numbers": [
+    {
+      "initial": 0,
+      "min": 0,
+      "max": 2,
+      "label": "截面位置 y₀",
+      "student_control": {
+        "kind": "slider",
+        "step": 0.01
+      }
+    }
+  ],
+  "request_coverage": [
+    {
+      "treatment": "teach",
+      "sections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "request_part": 1
+    },
+    {
+      "request_part": 2,
+      "treatment": "teach",
+      "sections": [
+        2
+      ]
+    },
+    {
+      "request_part": 3,
+      "treatment": "teach",
+      "sections": [
+        3
+      ]
+    },
+    {
+      "request_part": 4,
+      "treatment": "teach",
+      "sections": [
+        4
+      ]
+    }
+  ],
+  "course_visuals": [
+    {
+      "use_sections": [
+        1,
+        2
+      ],
+      "relation": "primary",
+      "create_section": 1,
+      "capability": "function_surface_with_section",
+      "reusable_item": 2
+    },
+    {
+      "use_sections": [
+        2,
+        3
+      ],
+      "relation": "supporting",
+      "related_visual": 1,
+      "create_section": 2,
+      "capability": "function_plot",
+      "reusable_item": 2
+    }
+  ],
+  "sections": [
+    {
+      "purpose": "建立固定y=y₀截面截出三维曲面的直观，明确偏导数的几何前提",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_surface_with_section"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_surface_with_section"
+      ]
+    },
+    {
+      "purpose": "辨析平移截面与求导的区别，并在特定截面上建立二维函数与切线",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        },
+        {
+          "kind": "board_item",
+          "board_kind": "visual",
+          "capability": "function_plot"
+        }
+      ],
+      "allowed_capabilities": [
+        "function_plot"
+      ]
+    },
+    {
+      "purpose": "严格推导偏导数数值与点斜式切线方程，总结一般方法与边界特征",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "math"
+        }
+      ],
+      "allowed_capabilities": []
+    },
+    {
+      "purpose": "总结偏导数核心概念，并通过思考题进行理解性自测与下一课铺垫",
+      "reusable_items": [
+        {
+          "kind": "board_item",
+          "board_kind": "note"
+        }
+      ],
+      "allowed_capabilities": []
+    }
+  ],
+  "close": {
+    "summary": "本课程深入讲解了偏导数的几何意义：通过固定一个变量（如y=y₀）得到截面曲线，将多元函数转化为截面上的局部一元函数，其切线的斜率即为偏导数。在下一课中，我们将进一步比较不同方向的变化率，寻找驻点与最值。",
+    "focus": [
+      {
+        "source": "reusable",
+        "section": 1,
+        "item": 2
+      },
+      {
+        "source": "reusable",
+        "section": 2,
+        "item": 2
+      }
+    ]
+  },
+  "version": "0.1"
+}
