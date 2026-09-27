@@ -1,14 +1,36 @@
 {
   "schemaVersion": 1,
   "packId": "surface-paraboloid-level-sets",
-  "version": "0.1.0",
-  "title": "旋转抛物面的截面与降维分析法",
-  "description": "通过三维旋转观察抛物面 z = x² + y² 并调节水平截面高度，直观理解曲面截线为何是圆，领悟微积分中等高线与降维切片的几何本质。",
+  "version": "0.2.3",
+  "title": "水平截线与等高线：以 z=x²+y² 为例",
+  "description": "Octos Learn curated mathematics course.",
   "locale": "zh-CN",
   "subject": "mathematics",
-  "grade": "college-calculus",
-  "durationSeconds": 84,
-  "minimumPlayerVersion": "0.1.0",
+  "grade": "unspecified",
+  "durationSeconds": 183,
+  "minimumPlayerVersion": "0.2.0",
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.focus",
+    "action:lesson.variable.animate",
+    "action:teacher.point",
+    "binding-labels",
+    "bound-zero-radius",
+    "canonical:0.1",
+    "node:geometry",
+    "node:math",
+    "node:note",
+    "node:scene3d",
+    "practice-start",
+    "student-tasks:expression_target",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  },
   "entry": "course.oll.jsonl",
   "board": "board.json",
   "thumbnail": "thumbnail.svg",
@@ -24,60 +46,78 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-01:beat:moment-01",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
-        "textSha256": "8c6ac0756b064e5c3b8628e9b1ff817a618386465471a395560d12fa943e6275",
-        "durationMs": 14880
+        "textSha256": "41c409125b3abd44522833b2223648f39e78bcf488a0f9767d17dd614624d3b9",
+        "durationMs": 12480
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-02:beat:moment-01",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
-        "textSha256": "0325810645894aaff86193abdd96569c8acc8f9eb0056a280bf6b55fc2782f5f",
-        "durationMs": 9504
+        "textSha256": "fa67ffba922c8a695054d1e1b2d08de6dc368635ef69bf07ba2292f15f069fe7",
+        "durationMs": 14280
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-02:beat:moment-02",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-01:beat:moment-03",
         "file": "audio/003.mp3",
-        "textSha256": "6689603c1631387dd476fa9b4c0b8033f5f1b0ca9a485c8a16a7487c735d9484",
-        "durationMs": 12456
+        "textSha256": "d74f82d42849d1d12dab88e7cc37884dd935f76a7c62f4cf76bce03f854aa2f2",
+        "durationMs": 13680
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-03:beat:moment-01",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-02:beat:moment-01",
         "file": "audio/004.mp3",
-        "textSha256": "d313b1065bc054c4674b4a557306bcd914571c6d72ba57413bb823ff640bf41f",
-        "durationMs": 8688
+        "textSha256": "4fbf1f5b90aa46a65bfcf5158523a0c4b6e15ae39765816e0675e0469cf999c8",
+        "durationMs": 15504
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-03:beat:moment-02",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-02:beat:moment-02",
         "file": "audio/005.mp3",
-        "textSha256": "09588e6d97ac7673bdd5b1cbb46d76c2a45aa7b37c424a771230f5e4bac8ff9d",
-        "durationMs": 10464
+        "textSha256": "c3c5b4a646946240c766dd96c375d83b1cdd15be62a38a81cc7a04559a70eeae",
+        "durationMs": 24888
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-03:beat:moment-03",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-02:beat:moment-03",
         "file": "audio/006.mp3",
-        "textSha256": "8b33787e25cd0a91060af71f2038f88ef92ac665249f34b0fa5286eb5760e145",
-        "durationMs": 7464
+        "textSha256": "69388d09ebc0ae369ec7c3ad48a69f02b8cf0b43c7143d0b67795fc694908d9b",
+        "durationMs": 19344
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-04:beat:moment-01",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-03:beat:moment-01",
         "file": "audio/007.mp3",
-        "textSha256": "4c1be67dad7d1ed2c267b2994419ca37b5b36aa92af9e0e443307d9e6922ce62",
-        "durationMs": 10920
+        "textSha256": "aaba297c2ad8e3359960bf3e7e8ddc4ecb020ea06e4517c94ffe9f610946644a",
+        "durationMs": 15264
       },
       {
-        "beatId": "surface-paraboloid-level-sets-0.1.0:step:section-04:beat:moment-02",
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-03:beat:moment-02",
         "file": "audio/008.mp3",
-        "textSha256": "745141a5ac7153665b632093e3795e7f5031de01f405e3d0d2c4f02d6c1d91ee",
-        "durationMs": 8736
+        "textSha256": "c7c7d0e7e3fe3a5f78fd14817f9b84dad94b91261b4c2b057e17c366241dfb8e",
+        "durationMs": 16464
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-03:beat:moment-03",
+        "file": "audio/009.mp3",
+        "textSha256": "80377a6b53861ad2671a07d37948386bef16c5044b15a1e7df9aeaedf1d5d7fa",
+        "durationMs": 14712
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-03:beat:moment-04",
+        "file": "audio/010.mp3",
+        "textSha256": "66a1d20e720249a18bd75688cbaa07321a73b9a9a3fa74144f8c5c8cc61816ce",
+        "durationMs": 19128
+      },
+      {
+        "beatId": "surface-paraboloid-level-sets-0.2.3:step:section-04:beat:moment-01",
+        "file": "audio/011.mp3",
+        "textSha256": "506441086537026319d137b737a7c99fc0c61820bd5b40ede541a631ddf35994",
+        "durationMs": 16896
       }
     ]
   },
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "f0df0ae25195bfbe929081e475463204085afb7e19d230a558f01922ab32566b",
-      "bytes": 450,
+      "sha256": "1b25972944946c1236bf0210210012c5bdcdfb97156d6cd1432ea03372adac28",
+      "bytes": 471,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -90,78 +130,106 @@
     },
     {
       "path": "course.authoring.json",
-      "sha256": "a7f0de0e542b83deaea1ad9efa953787e85745d6ac4ea610b25e1f208d3a6806",
-      "bytes": 13925,
+      "sha256": "7b014b01a1bd5ea8f9491b6c896fcec550ed365349316867b8dc2f9139476a23",
+      "bytes": 15042,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "compilation.json",
+      "sha256": "9a8ab4035910d21b0057cb1b206a34e1f87c230eaf19e27f20b6713659d67fdd",
+      "bytes": 1864,
       "mediaType": "application/json",
       "role": "asset"
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "c051bd14f0847aba7880c2c6ec4fb231c135b115495b76ca3f4fba81b6975a77",
-      "bytes": 13138,
+      "sha256": "9167615bdc6ae5eb519622522dfc25c1f9ed3c9bd99dd43b7a50c194c4a442ef",
+      "bytes": 14548,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
     {
       "path": "thumbnail.svg",
-      "sha256": "c8519b2258ea331407da793fba6de6893f34c5e2d6e8304df371f7b58896e269",
-      "bytes": 2255,
+      "sha256": "8ce8276c22e9d50888e6082442348915239e8d149c00edae694e2a11938d3193",
+      "bytes": 1469,
       "mediaType": "image/svg+xml",
       "role": "thumbnail"
     },
     {
       "path": "audio/001.mp3",
-      "sha256": "341ecab94a5bea0cff794c7caf0cbbd461b0fbe1b47302c75fe7480267cb545f",
-      "bytes": 297600,
+      "sha256": "7b1893336004fc2c964b07bc3f45a20a27501524c0e85658f39d28c80fb10b0c",
+      "bytes": 249600,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/002.mp3",
-      "sha256": "8bff23a094e577d98650eb0dd0851df0d078e31db5e7f67010840d673bf28260",
-      "bytes": 190080,
+      "sha256": "9969381ef6a247e89ab47bea04adfb3fc7ec84b130a88b75e95dd7b748f963e9",
+      "bytes": 285600,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/003.mp3",
-      "sha256": "f6e434470279b85578fe3d47a317bb00360e03f73220a918fbba5a14b002e5d9",
-      "bytes": 249120,
+      "sha256": "afb4df75e9f509a6a80b2f2af3a23faa784f281ebb196e70201b5669bf81ad5a",
+      "bytes": 273600,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/004.mp3",
-      "sha256": "a5575b82167f48e0681aade03ca3751844488804abe02cd3aac92227c8424a84",
-      "bytes": 173760,
+      "sha256": "96f35f3962f5bc03545cc7971e1d1a96d5cb00b8ac7e8fe6d49c489e63742590",
+      "bytes": 310080,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/005.mp3",
-      "sha256": "224d2ea7c92a0706497898760eb1ab5f92f048aaed47cec6a4219509c35e9295",
-      "bytes": 209280,
+      "sha256": "a2308bf574d8adc1aeadcb3e1c1f504a5ea9e06085487e3bea8b27bb13bcfe16",
+      "bytes": 497760,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/006.mp3",
-      "sha256": "8ca84a64ff38655f4e6f6ecf5fd32fc737dbe670411a19ae1adb6cd56ab17222",
-      "bytes": 149280,
+      "sha256": "329b84493b6c6516b046e41a00fea0a14f7e859502281b2dd70f91a044a99c94",
+      "bytes": 386880,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/007.mp3",
-      "sha256": "11f483e8b733dae1919c79dad71c86d3a95973f348b0566165181a7a2aeffdb1",
-      "bytes": 218400,
+      "sha256": "7dc1a43a6916e1eceab17dd6e93473c054dec5b0ee8524adc67b69dbbeff3289",
+      "bytes": 305280,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/008.mp3",
-      "sha256": "328646885650cccf14cd6cb175dff649d5897e4fdacab335791493e69ed87396",
-      "bytes": 174720,
+      "sha256": "be28bb51238dcad8be4c722668822a7418e600816e7f3fb3e6471b94ccb1df4c",
+      "bytes": 329280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/009.mp3",
+      "sha256": "dd25bf61da3082a04a5e031b85345a5feafda266e8dca03760e049d4a5a10c6f",
+      "bytes": 294240,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/010.mp3",
+      "sha256": "720879c1e0d0734067bb3c854545aac826bcec8eab10dc485e06e08877ef2ad8",
+      "bytes": 382560,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/011.mp3",
+      "sha256": "ed0f933ec506739963fb7594349dcbc78367c3a6bcb8e44653a88c0b1dca4856",
+      "bytes": 337920,
       "mediaType": "audio/mpeg",
       "role": "narration"
     }
@@ -174,6 +242,7 @@
         "NOTICE.txt",
         "board.json",
         "course.authoring.json",
+        "compilation.json",
         "course.oll.jsonl",
         "thumbnail.svg",
         "audio/001.mp3",
@@ -183,7 +252,10 @@
         "audio/005.mp3",
         "audio/006.mp3",
         "audio/007.mp3",
-        "audio/008.mp3"
+        "audio/008.mp3",
+        "audio/009.mp3",
+        "audio/010.mp3",
+        "audio/011.mp3"
       ]
     },
     {

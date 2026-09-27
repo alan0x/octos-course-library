@@ -41,6 +41,8 @@ export interface CoursePackManifestV1 {
   grade: string;
   durationSeconds: number;
   minimumPlayerVersion: string;
+  requiredCapabilities?: string[];
+  compilation?: { compiler: string; version: string; rules: string };
   entry: string;
   board: string;
   thumbnail: string;

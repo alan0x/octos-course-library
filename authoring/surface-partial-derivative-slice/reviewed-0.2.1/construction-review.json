@@ -1,0 +1,12 @@
+{
+  "source": "courses/surface-partial-derivative-slice/course.authoring.json",
+  "opening_policy": {
+    "kind": "introduction",
+    "alias": "section-01-moment-01-item-01"
+  },
+  "changes": [
+    "first introduction write: after_speech -> before_speech"
+  ],
+  "narration_changed": false,
+  "geometry_changed": false
+}

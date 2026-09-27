@@ -1,0 +1,430 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "欢迎来到第二课。上一课我们观察了曲面整体，现在我们要研究同一高度上的点。求对 x 的偏导数时，关键在于固定输入 y 为常数 y₀。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "after_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "曲面 z = x² + y² 与截面 y = y₀",
+                "expression": "x^2 + y^2",
+                "section_axis": "y"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "偏导数∂f/∂x的几何研究步骤",
+              "items": [
+                "1. 固定输入 y = y₀，引入垂直截面",
+                "2. 观察截面截出的曲线 z = g(x)",
+                "3. 沿截线在指定点求一元函数导数"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "大家看，当固定 y 时，垂直截面 y = y₀ 切过旋转抛物面 z = x² + y²。在截面内部，允许 x 发生变化，z 随之改变，而 y 始终保持常数 y₀ 不变。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "观察截面与三维曲面相交形成的截线",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "我们在上一课研究了固定高度 z 的情况。而要求对 x 的偏导数，核心是在输入端固定 y 为某个常数 y₀。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导学习者关注截面位置y₀对三维曲面截线的影响",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 1,
+              "item": 2
+            }
+          }
+        ]
+      },
+      {
+        "narration": "以曲面 z 等于 x 平方加 y 平方为例，当 y 被固定在 y₀ 时，截面垂直于 y 轴。在此截面上，y 保持不变，只有 x 可以自由变化，从而决定高度 z 的变化。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = f(x, y_0) = x^2 + y_0^2"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\left.\\frac{\\partial z}{\\partial x}\\right|_{(1,1)} = \\left.\\frac{\\mathrm{d}}{\\mathrm{d}x}(x^2+1^2)\\right|_{x=1} = 2"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "我现在把 y₀ 从 0 平移到 1。请注意，移动截面只是选择不同的研究曲线，平移本身并不是求导。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "animate",
+            "timing": "during_speech",
+            "number": 1,
+            "end_value": 1,
+            "duration_intent": "normal",
+            "easing": "linear"
+          }
+        ]
+      },
+      {
+        "narration": "当固定 y 等于 1 时，截线对应一元函数 g(x) 等于 x 平方加 1。若取 x₀ 等于 1，则对应空间点 P 为 (1, 1, 2)。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "g(x) = x^2 + 1 \\implies g'(1) = 2 \\quad \\text{点 } P(1,1,2)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "我们在二维平面上观察这条截线，此时纵轴表示高度 z。截线为 z 等于 x 平方加 1，在 x 等于 1 处的切线方程为 z 等于 2x，其斜率 2 正是对 x 的偏导数。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_plot",
+              "parameters": {
+                "title": "截面 y=1 内的截线与切线（纵轴为高度 z）",
+                "x_label": "x",
+                "y_label": "z",
+                "curve_labels": [
+                  "截线 z=x²+1",
+                  "P处切线 z=2x"
+                ],
+                "expressions": [
+                  "((x)^(2))+(1)",
+                  "(2)*(x)"
+                ]
+              }
+            },
+            "role": "supporting_visual",
+            "placement": {
+              "relation": "right_of",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 4,
+                "item": 1
+              }
+            },
+            "reusable_item": 2
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "建立二维截线与切线的相切几何图景",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 2
+              },
+              {
+                "source": "local_board_item",
+                "moment": 5,
+                "item": 1
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 5,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "请试着将截面位置 y₀ 调整至 2，观察截线方程的变化。",
+        "hints": [
+          "拖动 y₀ 滑块至 2",
+          "当 y₀=2 时，截线方程变为 z = x² + 4"
+        ],
+        "success_message": "很好！你成功将截面移动到了 y₀ = 2 位置。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 2,
+        "tolerance": 0.005
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "承接之前的讨论，研究同一高度z是绘制二维等高线，而求对x的偏导数则是固定输入变量y等于y₀。在垂直截面内，y全程保持不变，允许x自由变化，高度z随之改变。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "明确固定y与截面截线的几何对应关系",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "对于截线函数，导数g′(x)=2x，在x=1处导数值为2。结合切点(1,2)，利用点斜式得到切线方程z-2=2(x-1)，即z=2x。这里的斜率是高度增量与x增量之比，而非屏幕上的角度。对于本例，偏导数f_x(x₀,y₀)=2x₀不依赖y₀，这是二次旋转抛物面的特殊性质；若换为f(x,y)=xy，其对x的偏导数就直接等于y。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z - 2 = 2(x - 1) \\implies z = 2x"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "f_x(x_0, y_0) = \\left. \\frac{\\mathrm{d}}{\\mathrm{d}x} f(x, y_0) \\right|_{x = x_0}"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "大家前面学习了截面与切线的关系。总结一下，当我们求对x的偏导数时，关键是将输入y固定为常数y0。此时沿着垂直于y轴的截面，曲面上只剩下x变化引起z变化的一元曲线。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "偏导数几何意义总结",
+              "items": [
+                "求∂z/∂x时：固定输入y = y₀（截面垂直于y轴）",
+                "截线实质：三维曲面在截面上的二维一元函数 z = f(x, y₀)",
+                "偏导数值：截线上点P处的切线斜率"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "偏导数核心概念总结与课后思考",
+              "items": [
+                "1. ∂z/∂x 对应固定 y = y₀ 截面",
+                "2. ∂z/∂y 对应固定 x = x₀ 截面",
+                "3. 课后自测：验证当 x = 1, z = 2 时，y₀ = 1 的正确性",
+                "4. 下节预告：比较不同截面方向的导数与驻点判断"
+              ]
+            },
+            "reusable_item": 1,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调固定y=y0是求对x偏导数的基本几何前提",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "请思考这个理解检查题：在点P(1,1,2)处，如果改为求对y的偏导数，我们应该固定哪个变量？同理，若保持x=1固定，希望对应截线上的点高度z为2，y0应该设为多少呢？",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "z = x^2 + y^2 \\quad \\Rightarrow \\quad 1^2 + y_0^2 = 2 \\quad (y_0 \\ge 0)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

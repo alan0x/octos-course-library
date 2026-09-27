@@ -1,0 +1,417 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "zh-CN",
+    "title": "水平截线与等高线：以 z=x²+y² 为例",
+    "goals": [
+      "能够说明固定输出高度 z=h 如何在曲面上截出空间曲线及其在 xy 平面上的投影圆",
+      "掌握从截面方程 x²+y²=h 推导投影圆半径 r=√h 的方法及定义域边界条件（h≥0）",
+      "理解动态投影圆与静态等高线图的关系，并预告下一节垂直截线（固定输入变量）"
+    ],
+    "adaptation": {
+      "strategies": [
+        "问题驱动：从方程 z=x²+y² 出发建立三维曲面与二维截面关系",
+        "同步对照：三维曲面截线与二维投影圆双视图联动",
+        "先心算预测后动画验证：在进行高度变化演示前让学生预测半径变化"
+      ]
+    },
+    "variables": [
+      {
+        "as": "number_01",
+        "initial": 1,
+        "min": 0,
+        "max": 4,
+        "label": "截面高度 h",
+        "control": {
+          "kind": "slider",
+          "step": 0.02
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "as": "section-04-task-01",
+        "prompt": "想让投影圆的半径为 √3，请先算出需要的高度，再调节高度验证。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "根据推导公式，投影圆半径为 r = √h，反过来高度与半径的关系是 h = r²。",
+          "将 r = √3 代入公式 h = r² 计算出需要的高度 h。"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "回答正确！因为 (√3)² = 3，所以当高度调节到 3 时，投影圆半径刚好为 √3。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 3,
+          "tolerance": 0.01
+        },
+        "start": {
+          "kind": "practice",
+          "variables": [
+            "number_01"
+          ]
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "section-01",
+      "purpose": "建立三维曲面 z=x²+y² 与水平截面 z=h 的直观模型，并生成平面投影",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "当我们看到多元函数方程 z 等于 x 平方加 y 平方时，怎样才能直观读懂它的曲面形状呢？直接想象整个三维空间可能有些困难，但我们可以先固定输出高度。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-01-item-01",
+              "kind": "note",
+              "role": "explanation",
+              "content": {
+                "title": "研究曲面方法",
+                "items": [
+                  "固定输出高度 z = h",
+                  "观察截面交线及其投影"
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "请看右侧，这是 z 等于 x 平方加 y 平方的旋转抛物面。我们引入一个水平截面，显式设定高度 z 等于 1。截面与曲面相交，在空间中形成了一条封闭的环形交线。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-02-item-01",
+              "kind": "scene3d",
+              "role": "main_visual",
+              "content": {
+                "title": "曲面 z=x²+y² 与截面 z=h",
+                "fallback": "函数曲面 z=x^2 + y^2 与可变截面。",
+                "axes": true,
+                "camera": {
+                  "yaw": 0.72,
+                  "pitch": 0.55,
+                  "zoom": 1
+                },
+                "objects": [
+                  {
+                    "as": "surface",
+                    "kind": "surface",
+                    "label": "z=x^2 + y^2",
+                    "color": "teal",
+                    "expression": "x^2 + y^2",
+                    "x_range": {
+                      "min": -2,
+                      "max": 2
+                    },
+                    "y_range": {
+                      "min": -2,
+                      "max": 2
+                    },
+                    "samples": 12
+                  }
+                ],
+                "sections": [
+                  {
+                    "as": "section",
+                    "axis": "z",
+                    "value": 1,
+                    "targets": [
+                      "surface"
+                    ],
+                    "display": "plane_and_intersection",
+                    "label": "截面",
+                    "color": "orange"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "section.value",
+                    "expression": "number_01"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region",
+                "region_role": "section-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-02-item-01"
+              ],
+              "intent": "引导学习者观察高度 h=1 时的空间截线",
+              "when": "after_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "为了更清楚地研究这条交线的形状，我们把它垂直投影到 xy 平面上。左侧展示的就是投影结果，它是一个以原点为圆心的标准圆，其半径随着高度 h 实时联动。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-01-moment-03-item-01",
+              "kind": "geometry",
+              "role": "comparison_visual",
+              "content": {
+                "title": "xy 平面投影圆",
+                "axes": {
+                  "x": {
+                    "min": -3,
+                    "max": 3,
+                    "label": "x"
+                  },
+                  "y": {
+                    "min": -3,
+                    "max": 3,
+                    "label": "y"
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "center",
+                    "x": 0,
+                    "y": 0,
+                    "label": "(0, 0)"
+                  }
+                ],
+                "circles": [
+                  {
+                    "as": "circle",
+                    "center": "center",
+                    "radius": 1,
+                    "label": "半径 r"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "circle.radius",
+                    "expression": "sqrt(number_01)",
+                    "allow_zero": true,
+                    "label": {
+                      "prefix": "r = ",
+                      "precision": 2
+                    }
+                  }
+                ]
+              },
+              "place": {
+                "relation": "right_of",
+                "anchor": "section-01-moment-02-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "point",
+              "target": "section-01-moment-03-item-01",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-02",
+      "purpose": "代数推导交线方程 x²+y²=h 与半径 r=√h，解释空间截线与二维投影的区别及边界条件",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "当固定高度为 z=h 时，截线上的点必须同时满足曲面方程 z=x²+y² 和截面方程 z=h。联立两式，就得到代数方程 x²+y²=h。",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "write",
+              "as": "section-02-moment-01-item-01",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "\\begin{cases} z = x^2 + y^2 \\\\ z = h \\end{cases} \\implies x^2 + y^2 = h"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-01-moment-03-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-02-moment-01-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "x^2 + y^2 = h \\implies r = \\sqrt{h} \\quad (h \\ge 0)"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-01-item-01"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-02-item-01",
+                "section-01-moment-03-item-01"
+              ],
+              "intent": "推导截线方程",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "将 x²+y²=h 对照圆的标准方程 x²+y²=r²，容易得到 r²=h。当 h>0 时，解出半径 r=√h。注意，空间中的截线是位于平面 z=h 上的圆，其圆心在 (0,0,h)；而 xy 平面上的投影圆删去了 z 坐标，圆心为 (0,0)。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "point",
+              "target": "section-01-moment-03-item-01",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "我们来看边界条件：当 h=0 时，r=0，截线退化为单点原点 (0,0,0)；当 h<0 时，方程 x²+y²=h 在实数范围内无解，曲面与截面没有实交点。因此高度 h 的取值范围要求 h≥0。",
+          "delivery": "careful",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-02-item-01",
+                "section-01-moment-03-item-01"
+              ],
+              "intent": "分析 h≥0 边界条件与退化点",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "通过高度变化演示验证半径预测，理解动态投影与整体等高线图的关系",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "在上节课的代数推导中，我们得到了半径与高度的关系 r等于根号h。现在我们来验证这个结论：如果我把高度 h 从 1 升高到 4，请大家先在心中预测一下，投影圆的半径会变为原来的几倍？",
+          "delivery": "patient",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-02-item-01",
+                "section-01-moment-03-item-01"
+              ],
+              "intent": "引导学习者根据公式预测高度从1增加到4时半径的变化",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-02",
+          "say": "我现在把高度 h 从 1 逐渐调到 4，请仔细观察三维截面与二维投影圆的变化。可以看到，当 h 达到 4 时，半径 r 确实从 1 变为了 2，刚好扩大为原来的 2 倍，完全符合 r等于根号h 的推导。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 4,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "接着，我把高度 h 降到边界值 0。此时截平面退化为与曲面顶点相切，投影圆的半径变为 0，在 xy 平面上退化为一个单点。这就是 h等于0 时的极限边界特征。",
+          "delivery": "careful",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 0,
+              "easing": "linear",
+              "duration_intent": "normal",
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-04",
+          "say": "需要注意，不同高度 h 对应的投影同心圆共同构成了曲面的整体等高线图。而我们当前的动态画面在每一个时刻只展示了一个特定的 h 截面，并非一次性呈现完整的等高线族。下一节我们将固定输入变量 x 或 y，探索垂直截线带来的偏导数视角。",
+          "delivery": "neutral",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-02-moment-01-item-02"
+              ],
+              "intent": "继续观察当前画面",
+              "when": "after_speech"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "section-04",
+      "purpose": "总结固定输出高度的方法，并开放课后针对半径反推高度的练习",
+      "beats": [
+        {
+          "key": "moment-01",
+          "say": "总结一下，固定输出高度 z 等于常量，本质上是在曲面上用水平平面去切割，得到空间截线，并在 xy 平面上形成等高线。下一节课，我们将改为固定输入变量，例如固定 y 的值，去观察曲面的垂直截线。",
+          "delivery": "emphatic",
+          "actions": [
+            {
+              "do": "focus",
+              "targets": [
+                "section-01-moment-02-item-01",
+                "section-01-moment-03-item-01"
+              ],
+              "intent": "总结固定输出高度与预告垂直截线",
+              "when": "during_speech"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "本课程讲解了如何通过固定输出高度 z=h，将三维曲面 z=x²+y² 化简为平面圆 x²+y²=h 及其投影圆。在 h≥0 时半径 r=√h。下一课我们将尝试固定输入变量 y，观察垂直截线的特征。",
+    "focus": [
+      "section-01-moment-02-item-01",
+      "section-01-moment-03-item-01"
+    ]
+  }
+}

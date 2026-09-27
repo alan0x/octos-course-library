@@ -1,0 +1,604 @@
+[
+  {
+    "version": "0.1",
+    "section": 1,
+    "moments": [
+      {
+        "narration": "我们承接上一课的计算，对函数 $f(x,y)=x^2-y^2$ 求偏导数。求得对 $x$ 的偏导为 $2x$，对 $y$ 的偏导为 $-2y$。在原点 $(0,0)$ 处，两个偏导数均为零，因此原点梯度为零。",
+        "delivery": "neutral",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\nabla f(0,0) = (f_x(0,0), f_y(0,0)) = (0, 0)"
+            },
+            "reusable_item": 1,
+            "role": "derivation",
+            "placement": {
+              "relation": "new_region"
+            }
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "极值质疑",
+              "items": [
+                "上一课 $x^2+y^2$ 在原点梯度为零且为最低点",
+                "本课 $x^2-y^2$ 在原点梯度也为零，它也是最低点吗？"
+              ]
+            },
+            "reusable_item": 2,
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "narration": "上一课我们看到的抛物面 $x^2+y^2$ 在原点梯度为零，且原点是全局最低点。那么对于现在的 $x^2-y^2$，原点也一定是最低点吗？我们来观察它的三维曲面图形。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "引导思考梯度为零与最低点之间的关系",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "我放置了两幅马鞍面 $z=x^2-y^2$ 的三维视图。左边一幅固定 $y=0$ 平面剖切，右边一幅固定 $x=0$ 平面剖切。请观察这两个截面与曲面交线的弯曲方向。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "截面 y=0",
+                "expression": "x^2-y^2",
+                "section_axis": "y"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 3
+          },
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_surface_with_section",
+              "parameters": {
+                "title": "截面 x=0",
+                "expression": "x^2-y^2",
+                "section_axis": "x"
+              },
+              "numbers": [
+                1
+              ]
+            },
+            "role": "comparison_visual",
+            "placement": {
+              "relation": "right_of",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            },
+            "reusable_item": 4,
+            "distinct_visual": true
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "对比观察 y=0 与 x=0 两个截面与马鞍面交线的开口方向差异",
+            "references": [
+              {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              },
+              {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 2,
+    "moments": [
+      {
+        "narration": "我们在 y 等于 0 的平面上看马鞍面，函数化简为 z 等于 x 的平方。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "y = 0 \\implies z = x^2"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 1,
+                "item": 4
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "关注 y=0 截面下的抛物线",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "在 x 等于 0 的平面上看马鞍面，函数则化简为 z 等于负 y 的平方。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "x = 0 \\implies z = -y^2"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "关注 x=0 截面下的开口向下抛物线",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 3
+              },
+              {
+                "source": "reusable",
+                "section": 1,
+                "item": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "用统一的路径参数 t 表示，横轴为 t。上方曲线对应沿 x 方向路径，原点为最低点；下方曲线对应沿 y 方向路径，原点为最高点。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "visual",
+            "timing": "before_speech",
+            "content": {
+              "capability": "function_plot",
+              "parameters": {
+                "title": "统一路径参数 t 下的剖面曲线",
+                "curve_labels": [
+                  "沿 x 方向 (x,y)=(t,0)",
+                  "沿 y 方向 (x,y)=(0,t)"
+                ],
+                "expressions": [
+                  "(x)^(2)",
+                  "-((x)^(2))"
+                ]
+              }
+            },
+            "role": "main_visual",
+            "placement": {
+              "relation": "new_region"
+            },
+            "reusable_item": 1
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "截面剖面特征",
+              "items": [
+                "沿 x 方向路径 (t, 0)：z = t²，原点取极小值",
+                "沿 y 方向路径 (0, t)：z = -t²，原点取极大值"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "point_at",
+            "timing": "during_speech",
+            "reference": {
+              "source": "local_board_item",
+              "moment": 3,
+              "item": 1
+            }
+          }
+        ]
+      }
+    ],
+    "student_activities": [
+      {
+        "kind": "number_target",
+        "prompt": "把截面位置参数设为 1，观察截面变化情况。",
+        "hints": [
+          "拖动滑块至右端 1。"
+        ],
+        "success_message": "很好！我们清晰地看到了沿 x 方向上升与沿 y 方向下降的对比。",
+        "hint_after_attempts": 2,
+        "number_controls": [
+          {
+            "number": 1,
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "value": 1,
+        "tolerance": 0.0025
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 3,
+    "moments": [
+      {
+        "narration": "现在我们用严谨的邻域定义来证明原点既不是局部极小点，也不是局部极大点。请看这三条核心算式。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "f(t,0) = t^2 > 0 \\quad (t \\neq 0)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "f(0,t) = -t^2 < 0 \\quad (t \\neq 0)"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "f(0,0) = 0"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "after_speech",
+            "content": {
+              "title": "邻域判别结论",
+              "items": [
+                "任意小的原点邻域内都同时存在高于0和低于0的点",
+                "原点既不是局部极小点，也不是局部极大点",
+                "截面必须保持过原点（t=0）"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 3
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "聚焦于邻域内正负函数值的对比与严谨代数逻辑",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ]
+          },
+          {
+            "action": "point_at",
+            "timing": "after_speech",
+            "reference": {
+              "source": "reusable",
+              "section": 2,
+              "item": 1
+            }
+          }
+        ]
+      },
+      {
+        "narration": "无论取多小的邻域，只要 t 不为 0，沿 x 轴的点都比 0 大，沿 y 轴的点都比 0 小。只要找到这样一升一降两个方向，就足以彻底否定极值。需要特别注意的是，即使两个特定方向都上升，也不足以证明全局极小；但只要存在相反方向，就能否定极值。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "强调一升一降反例法否定极值的逻辑严密性",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1",
+    "section": 4,
+    "moments": [
+      {
+        "narration": "回顾这三节课，我们总结了分析多变量函数极值的三个核心视角：固定输出观察等高线分布、固定输入观察偏导数与截面，以及通过比较经过同一点的不同路径来判断是否为极值。",
+        "delivery": "emphatic",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "多变量函数极值分析视角",
+              "items": [
+                "固定输出：观察等高线形状与分布",
+                "固定输入：观察偏导数与沿轴截面",
+                "路径比较：对比经过同一点的不同方向曲线"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "梳理分析多变量函数极值的三个核心视角",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "将抛物面 z 等于 x 平方加 y 平方与马鞍面 z 等于 x 平方减 y 平方在原点对比：两者的梯度均为零。但抛物面在原点邻域内除原点外所有点函数值都大于零，因而形成局部极小；而马鞍面原点任意邻域内既有正值又有负值，因此它既非局部极小也非局部极大。",
+        "delivery": "patient",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "during_speech",
+            "content": {
+              "latex": "\\text{抛物面 } z=x^2+y^2: \\nabla z(0,0)=(0,0),\\ f(x,y)\\ge 0"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 1,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "create",
+            "kind": "math",
+            "timing": "after_speech",
+            "content": {
+              "latex": "\\text{马鞍面 } z=x^2-y^2: \\nabla z(0,0)=(0,0),\\ f(x,y) \\text{ 异号交替}"
+            },
+            "role": "derivation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "对比抛物面与马鞍面在原点的邻域函数值特征",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "请思考这个自查问题：如果一个函数沿 x 轴和 y 轴方向在原点都上升，就能断言原点是局部极小点吗？为什么？",
+        "delivery": "careful",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "课内自查思考",
+              "items": [
+                "问题：沿 x、y 轴方向都上升，能否断言原点是局部极小点？"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 2,
+                "item": 2
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "提出关于坐标轴方向与全局邻域性质关系的思考题",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "narration": "答案是不能。因为沿坐标轴方向上升仅说明沿特定两条直线方向递增，并不保证在坐标轴夹角之间的斜向路径上函数值依然大于原点值。判断局部极小必须要求在原点的整个圆盘邻域内所有点都满足 f(x,y) 大于等于 f(0,0)。",
+        "delivery": "encouraging",
+        "actions": [
+          {
+            "action": "create",
+            "kind": "note",
+            "timing": "during_speech",
+            "content": {
+              "title": "自查解答",
+              "items": [
+                "结论：不能断言。",
+                "原因：沿轴上升仅保证两个特定方向，极小点要求整个邻域内所有路径均满足 f(x,y) ≥ f(0,0)。"
+              ]
+            },
+            "role": "explanation",
+            "placement": {
+              "relation": "below",
+              "reference": {
+                "source": "local_board_item",
+                "moment": 3,
+                "item": 1
+              }
+            }
+          },
+          {
+            "action": "focus",
+            "timing": "during_speech",
+            "intent": "明确局部极小点必须满足全方位邻域条件的严格定义",
+            "references": [
+              {
+                "source": "reusable",
+                "section": 2,
+                "item": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

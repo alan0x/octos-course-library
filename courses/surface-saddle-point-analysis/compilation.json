@@ -1,0 +1,19 @@
+{
+  "minimumPlayerVersion": "0.1.0",
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.focus",
+    "action:teacher.point",
+    "canonical:0.1",
+    "node:math",
+    "node:note",
+    "node:plot",
+    "node:scene3d"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  },
+  "diagnostics": []
+}

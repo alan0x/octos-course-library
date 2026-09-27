@@ -1,0 +1,10 @@
+马鞍面与鞍点：梯度为零不一定是极值点
+
+Original Octos lesson content and packaging: Copyright 2026 Octos Course Library contributors.
+
+Adapted from Marble Skill Taxonomy (v1).
+Copyright Generative Spark, Inc. (Marble). https://withmarble.com
+Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
+
+Source candidate: reviewed-0.2.1/course.authoring.json
+Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).

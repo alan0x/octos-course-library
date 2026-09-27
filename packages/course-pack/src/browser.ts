@@ -4,6 +4,7 @@ import {
 } from "octos-lesson-language/player";
 import {
   reduceCanonicalEvents,
+  assertExecutionDeclaration,
   type CanonicalEvent,
 } from "octos-lesson-language";
 import { unzipSync } from "fflate";
@@ -272,10 +273,15 @@ export async function loadCoursePackArchive(
       message: "OLL entry file is missing",
     }]);
   }
+  const events = parseEvents(entry, manifest.entry);
+  try { assertExecutionDeclaration(events, manifest); }
+  catch (error) {
+    throw new CoursePackLoadError([{ code: "PACK_EXECUTION_CAPABILITY", path: "/manifest.json", message: error instanceof Error ? error.message : String(error) }]);
+  }
   return {
     manifest,
     board: rawBoard as CoursePackBoardV1,
-    events: parseEvents(entry, manifest.entry),
+    events,
     files,
     archiveSha256: await sha256(archive),
   };
