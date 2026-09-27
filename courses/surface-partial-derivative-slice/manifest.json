@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "packId": "surface-partial-derivative-slice",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "title": "偏导数：固定输入，求截线斜率",
-  "description": "Octos Learn curated mathematics course.",
+  "description": "第2课：固定输入变量，把偏导数化为截线的一元导数，并推导指定点的切线。",
   "locale": "zh-CN",
   "subject": "mathematics",
-  "grade": "unspecified",
+  "grade": "college-calculus",
   "durationSeconds": 155,
   "minimumPlayerVersion": "0.2.0",
   "requiredCapabilities": [

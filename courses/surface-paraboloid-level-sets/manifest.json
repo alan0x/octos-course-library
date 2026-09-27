@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "packId": "surface-paraboloid-level-sets",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "title": "水平截线与等高线：以 z=x²+y² 为例",
-  "description": "Octos Learn curated mathematics course.",
+  "description": "第1课：固定输出高度，推导圆形截线与等高线，区分空间截线和二维投影。",
   "locale": "zh-CN",
   "subject": "mathematics",
-  "grade": "unspecified",
+  "grade": "college-calculus",
   "durationSeconds": 183,
   "minimumPlayerVersion": "0.2.0",
   "requiredCapabilities": [
