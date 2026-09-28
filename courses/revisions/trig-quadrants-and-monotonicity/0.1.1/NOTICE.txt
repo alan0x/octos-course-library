@@ -1,0 +1,11 @@
+单位圆与正弦函数的单调性及象限循环
+
+Original Octos lesson content and packaging: Copyright 2026 Octos Course Library contributors.
+
+Adapted from Marble Skill Taxonomy (v1).
+Copyright Generative Spark, Inc. (Marble). https://withmarble.com
+Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
+
+Source candidate: candidate-001/course.authoring.json
+Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
+Content review: practices reachable as stated; teacher no longer answers the last one (0.1.1); narration unchanged.

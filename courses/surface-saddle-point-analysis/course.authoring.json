@@ -173,12 +173,13 @@
       "beats": [
         {
           "key": "moment-01",
-          "say": "我们在马鞍面 $z = x^2 - y^2$ 上分别沿着 $x$ 轴与 $y$ 轴方向切开，观察降维后的路径函数。",
+          "say": "对于马鞍面，高度 z 等于 x 的平方减去 y 的平方。我们分别沿 x 轴和 y 轴方向取截面，观察截面上的一元函数。",
           "delivery": "neutral",
           "actions": [
             {
               "do": "focus",
               "targets": [
+                "section-01-moment-02-item-01",
                 "section-01-moment-02-item-02"
               ],
               "intent": "继续观察当前画面",
@@ -188,7 +189,7 @@
         },
         {
           "key": "moment-02",
-          "say": "在 $y=0$ 的截面上，函数化简为 $z = x^2$。以参数 $t$ 表示该路径，就是 $z = t^2$。此时原点在 $x$ 方向上是最低点。",
+          "say": "在 y 等于零的截面上，高度 z 等于 x 的平方。用路径参数 t 表示 x，高度就是 t 的平方。因此，在沿 x 轴的这条路径上，原点是最低点。",
           "delivery": "patient",
           "actions": [
             {
@@ -206,23 +207,9 @@
               "when": "during_speech"
             },
             {
-              "do": "write",
-              "as": "section-02-moment-02-item-02",
-              "kind": "math",
-              "role": "derivation",
-              "content": {
-                "latex": "z(t,0) = t^2 \\text{ (t=0处极小)}, \\quad z(0,t) = -t^2 \\text{ (t=0处极大)}"
-              },
-              "place": {
-                "relation": "below",
-                "anchor": "section-02-moment-02-item-01"
-              },
-              "when": "during_speech"
-            },
-            {
               "do": "focus",
               "targets": [
-                "section-01-moment-02-item-02"
+                "section-01-moment-02-item-01"
               ],
               "intent": "观察沿x方向开口向上的抛物线截面",
               "when": "during_speech"
@@ -231,7 +218,7 @@
         },
         {
           "key": "moment-03",
-          "say": "而在 $x=0$ 的截面上，函数化简为 $z = -y^2$。用参数 $t$ 表示该路径，就是 $z = -t^2$。原点在 $y$ 方向上反而是最高点。",
+          "say": "在 x 等于零的截面上，高度 z 等于负的 y 平方。用路径参数 t 表示 y，高度就是负的 t 平方。因此，在沿 y 轴的这条路径上，原点反而是最高点。",
           "delivery": "patient",
           "actions": [
             {
@@ -257,7 +244,7 @@
         },
         {
           "key": "moment-04",
-          "say": "我们把这两条截面曲线画在同一坐标系中对比。横轴为路径参数 $t$，纵轴为高度 $z$。上方曲线对应路径 $(t,0)$，下方曲线对应路径 $(0,t)$。",
+          "say": "现在把两条截面曲线放到同一坐标系中比较。横轴是路径参数 t，纵轴是高度 z。开口向上的抛物线，对应 x 等于 t、y 等于零的路径；开口向下的抛物线，对应 x 等于零、y 等于 t 的路径。",
           "delivery": "emphatic",
           "actions": [
             {
@@ -295,6 +282,20 @@
               "place": {
                 "relation": "new_region",
                 "region_role": "section-02"
+              },
+              "when": "during_speech"
+            },
+            {
+              "do": "write",
+              "as": "section-02-moment-02-item-02",
+              "kind": "math",
+              "role": "derivation",
+              "content": {
+                "latex": "z(t,0) = t^2 \\text{ (t=0处极小)}, \\quad z(0,t) = -t^2 \\text{ (t=0处极大)}"
+              },
+              "place": {
+                "relation": "below",
+                "anchor": "section-02-moment-02-item-01"
               },
               "when": "during_speech"
             },

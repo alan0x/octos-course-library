@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "packId": "surface-partial-derivative-slice",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "title": "偏导数：固定输入，求截线斜率",
   "description": "第2课：固定输入变量，把偏导数化为截线的一元导数，并推导指定点的切线。",
   "locale": "zh-CN",
@@ -44,67 +44,67 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-01:beat:moment-01",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "fa23603183973078a3cc36f1591e46734998b2f350d73b91f1db4274442821a2",
         "durationMs": 10704
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-01:beat:moment-02",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "41856e0af7924620cb0bcdcecb28ca68fbeb27bb0e6eb7f9999b563bccec2281",
         "durationMs": 11088
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-01:beat:moment-03",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-01:beat:moment-03",
         "file": "audio/003.mp3",
         "textSha256": "9aba5579336fd08718bc0c11c6bf72fb963abeebe62b3a8ccee7b08626baec50",
         "durationMs": 11280
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-02:beat:moment-01",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-02:beat:moment-01",
         "file": "audio/004.mp3",
         "textSha256": "4b6212caf25974b9ab4841e23671aeca4c92e92a8d426a2de38574aff7d2b234",
         "durationMs": 9480
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-02:beat:moment-02",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-02:beat:moment-02",
         "file": "audio/005.mp3",
         "textSha256": "40f7b16a2dc6b3c7b3a7fa939c1c6983e0d6db179b954c286d24b36fbe0bcdce",
         "durationMs": 11664
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-02:beat:moment-03",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-02:beat:moment-03",
         "file": "audio/006.mp3",
         "textSha256": "a077aef569f41ced7412a8ee9111b55e8e0b8f21afda2b7abbef416e878d5f74",
         "durationMs": 12288
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-03:beat:moment-01",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-03:beat:moment-01",
         "file": "audio/007.mp3",
-        "textSha256": "b2748d853d33675b9752b42852f8939b2f39521f4b96f91b3db0e8b1121ad18b",
-        "durationMs": 11904
+        "textSha256": "2b815bf55d5aa27116052755687e972541d9aa55ece4238156f0da8b5e1f4346",
+        "durationMs": 10272
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-03:beat:moment-02",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-03:beat:moment-02",
         "file": "audio/008.mp3",
-        "textSha256": "57cb4431e1383fe5fc295f7fb2a7415546ad0e5a9dc94c1f9bda5f6685b80fd2",
-        "durationMs": 16728
+        "textSha256": "afa2a458023ea8181a76261c6e729a1f29d885205acea8966e8ec7ee6a776b04",
+        "durationMs": 18696
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-03:beat:moment-03",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-03:beat:moment-03",
         "file": "audio/009.mp3",
-        "textSha256": "584e302546c9223605e567098f55889f480edc8c4da8e390ca791b1abb3561af",
-        "durationMs": 25512
+        "textSha256": "b00dae65f6fe4ca552b9c37f0032d75aa2f019ec7313ef98d24fb7238081684e",
+        "durationMs": 25728
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-04:beat:moment-01",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-04:beat:moment-01",
         "file": "audio/010.mp3",
         "textSha256": "470811c9653dd95714deda2006fae77faadeaec6d31a036e8080005db06a676b",
         "durationMs": 14304
       },
       {
-        "beatId": "surface-partial-derivative-slice-0.2.3:step:section-04:beat:moment-02",
+        "beatId": "surface-partial-derivative-slice-0.2.7:step:section-04:beat:moment-02",
         "file": "audio/011.mp3",
         "textSha256": "010543e13f9f7a2e0d73f88ddbf7a45764d56a4ff9fe62c8552e28836822a3f2",
         "durationMs": 19248
@@ -114,8 +114,8 @@
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "ab94081b0c60985e0cefe83ce4d90417f64203be8bdb7d00f0fc91170acf6117",
-      "bytes": 469,
+      "sha256": "1d6a47de1a77bf850b9d4df516478d4246df4d0db69bd90ab655379d40f894d5",
+      "bytes": 555,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -128,8 +128,8 @@
     },
     {
       "path": "course.authoring.json",
-      "sha256": "d7c34e4fd45ba1f386334445ca739538f9faddfa7d04915e456e810177e2196f",
-      "bytes": 15624,
+      "sha256": "35b029aa1ca598fa4a487353cac6fdefd1a7907048a13af433543efdf505dbcb",
+      "bytes": 15785,
       "mediaType": "application/json",
       "role": "asset"
     },
@@ -142,8 +142,8 @@
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "3b25138f507a59bf47c4dddc90e9aa45e93dde90b5fbffe649ea7ec32be96bc9",
-      "bytes": 15176,
+      "sha256": "c14d2de53e838f759c05ad1a9394bda46149ba6e227537522b63b5a7e78c21d3",
+      "bytes": 15337,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
@@ -198,22 +198,22 @@
     },
     {
       "path": "audio/007.mp3",
-      "sha256": "e58b374cc21ecbbc55cc1a3f940183ffd2052b959c65eb1db73a8b47f20b64fa",
-      "bytes": 238080,
+      "sha256": "1bb545c80e6ea75857b173d3924696d76914f54633b92472f9c066b7517d4845",
+      "bytes": 205440,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/008.mp3",
-      "sha256": "5e411c6c515628ca4aeeaac75d09b780347969cab227ccc09e30ea8b421ef4d0",
-      "bytes": 334560,
+      "sha256": "f35ebdad874001591b5e6371de8ca9af325c34fb64b53912499a5b378ed6e368",
+      "bytes": 373920,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
     {
       "path": "audio/009.mp3",
-      "sha256": "3b57c0a612a8386a04f6e1fdfd224c4cf4350bde2d0c9da484d759cb945a6002",
-      "bytes": 510240,
+      "sha256": "5c6630a18e5808dc8b0b129ccf527acc83da8b429694077405bb8b4027cab2c5",
+      "bytes": 514560,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },

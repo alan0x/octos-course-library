@@ -1,0 +1,7 @@
+{
+  "packId": "trig-quadrants-and-monotonicity",
+  "version": "0.1.2",
+  "edits": {
+    "section-03/moment-02": "随着角度从二分之三派增大到二派，动点的纵坐标从负一逐渐回升到零。因此，在这段角度范围内，角度越大，正弦值越大，正弦函数是单调递增的。"
+  }
+}

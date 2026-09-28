@@ -1,0 +1,53 @@
+{
+  "packId": "trig-cosine-and-phase-shift",
+  "sourceCandidate": "0.1.0",
+  "focus": {
+    "section-01/moment-01": {
+      "targets": [
+        "section-01-moment-01-item-01"
+      ],
+      "when": "during_speech"
+    },
+    "section-02/moment-01": {
+      "targets": [
+        "section-01-moment-01-item-01"
+      ],
+      "when": "during_speech"
+    },
+    "section-03/moment-01": {
+      "targets": [
+        "section-01-moment-01-item-01"
+      ],
+      "when": "during_speech"
+    },
+    "section-03/moment-02": {
+      "add": true,
+      "targets": [
+        "section-01-moment-01-item-01-plot",
+        "section-03-moment-02-item-01"
+      ],
+      "intent": "把余弦曲线与新画出的正弦余弦对比图放在一起观察",
+      "when": "during_speech"
+    },
+    "section-03/moment-05": {
+      "targets": [
+        "section-01-moment-01-item-01-circle",
+        "section-01-moment-01-item-01-plot"
+      ],
+      "when": "during_speech"
+    },
+    "section-04/moment-01": {
+      "targets": [
+        "section-01-moment-01-item-01-circle",
+        "section-04-moment-01-item-01"
+      ],
+      "when": "during_speech"
+    },
+    "section-04/moment-02": {
+      "targets": [
+        "section-03-moment-02-item-01"
+      ],
+      "when": "during_speech"
+    }
+  }
+}

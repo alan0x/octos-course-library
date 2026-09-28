@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f7f2e8"/>
+  <g transform="translate(120 80)">
+    <rect width="500" height="390" rx="28" fill="#fffdf8" stroke="#d9d2c5" stroke-width="4"/>
+    <!-- Axes -->
+    <path d="M60 200 H440 M250 40 V360" stroke="#8c9892" stroke-width="4"/>
+    <text x="430" y="235" fill="#48534e" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">x</text>
+    <text x="265" y="50" fill="#48534e" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">y</text>
+    <!-- Unit Circle -->
+    <circle cx="250" cy="200" r="120" fill="none" stroke="#167d78" stroke-width="5"/>
+    <!-- Angle theta = 50 deg: cos=77, sin=92 -->
+    <!-- Point P: (250+77, 200-92) = (327, 108) -->
+    <line x1="250" y1="200" x2="327" y2="108" stroke="#167d78" stroke-width="5"/>
+    <!-- Projection lines -->
+    <line x1="327" y1="200" x2="327" y2="108" stroke="#e18b56" stroke-width="6"/>
+    <line x1="250" y1="200" x2="327" y2="200" stroke="#0d6f6b" stroke-width="6"/>
+    <circle cx="327" cy="108" r="10" fill="#e18b56"/>
+    <!-- Angle arc -->
+    <path d="M 285 200 A 35 35 0 0 0 272 173" fill="none" stroke="#e18b56" stroke-width="4"/>
+    <text x="290" y="185" fill="#e18b56" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">θ</text>
+    <text x="340" y="105" fill="#183b3a" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">P(cos θ, sin θ)</text>
+    <text x="335" y="160" fill="#d96a20" font-family="system-ui, sans-serif" font-size="20">sin θ</text>
+  </g>
+  <text x="700" y="190" fill="#183b3a" font-family="system-ui, sans-serif" font-size="64" font-weight="700">y = sin θ</text>
+  <text x="700" y="270" fill="#0d6f6b" font-family="system-ui, sans-serif" font-size="32">unit circle · wave projection · period 2π</text>
+  <text x="80" y="570" fill="#202925" font-family="system-ui, sans-serif" font-size="58" font-weight="700">单位圆与正弦函数的单调性及象限循环</text>
+  <text x="84" y="620" fill="#65716b" font-family="system-ui, sans-serif" font-size="25">Octos Learn · High School Trigonometry</text>
+</svg>

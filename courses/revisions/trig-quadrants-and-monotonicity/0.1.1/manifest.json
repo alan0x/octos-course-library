@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "packId": "trig-quadrants-and-monotonicity",
+  "version": "0.1.1",
+  "title": "单位圆与正弦函数的单调性及象限循环",
+  "description": "动点穿过单位圆的四个象限，观察正弦高度在各个象限中的单调递增与递减，直观理解三角函数的单调区间、对称轴与极值点。",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "highschool-mathematics",
+  "durationSeconds": 101,
+  "minimumPlayerVersion": "0.1.0",
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "fc775d4f181ca3a7829903d696db5ea035ab5affd971fd11456f9a936ecb2bf8",
+        "durationMs": 7272
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-01:beat:moment-02",
+        "file": "audio/002.mp3",
+        "textSha256": "9f05695cc8e7f93cec3167b8d43ac5b1c9003c05c48fa52fdda75db0d813bbec",
+        "durationMs": 8664
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-02:beat:moment-01",
+        "file": "audio/003.mp3",
+        "textSha256": "e86390699588406640e47f13a759f23084098413afbd54e6ad898c9f7928ce11",
+        "durationMs": 11064
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-02:beat:moment-02",
+        "file": "audio/004.mp3",
+        "textSha256": "14e4df6fda433240607dd726100f5a51c4ac735aea606f7839135d45a95c4eb6",
+        "durationMs": 14496
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-03:beat:moment-01",
+        "file": "audio/005.mp3",
+        "textSha256": "f539dd46a7257770a90923f2a8afc160208c7f1fbd75deb0289b7162d94b3d46",
+        "durationMs": 9120
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-03:beat:moment-02",
+        "file": "audio/006.mp3",
+        "textSha256": "a11f45e6ad3f6d0cc85967cab94c3f669af45910d4df0cbb723e7c51ac7476a3",
+        "durationMs": 11256
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-03:beat:moment-03",
+        "file": "audio/007.mp3",
+        "textSha256": "db457c518e34853ecf032d3f15740100e71247273843c408118be8460d19c22d",
+        "durationMs": 12072
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-04:beat:moment-01",
+        "file": "audio/008.mp3",
+        "textSha256": "61317a9a89d3574b38448e0a5d065dba1d06c14f8632c9aa493f38a517654e41",
+        "durationMs": 17712
+      },
+      {
+        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-04:beat:moment-02",
+        "file": "audio/009.mp3",
+        "textSha256": "0e7b280a05393cfc1c97449e8492bc6e013f927f0f33f02768f798bfc5ffc46b",
+        "durationMs": 8880
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "9f7128c6517b21d8878898ef78bfe73196b8aedc34317a9ff438b906df38277e",
+      "bytes": 575,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "880f60b4e5f61ee66d7a4648b404070a8a4e2cf72509b5ae5000911183ec693b",
+      "bytes": 318,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "e0f773c3c599bd2f0ccbc0fe667b3b89581f8369c6858f95689a6df3c6f4dccb",
+      "bytes": 18838,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "ecf161e1b538a08562209cb8dcfcc0503b50063d340fa4e84eb412880e90b465",
+      "bytes": 2211,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "26b022fd1aee64dc663a44709f1f5c60894e33b6e20d0a30420fe0d1af212520",
+      "bytes": 145440,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "7fefd6785bdab718717eb2bb4c41095b5328f3d4aae85a30d7644add953d95e0",
+      "bytes": 173280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "4793202e9612c5005079ab1daaa1ce28a2d939c14753e12d974ded8d85e0c5e1",
+      "bytes": 221280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "27d8e57f5287f2a0969a6ccc7869239e0698942dc4d18de376ad418c8a69566c",
+      "bytes": 289920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "47e3093e3d13d6fc4981b6a98c63b741adb39cffce9c074f262ff7044b147431",
+      "bytes": 182400,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "873b0076e93826d320ed03436f3345c55d97b564f82086c66f363c0832e3186c",
+      "bytes": 225120,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "1a5b32bfc6ca523d614824a705564c31705b0e4fed9e0e7da42ae7c29ff7240e",
+      "bytes": 241440,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "c8e7418af2e2f4666b8c9a1cb4988390f8802a6344b7dbb438eb4be93f966505",
+      "bytes": 354240,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/009.mp3",
+      "sha256": "a111802737f930ee9c4807d1b0e657d98a9bd447dcee53ef503db0c7220c72de",
+      "bytes": 177600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "course.authoring.json",
+      "mediaType": "application/json",
+      "role": "asset",
+      "bytes": 19572,
+      "sha256": "d21c1f7940b5e552140c5cfcca0cf97a6b3e6daf3ab18a0fc34f34ce7b17915e"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.authoring.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3",
+        "audio/009.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}

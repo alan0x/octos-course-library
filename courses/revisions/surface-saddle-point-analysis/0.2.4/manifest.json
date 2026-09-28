@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "packId": "surface-saddle-point-analysis",
+  "version": "0.2.4",
+  "title": "马鞍面与鞍点：梯度为零不一定是极值点",
+  "description": "Octos Learn curated mathematics course.",
+  "locale": "zh-CN",
+  "subject": "mathematics",
+  "grade": "unspecified",
+  "durationSeconds": 194,
+  "minimumPlayerVersion": "0.1.0",
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.focus",
+    "action:teacher.point",
+    "canonical:0.1",
+    "node:math",
+    "node:note",
+    "node:plot",
+    "node:scene3d"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  },
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "zh_female_xiaohe_uranus_bigtts",
+    "segments": [
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-01:beat:moment-01",
+        "file": "audio/001.mp3",
+        "textSha256": "8bff60baeeebe7244e846ae275e05e99c6c71aa07e243bd191da6966640f88f0",
+        "durationMs": 17064
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-01:beat:moment-02",
+        "file": "audio/002.mp3",
+        "textSha256": "31badadb3276599c084beb9748e6bfb7892e24ba75af4f537f612523dee8659f",
+        "durationMs": 14880
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-02:beat:moment-01",
+        "file": "audio/003.mp3",
+        "textSha256": "d091278a37354a6347b47b7cdaee06806d86159b9ca655be7ab59471d6c5c03f",
+        "durationMs": 7920
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-02:beat:moment-02",
+        "file": "audio/004.mp3",
+        "textSha256": "c595fc4aa3a92df244bf0aa50046522fa3a9a38ddd152cb1d0e875710af04925",
+        "durationMs": 11088
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-02:beat:moment-03",
+        "file": "audio/005.mp3",
+        "textSha256": "b9b5ab4b75e809adb1ab37a6c4ee51c898fdd78c938f7e6a118c46130824a0e3",
+        "durationMs": 11496
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-02:beat:moment-04",
+        "file": "audio/006.mp3",
+        "textSha256": "8942f1b166cf427dacf64b8e89b1ef95fde03e8dfb92d13103668ec657b93780",
+        "durationMs": 12672
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-03:beat:moment-01",
+        "file": "audio/007.mp3",
+        "textSha256": "fe4bfd69e023e00b516471ab5cd6f6b06ffda077a8314ba5f62f4c1133a0b807",
+        "durationMs": 12288
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-03:beat:moment-02",
+        "file": "audio/008.mp3",
+        "textSha256": "546bc7ad80ad9faf2b787c2630a67f3c806a99944b2b5b6368e5b6e870c26172",
+        "durationMs": 12264
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-03:beat:moment-03",
+        "file": "audio/009.mp3",
+        "textSha256": "0fdf21d4e6ee91c879f89697dbd76b3e5e52632fec37eaa03dacae8dfffaa4df",
+        "durationMs": 11472
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-03:beat:moment-04",
+        "file": "audio/010.mp3",
+        "textSha256": "2e453d78aaf6eb81d0b5fbe63cb6ba8545308f145362a2f36d17c707ad8544fb",
+        "durationMs": 7680
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-04:beat:moment-01",
+        "file": "audio/011.mp3",
+        "textSha256": "992e5738260c8be8ff097fe19bd0823c1d83c5e75faefe4bcbeb5b50f9e6426a",
+        "durationMs": 14064
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-04:beat:moment-02",
+        "file": "audio/012.mp3",
+        "textSha256": "65551f83a0b6c71cc60a9a1f6d19379ebeaae126076c4a63e8a41ed3cc8bb114",
+        "durationMs": 13848
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-04:beat:moment-03",
+        "file": "audio/013.mp3",
+        "textSha256": "38945a576200264f34bfc7a4d39ed5a002a1d84ee15ce74394ca82c251190bad",
+        "durationMs": 18072
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-04:beat:moment-04",
+        "file": "audio/014.mp3",
+        "textSha256": "de1fa2126217bbe29c4fe044b6f67feb6cbb8d7577c219396ab8a26fb85c2c30",
+        "durationMs": 11688
+      },
+      {
+        "beatId": "surface-saddle-point-analysis-0.2.4:step:section-04:beat:moment-05",
+        "file": "audio/015.mp3",
+        "textSha256": "5b8dc6cf6b26b6d62a3314a338dc95520cdc7fc34a730cca4766eb6d4f94f08e",
+        "durationMs": 16560
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "b8cdd338835726bd8ed82abd65fdeef28c1ad6d9f8c9e13013abaf9d9db1ee73",
+      "bytes": 595,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "board.json",
+      "sha256": "a4e2488ed104de36916eae77b2c5fc9f6c159ff84a36a568c5fba5b1d3a4eea7",
+      "bytes": 316,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "compilation.json",
+      "sha256": "2962b79b5bacfe52ab6ef55498b9d7fa03d2b2a49527c74d3e0337d48cb25abc",
+      "bytes": 389,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "d81b81d764b887f9c9cc8658531f10bbd5a54b7c23719aa2f36dde8e4e3e16a3",
+      "bytes": 19072,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "bf124d752ecae021480ff8c75562f6b4676dea2a29b35e34b3242e861b9c6ffa",
+      "bytes": 1476,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "596cbd3c5e5c841dbf48324e907456cc7eb7ed454b1716b8d1911047c2e20d8a",
+      "bytes": 341280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "7e289f1cb67b1499906056db00c337fd04beb73c6908b48776a95f478f15ff7a",
+      "bytes": 297600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/003.mp3",
+      "sha256": "84dd76accdb4f9db4fa63471db775df62da29b23c0ccca3f4614bc7969e9fe11",
+      "bytes": 158400,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/004.mp3",
+      "sha256": "1713669c07ab52ede997c061c00e56213553b6372c016b028adf0136425f9bd6",
+      "bytes": 221760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/005.mp3",
+      "sha256": "356fd0ba85e07d15def69c5c073a7a4411a4b20e02a9de2ec196715360c06b32",
+      "bytes": 229920,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/006.mp3",
+      "sha256": "89ac8f97f2e45c00a3d4395cf1c635778861b3f9e847c59f227e80ed13b3cc3b",
+      "bytes": 253440,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/007.mp3",
+      "sha256": "7b653ca07d0905834607babb78a578cc0de5c150be1d3df4bb6d19acc73ddf7c",
+      "bytes": 245760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/008.mp3",
+      "sha256": "afe455b6cdd469c547a2459a152a52d8a2e1221d6b5e1bc5e5004f74f5de4979",
+      "bytes": 245280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/009.mp3",
+      "sha256": "efc20bc0cc28d5e30f94867fe7b3c8c1c814b7a079d546ae78dfeab0029fbdad",
+      "bytes": 229440,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/010.mp3",
+      "sha256": "266ff5c212f9a3148398398e94701fef630b67e63a3626cfb313bd3a5ef65928",
+      "bytes": 153600,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/011.mp3",
+      "sha256": "aebd97deaa955857aeff1468f5316d73d2ecca3c07358dfa259f41cba646a6bf",
+      "bytes": 281280,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/012.mp3",
+      "sha256": "ca6c885059da98c58339acd3a729dea879a636209451e21c9c039b3f4cd46169",
+      "bytes": 276960,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/013.mp3",
+      "sha256": "38c62302501c9178a9a6ef9ec8b29f548b57eba3a377c9fa98a4e32f36f2e35e",
+      "bytes": 361440,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/014.mp3",
+      "sha256": "11b4cdfd4a93d4e71343e3aa9ae6895c15ab3ab61cc93fe8121ec94e838e1d9e",
+      "bytes": 233760,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/015.mp3",
+      "sha256": "f0c37f9951103959593da791af841a903b91a4f90dc73ff028dfaaf1bed8a52f",
+      "bytes": 331200,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "course.authoring.json",
+      "mediaType": "application/json",
+      "role": "asset",
+      "bytes": 19533,
+      "sha256": "f7d95a3f8f39b0dcbf767fce11c4ac0e790283378fc49930d3cd44203462a20f"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Octos curated lesson content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "board.json",
+        "course.authoring.json",
+        "compilation.json",
+        "course.oll.jsonl",
+        "thumbnail.svg",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "audio/003.mp3",
+        "audio/004.mp3",
+        "audio/005.mp3",
+        "audio/006.mp3",
+        "audio/007.mp3",
+        "audio/008.mp3",
+        "audio/009.mp3",
+        "audio/010.mp3",
+        "audio/011.mp3",
+        "audio/012.mp3",
+        "audio/013.mp3",
+        "audio/014.mp3",
+        "audio/015.mp3"
+      ]
+    },
+    {
+      "name": "Marble Skill Taxonomy v1",
+      "url": "https://withmarble.com",
+      "attribution": "© Generative Spark, Inc. (Marble); ODbL 1.0 and CC BY-SA 4.0.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "course.oll.jsonl"
+      ]
+    }
+  ]
+}

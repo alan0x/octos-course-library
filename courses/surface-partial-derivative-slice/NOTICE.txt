@@ -8,3 +8,4 @@ Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
 
 Source candidate: surface-partial-derivative-slice/course.authoring.json
 Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
+Narration review: 3 spoken Chinese math clips revised (0.2.7); other audio unchanged.
