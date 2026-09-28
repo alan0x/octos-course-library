@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "packId": "trig-quadrants-and-monotonicity",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "单位圆与正弦函数的单调性及象限循环",
   "description": "动点穿过单位圆的四个象限，观察正弦高度在各个象限中的单调递增与递减，直观理解三角函数的单调区间、对称轴与极值点。",
   "locale": "zh-CN",
   "subject": "mathematics",
   "grade": "highschool-mathematics",
-  "durationSeconds": 101,
+  "durationSeconds": 102,
   "minimumPlayerVersion": "0.1.0",
   "entry": "course.oll.jsonl",
   "board": "board.json",
@@ -24,55 +24,55 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-01:beat:moment-01",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "fc775d4f181ca3a7829903d696db5ea035ab5affd971fd11456f9a936ecb2bf8",
         "durationMs": 7272
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-01:beat:moment-02",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "9f05695cc8e7f93cec3167b8d43ac5b1c9003c05c48fa52fdda75db0d813bbec",
         "durationMs": 8664
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-02:beat:moment-01",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-02:beat:moment-01",
         "file": "audio/003.mp3",
         "textSha256": "e86390699588406640e47f13a759f23084098413afbd54e6ad898c9f7928ce11",
         "durationMs": 11064
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-02:beat:moment-02",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-02:beat:moment-02",
         "file": "audio/004.mp3",
         "textSha256": "14e4df6fda433240607dd726100f5a51c4ac735aea606f7839135d45a95c4eb6",
         "durationMs": 14496
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-03:beat:moment-01",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-03:beat:moment-01",
         "file": "audio/005.mp3",
         "textSha256": "f539dd46a7257770a90923f2a8afc160208c7f1fbd75deb0289b7162d94b3d46",
         "durationMs": 9120
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-03:beat:moment-02",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-03:beat:moment-02",
         "file": "audio/006.mp3",
-        "textSha256": "a11f45e6ad3f6d0cc85967cab94c3f669af45910d4df0cbb723e7c51ac7476a3",
-        "durationMs": 11256
+        "textSha256": "3009083ed042af691abecf27e147f852fa44b191c1d4d60c0b82dccc76cf7331",
+        "durationMs": 12720
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-03:beat:moment-03",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-03:beat:moment-03",
         "file": "audio/007.mp3",
         "textSha256": "db457c518e34853ecf032d3f15740100e71247273843c408118be8460d19c22d",
         "durationMs": 12072
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-04:beat:moment-01",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-04:beat:moment-01",
         "file": "audio/008.mp3",
         "textSha256": "61317a9a89d3574b38448e0a5d065dba1d06c14f8632c9aa493f38a517654e41",
         "durationMs": 17712
       },
       {
-        "beatId": "trig-quadrants-and-monotonicity-0.1.1:step:section-04:beat:moment-02",
+        "beatId": "trig-quadrants-and-monotonicity-0.1.2:step:section-04:beat:moment-02",
         "file": "audio/009.mp3",
         "textSha256": "0e7b280a05393cfc1c97449e8492bc6e013f927f0f33f02768f798bfc5ffc46b",
         "durationMs": 8880
@@ -82,8 +82,8 @@
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "9f7128c6517b21d8878898ef78bfe73196b8aedc34317a9ff438b906df38277e",
-      "bytes": 575,
+      "sha256": "972356d5cd9d0b5c45b3e89a1629713abddc6330e4954c77bf51f5e8001e791d",
+      "bytes": 661,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -96,8 +96,8 @@
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "e0f773c3c599bd2f0ccbc0fe667b3b89581f8369c6858f95689a6df3c6f4dccb",
-      "bytes": 18838,
+      "sha256": "aa5a2fd74e181f9b16e6d497165a72387b5896f26e7c1305e15aa115a2931ce0",
+      "bytes": 18879,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
@@ -145,8 +145,8 @@
     },
     {
       "path": "audio/006.mp3",
-      "sha256": "873b0076e93826d320ed03436f3345c55d97b564f82086c66f363c0832e3186c",
-      "bytes": 225120,
+      "sha256": "f469f9553617b926730f30ed105f1df0611c6214d3d7c82d4d5c1a6567b2f6f8",
+      "bytes": 254400,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
@@ -175,8 +175,15 @@
       "path": "course.authoring.json",
       "mediaType": "application/json",
       "role": "asset",
-      "bytes": 19572,
-      "sha256": "d21c1f7940b5e552140c5cfcca0cf97a6b3e6daf3ab18a0fc34f34ce7b17915e"
+      "bytes": 19613,
+      "sha256": "1a233e263a32d2f31c794e5a3aceb7072099cd0ccc2cf4daa218ae569860f373"
+    },
+    {
+      "path": "compilation.json",
+      "role": "asset",
+      "mediaType": "application/json",
+      "bytes": 4414,
+      "sha256": "df2db43590c6f077575d45d18d91ea48101801fc60b89fe191e5f5d073fcd5d9"
     }
   ],
   "licenses": [
@@ -197,7 +204,8 @@
         "audio/006.mp3",
         "audio/007.mp3",
         "audio/008.mp3",
-        "audio/009.mp3"
+        "audio/009.mp3",
+        "compilation.json"
       ]
     },
     {
@@ -209,5 +217,26 @@
         "course.oll.jsonl"
       ]
     }
-  ]
+  ],
+  "requiredCapabilities": [
+    "action:board.connect",
+    "action:board.create",
+    "action:board.focus",
+    "action:board.group",
+    "action:lesson.variable.animate",
+    "action:teacher.point",
+    "canonical:0.1",
+    "node:geometry",
+    "node:math",
+    "node:note",
+    "node:plot",
+    "student-tasks:expression_target",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  }
 }
