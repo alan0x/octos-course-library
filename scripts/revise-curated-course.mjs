@@ -15,7 +15,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { reviseCuratedCourse } from "./curated-revision.mjs";
+import { authoringTools, reviseCuratedCourse } from "./curated-revision.mjs";
 
 function argumentsByName(argv) {
   const result = {};
@@ -33,32 +33,12 @@ function argumentsByName(argv) {
   return result;
 }
 
-function tools(authoring) {
-  const beat = (key) => {
-    const [stepKey, beatKey] = key.split("/");
-    const found = authoring.steps.find((step) => step.key === stepKey)?.beats.find((candidate) => candidate.key === beatKey);
-    assert.ok(found, `Beat ${key} not found`);
-    return found;
-  };
-  const action = (key, predicate, label) => {
-    const actions = beat(key).actions.filter(predicate);
-    assert.equal(actions.length, 1, `${key}: expected exactly one ${label}`);
-    return actions[0];
-  };
-  const task = (as) => {
-    const found = authoring.lesson.tasks?.find((candidate) => candidate.as === as);
-    assert.ok(found, `Task ${as} not found`);
-    return found;
-  };
-  return { beat, action, task };
-}
-
 const args = argumentsByName(process.argv.slice(2));
 const edits = await import(pathToFileURL(resolve(args.edits)).href);
 const sourceAuthoring = JSON.parse(await readFile(resolve(args.authoring), "utf8"));
 const authoring = structuredClone(sourceAuthoring);
 const sayBefore = JSON.stringify(sourceAuthoring.steps.map((step) => step.beats.map((beat) => beat.say)));
-const changes = edits.apply(authoring, tools(authoring));
+const changes = edits.apply(authoring, authoringTools(authoring));
 assert.equal(JSON.stringify(authoring.steps.map((step) => step.beats.map((beat) => beat.say))), sayBefore,
   "Edits must not change narration; synthesize new audio for narration changes");
 const result = await reviseCuratedCourse({

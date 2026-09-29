@@ -1,0 +1,8 @@
+{
+  "packId": "trig-cosine-and-phase-shift",
+  "version": "0.1.3",
+  "actionEdits": "authoring/reviews/trig-cosine-and-phase-shift-e2e-review-2026-09-28.mjs",
+  "edits": {
+    "section-03/moment-05": "现在我把旋转角度 θ 从 0 一直转到 2π。注意观察余弦值的变化：θ 等于 0 时是波峰 1，经过零点二分之派，到 π 时降到波谷负一，再经过零点二分之三派，回到 2π 时又是波峰。"
+  }
+}

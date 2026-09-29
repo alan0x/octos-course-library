@@ -1,0 +1,8 @@
+{
+  "packId": "slope-and-intercept",
+  "version": "0.1.7",
+  "edits": {
+    "section-02/moment-03": "我们把斜率 m 调整为 3 看看。随着 m 的绝对值变大，直线会变得更加陡峭。",
+    "section-03/moment-03": "接下来我们把 b 调整为负数 -2，观察直线的位置变化。"
+  }
+}

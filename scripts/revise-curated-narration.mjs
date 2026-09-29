@@ -17,6 +17,15 @@ const manifest=await readJson(join(source,'manifest.json'));
 assert.equal(manifest.packId,plan.packId);
 await mkdir(output); await cp(source,output,{recursive:true});
 const authoring=await readJson(join(output,'course.authoring.json'));
+// Optional reviewed action edits that belong with the narration change (e.g.
+// a demonstration the new narration describes). They run before the text edits.
+let actionChanges=[];
+if(plan.actionEdits){
+ const {authoringTools}=await import(pathToFileURL(join(library,'scripts/curated-revision.mjs')).href);
+ const module=await import(pathToFileURL(resolve(library,plan.actionEdits)).href);
+ assert.equal(module.packId,plan.packId);
+ actionChanges=module.apply(authoring,authoringTools(authoring));
+}
 for(const [key,text] of Object.entries(plan.edits)){
  const [step,beat]=key.split('/');
  const found=authoring.steps.find(s=>s.key===step)?.beats.find(b=>b.key===beat);
@@ -53,7 +62,8 @@ for(let i=0;i<next.length;i++){
 manifest.version=plan.version;manifest.durationSeconds=Math.ceil(manifest.narration.segments.reduce((n,s)=>n+s.durationMs,0)/1000);
 const report=await readJson(join(output,'compilation.json'));
 manifest.minimumPlayerVersion=report.minimumPlayerVersion;manifest.requiredCapabilities=report.requiredCapabilities;manifest.compilation=report.compilation;
-const notice=(await readFile(join(output,'NOTICE.txt'),'utf8')).trimEnd()+`\nNarration review: ${generated} spoken Chinese math clips revised (${plan.version}); other audio unchanged.\n`;
+const actionNotice=actionChanges.length?`\nContent review: ${(await import(pathToFileURL(resolve(library,plan.actionEdits)).href)).summary} (${plan.version}).`:'';
+const notice=(await readFile(join(output,'NOTICE.txt'),'utf8')).trimEnd()+actionNotice+`\nNarration review: ${generated} spoken Chinese math clips revised (${plan.version}); other audio unchanged.\n`;
 await writeFile(join(output,'NOTICE.txt'),notice);
 if(!manifest.files.some(f=>f.path==='compilation.json'))manifest.files.push({path:'compilation.json',role:'asset',mediaType:'application/json'});
 for(const file of manifest.files){const bytes=await readFile(join(output,file.path));file.bytes=bytes.length;file.sha256=hash(bytes);}
@@ -62,4 +72,4 @@ await writeFile(join(output,'manifest.json'),JSON.stringify(manifest,null,2)+'\n
 const validation=validateCoursePackDirectory(output);assert.equal(validation.valid,true,JSON.stringify(validation.issues));
 const built=buildCoursePack(output,output+'.ocpack');
 await writeFile(output+'-audit.json',JSON.stringify({packId:plan.packId,version:plan.version,generated,reused:next.length-generated,sha256:built.sha256,segments:audit},null,2)+'\n');
-console.log(JSON.stringify({packId:plan.packId,version:plan.version,generated,sha256:built.sha256}));
+console.log(JSON.stringify({packId:plan.packId,version:plan.version,generated,sha256:built.sha256,actionChanges}));

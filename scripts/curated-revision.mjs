@@ -13,6 +13,30 @@ function digest(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
 }
 
+/**
+ * Lookups over an authoring document that fail loudly when the reviewed
+ * content is not where an edit module expects it.
+ */
+export function authoringTools(authoring) {
+  const beat = (key) => {
+    const [stepKey, beatKey] = key.split("/");
+    const found = authoring.steps.find((step) => step.key === stepKey)?.beats.find((candidate) => candidate.key === beatKey);
+    assert.ok(found, `Beat ${key} not found`);
+    return found;
+  };
+  const action = (key, predicate, label) => {
+    const actions = beat(key).actions.filter(predicate);
+    assert.equal(actions.length, 1, `${key}: expected exactly one ${label}`);
+    return actions[0];
+  };
+  const task = (as) => {
+    const found = authoring.lesson.tasks?.find((candidate) => candidate.as === as);
+    assert.ok(found, `Task ${as} not found`);
+    return found;
+  };
+  return { beat, action, task };
+}
+
 function narratedBeats(events) {
   return events.flatMap((event) => event.event === "lesson.step"
     ? event.step.beats.flatMap((beat) => beat.narration?.text?.trim()
