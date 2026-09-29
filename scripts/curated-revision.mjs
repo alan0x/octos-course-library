@@ -34,7 +34,19 @@ export function authoringTools(authoring) {
     assert.ok(found, `Task ${as} not found`);
     return found;
   };
-  return { beat, action, task };
+  // Removing a beat drops its narration and audio; every other narration
+  // must stay unchanged so its audio can be reused.
+  const removed = [];
+  const removeBeat = (key) => {
+    const [stepKey] = key.split("/");
+    const step = authoring.steps.find((candidate) => candidate.key === stepKey);
+    const found = beat(key);
+    step.beats.splice(step.beats.indexOf(found), 1);
+    assert.ok(step.beats.length > 0, `${stepKey}: removing ${key} would leave an empty step`);
+    removed.push(key);
+    return found;
+  };
+  return { beat, action, task, removeBeat, removedBeats: removed };
 }
 
 function narratedBeats(events) {
@@ -45,7 +57,7 @@ function narratedBeats(events) {
     : []);
 }
 
-export async function reviseCuratedCourse({ packId, authoring, source, output, archive, version, playerRoot, noticeLine }) {
+export async function reviseCuratedCourse({ packId, authoring, source, output, archive, version, playerRoot, noticeLine, removedBeats = [] }) {
   source = resolve(source); output = resolve(output); archive = resolve(archive); playerRoot = resolve(playerRoot);
   if (source === output || output.startsWith(`${source}/`)) throw new Error("Output must not overwrite source");
   try {
@@ -78,7 +90,14 @@ export async function reviseCuratedCourse({ packId, authoring, source, output, a
   ], { stdio: "inherit" });
   const events = (await readFile(lessonPath, "utf8"))
     .split(/\r?\n/u).filter(Boolean).map((line) => JSON.parse(line));
-  const oldNarration = narratedBeats(sourceEvents);
+  // Beat keys ("section-03/moment-01") map to canonical beat IDs by suffix.
+  const removedSuffixes = removedBeats.map((key) => {
+    const [stepKey, beatKey] = key.split("/");
+    return `:step:${stepKey}:beat:${beatKey}`;
+  });
+  const isRemoved = (beatId) => removedSuffixes.some((suffix) => beatId.endsWith(suffix));
+  const sourceNarration = narratedBeats(sourceEvents);
+  const oldNarration = sourceNarration.filter((beat) => !isRemoved(beat.id));
   const newNarration = narratedBeats(events);
   assert.equal(newNarration.length, oldNarration.length, "Narration count changed; existing audio cannot be reused");
   const sourceSegments = new Map(sourceManifest.narration.segments.map((segment) => [segment.beatId, segment]));
@@ -91,7 +110,11 @@ export async function reviseCuratedCourse({ packId, authoring, source, output, a
     return { ...segment, beatId: nextBeat.id };
   });
 
+  const removedAudio = new Set(sourceNarration.filter((beat) => isRemoved(beat.id))
+    .map((beat) => sourceSegments.get(beat.id)?.file).filter(Boolean));
+  assert.equal(removedAudio.size, removedBeats.length, "Every removed beat must own exactly one narration clip");
   for (const file of sourceManifest.files) {
+    if (removedAudio.has(file.path)) continue;
     const destination = join(output, file.path);
     await mkdir(dirname(destination), { recursive: true });
     if (file.path !== sourceManifest.entry && file.path !== "NOTICE.txt" && file.path !== "course.authoring.json") {
@@ -122,15 +145,16 @@ export async function reviseCuratedCourse({ packId, authoring, source, output, a
   const manifest = {
     ...sourceManifest,
     version,
+    ...(removedBeats.length ? { durationSeconds: Math.ceil(narration.reduce((sum, segment) => sum + segment.durationMs, 0) / 1000) } : {}),
     narration: { ...sourceManifest.narration, segments: narration },
-    licenses: sourceManifest.licenses.map((license, index) => index === 0
-      ? {
-          ...license,
-          appliesTo: [...new Set([...license.appliesTo, "course.authoring.json"])],
-        }
-      : license),
+    licenses: sourceManifest.licenses.map((license, index) => {
+      const appliesTo = license.appliesTo.filter((path) => !removedAudio.has(path));
+      return index === 0
+        ? { ...license, appliesTo: [...new Set([...appliesTo, "course.authoring.json"])] }
+        : { ...license, appliesTo };
+    }),
     files: await Promise.all([
-      ...sourceManifest.files.filter((file) => file.path !== "course.authoring.json"),
+      ...sourceManifest.files.filter((file) => file.path !== "course.authoring.json" && !removedAudio.has(file.path)),
       {
         path: "course.authoring.json",
         mediaType: "application/json",

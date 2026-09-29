@@ -10,7 +10,9 @@
 // An edit module exports `packId`, `summary` (one line for NOTICE.txt) and
 // `apply(authoring, tools)`, which mutates the authoring clone and returns a
 // list of human-readable changes. `tools` offers beat/task lookups that fail
-// loudly when the expected content is not found.
+// loudly when the expected content is not found, and `removeBeat(key)` for a
+// reviewed beat removal: that beat's narration clip is dropped and every
+// remaining narration must stay unchanged.
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
@@ -37,8 +39,11 @@ const args = argumentsByName(process.argv.slice(2));
 const edits = await import(pathToFileURL(resolve(args.edits)).href);
 const sourceAuthoring = JSON.parse(await readFile(resolve(args.authoring), "utf8"));
 const authoring = structuredClone(sourceAuthoring);
-const sayBefore = JSON.stringify(sourceAuthoring.steps.map((step) => step.beats.map((beat) => beat.say)));
-const changes = edits.apply(authoring, authoringTools(authoring));
+const tools = authoringTools(authoring);
+const changes = edits.apply(authoring, tools);
+const removed = new Set(tools.removedBeats);
+const sayBefore = JSON.stringify(sourceAuthoring.steps.map((step) => step.beats
+  .filter((beat) => !removed.has(`${step.key}/${beat.key}`)).map((beat) => beat.say)));
 assert.equal(JSON.stringify(authoring.steps.map((step) => step.beats.map((beat) => beat.say))), sayBefore,
   "Edits must not change narration; synthesize new audio for narration changes");
 const result = await reviseCuratedCourse({
@@ -50,5 +55,6 @@ const result = await reviseCuratedCourse({
   version: args.version,
   playerRoot: args["player-root"],
   noticeLine: `Content review: ${edits.summary} (${args.version}); narration unchanged.`,
+  removedBeats: tools.removedBeats,
 });
 process.stdout.write(`${JSON.stringify({ ...result, changes }, null, 2)}\n`);

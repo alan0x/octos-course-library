@@ -1,0 +1,8 @@
+{
+  "packId": "surface-partial-derivative-slice",
+  "version": "0.2.8",
+  "actionEdits": "authoring/reviews/surface-partial-derivative-slice-e2e-review-2026-09-29.mjs",
+  "edits": {
+    "section-04/moment-02": "请思考便签上的问题：如果我们要在点 P(1,1,2) 处求函数对 y 的偏导数，应该固定哪一个变量？先自己想一想，课后可以展开思考题卡片核对答案。现在请完成课后练习。"
+  }
+}
