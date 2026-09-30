@@ -34,7 +34,7 @@
     "fflate": "^0.8.2"
   },
   "devDependencies": {
-    "octos-lesson-language": "github:alan0x/octos-lesson-language#a0d2e20b35c806aaa819cb62749bea643c276d43"
+    "octos-lesson-language": "github:alan0x/octos-lesson-language#1a463851a0bcb59fefe9b9eaab93c5a30caea678"
   },
   "peerDependencies": {
     "octos-lesson-language": "0.1.0-rc.1"
