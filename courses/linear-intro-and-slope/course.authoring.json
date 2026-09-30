@@ -32,34 +32,6 @@
     ],
     "tasks": [
       {
-        "as": "section-02-task-01",
-        "prompt": "请将斜率 k 调整为 2，亲自体验直线陡峭程度的变化。",
-        "availability": {
-          "kind": "after_lesson"
-        },
-        "hints": [
-          "拖动斜率 k 的滑块至 2。",
-          "观察随着 k 增大，直线相对于 x 轴倾斜得更厉害了。"
-        ],
-        "hint_after_attempts": 2,
-        "success_message": "很好！斜率 k 越大，直线就越陡峭。",
-        "allowed_operations": [
-          {
-            "kind": "variable_change",
-            "variable": "number_01",
-            "controls": [
-              "slider"
-            ]
-          }
-        ],
-        "completion": {
-          "kind": "expression_target",
-          "expression": "number_01",
-          "value": 2.01,
-          "tolerance": 0.015
-        }
-      },
-      {
         "as": "section-03-task-01",
         "prompt": "将斜率 k 调到 -1.5",
         "availability": {
@@ -84,6 +56,34 @@
           "kind": "expression_target",
           "expression": "number_01",
           "value": -1.5,
+          "tolerance": 0.015
+        }
+      },
+      {
+        "as": "section-02-task-01",
+        "prompt": "请将斜率 k 调整为 2，亲自体验直线陡峭程度的变化。",
+        "availability": {
+          "kind": "after_lesson"
+        },
+        "hints": [
+          "拖动斜率 k 的滑块至 2。",
+          "观察随着 k 增大，直线相对于 x 轴倾斜得更厉害了。"
+        ],
+        "hint_after_attempts": 2,
+        "success_message": "很好！斜率 k 越大，直线就越陡峭。",
+        "allowed_operations": [
+          {
+            "kind": "variable_change",
+            "variable": "number_01",
+            "controls": [
+              "slider"
+            ]
+          }
+        ],
+        "completion": {
+          "kind": "expression_target",
+          "expression": "number_01",
+          "value": 2.01,
           "tolerance": 0.015
         }
       }

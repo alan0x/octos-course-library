@@ -170,7 +170,7 @@
                     "as": "reference-p",
                     "x": 0,
                     "y": 0,
-                    "label": "P(0, {y})"
+                    "label": "b：(0, {y})"
                   },
                   {
                     "as": "reference-q",
@@ -285,7 +285,7 @@
         },
         {
           "key": "moment-03",
-          "say": "尝试将斜率 m 调整为 3 看看。随着 m 的绝对值变大，直线会变得更加陡峭。",
+          "say": "我们把斜率 m 调整为 3 看看。随着 m 的绝对值变大，直线会变得更加陡峭。",
           "delivery": "encouraging",
           "actions": [
             {
@@ -381,7 +381,7 @@
         },
         {
           "key": "moment-03",
-          "say": "接下来试着把 b 调整为负数 -2，观察直线的位置变化。",
+          "say": "接下来我们把 b 调整为负数 -2，观察直线的位置变化。",
           "delivery": "encouraging",
           "actions": [
             {

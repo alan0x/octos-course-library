@@ -9,4 +9,5 @@ Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
 Source candidate: candidate-001/course.authoring.json
 Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
 Camera review: 0.1.0, 0.1.1; narration unchanged.
-Content review: remove duplicated induction formula; 3-3 animates to the narrated cosine peak (0.1.2); narration unchanged.
+Narration review: 1 spoken Chinese math clips revised (0.1.3); other audio unchanged.
+Content review: 4-1 drops the x = cos θ card that its note repeats, so step 4 fits under step 3 (0.1.4); narration unchanged.

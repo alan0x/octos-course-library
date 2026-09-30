@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "packId": "surface-saddle-point-analysis",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "title": "马鞍面与鞍点：梯度为零不一定是极值点",
   "description": "第3课：沿不同方向截取马鞍面，用任意邻域内的一升一降证明驻点不一定是极值点。",
   "locale": "zh-CN",
   "subject": "mathematics",
   "grade": "college-calculus",
-  "durationSeconds": 200,
-  "minimumPlayerVersion": "0.1.0",
+  "durationSeconds": 184,
+  "minimumPlayerVersion": "0.3.0",
   "requiredCapabilities": [
     "action:board.create",
     "action:board.focus",
@@ -17,7 +17,8 @@
     "node:math",
     "node:note",
     "node:plot",
-    "node:scene3d"
+    "node:scene3d",
+    "reflections"
   ],
   "compilation": {
     "compiler": "materializeOllLesson",
@@ -39,102 +40,96 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-01:beat:moment-01",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "8bff60baeeebe7244e846ae275e05e99c6c71aa07e243bd191da6966640f88f0",
         "durationMs": 17064
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-01:beat:moment-02",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "31badadb3276599c084beb9748e6bfb7892e24ba75af4f537f612523dee8659f",
         "durationMs": 14880
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-02:beat:moment-01",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-02:beat:moment-01",
         "file": "audio/003.mp3",
         "textSha256": "acb6eea2ecdec933d053eb20241881c28bae007dc69b72d734724c92463e8d2e",
         "durationMs": 9288
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-02:beat:moment-02",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-02:beat:moment-02",
         "file": "audio/004.mp3",
         "textSha256": "196c094be8cd70f329a43b744cfa80fa51f3dd399c538f4e08f231774d70d615",
         "durationMs": 12072
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-02:beat:moment-03",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-02:beat:moment-03",
         "file": "audio/005.mp3",
         "textSha256": "c0aaf68ef3213dd681eb6afc7c70981c149d3ffb27a0618e14dfb701dc585b57",
         "durationMs": 12672
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-02:beat:moment-04",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-02:beat:moment-04",
         "file": "audio/006.mp3",
         "textSha256": "04ff98f3faa4e2c30e442321624d92ee0b366a5744647bf9363dc748373b9ba1",
         "durationMs": 16056
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-03:beat:moment-01",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-03:beat:moment-01",
         "file": "audio/007.mp3",
         "textSha256": "fe4bfd69e023e00b516471ab5cd6f6b06ffda077a8314ba5f62f4c1133a0b807",
         "durationMs": 12288
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-03:beat:moment-02",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-03:beat:moment-02",
         "file": "audio/008.mp3",
         "textSha256": "546bc7ad80ad9faf2b787c2630a67f3c806a99944b2b5b6368e5b6e870c26172",
         "durationMs": 12264
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-03:beat:moment-03",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-03:beat:moment-03",
         "file": "audio/009.mp3",
         "textSha256": "0fdf21d4e6ee91c879f89697dbd76b3e5e52632fec37eaa03dacae8dfffaa4df",
         "durationMs": 11472
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-03:beat:moment-04",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-03:beat:moment-04",
         "file": "audio/010.mp3",
         "textSha256": "2e453d78aaf6eb81d0b5fbe63cb6ba8545308f145362a2f36d17c707ad8544fb",
         "durationMs": 7680
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-04:beat:moment-01",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-04:beat:moment-01",
         "file": "audio/011.mp3",
         "textSha256": "992e5738260c8be8ff097fe19bd0823c1d83c5e75faefe4bcbeb5b50f9e6426a",
         "durationMs": 14064
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-04:beat:moment-02",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-04:beat:moment-02",
         "file": "audio/012.mp3",
         "textSha256": "65551f83a0b6c71cc60a9a1f6d19379ebeaae126076c4a63e8a41ed3cc8bb114",
         "durationMs": 13848
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-04:beat:moment-03",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-04:beat:moment-03",
         "file": "audio/013.mp3",
         "textSha256": "38945a576200264f34bfc7a4d39ed5a002a1d84ee15ce74394ca82c251190bad",
         "durationMs": 18072
       },
       {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-04:beat:moment-04",
+        "beatId": "surface-saddle-point-analysis-0.2.8:step:section-04:beat:moment-04",
         "file": "audio/014.mp3",
         "textSha256": "de1fa2126217bbe29c4fe044b6f67feb6cbb8d7577c219396ab8a26fb85c2c30",
         "durationMs": 11688
-      },
-      {
-        "beatId": "surface-saddle-point-analysis-0.2.7:step:section-04:beat:moment-05",
-        "file": "audio/015.mp3",
-        "textSha256": "5b8dc6cf6b26b6d62a3314a338dc95520cdc7fc34a730cca4766eb6d4f94f08e",
-        "durationMs": 16560
       }
     ]
   },
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "227f37a4dc0ef6c25dffb9d644a20b067bf38aec1fdef29771639d320a9dbca9",
-      "bytes": 681,
+      "sha256": "e5ffb22d0a4e647acb3746eef25fd4e2919172fa1d6b96ec3f9ec24d074522a6",
+      "bytes": 703,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -147,15 +142,15 @@
     },
     {
       "path": "compilation.json",
-      "sha256": "2962b79b5bacfe52ab6ef55498b9d7fa03d2b2a49527c74d3e0337d48cb25abc",
-      "bytes": 389,
+      "sha256": "705e0b7e123b88048451754423a58bbc4cc07b94dbcafa9cf01b44d48de582e5",
+      "bytes": 408,
       "mediaType": "application/json",
       "role": "asset"
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "0570fc709ebd8997200d99945017d7a73844a5dba1343682980565ff43490ba9",
-      "bytes": 19235,
+      "sha256": "4dae6d0564be79817a4ad91f411be2b0f93874904fb35f4189af34081908e9f8",
+      "bytes": 18717,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
@@ -265,18 +260,11 @@
       "role": "narration"
     },
     {
-      "path": "audio/015.mp3",
-      "sha256": "f0c37f9951103959593da791af841a903b91a4f90dc73ff028dfaaf1bed8a52f",
-      "bytes": 331200,
-      "mediaType": "audio/mpeg",
-      "role": "narration"
-    },
-    {
       "path": "course.authoring.json",
       "mediaType": "application/json",
       "role": "asset",
-      "bytes": 19696,
-      "sha256": "a7a3f9a356ee96ad7f6fcdf3dd358b8045edcb34417196613e426347e8a8d497"
+      "bytes": 19232,
+      "sha256": "83d3a1758f0f62cc12ce866a963673a42161544ebe93d544678cd180858a323b"
     }
   ],
   "licenses": [
@@ -303,8 +291,7 @@
         "audio/011.mp3",
         "audio/012.mp3",
         "audio/013.mp3",
-        "audio/014.mp3",
-        "audio/015.mp3"
+        "audio/014.mp3"
       ]
     },
     {

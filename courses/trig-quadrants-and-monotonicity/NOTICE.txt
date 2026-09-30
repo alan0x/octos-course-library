@@ -8,5 +8,5 @@ Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
 
 Source candidate: candidate-001/course.authoring.json
 Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
-Content review: practices reachable as stated; teacher no longer answers the last one (0.1.1); narration unchanged.
 Narration review: 1 spoken Chinese math clips revised (0.1.2); other audio unchanged.
+Content review: the fourth-quadrant interval formula is written during the 3-2 narration that explains it (0.1.4); narration unchanged.

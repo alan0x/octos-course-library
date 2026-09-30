@@ -369,55 +369,7 @@
               ],
               "intent": "体会旋转运动展开为正弦曲线的动态过程",
               "when": "during_speech"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "key": "section-03",
-      "purpose": "总结正弦函数的周期性与值域，并进行波峰位置的互动操作",
-      "beats": [
-        {
-          "key": "moment-01",
-          "say": "我们在平面直角坐标系中引入单位圆，圆上动点 P 的坐标为 cos θ 和 sin θ。请注意看，点 P 到 x 轴的垂直高度，正对应着正弦值 sin θ。",
-          "delivery": "patient",
-          "actions": [
-            {
-              "do": "point",
-              "target": "section-01-moment-02-item-01",
-              "when": "during_speech"
             },
-            {
-              "do": "focus",
-              "targets": [
-                "section-01-moment-01-item-01"
-              ],
-              "intent": "观察单位圆上动点P的纵坐标投影",
-              "when": "during_speech"
-            }
-          ]
-        },
-        {
-          "key": "moment-02",
-          "say": "当动点 P 从 0 开始逆时针旋转时，高度从 0 逐渐升高到最高点 1；接着降回 0；再继续下降到最低点 -1；最后重新回到 0，完成一周的旋转。",
-          "delivery": "neutral",
-          "actions": [
-            {
-              "do": "animate",
-              "variable": "number_01",
-              "value": 6.28,
-              "easing": "linear",
-              "duration_intent": "extended",
-              "when": "during_speech"
-            }
-          ]
-        },
-        {
-          "key": "moment-03",
-          "say": "如果我们将点 P 的高度变化沿横轴的角度 θ 向右连续展开，就能得到一条平滑的波浪线——这就是正弦曲线 y = sin θ。旋转运动就这样转化为了周期性的波动。",
-          "delivery": "careful",
-          "actions": [
             {
               "do": "write",
               "as": "section-03-moment-03-item-01",
@@ -431,14 +383,15 @@
                 "anchor": "section-01-moment-02-item-01"
               },
               "when": "during_speech"
-            },
-            {
-              "do": "point",
-              "target": "section-01-moment-01-item-01",
-              "when": "during_speech"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "key": "section-03",
+      "purpose": "总结正弦函数的周期性与值域，并进行波峰位置的互动操作",
+      "beats": [
         {
           "key": "moment-04",
           "say": "总结一下，正弦函数具有周期性，最小正周期 T 等于 2π，值域在 -1 到 1 之间。现在，请试着拖动滑块，把旋转角调节到波峰位置。",

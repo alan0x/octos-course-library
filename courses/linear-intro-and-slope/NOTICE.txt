@@ -8,3 +8,4 @@ Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
 
 Source candidate: candidate-001/course.authoring.json
 Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
+Content review: practice opens with the k = -1.5 task the closing narration asks for (0.1.1); narration unchanged.

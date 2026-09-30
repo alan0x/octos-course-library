@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "packId": "linear-intro-and-slope",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": "正比例函数 y = kx 与斜率的几何意义",
   "description": "从正比例函数出发，通过动态滑块改变斜率 k，直观感受直线的倾斜方向、绕原点转动与陡缓。",
   "locale": "zh-CN",
@@ -24,49 +24,49 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-01:beat:moment-01",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "7046ab5eeda0054a64afc60a37d65de5e05f6208b63c5dde7542c7742ec16e7c",
         "durationMs": 9912
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-01:beat:moment-02",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "84964a64c6131fd6fb8bf0b194f391f28dfbadda25a244197643d4d893dd19cf",
         "durationMs": 11088
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-02:beat:moment-01",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-02:beat:moment-01",
         "file": "audio/003.mp3",
         "textSha256": "051b40ac4c244ad1fd79c238b8ef81b5a9e8b3753e75eb423d17af4789c61396",
         "durationMs": 6864
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-02:beat:moment-02",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-02:beat:moment-02",
         "file": "audio/004.mp3",
         "textSha256": "140430e5a5570896237784e4abbdda964d86c48ca99de79cd4880c5eced2ef91",
         "durationMs": 6696
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-01",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-03:beat:moment-01",
         "file": "audio/005.mp3",
         "textSha256": "03183cc05a307bdff19ed844f0e38e1f8b75bb72a30f18e28160c605d249eea8",
         "durationMs": 8448
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-02",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-03:beat:moment-02",
         "file": "audio/006.mp3",
         "textSha256": "d3996ec2a8ac7d92c725d8bea284c0ea4ca0e555e7034a5ce89bd2d0ef33d834",
         "durationMs": 8496
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-03",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-03:beat:moment-03",
         "file": "audio/007.mp3",
         "textSha256": "6eb667793a3ca4d65085a052878fb3b41849ea8469057d118ab9094812f4d8e3",
         "durationMs": 6480
       },
       {
-        "beatId": "linear-intro-and-slope-0.1.0:step:section-03:beat:moment-04",
+        "beatId": "linear-intro-and-slope-0.1.1:step:section-03:beat:moment-04",
         "file": "audio/008.mp3",
         "textSha256": "09127d4a712c23677ee464234b529190fb72673889e60721c85b0194645efb2a",
         "durationMs": 5256
@@ -76,8 +76,8 @@
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "02f843960425c414e08e36d35b5ca7d137ad54c1fd64ea00a9af2e28ea1f76d9",
-      "bytes": 455,
+      "sha256": "3d1760704391d75cf4fcc5cf03821b817ff1765aff83a41ed7c82495925cadd8",
+      "bytes": 570,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -89,15 +89,8 @@
       "role": "board"
     },
     {
-      "path": "course.authoring.json",
-      "sha256": "e64dfc40764eae6724c05fd4d91cbfad48a4422a01c668baa34981464ad057b4",
-      "bytes": 10296,
-      "mediaType": "application/json",
-      "role": "asset"
-    },
-    {
       "path": "course.oll.jsonl",
-      "sha256": "da50c10e913afd07dda6164847bf82a28f12a566e27678d3e4b4b022256eea30",
+      "sha256": "caac98a5519fc559146d38e3c5a52f6eafabfcc14ef1e492c49b36be6dbf18ed",
       "bytes": 9466,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
@@ -164,6 +157,13 @@
       "bytes": 105120,
       "mediaType": "audio/mpeg",
       "role": "narration"
+    },
+    {
+      "path": "course.authoring.json",
+      "mediaType": "application/json",
+      "role": "asset",
+      "bytes": 10296,
+      "sha256": "d5333146863e92d6e025a470faa7992eb3012e377b39d146bdbb9bbb07472b2f"
     }
   ],
   "licenses": [

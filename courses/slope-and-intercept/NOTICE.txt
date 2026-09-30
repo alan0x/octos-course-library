@@ -8,3 +8,5 @@ Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.
 
 Source candidate: candidate-005/course.authoring.json
 Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).
+Narration review: 2 spoken Chinese math clips revised (0.1.7); other audio unchanged.
+Content review: the x = 0 point is labelled as the intercept b (0.1.8); narration unchanged.

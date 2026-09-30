@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "packId": "linear-simultaneous-intersections",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "二元一次方程组与一次函数的几何意义",
   "description": "通过在同一坐标系中绘制两条直线，直观理解两直线交点的几何意义就是二元一次方程组的代数解。",
   "locale": "zh-CN",
   "subject": "mathematics",
   "grade": "secondary-age-12-14",
   "durationSeconds": 80,
-  "minimumPlayerVersion": "0.1.0",
+  "minimumPlayerVersion": "0.3.0",
   "entry": "course.oll.jsonl",
   "board": "board.json",
   "thumbnail": "thumbnail.svg",
@@ -24,55 +24,55 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-01:beat:moment-01",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "a623eb75a577d4a52c8dc227eaaf2969af40f004a798aee902150556a289a159",
         "durationMs": 8664
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-01:beat:moment-02",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "bddae6ef5ed7e73815d6750f913624b8c279e6a35eacbcd2c90294431d3b4730",
         "durationMs": 6888
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-02:beat:moment-01",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-02:beat:moment-01",
         "file": "audio/003.mp3",
         "textSha256": "ad003b17daec8cd2b74e8c42f0bc3fcd0dee8d4632df1d95acc59a1d14763957",
         "durationMs": 9096
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-02:beat:moment-02",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-02:beat:moment-02",
         "file": "audio/004.mp3",
         "textSha256": "808a72c9a3ba27efc771d9f22ad77ada1bffa58b4e834ecf2a80e154646a4b39",
         "durationMs": 9696
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-02:beat:moment-03",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-02:beat:moment-03",
         "file": "audio/005.mp3",
         "textSha256": "b86b219a7ddce1b623984ff2ab9503655ffc98cc57a9b67df0bea30312122d80",
         "durationMs": 8496
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-02:beat:moment-04",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-02:beat:moment-04",
         "file": "audio/006.mp3",
         "textSha256": "b7309f0f486311a75f82507afd98e3d6ce773c35e76f8f652245c8e2d4b64323",
         "durationMs": 6864
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-03:beat:moment-01",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-03:beat:moment-01",
         "file": "audio/007.mp3",
         "textSha256": "5f0971735a2ab68540402d313b0aa6f65856f196d46879120a064fec90ea28c7",
         "durationMs": 11112
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-04:beat:moment-01",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-04:beat:moment-01",
         "file": "audio/008.mp3",
         "textSha256": "18841ffd2ff67ed0e4c06a9a2a8c7735a6490ff4939f0bf9c8412f33f50dbe65",
         "durationMs": 9696
       },
       {
-        "beatId": "linear-simultaneous-intersections-0.1.1:step:section-04:beat:moment-02",
+        "beatId": "linear-simultaneous-intersections-0.1.2:step:section-04:beat:moment-02",
         "file": "audio/009.mp3",
         "textSha256": "d04cdbcb8bb984afb6edc839ce2c05c4f872711ae5bf727d8b6a1488ae3b89e7",
         "durationMs": 9096
@@ -82,8 +82,8 @@
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "1f5346cbfe0405a20bc3f7ce78660a319d23ace97f994505f8f7c8fcd035bd19",
-      "bytes": 551,
+      "sha256": "d1843b9b496bd1304438d1d50bd8b42e573e13f4021a548c87b36ee520a18651",
+      "bytes": 565,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -96,8 +96,8 @@
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "182d373d10596e42a6583f04ea870a41de6eb1c85d3ddbc95204edec2cc7af01",
-      "bytes": 12376,
+      "sha256": "39a2f8533da4f596612a0d9faff8ef3fe3958710d57ae1906d81f17811d738b2",
+      "bytes": 12983,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
@@ -175,8 +175,8 @@
       "path": "course.authoring.json",
       "mediaType": "application/json",
       "role": "asset",
-      "bytes": 11943,
-      "sha256": "e365bc35b3089821166faa2b616620762d9d8fc91ee5f923cb8e1ce52ac06fb6"
+      "bytes": 12705,
+      "sha256": "40bb450214efe4f01981c91a9a19132b0fa0e7d52789602ef4209f9c06453230"
     }
   ],
   "licenses": [
@@ -209,5 +209,23 @@
         "course.oll.jsonl"
       ]
     }
-  ]
+  ],
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.focus",
+    "action:lesson.variable.animate",
+    "action:teacher.point",
+    "binding-hide-undefined",
+    "canonical:0.1",
+    "node:math",
+    "node:note",
+    "node:plot",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  }
 }

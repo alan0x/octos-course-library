@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "packId": "slope-and-intercept",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "title": "一次函数 y = mx + b 的图像与性质",
   "description": "通过实时改变斜率与纵截距，理解一次函数直线的方向、陡缓、平移和变化率。",
   "locale": "zh-CN",
@@ -24,79 +24,79 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-01:beat:moment-01",
+        "beatId": "slope-and-intercept-0.1.8:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "c2b326f0cd39e94c9acb0a92392925154fdb97cf76e32f99bad88ff5278484d6",
         "durationMs": 7704
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-01:beat:moment-02",
+        "beatId": "slope-and-intercept-0.1.8:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "8cd039dffebd235b73901cf5544b27cb7f713d9a5165a4af0710407a31a5fcb0",
         "durationMs": 10488
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-02:beat:moment-01",
+        "beatId": "slope-and-intercept-0.1.8:step:section-02:beat:moment-01",
         "file": "audio/003.mp3",
         "textSha256": "e4037e8e19ec39121bd69a0b4ce98eb7756f296229af24f78312c3c787bdaa79",
         "durationMs": 6864
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-02:beat:moment-02",
+        "beatId": "slope-and-intercept-0.1.8:step:section-02:beat:moment-02",
         "file": "audio/004.mp3",
         "textSha256": "ba25017ff25b16a1f744d7f31cceda217514e8e6604c28aba62b63c44b2859e2",
         "durationMs": 8088
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-02:beat:moment-03",
+        "beatId": "slope-and-intercept-0.1.8:step:section-02:beat:moment-03",
         "file": "audio/005.mp3",
-        "textSha256": "7678b9ad29b9e07f22108237b704cd455443a0bd5224f9cd69fe1090a286e8a5",
+        "textSha256": "785419c9dee76dba4fa17f124c0e3b1ab5d4942afde3d51a5d07ef3bbc8e188f",
         "durationMs": 6480
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-02:beat:moment-04",
+        "beatId": "slope-and-intercept-0.1.8:step:section-02:beat:moment-04",
         "file": "audio/006.mp3",
         "textSha256": "0cd4d432e3a6a68bb32db41690b83358148ff94e1595266031ccd5cae3606e54",
         "durationMs": 6096
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-02:beat:moment-05",
+        "beatId": "slope-and-intercept-0.1.8:step:section-02:beat:moment-05",
         "file": "audio/007.mp3",
         "textSha256": "fcfb5924d885519fa5c81cd92f28ba0469ef3bc4e168dbb1d8bf30e538765d99",
         "durationMs": 10320
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-03:beat:moment-01",
+        "beatId": "slope-and-intercept-0.1.8:step:section-03:beat:moment-01",
         "file": "audio/008.mp3",
         "textSha256": "8e3893ff806572bbd0d613231af80844919ad0d11ac92572d42652982eefe04b",
         "durationMs": 7488
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-03:beat:moment-02",
+        "beatId": "slope-and-intercept-0.1.8:step:section-03:beat:moment-02",
         "file": "audio/009.mp3",
         "textSha256": "b0b49becb6ceb2525a9fadbebb15a8ef5298654585a6b92bacdf9423b06312eb",
         "durationMs": 7920
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-03:beat:moment-03",
+        "beatId": "slope-and-intercept-0.1.8:step:section-03:beat:moment-03",
         "file": "audio/010.mp3",
-        "textSha256": "7a559fb6cc4743e04b82def45df8baa2bc307b2c81b1b239f5630f0eaca6ac75",
-        "durationMs": 4872
+        "textSha256": "d0642c488744d3550a750275cad35b730f3d71d6c617924c166c8a25bf7aaef3",
+        "durationMs": 4680
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-04:beat:moment-01",
+        "beatId": "slope-and-intercept-0.1.8:step:section-04:beat:moment-01",
         "file": "audio/011.mp3",
         "textSha256": "f3090bd174e0f58fb7113ab188dbe60bbd2516440f06a4179fd6281dc996f2d9",
         "durationMs": 9912
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-04:beat:moment-02",
+        "beatId": "slope-and-intercept-0.1.8:step:section-04:beat:moment-02",
         "file": "audio/012.mp3",
         "textSha256": "95df2378b7d2811cedee279c1009fe23c0a024f765f9720cad6c7219da1f44f7",
         "durationMs": 9696
       },
       {
-        "beatId": "slope-and-intercept-0.1.6:step:section-04:beat:moment-03",
+        "beatId": "slope-and-intercept-0.1.8:step:section-04:beat:moment-03",
         "file": "audio/013.mp3",
         "textSha256": "6b16cec1137e178ddb31ca56b0faf1089cf3e8fd06fadd274921e9aab5d915eb",
         "durationMs": 7296
@@ -106,8 +106,8 @@
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "61bf75e1b70ba437da7ab39127f6f318d3378fe47590251aae0a214d5b663d1c",
-      "bytes": 450,
+      "sha256": "bddbee549a8f372dd11fba66fe4488187705c0181cd1990fa6150e6dc7605539",
+      "bytes": 629,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -119,16 +119,9 @@
       "role": "board"
     },
     {
-      "path": "course.authoring.json",
-      "sha256": "73a88361ee232b6f7d97d7304ffb5ae404432467d10ccb8d05b51b34f4e7117c",
-      "bytes": 15392,
-      "mediaType": "application/json",
-      "role": "asset"
-    },
-    {
       "path": "course.oll.jsonl",
-      "sha256": "994661ee629a9c67e034379f4c9684828c2c8c0c9875e01e88640f5d4733cce7",
-      "bytes": 13972,
+      "sha256": "4d924d7fd7456a7a2839da5f26b09d8326156c2dc61b4412c31b26a139fbbbe9",
+      "bytes": 13975,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
@@ -169,7 +162,7 @@
     },
     {
       "path": "audio/005.mp3",
-      "sha256": "2f7cd1144a7be45189799effc49b996d8c68843bb644a0e54841582e206a6770",
+      "sha256": "b7fd59daff3ae89652e76dd40662333706e52938c3fb3fbf2b19aa9b393e9149",
       "bytes": 129600,
       "mediaType": "audio/mpeg",
       "role": "narration"
@@ -204,8 +197,8 @@
     },
     {
       "path": "audio/010.mp3",
-      "sha256": "1c49a0c671ce322b03dd88ac0f9a8e6c0c33da68d192657515ef8d1033bfdb28",
-      "bytes": 97440,
+      "sha256": "7ac4298baba345663039ddf90a97b81091ddddc3a3d8312b5106d0496976bbc7",
+      "bytes": 93600,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
@@ -229,6 +222,20 @@
       "bytes": 145920,
       "mediaType": "audio/mpeg",
       "role": "narration"
+    },
+    {
+      "path": "compilation.json",
+      "role": "asset",
+      "mediaType": "application/json",
+      "bytes": 1858,
+      "sha256": "49390141ad2ff8dc981fe08249a0d77d0194ce2af3d6f58b89a71dfe280f3f72"
+    },
+    {
+      "path": "course.authoring.json",
+      "mediaType": "application/json",
+      "role": "asset",
+      "bytes": 15395,
+      "sha256": "c47299621bf057a96800e1a5b71de8f5acc4331676937c9ea8d778995d2adf43"
     }
   ],
   "licenses": [
@@ -253,7 +260,8 @@
         "audio/010.mp3",
         "audio/011.mp3",
         "audio/012.mp3",
-        "audio/013.mp3"
+        "audio/013.mp3",
+        "compilation.json"
       ]
     },
     {
@@ -265,5 +273,24 @@
         "course.oll.jsonl"
       ]
     }
-  ]
+  ],
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.focus",
+    "action:lesson.variable.animate",
+    "action:teacher.expression",
+    "action:teacher.point",
+    "canonical:0.1",
+    "node:math",
+    "node:note",
+    "node:plot",
+    "student-tasks:expression_target",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "minimumPlayerVersion": "0.2.0",
+  "minimumPlayerVersion": "0.3.0",
   "requiredCapabilities": [
     "action:board.create",
     "action:board.focus",
@@ -11,6 +11,7 @@
     "node:plot",
     "node:scene3d",
     "practice-start",
+    "reflections",
     "student-tasks:expression_target",
     "value-bindings",
     "variables"

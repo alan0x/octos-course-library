@@ -472,14 +472,7 @@
               "easing": "linear",
               "duration_intent": "extended",
               "when": "during_speech"
-            }
-          ]
-        },
-        {
-          "key": "moment-03",
-          "say": "纵观整个圆周，从 0 到 二 π，纵坐标经历了‘上升到峰值 1、下降到谷底 -1、再次回升到 0’的过程，形成了完整的波峰与波谷周期循环。",
-          "delivery": "encouraging",
-          "actions": [
+            },
             {
               "do": "write",
               "as": "section-03-moment-03-item-01",
@@ -492,8 +485,15 @@
                 "relation": "below",
                 "anchor": "section-02-moment-02-item-01"
               },
-              "when": "after_speech"
-            },
+              "when": "during_speech"
+            }
+          ]
+        },
+        {
+          "key": "moment-03",
+          "say": "纵观整个圆周，从 0 到 二 π，纵坐标经历了‘上升到峰值 1、下降到谷底 -1、再次回升到 0’的过程，形成了完整的波峰与波谷周期循环。",
+          "delivery": "encouraging",
+          "actions": [
             {
               "do": "focus",
               "targets": [
@@ -546,9 +546,10 @@
             {
               "do": "focus",
               "targets": [
-                "section-01-moment-01-item-01"
+                "section-04-moment-01-item-01",
+                "section-04-moment-01-item-02"
               ],
-              "intent": "聚焦全实数域正弦函数单调区间通式",
+              "intent": "总结正弦函数在全实数域上的单调区间",
               "when": "during_speech"
             }
           ]

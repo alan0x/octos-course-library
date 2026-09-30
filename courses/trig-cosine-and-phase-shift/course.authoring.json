@@ -476,7 +476,7 @@
         },
         {
           "key": "moment-05",
-          "say": "请你试着拖动滑块，观察旋转角度 θ 在不同区间内余弦值的波峰与零点变化情况。",
+          "say": "现在我把旋转角度 θ 从 0 一直转到 2π。注意观察余弦值的变化：θ 等于 0 时是波峰 1，经过零点二分之派，到 π 时降到波谷负一，再经过零点二分之三派，回到 2π 时又是波峰。",
           "delivery": "encouraging",
           "actions": [
             {
@@ -485,7 +485,15 @@
                 "section-01-moment-01-item-01-circle",
                 "section-01-moment-01-item-01-plot"
               ],
-              "intent": "继续观察当前画面",
+              "intent": "观察 θ 转过一整周时余弦值的波峰、零点与波谷",
+              "when": "during_speech"
+            },
+            {
+              "do": "animate",
+              "variable": "number_01",
+              "value": 6.28,
+              "easing": "linear",
+              "duration_intent": "extended",
               "when": "during_speech"
             }
           ]
@@ -503,20 +511,6 @@
           "actions": [
             {
               "do": "write",
-              "as": "section-04-moment-01-item-01",
-              "kind": "math",
-              "role": "derivation",
-              "content": {
-                "latex": "x = \\cos \\theta"
-              },
-              "place": {
-                "relation": "below",
-                "anchor": "section-03-moment-02-item-01"
-              },
-              "when": "during_speech"
-            },
-            {
-              "do": "write",
               "as": "section-04-moment-01-item-02",
               "kind": "note",
               "role": "explanation",
@@ -529,7 +523,7 @@
               },
               "place": {
                 "relation": "below",
-                "anchor": "section-04-moment-01-item-01"
+                "anchor": "section-03-moment-04-item-01"
               },
               "when": "during_speech"
             },
@@ -537,7 +531,7 @@
               "do": "focus",
               "targets": [
                 "section-01-moment-01-item-01-circle",
-                "section-04-moment-01-item-01"
+                "section-04-moment-01-item-02"
               ],
               "intent": "观察动点在 x 轴上的投影长度与正负号变化",
               "when": "during_speech"
@@ -571,6 +565,7 @@
             {
               "do": "focus",
               "targets": [
+                "section-04-moment-02-item-02",
                 "section-03-moment-02-item-01"
               ],
               "intent": "通过寻找波峰与零点理解正弦到余弦的平移关系",

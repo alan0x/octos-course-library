@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "packId": "trig-cosine-and-phase-shift",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "title": "余弦函数与单位圆投影",
   "description": "通过单位圆动点的水平投影展开为余弦曲线 y = cos x，对比正弦波体会二者仅相差 π/2 相位平移，直观理解诱导公式的几何成因。",
   "locale": "zh-CN",
   "subject": "mathematics",
   "grade": "highschool-mathematics",
-  "durationSeconds": 120,
+  "durationSeconds": 127,
   "minimumPlayerVersion": "0.1.0",
   "entry": "course.oll.jsonl",
   "board": "board.json",
@@ -24,79 +24,79 @@
     "voiceId": "zh_female_xiaohe_uranus_bigtts",
     "segments": [
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-01:beat:moment-01",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-01:beat:moment-01",
         "file": "audio/001.mp3",
         "textSha256": "9343031efdf33788f20bb8326ec69854078180cff24c52a0e41a0c45b3708d82",
         "durationMs": 10056
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-01:beat:moment-02",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-01:beat:moment-02",
         "file": "audio/002.mp3",
         "textSha256": "4e275e9a7192fe0ca8bac798e26d7ba850c65b4f5da2402fe1ba42bf2c59b6d2",
         "durationMs": 6696
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-02:beat:moment-01",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-02:beat:moment-01",
         "file": "audio/003.mp3",
         "textSha256": "80e8acfb65b249558540d4c3446014f9e803dbc79d0ee290f5af6d1c4b8aa4b1",
         "durationMs": 9264
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-02:beat:moment-02",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-02:beat:moment-02",
         "file": "audio/004.mp3",
         "textSha256": "0e799f9deeca64327da3d7d7da7dc0353bcb678f7f6084683b026aab00b3fd50",
         "durationMs": 5280
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-02:beat:moment-03",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-02:beat:moment-03",
         "file": "audio/005.mp3",
         "textSha256": "9fb58454e7df1143303e46b6dc5ad5be70e48bdc7eded7eb09f81038a4e60f83",
         "durationMs": 6672
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-02:beat:moment-04",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-02:beat:moment-04",
         "file": "audio/006.mp3",
         "textSha256": "17644f9e36811f7954f2dd5c30a20f5fa0c706ba86f24478e21302efa058bc16",
         "durationMs": 13080
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-03:beat:moment-01",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-03:beat:moment-01",
         "file": "audio/007.mp3",
         "textSha256": "731d260a81bebfcf8e0b715369ccc121499bb2f843f3ea8728f7926b07f5b12b",
         "durationMs": 8256
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-03:beat:moment-02",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-03:beat:moment-02",
         "file": "audio/008.mp3",
         "textSha256": "34c86b66b79f70fb3c3208f12cfb548c763ef2d830e20cb9d6be688a2a281e40",
         "durationMs": 8808
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-03:beat:moment-03",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-03:beat:moment-03",
         "file": "audio/009.mp3",
         "textSha256": "943367b2eb090eec48b0aaab9b6deb50a9ab7b712c78abaa1355818d1ad8ea55",
         "durationMs": 15480
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-03:beat:moment-04",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-03:beat:moment-04",
         "file": "audio/010.mp3",
         "textSha256": "a4e8b9e12eb2928b8728e529f8b7818e3260f9756334e930ec94f19fc766e006",
         "durationMs": 9096
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-03:beat:moment-05",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-03:beat:moment-05",
         "file": "audio/011.mp3",
-        "textSha256": "e7a8499899912aa6d625f12aa5c5b829b7b5646e24f7829892c83c5af77bcd7d",
-        "durationMs": 7464
+        "textSha256": "4e5a93dad9eed1cfc4264350d92645bbf51a4df3f738c2a91e45b5d51ebca915",
+        "durationMs": 14640
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-04:beat:moment-01",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-04:beat:moment-01",
         "file": "audio/012.mp3",
         "textSha256": "f2f669d85f6ba394c8a2225dcd03b7d5758446fc5f1a8308f4db6bcf5113178c",
         "durationMs": 8280
       },
       {
-        "beatId": "trig-cosine-and-phase-shift-0.1.2:step:section-04:beat:moment-02",
+        "beatId": "trig-cosine-and-phase-shift-0.1.4:step:section-04:beat:moment-02",
         "file": "audio/013.mp3",
         "textSha256": "63be284e8957de12ad6411a14d49b6499f82d2d0556006dff0bd8da6954e014b",
         "durationMs": 11088
@@ -106,8 +106,8 @@
   "files": [
     {
       "path": "NOTICE.txt",
-      "sha256": "6f9f1b3aac9a0a92229f72fedd6f576c9a11c8dc333aa9817fd3f8f3d8f49654",
-      "bytes": 612,
+      "sha256": "1e4b51c0a031bf617d45739db5635f2d0f718bf6a3c60f689d66f184584ca6fa",
+      "bytes": 701,
       "mediaType": "text/plain",
       "role": "license"
     },
@@ -120,8 +120,8 @@
     },
     {
       "path": "course.oll.jsonl",
-      "sha256": "8e7b6c5f9a14954eeef43070acc14c14279018677c236d2d3f34b1cd64374a65",
-      "bytes": 19053,
+      "sha256": "4dd61f5648026f86d9fd3ea4ad68444e40776397204e4da1bf8929cd29947a33",
+      "bytes": 19069,
       "mediaType": "application/x-ndjson",
       "role": "lesson"
     },
@@ -204,8 +204,8 @@
     },
     {
       "path": "audio/011.mp3",
-      "sha256": "c5c4fed017840899fe2611befd455d1995897cb85535ff76e3ac75ebf711c15b",
-      "bytes": 149280,
+      "sha256": "1b984b6f13dd09d09d320a68c4a52f58a421eff63d5d3aae21e3a3508a183c39",
+      "bytes": 292800,
       "mediaType": "audio/mpeg",
       "role": "narration"
     },
@@ -224,11 +224,18 @@
       "role": "narration"
     },
     {
+      "path": "compilation.json",
+      "role": "asset",
+      "mediaType": "application/json",
+      "bytes": 4414,
+      "sha256": "df2db43590c6f077575d45d18d91ea48101801fc60b89fe191e5f5d073fcd5d9"
+    },
+    {
       "path": "course.authoring.json",
       "mediaType": "application/json",
       "role": "asset",
-      "bytes": 19815,
-      "sha256": "a5be7fcf617526cf18b36b3ca55eea21007c74e2c84c7908b8157b224341be7e"
+      "bytes": 19835,
+      "sha256": "0f1d99dd28f320567eb36c75cb3b281502f35000252c421b7adf67580a5c420b"
     }
   ],
   "licenses": [
@@ -253,7 +260,8 @@
         "audio/010.mp3",
         "audio/011.mp3",
         "audio/012.mp3",
-        "audio/013.mp3"
+        "audio/013.mp3",
+        "compilation.json"
       ]
     },
     {
@@ -265,5 +273,26 @@
         "course.oll.jsonl"
       ]
     }
-  ]
+  ],
+  "requiredCapabilities": [
+    "action:board.connect",
+    "action:board.create",
+    "action:board.focus",
+    "action:board.group",
+    "action:lesson.variable.animate",
+    "action:teacher.point",
+    "canonical:0.1",
+    "node:geometry",
+    "node:math",
+    "node:note",
+    "node:plot",
+    "student-tasks:expression_target",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  }
 }

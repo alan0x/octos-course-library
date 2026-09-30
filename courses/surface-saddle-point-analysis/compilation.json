@@ -1,5 +1,5 @@
 {
-  "minimumPlayerVersion": "0.1.0",
+  "minimumPlayerVersion": "0.3.0",
   "requiredCapabilities": [
     "action:board.create",
     "action:board.focus",
@@ -8,7 +8,8 @@
     "node:math",
     "node:note",
     "node:plot",
-    "node:scene3d"
+    "node:scene3d",
+    "reflections"
   ],
   "compilation": {
     "compiler": "materializeOllLesson",

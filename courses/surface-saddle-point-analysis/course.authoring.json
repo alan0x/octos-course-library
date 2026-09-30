@@ -17,7 +17,18 @@
         "路径参数化：将二维截面转化为一维路径t上的函数曲线进行对比",
         "邻域反例法：利用极小邻域内必定存在正负值的定义否定极值"
       ]
-    }
+    },
+    "reflections": [
+      {
+        "as": "section-04-reflection-01",
+        "prompt": "如果一个曲面在某点沿 x 轴和 y 轴两个方向都达到局部极小，能否断言该点就是局部极小值点？为什么？",
+        "answer": "不能。坐标轴只是两个特定方向：即使沿 x 轴和 y 轴函数值都增加，沿其他斜向路径仍可能减小。例如 f(x,y) = x² + y² − 3xy 在原点沿两条坐标轴都是 t² ≥ 0，沿 y = x 却是 −t² < 0。判断局部极小必须保证该点的整个邻域内都有 f(x,y) ≥ f(p₀)。",
+        "anchor": "section-04-moment-04-item-01",
+        "availability": {
+          "kind": "after_lesson"
+        }
+      }
+    ]
   },
   "steps": [
     {
@@ -496,35 +507,6 @@
                 "anchor": "section-04-moment-03-item-01"
               },
               "when": "during_speech"
-            }
-          ]
-        },
-        {
-          "key": "moment-05",
-          "say": "答案是不能。因为坐标轴方向仅代表两个特定切平面方向。即便沿着 x 轴和 y 轴方向函数值都增加，在其他斜向路径上函数值仍可能减小。判断极小值必须保证在全方位完整邻域内函数值均不小于该点。",
-          "delivery": "patient",
-          "actions": [
-            {
-              "do": "write",
-              "as": "section-04-moment-05-item-01",
-              "kind": "math",
-              "role": "derivation",
-              "content": {
-                "latex": "\\text{结论: 不能。必须满足 } \\forall (x,y) \\in U(p_0), f(x,y) \\ge f(p_0)"
-              },
-              "place": {
-                "relation": "below",
-                "anchor": "section-04-moment-04-item-01"
-              },
-              "when": "during_speech"
-            },
-            {
-              "do": "focus",
-              "targets": [
-                "section-04-moment-05-item-01"
-              ],
-              "intent": "明确极值定义的邻域全方位性要求",
-              "when": "after_speech"
             }
           ]
         }
