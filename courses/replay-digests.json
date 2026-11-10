@@ -1,0 +1,57 @@
+{
+  "contract-smoke": {
+    "operations": 16,
+    "checkpoints": "c66c69d826a6ecca",
+    "final_state": "57ea7546b7d06b45"
+  },
+  "linear-intro-and-slope": {
+    "operations": 100,
+    "checkpoints": "cf7eeec3351dc3fe",
+    "final_state": "f35e6ba90311fb7f"
+  },
+  "linear-simultaneous-intersections": {
+    "operations": 118,
+    "checkpoints": "57d263a5d0efa762",
+    "final_state": "bd4f6065e7efd195"
+  },
+  "rectangle-area-from-tiles": {
+    "operations": 160,
+    "checkpoints": "af8834935347c2d9",
+    "final_state": "8e127d6ff0c68754"
+  },
+  "slope-and-intercept": {
+    "operations": 159,
+    "checkpoints": "e9ec8ce8a5bda824",
+    "final_state": "5d0a88a70bc6487c"
+  },
+  "surface-paraboloid-level-sets": {
+    "operations": 135,
+    "checkpoints": "c0eda9a5ce0528bb",
+    "final_state": "2c4deb1f7582790b"
+  },
+  "surface-partial-derivative-slice": {
+    "operations": 136,
+    "checkpoints": "af56db138f9c445e",
+    "final_state": "9f60122189e25a95"
+  },
+  "surface-saddle-point-analysis": {
+    "operations": 172,
+    "checkpoints": "6f7feb23019727fe",
+    "final_state": "3337ffbb4bf192a5"
+  },
+  "trig-cosine-and-phase-shift": {
+    "operations": 165,
+    "checkpoints": "b9de9aae0474c555",
+    "final_state": "9984c256428b2564"
+  },
+  "trig-quadrants-and-monotonicity": {
+    "operations": 123,
+    "checkpoints": "6b645b1b5dd34c71",
+    "final_state": "116e0b95b98a91ef"
+  },
+  "trig-unit-circle-to-sine": {
+    "operations": 93,
+    "checkpoints": "7324281c9647d5e2",
+    "final_state": "c8afa5092ef9fd28"
+  }
+}

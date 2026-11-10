@@ -23,6 +23,7 @@
     "candidate:generate": "node scripts/generate-learning-coach-candidate.mjs",
     "course-pack:materialize": "node scripts/materialize-course-pack.mjs",
     "course-pack:verify-camera": "node scripts/verify-curated-camera.mjs",
+    "courses:replay": "node scripts/replay-courses.mjs",
     "course-pack": "pnpm build && node packages/course-pack/dist/src/cli.js",
     "course-pack:publish": "pnpm build && node packages/course-pack/dist/src/publisher-cli.js",
     "test": "pnpm --filter @octos/course-pack test",
