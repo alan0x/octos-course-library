@@ -5,6 +5,8 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import { zipSync } from "fflate";
+import { deriveExecutionRequirements } from "octos-lesson-language";
+import { loadCoursePackArchive } from "../src/browser.js";
 import {
   buildCoursePack,
   inspectCoursePackArchive,
@@ -164,4 +166,38 @@ test("manifest cannot underreport executable capabilities", () => {
     assert.equal(result.valid, false);
     assert.ok(result.issues.some(issue => issue.code === "PACK_EXECUTION_CAPABILITY"));
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("pack validation and browser loading use the host's installed extensions", async () => {
+  const { root, pack } = fixtureCopy();
+  try {
+    const feature = "plugin:sample/notes@1";
+    const path = join(pack, "manifest.json");
+    const manifest = JSON.parse(readFileSync(path, "utf8"));
+    const events = readFileSync(join(pack, manifest.entry), "utf8").trim().split("\n")
+      .map(line => JSON.parse(line));
+    const coreCapabilities = deriveExecutionRequirements(events).requiredCapabilities;
+    manifest.requiredCapabilities = [...coreCapabilities, feature];
+    writeFileSync(path, JSON.stringify(manifest));
+    const execution = { extensions: [{
+      plugin: { id: "sample", version: "1.0.0" },
+      features: { [feature]: "1.0.0" },
+      detect(_content: unknown, kind: string | undefined, use: (feature: string) => void) {
+        if (kind === "note") use(feature);
+      },
+    }] };
+    assert.equal(validateCoursePackDirectory(pack).valid, false);
+    const archive = join(root, "plugin.ocpack");
+    buildCoursePack(pack, archive, execution);
+    assert.equal(inspectCoursePackArchive(archive, execution).valid, true);
+    const bytes = readFileSync(archive);
+    await assert.rejects(loadCoursePackArchive(bytes), /Unsupported declared capability/u);
+    assert.ok((await loadCoursePackArchive(bytes, {}, execution)).manifest.requiredCapabilities?.includes(feature));
+    manifest.requiredCapabilities = coreCapabilities;
+    writeFileSync(path, JSON.stringify(manifest));
+    assert.ok(validateCoursePackDirectory(pack, execution).issues.some(issue =>
+      issue.code === "PACK_EXECUTION_CAPABILITY" && issue.message.includes(`omits '${feature}'`)));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });

@@ -15,6 +15,7 @@ import {
   reduceCanonicalEvents,
   assertExecutionDeclaration,
   type CanonicalEvent,
+  type ExecutionOptions,
 } from "octos-lesson-language";
 import { unzipSync, zipSync } from "fflate";
 import boardSchema from "../schema/course-pack-board-v1.schema.json" with { type: "json" };
@@ -251,7 +252,7 @@ function logicalPackDigest(files: PackFiles): string {
   return sha256(inventory);
 }
 
-function validatePackFiles(files: PackFiles): CoursePackValidationResult {
+function validatePackFiles(files: PackFiles, execution: ExecutionOptions): CoursePackValidationResult {
   const issues: CoursePackIssue[] = [];
   if (files.size > MAX_FILE_COUNT) {
     issue(issues, "PACK_TOO_MANY_FILES", "/", `Pack contains more than ${MAX_FILE_COUNT} files`);
@@ -351,7 +352,7 @@ function validatePackFiles(files: PackFiles): CoursePackValidationResult {
 
   const events = parseCanonicalJsonl(files.get(manifest.entry), manifest.entry, issues);
   if (events) {
-    try { assertExecutionDeclaration(events, manifest); }
+    try { assertExecutionDeclaration(events, manifest, execution); }
     catch (error) { issue(issues, "PACK_EXECUTION_CAPABILITY", "/manifest.json", error instanceof Error ? error.message : String(error)); }
     const expectedNarration = narrationByBeat(events);
     const segments = new Map<string, (typeof manifest.narration.segments)[number]>();
@@ -409,13 +410,13 @@ function validatePackFiles(files: PackFiles): CoursePackValidationResult {
   };
 }
 
-export function validateCoursePackDirectory(directory: string): CoursePackValidationResult {
+export function validateCoursePackDirectory(directory: string, execution: ExecutionOptions = {}): CoursePackValidationResult {
   try {
     const rootStat = statSync(directory);
     if (!rootStat.isDirectory()) {
       return { valid: false, issues: [{ code: "PACK_NOT_DIRECTORY", path: directory, message: "Expected a directory" }] };
     }
-    return validatePackFiles(collectDirectoryFiles(directory));
+    return validatePackFiles(collectDirectoryFiles(directory), execution);
   } catch (error) {
     return {
       valid: false,
@@ -428,7 +429,7 @@ export function validateCoursePackDirectory(directory: string): CoursePackValida
   }
 }
 
-export function inspectCoursePackArchive(archivePath: string): CoursePackValidationResult {
+export function inspectCoursePackArchive(archivePath: string, execution: ExecutionOptions = {}): CoursePackValidationResult {
   try {
     const archiveStat = statSync(archivePath);
     if (!archiveStat.isFile()) throw new Error("Expected an archive file");
@@ -456,7 +457,7 @@ export function inspectCoursePackArchive(archivePath: string): CoursePackValidat
     for (const [path, bytes] of Object.entries(unpacked)) {
       files.set(path, bytes);
     }
-    const result = validatePackFiles(files);
+    const result = validatePackFiles(files, execution);
     return { ...result, packSha256: sha256(archive) };
   } catch (error) {
     return {
@@ -473,13 +474,14 @@ export function inspectCoursePackArchive(archivePath: string): CoursePackValidat
 export function buildCoursePack(
   directory: string,
   outputPath: string,
+  execution: ExecutionOptions = {},
 ): { path: string; bytes: number; sha256: string; manifest: CoursePackManifestV1 } {
   const absoluteDirectory = resolve(directory);
   const absoluteOutput = resolve(outputPath);
   if (absoluteOutput === absoluteDirectory || absoluteOutput.startsWith(`${absoluteDirectory}${sep}`)) {
     throw new Error("CoursePack output must be outside the source directory");
   }
-  const result = validateCoursePackDirectory(directory);
+  const result = validateCoursePackDirectory(directory, execution);
   if (!result.valid || !result.manifest) throw new CoursePackValidationError(result.issues);
   const files = collectDirectoryFiles(directory);
   const entries: Record<string, Uint8Array> = {};

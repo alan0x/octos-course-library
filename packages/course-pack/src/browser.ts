@@ -6,6 +6,7 @@ import {
   reduceCanonicalEvents,
   assertExecutionDeclaration,
   type CanonicalEvent,
+  type ExecutionOptions,
 } from "octos-lesson-language";
 import { unzipSync } from "fflate";
 import boardSchema from "../schema/course-pack-board-v1.schema.json" with { type: "json" };
@@ -170,6 +171,7 @@ function parseEvents(bytes: Uint8Array, path: string): CanonicalEvent[] {
 export async function loadCoursePackArchive(
   input: ArrayBuffer | Uint8Array,
   limits: CoursePackArchiveLimits = {},
+  execution: ExecutionOptions = {},
 ): Promise<LoadedCoursePack> {
   const archive = input instanceof Uint8Array ? input : new Uint8Array(input);
   const maxArchiveBytes = limits.maxArchiveBytes ?? DEFAULT_MAX_ARCHIVE_BYTES;
@@ -274,7 +276,7 @@ export async function loadCoursePackArchive(
     }]);
   }
   const events = parseEvents(entry, manifest.entry);
-  try { assertExecutionDeclaration(events, manifest); }
+  try { assertExecutionDeclaration(events, manifest, execution); }
   catch (error) {
     throw new CoursePackLoadError([{ code: "PACK_EXECUTION_CAPABILITY", path: "/manifest.json", message: error instanceof Error ? error.message : String(error) }]);
   }
