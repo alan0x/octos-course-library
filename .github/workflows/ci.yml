@@ -24,6 +24,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm courses:replay
       - run: pnpm course-pack validate courses/contract-smoke
       - run: pnpm course-pack build courses/contract-smoke --out artifacts/contract-smoke-0.0.1.ocpack
       - run: pnpm course-pack inspect artifacts/contract-smoke-0.0.1.ocpack
