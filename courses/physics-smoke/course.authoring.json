@@ -1,0 +1,211 @@
+{
+  "dsl": "octos.lesson",
+  "version": "0.1",
+  "profile": "authoring",
+  "lesson": {
+    "mode": "explain",
+    "language": "en-US",
+    "title": "Physics CoursePack smoke lesson",
+    "goals": [
+      "Verify that a physics lesson plays from a CoursePack"
+    ],
+    "variables": [
+      {
+        "as": "t",
+        "initial": 0,
+        "min": 0,
+        "max": 10,
+        "label": "time t",
+        "unit": "s",
+        "control": {
+          "kind": "slider",
+          "step": 0.1
+        }
+      },
+      {
+        "as": "v",
+        "initial": 2,
+        "min": 0.5,
+        "max": 5,
+        "label": "speed v",
+        "unit": "m/s",
+        "control": {
+          "kind": "slider",
+          "step": 0.5
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "key": "motion",
+      "purpose": "Show constant-speed motion with its distance–time graph",
+      "beats": [
+        {
+          "key": "show",
+          "say": "A cart moves along a straight track at two metres per second.",
+          "actions": [
+            {
+              "do": "write",
+              "as": "motion-track",
+              "kind": "geometry",
+              "role": "main_visual",
+              "content": {
+                "title": "A cart at constant speed",
+                "axes": {
+                  "x": {
+                    "min": -2.5,
+                    "max": 52.5,
+                    "label": "distance s (m)"
+                  },
+                  "y": {
+                    "min": -5,
+                    "max": 10,
+                    "label": ""
+                  },
+                  "equal_scale": true
+                },
+                "points": [
+                  {
+                    "as": "start",
+                    "x": 0,
+                    "y": 4,
+                    "label": "start"
+                  },
+                  {
+                    "as": "finish",
+                    "x": 50,
+                    "y": 4,
+                    "visible": false
+                  },
+                  {
+                    "as": "object",
+                    "x": 0,
+                    "y": 4,
+                    "label": "cart s = 0 m"
+                  }
+                ],
+                "segments": [
+                  {
+                    "as": "track",
+                    "from": "start",
+                    "to": "finish",
+                    "style": "dashed"
+                  },
+                  {
+                    "as": "travelled",
+                    "from": "start",
+                    "to": "object",
+                    "style": "solid"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "object.x",
+                    "expression": "(v)*(t)",
+                    "label": {
+                      "prefix": "cart s = ",
+                      "suffix": " m",
+                      "precision": 1
+                    }
+                  }
+                ]
+              },
+              "place": {
+                "relation": "new_region"
+              }
+            },
+            {
+              "do": "write",
+              "as": "motion-graph",
+              "kind": "plot",
+              "role": "main_visual",
+              "content": {
+                "title": "Distance against time",
+                "axes": {
+                  "x": {
+                    "min": 0,
+                    "max": 10,
+                    "label": "time t (s)"
+                  },
+                  "y": {
+                    "min": 0,
+                    "max": 50,
+                    "label": "distance s (m)"
+                  }
+                },
+                "curves": [
+                  {
+                    "as": "primary-curve",
+                    "expression": "(v)*x",
+                    "label": "s = v t"
+                  }
+                ],
+                "points": [
+                  {
+                    "as": "moving-point",
+                    "x": 0,
+                    "y": 0,
+                    "label": "now"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "target": "moving-point.x",
+                    "expression": "(t)"
+                  },
+                  {
+                    "target": "moving-point.y",
+                    "expression": "(v)*(t)"
+                  }
+                ]
+              },
+              "place": {
+                "relation": "right_of",
+                "anchor": "motion-track",
+                "gap": "normal"
+              }
+            },
+            {
+              "do": "connect",
+              "as": "motion-link",
+              "from": "motion-track",
+              "to": "motion-graph",
+              "relation": "same_state",
+              "label": "same moment"
+            },
+            {
+              "do": "group",
+              "as": "motion",
+              "role": "main_visual",
+              "label": "motion and graph",
+              "members": [
+                "motion-track",
+                "motion-graph"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "run",
+          "say": "As time passes, the cart and the point on the graph move together.",
+          "actions": [
+            {
+              "do": "animate",
+              "variable": "t",
+              "value": 10,
+              "easing": "linear",
+              "duration_intent": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "close": {
+    "summary": "At constant speed, distance grows in proportion to time.",
+    "focus": [
+      "motion"
+    ]
+  }
+}
