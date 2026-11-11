@@ -1,31 +1,37 @@
-// Rebuilds the physics CoursePack test fixture (courses/physics-smoke) from
-// its authoring lesson, with this repository's pinned OLL. The fixture checks
-// that the CoursePack path handles a non-mathematics pack (subject plan P2,
-// step 3). It is repository test data, not a published course: its narration
-// reuses the contract fixture's placeholder audio, and nothing is synthesized.
+// Rebuilds a CoursePack test fixture (courses/*-smoke) from its authoring
+// lesson and scripts/smoke-packs/<course>.json (pack id, version, title, description,
+// subject, what the fixture is for). Fixtures check that the CoursePack path
+// handles a kind of lesson: physics-smoke (a non-mathematics pack, subject
+// plan P2 step 3) and number-line-smoke (the math plugin's number line, OLL
+// decision 0013). They are repository test data, not published courses: their
+// narration reuses the contract fixture's placeholder audio, and nothing is
+// synthesized.
 //
 // The lesson is compiled by the player's own pipeline (Octos Learn's
 // `oll:materialize`), as materialize-course-pack.mjs does for real packs, so
 // Learn's parity check accepts it.
 //
-//   node scripts/make-physics-smoke.mjs --player-root ../octos-learn
+//   node scripts/make-smoke-pack.mjs --course courses/physics-smoke --player-root ../octos-learn
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { basename, resolve } from "node:path";
 import { validateAuthoringLesson } from "octos-lesson-language";
 
-const directory = resolve("courses/physics-smoke");
-const packId = "physics-smoke";
-const version = "0.0.1";
+const option = (name) => { const index = process.argv.indexOf(`--${name}`); return index >= 0 ? process.argv[index + 1] : undefined; };
+if (!option("course")) throw new Error("Missing required --course <courses/...-smoke>");
+const directory = resolve(option("course"));
+// The fixture's details live beside this script: a course directory holds only the files its manifest declares.
+const pack = JSON.parse(await readFile(new URL(`./smoke-packs/${basename(directory)}.json`, import.meta.url), "utf8"));
+const { packId, version } = pack;
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
 const authoring = JSON.parse(await readFile(resolve(directory, "course.authoring.json"), "utf8"));
 validateAuthoringLesson(authoring);
-const playerRootIndex = process.argv.indexOf("--player-root");
-if (playerRootIndex < 0 || !process.argv[playerRootIndex + 1]) throw new Error("Missing required --player-root <octos-learn checkout>");
+const playerRoot = option("player-root");
+if (!playerRoot) throw new Error("Missing required --player-root <octos-learn checkout>");
 const lessonId = `${packId}-${version}`;
-execFileSync("pnpm", ["--dir", resolve(process.argv[playerRootIndex + 1]), "oll:materialize", "--",
+execFileSync("pnpm", ["--dir", resolve(playerRoot), "oll:materialize", "--",
   "--authoring", resolve(directory, "course.authoring.json"), "--output", resolve(directory, "course.oll.jsonl"),
   "--report", resolve(directory, "compilation.json"), "--lesson-id", lessonId, "--board-id", packId,
   "--base-revision", "0", "--region-intent", "new_topic", "--region-id", `${lessonId}-region`], { stdio: ["ignore", "ignore", "inherit"] });
@@ -48,7 +54,7 @@ await writeFile(resolve(directory, "board.json"), `${JSON.stringify({
 await writeFile(resolve(directory, "NOTICE.txt"), [
   "Copyright 2026 Octos Course Library contributors.",
   "",
-  "This physics fixture is provided for repository testing and is not a",
+  `This ${pack.purpose} fixture is provided for repository testing and is not a`,
   "published curriculum. Its narration reuses the contract fixture's placeholder audio.",
   "",
 ].join("\n"));
@@ -65,9 +71,9 @@ for (const path of paths) {
 }
 const manifest = {
   schemaVersion: 1, packId, version,
-  title: "Physics CoursePack smoke lesson",
-  description: "A minimal physics fixture: constant-speed motion with its distance–time graph.",
-  locale: "en-US", subject: "physics", grade: "contract-test",
+  title: pack.title,
+  description: pack.description,
+  locale: pack.locale, subject: pack.subject, grade: "contract-test",
   durationSeconds: Math.ceil(segments.length * 2.146),
   minimumPlayerVersion: requirements.minimumPlayerVersion,
   ...(requirements.requiredCapabilities.length ? { requiredCapabilities: requirements.requiredCapabilities } : {}),

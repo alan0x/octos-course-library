@@ -1,0 +1,9 @@
+{
+  "packId": "number-line-smoke",
+  "version": "0.0.1",
+  "purpose": "number line",
+  "title": "Number line CoursePack smoke lesson",
+  "description": "A minimal fixture for the math plugin's number line: fourths, a hop-by-hop jump and a draggable point.",
+  "locale": "en-US",
+  "subject": "mathematics"
+}

@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 import { unzipSync, zipSync } from "fflate";
+import { assertDeclarationPlayable } from "octos-lesson-language";
 import {
   CoursePackLoadError,
   coursePackFileBlob,
@@ -33,6 +34,17 @@ test("browser reader opens a physics pack (subject plan P2 physics pilot)", asyn
   const actions = pack.events.flatMap((event) => event.step?.beats.flatMap((beat) => Object.values(beat.stage).flat()) ?? []);
   assert.deepEqual(actions.filter((action) => action.op === "board.create").map((action) => action.node?.kind), ["geometry", "plot"]);
   assert.equal(pack.manifest.minimumPlayerVersion, "0.2.0");
+});
+
+test("browser reader opens a number line pack, which needs the math plugin (OLL decision 0013)", async () => {
+  const pack = await loadCoursePackArchive(readFileSync(join(process.cwd(), "fixtures/number-line-smoke-0.0.1.ocpack")));
+  assert.ok(pack.manifest.requiredCapabilities?.includes("plugin:math/number-line@1"));
+  const kinds = pack.events.flatMap((event) => event.step?.beats.flatMap((beat) => Object.values(beat.stage).flat()) ?? [])
+    .flatMap((action) => action.node ? [action.node.kind] : []);
+  assert.deepEqual(kinds, ["number_line"]);
+  // A player without the math plugin refuses the pack from its declaration, before reading any lesson event.
+  assert.throws(() => assertDeclarationPlayable(pack.manifest, undefined, { firstParty: false }), /requires the 'math' plugin/);
+  assert.doesNotThrow(() => assertDeclarationPlayable(pack.manifest));
 });
 
 test("browser reader rejects modified payload bytes", async () => {

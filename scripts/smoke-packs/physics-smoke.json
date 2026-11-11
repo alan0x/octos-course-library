@@ -1,0 +1,9 @@
+{
+  "packId": "physics-smoke",
+  "version": "0.0.1",
+  "purpose": "physics",
+  "title": "Physics CoursePack smoke lesson",
+  "description": "A minimal physics fixture: constant-speed motion with its distance–time graph.",
+  "locale": "en-US",
+  "subject": "physics"
+}
