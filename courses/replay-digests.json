@@ -14,6 +14,11 @@
     "checkpoints": "57d263a5d0efa762",
     "final_state": "bd4f6065e7efd195"
   },
+  "physics-smoke": {
+    "operations": 29,
+    "checkpoints": "c8285af74212e6c7",
+    "final_state": "675d7f07998a8e54"
+  },
   "rectangle-area-from-tiles": {
     "operations": 160,
     "checkpoints": "af8834935347c2d9",

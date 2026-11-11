@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "packId": "physics-smoke",
+  "version": "0.0.1",
+  "title": "Physics CoursePack smoke lesson",
+  "description": "A minimal physics fixture: constant-speed motion with its distance–time graph.",
+  "locale": "en-US",
+  "subject": "physics",
+  "grade": "contract-test",
+  "durationSeconds": 5,
+  "minimumPlayerVersion": "0.2.0",
+  "requiredCapabilities": [
+    "action:board.connect",
+    "action:board.create",
+    "action:board.group",
+    "action:lesson.variable.animate",
+    "binding-labels",
+    "canonical:0.1",
+    "node:geometry",
+    "node:plot",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  },
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "contract-fixture",
+    "segments": [
+      {
+        "beatId": "physics-smoke-0.0.1:step:motion:beat:show",
+        "file": "audio/001.mp3",
+        "textSha256": "9ab57327f687f5c49525c4c2758b990b0187ba0b343a1f89f037fa08831ecbba",
+        "durationMs": 2146
+      },
+      {
+        "beatId": "physics-smoke-0.0.1:step:motion:beat:run",
+        "file": "audio/002.mp3",
+        "textSha256": "f44b8745d1d59b3d1508fd9ea0af026f9ab272dde35b30ff53efa9de11749b07",
+        "durationMs": 2146
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "5b217bcbc53c42fb0414043f7b52d507794e4119a1a0f50b2f3b3c1aeb618679",
+      "bytes": 205,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "df0c64f0c932392d8dd3339875701ae7edba9532b197fce04cb4a0ab1062f77a",
+      "bytes": 27002,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "df0c64f0c932392d8dd3339875701ae7edba9532b197fce04cb4a0ab1062f77a",
+      "bytes": 27002,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "board.json",
+      "sha256": "3c118e3f274dcb4bbacb58d54373b3a3c88355ddd4c5040097b7079d023921fa",
+      "bytes": 300,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "compilation.json",
+      "sha256": "590755cc49b85544a4867d22108225f30175d61a30e6b09e7f8290994da48b32",
+      "bytes": 2437,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.authoring.json",
+      "sha256": "17599161e5af70c1774eb3a0738d904b313ea6ef2d0d76d1380505df60bfd992",
+      "bytes": 5632,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "2fde763b80609f70201c75522bb59e072ad7987aa86ff4fd439a83d7303f3b65",
+      "bytes": 4464,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "724468b88362920714ed247c958d3b9a8d105d1f893fe09a5f96ee28463f6442",
+      "bytes": 329,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Fixture-only repository content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "board.json",
+        "compilation.json",
+        "course.authoring.json",
+        "course.oll.jsonl",
+        "thumbnail.svg"
+      ]
+    }
+  ]
+}

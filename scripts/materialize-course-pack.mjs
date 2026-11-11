@@ -113,7 +113,7 @@ function durationMs(path) {
 
 function thumbnail(title, variant = "generic") {
   if (CALCULUS_THUMBNAIL_VARIANTS.includes(variant)) return calculusThumbnail(variant);
-  if (!["generic", "linear-function", "calculus-surface", "surface-3d", "trigonometry-unit-circle", "trig"].includes(variant)) {
+  if (!["generic", "linear-function", "constant-speed-motion", "calculus-surface", "surface-3d", "trigonometry-unit-circle", "trig"].includes(variant)) {
     throw new Error(`Unsupported thumbnailVariant '${variant}'`);
   }
   const safeTitle = title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -131,6 +131,27 @@ function thumbnail(title, variant = "generic") {
   <text x="700" y="270" fill="#0d6f6b" font-family="system-ui, sans-serif" font-size="34">slope · intercept · graph</text>
   <text x="80" y="570" fill="#202925" font-family="system-ui, sans-serif" font-size="58" font-weight="700">${safeTitle}</text>
   <text x="84" y="620" fill="#65716b" font-family="system-ui, sans-serif" font-size="25">Octos Learn · Curated course</text>
+</svg>
+`;
+  }
+  if (variant === "constant-speed-motion") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f7f2e8"/>
+  <g transform="translate(120 80)">
+    <rect width="500" height="390" rx="28" fill="#fffdf8" stroke="#d9d2c5" stroke-width="4"/>
+    <path d="M60 95 H440" stroke="#65716b" stroke-width="4" stroke-dasharray="14 10"/>
+    <path d="M60 95 H300" stroke="#167d78" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="300" cy="95" r="16" fill="#e18b56"/>
+    <path d="M70 350 H440 M70 350 V160" stroke="#65716b" stroke-width="5"/>
+    <path d="M70 350 L420 185" fill="none" stroke="#167d78" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="300" cy="242" r="12" fill="#e18b56"/>
+    <text x="410" y="378" fill="#183b3a" font-family="system-ui, sans-serif" font-size="26">t</text>
+    <text x="40" y="180" fill="#183b3a" font-family="system-ui, sans-serif" font-size="26">s</text>
+  </g>
+  <text x="700" y="190" fill="#183b3a" font-family="system-ui, sans-serif" font-size="68" font-weight="700">s = v t</text>
+  <text x="700" y="270" fill="#0d6f6b" font-family="system-ui, sans-serif" font-size="34">time · distance · speed</text>
+  <text x="80" y="570" fill="#202925" font-family="system-ui, sans-serif" font-size="58" font-weight="700">${safeTitle}</text>
+  <text x="84" y="620" fill="#65716b" font-family="system-ui, sans-serif" font-size="25">Octos Learn · Physics</text>
 </svg>
 `;
   }
@@ -294,10 +315,13 @@ await writeFile(resolve(outputDirectory, "NOTICE.txt"), [
   "",
   "Original Octos lesson content and packaging: Copyright 2026 Octos Course Library contributors.",
   "",
-  "Adapted from Marble Skill Taxonomy (v1).",
-  "Copyright Generative Spark, Inc. (Marble). https://withmarble.com",
-  "Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.",
-  "",
+  // The first collections follow the Marble Skill Taxonomy; a course that does not sets "taxonomy": "none".
+  ...(metadata.taxonomy === "none" ? [] : [
+    "Adapted from Marble Skill Taxonomy (v1).",
+    "Copyright Generative Spark, Inc. (Marble). https://withmarble.com",
+    "Database licensed under ODbL 1.0; textual content licensed under CC BY-SA 4.0.",
+    "",
+  ]),
   `Source candidate: ${basename(dirname(authoringPath))}/${basename(authoringPath)}`,
   "Narration voice: Volcengine Xiaohe (zh_female_xiaohe_uranus_bigtts).",
   "",
