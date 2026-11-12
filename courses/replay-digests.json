@@ -14,6 +14,11 @@
     "checkpoints": "57d263a5d0efa762",
     "final_state": "bd4f6065e7efd195"
   },
+  "number-line-smoke": {
+    "operations": 26,
+    "checkpoints": "92c8c4ca79a284f5",
+    "final_state": "440cd2ba715c32b0"
+  },
   "physics-smoke": {
     "operations": 29,
     "checkpoints": "c8285af74212e6c7",
