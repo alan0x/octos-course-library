@@ -16,8 +16,8 @@ importers:
         version: 0.8.3
     devDependencies:
       octos-lesson-language:
-        specifier: github:alan0x/octos-lesson-language#71b1d6d8fa1738c8c01f40ad707d2ea249decac3
-        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/71b1d6d8fa1738c8c01f40ad707d2ea249decac3
+        specifier: github:alan0x/octos-lesson-language#38135f3a1b0c7473a5d153319b96eeb5bc4bb05e
+        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/38135f3a1b0c7473a5d153319b96eeb5bc4bb05e
 
   packages/course-pack:
     dependencies:
@@ -28,8 +28,8 @@ importers:
         specifier: ^0.8.2
         version: 0.8.3
       octos-lesson-language:
-        specifier: github:alan0x/octos-lesson-language#71b1d6d8fa1738c8c01f40ad707d2ea249decac3
-        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/71b1d6d8fa1738c8c01f40ad707d2ea249decac3
+        specifier: github:alan0x/octos-lesson-language#38135f3a1b0c7473a5d153319b96eeb5bc4bb05e
+        version: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/38135f3a1b0c7473a5d153319b96eeb5bc4bb05e
     devDependencies:
       '@types/node':
         specifier: ^24.10.1
@@ -78,8 +78,8 @@ packages:
     resolution: {integrity: sha512-h+UCwkZ+4Jz8WQ7MLGfj7UVFrRCizGb912fwF4luGdYsC5paYG1vx+jy+KRcC/XkpjGva/P7nAWuxNnPzRvzHw==}
     hasBin: true
 
-  octos-lesson-language@https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/71b1d6d8fa1738c8c01f40ad707d2ea249decac3:
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/71b1d6d8fa1738c8c01f40ad707d2ea249decac3}
+  octos-lesson-language@https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/38135f3a1b0c7473a5d153319b96eeb5bc4bb05e:
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/38135f3a1b0c7473a5d153319b96eeb5bc4bb05e}
     version: 0.1.0-rc.1
     engines: {node: '>=20'}
 
@@ -135,7 +135,7 @@ snapshots:
     dependencies:
       commander: 15.0.0
 
-  octos-lesson-language@https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/71b1d6d8fa1738c8c01f40ad707d2ea249decac3:
+  octos-lesson-language@https://codeload.github.com/alan0x/octos-lesson-language/tar.gz/38135f3a1b0c7473a5d153319b96eeb5bc4bb05e:
     dependencies:
       ajv: 8.20.0
       js-draw: 1.33.0
