@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "packId": "number-line-smoke",
+  "version": "0.0.1",
+  "title": "Number line CoursePack smoke lesson",
+  "description": "A minimal fixture for the math plugin's number line: fourths, a hop-by-hop jump and a draggable point.",
+  "locale": "en-US",
+  "subject": "mathematics",
+  "grade": "contract-test",
+  "durationSeconds": 5,
+  "minimumPlayerVersion": "0.1.0",
+  "requiredCapabilities": [
+    "action:board.create",
+    "action:board.emphasize",
+    "canonical:0.1",
+    "plugin:math/number-line@1",
+    "student-tasks:expression_target",
+    "value-bindings",
+    "variables"
+  ],
+  "compilation": {
+    "compiler": "materializeOllLesson",
+    "version": "0.2.0",
+    "rules": "explicit-semantics-v1"
+  },
+  "entry": "course.oll.jsonl",
+  "board": "board.json",
+  "thumbnail": "thumbnail.svg",
+  "capabilities": {
+    "offlinePlayback": true,
+    "offlineNarration": true,
+    "interactiveWhiteboard": true,
+    "liveAi": "optional",
+    "asr": "optional",
+    "camera": "none"
+  },
+  "narration": {
+    "voiceId": "contract-fixture",
+    "segments": [
+      {
+        "beatId": "number-line-smoke-0.0.1:step:fourths:beat:show",
+        "file": "audio/001.mp3",
+        "textSha256": "4ee04d3486bc02f973da062bfc49a60a786d703774f09fb4ccd6c428f5b3b210",
+        "durationMs": 2146
+      },
+      {
+        "beatId": "number-line-smoke-0.0.1:step:fourths:beat:move",
+        "file": "audio/002.mp3",
+        "textSha256": "008e5e295ab1c3ec7cc5fe40029dfbf9406b8c2e54e685e9921af20c01a656fb",
+        "durationMs": 2146
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "NOTICE.txt",
+      "sha256": "b8bd05848f62f4d8dc4f181e271add1112e1a5d09d713a0fb79beabb59f87bf9",
+      "bytes": 209,
+      "mediaType": "text/plain",
+      "role": "license"
+    },
+    {
+      "path": "audio/001.mp3",
+      "sha256": "df0c64f0c932392d8dd3339875701ae7edba9532b197fce04cb4a0ab1062f77a",
+      "bytes": 27002,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "audio/002.mp3",
+      "sha256": "df0c64f0c932392d8dd3339875701ae7edba9532b197fce04cb4a0ab1062f77a",
+      "bytes": 27002,
+      "mediaType": "audio/mpeg",
+      "role": "narration"
+    },
+    {
+      "path": "board.json",
+      "sha256": "953a5b768a18ff363fd71dbfc03ee746e58ed0152f4c83ea3b6f3afe8c6a2cad",
+      "bytes": 304,
+      "mediaType": "application/json",
+      "role": "board"
+    },
+    {
+      "path": "compilation.json",
+      "sha256": "618f75067d5ba6ce58e71e35031a8c5df5a18bf34be577f449fa7bde3c72df27",
+      "bytes": 1124,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.authoring.json",
+      "sha256": "f5c492f5732f2ac5d7f1341a219aa1df1450cbc78a90d80100ec9f4dae9c8255",
+      "bytes": 3237,
+      "mediaType": "application/json",
+      "role": "asset"
+    },
+    {
+      "path": "course.oll.jsonl",
+      "sha256": "372fed27104d666cf260993ea7c526041fc928ce63e5a9faf29ac9dbe6f239b1",
+      "bytes": 2844,
+      "mediaType": "application/x-ndjson",
+      "role": "lesson"
+    },
+    {
+      "path": "thumbnail.svg",
+      "sha256": "724468b88362920714ed247c958d3b9a8d105d1f893fe09a5f96ee28463f6442",
+      "bytes": 329,
+      "mediaType": "image/svg+xml",
+      "role": "thumbnail"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Fixture-only repository content",
+      "attribution": "Copyright 2026 Octos Course Library contributors.",
+      "appliesTo": [
+        "NOTICE.txt",
+        "audio/001.mp3",
+        "audio/002.mp3",
+        "board.json",
+        "compilation.json",
+        "course.authoring.json",
+        "course.oll.jsonl",
+        "thumbnail.svg"
+      ]
+    }
+  ]
+}
